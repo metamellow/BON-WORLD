@@ -17,7 +17,7 @@ To find out more please visit:
 
 # Notes 🔥
 
-- THIS REPO WILL BE ARCHIVED SOON (and a new one will be used)
+- THIS REPO IS STILL UNDER CONSTRUCTION
 - This is the repository for the Bank of Nowhere website! 
 - This repository is being synced through fleek onto IPFS and then sent to ENS bankofnowhere.eth
 
