@@ -1,0 +1,8 @@
+##### THIS ALLOWS US TO DEPLOY THE SITE FROM A GIT REPO ######
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/hanjh8nqlbl7/public_html/
+    - /bin/cp -R LICENSE $DEPLOYPATH
+    - /bin/cp -R README.md $DEPLOYPATH
+    - /bin/cp -R index.html $DEPLOYPATH
