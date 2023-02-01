@@ -30,6 +30,7 @@
           <li><a href="charts.html" class="button2">charts</a></li>
           <li><a href="dapp.html" class="button2">crowdfunding</a></li>
           <li><a href="stake.html" class="button2">stake</a></li>
+          <button> connect </button>
         </ul>
       </nav>
     </header>
@@ -37,84 +38,82 @@
 
     <br /><br /><br />
 
-    <div class="carousel">
-      <div class="slide">
-        <img src="images/nft.png" alt="Image 2" />
-        <div class="conteudo-carousel">
-          <div>
-            <h3 class="titulo-carousel">First Official <br />NFT Collection</h3>
-            <p>
-              Mint Fund Allocation<br />
-              - 40% to locked liquidity > <br />
-              - 30% to DAO treasury > <br />
-              - 20% to staking pool > <br />
-              - 10% to dev team > <br />
-            </p>
-          </div>
-          <a href="dapp.html"> <button>invest now</button> </a>
-        </div>
+    <div class="dapp-menu" style>
+      <div>
+        <select id="selectLinks">
+          <option value="">select the project</option>
+          <option value="1">mint fund allocation</option>
+          <option value="2">$bon card...coming soon</option>
+          <option value="3">ETH DENVER MKT..coming soon</option>
+        </select>
       </div>
-      <div class="slide">
-        <img src="images/token.png" alt="Image 2" />
-        <div class="conteudo-carousel">
-          <div>
-            <h3 class="titulo-carousel">BON tokenomics</h3>
-            <p>
-              more than 5% of this supply has been BURNED FOREVER <br />
-              more than 5% of this supply was fairly AIRDROPPED to the community
-              <br />
-              the remaining 90% was released to the open market for a fair ICO
-              <br />
-              NOTE: 100% of the LP tokens were BURNED FOREVER
-            </p>
-          </div>
-        </div>
+      <div>
+        <a href="rules.html"><button>investment rules</button></a>
       </div>
-      <div class="slide">
-        <img src="images/coin.png" alt="Image 2" />
-        <div class="conteudo-carousel">
-          <div>
-            <h3 class="titulo-carousel">bank of nowhere</h3>
-            <p>
-              Bank of Nowhere is a DECENTRALIZED cooperative focused on applying
-              TECHNOLOGY to improve personal finances. Traditional banks are
-              archaic, bloated, and deceptive -- >we aim to be THE BANK you can
-              TRUST<br />
-              <br />
-
-              // $BON -- no identification needed -- all welcome //
-            </p>
-          </div>
-        </div>
+      <div>
+        <a href="forms.html"><button>register your project</button></a>
       </div>
-      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-      <a class="next" onclick="plusSlides(1)">&#10095;</a>
-    </div>
-
-    <div class="slide">
-      <img src="images/greenhouse.png" alt="Image 2" />
-      <div class="conteudo-carousel">
-        <div>
-          <h3 class="titulo-carousel">Crowdfunding</h3>
-          <p>
-            Decentralized crowdfunding is a way to make the world a better place for everyone. Think of small entrepreneurs, artists,
-             activists and other people who sometimes need a little push to start their project or business. <br />
-            <br />
-
-            // Small business, big dreams! //
-          </p>
-        </div>
-        <a href="forms.html"> <button>register</button> </a>
-      </div>
-        </div>
+      <div>
+        <a href="stake.html"><button>Support</button></a>
       </div>
     </div>
-    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-    <a class="next" onclick="plusSlides(1)">&#10095;</a>
-  </div>
 
-    <br /><br /><br />
+    <div div style="margin-right: 60px; margin-left: 60px">
+      <img src="images/nft.png" align="left" />
 
+      <br />
+      <br />
+      <br />
+      <br />
+
+      <h1 style="color: #37bfa7">First Official NFT Collection <br /></h1>
+
+      <h4 align="left">
+        Welcome to Bank of Nowhere! This mint is the first official mint and
+        contains graphics created by MERP! All OFFICIAL Bank of Nowhere NFTs can
+        be used to access the BON staking pool. These rewards will be released
+        every quarter and all stakers will be able to withdraw thier reward via
+        the dApp. NOTE: Rewards will be held in $MATIC and then converted to
+        $BON prior to rewards release.
+        <br />
+        <br />
+        Mint Fund Allocation - 40% to locked liquidity > <br />
+        - 30% to DAO treasury > <br />
+        - 20% to staking pool > <br />
+        - 10% to dev team > <br />
+        <br />
+
+        Please note<br />
+        5 NFTs max per wallet<br />
+        Cost per mint is 15 MATIC<br />
+        Polygon network only<br />
+      </h4>
+
+      <div>
+        <label for="quantity" style="width: auto; padding: 0px">quantity</label>
+        <br /><br />
+        <select id="quantity" name="quantity" required>
+          <option value="">Select</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+      <br />
+      <button
+        class="custom-button"
+        style="height: 45px; width: 300px; text-align: left"
+      >
+        mint
+      </button>
+
+      <!-- Modify value as per quantity choice selects. -->
+      <div align="left">
+        <h2>value 15 matic</h2>
+      </div>
+    </div>
     <!-- FOOTER -->
     <footer>
       <div id="first-row">
@@ -177,7 +176,7 @@
         </div>
       </div>
       <div id="copyright">Copyright &copy; Bank of Nowhere</div>
-      <script src="scripts/index.js"></script>
+      <script src="scripts/dapp.js"></script>
       <script src="./scripts/menu.js"></script>
     </footer>
     <!-- FOOTER -->

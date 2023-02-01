@@ -3,5 +3,15 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/hanjh8nqlbl7/public_html/
-    - /bin/cp -R README.md $DEPLOYPATH
+    - /bin/cp -R fonts $DEPLOYPATH
+    - /bin/cp -R images $DEPLOYPATH
+    - /bin/cp -R scripts $DEPLOYPATH
+    - /bin/cp -R styles $DEPLOYPATH
+    - /bin/cp -R charts.html $DEPLOYPATH
+    - /bin/cp -R dapp.html $DEPLOYPATH
+    - /bin/cp -R forms.html $DEPLOYPATH
     - /bin/cp -R index.html $DEPLOYPATH
+    - /bin/cp -R rules.html $DEPLOYPATH
+    - /bin/cp -R stake.html $DEPLOYPATH
+    - /bin/cp -R whitepaper.html $DEPLOYPATH
+    - /bin/cp -R README.md $DEPLOYPATH
