@@ -30,3 +30,4 @@ To find out more please visit:
 - need to import all the node modules etc
 - re-add the button from the original but put the 'dapp' inside and have it direct to the 'crowdfunding' page
 - remove the 'stake' link button
+- optimize image sizes
