@@ -32,3 +32,4 @@ To find out more please visit:
 - remove the 'stake' link button
 - optimize image file sizes
 - need to fix homepage carracel card sizes to be responsive (again see rules.html maybe)
+- fix 'not secure' warning : https://uk.godaddy.com/help/install-my-ssl-certificate-16623
