@@ -31,4 +31,4 @@ To find out more please visit:
 - re-add the button from the original but put the 'dapp' inside and have it direct to the 'crowdfunding' page
 - remove the 'stake' link button
 - optimize image file sizes
-- need to fix homepage carracel card sizes to be responsive
+- need to fix homepage carracel card sizes to be responsive (again see rules.html maybe)
