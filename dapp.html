@@ -14,6 +14,12 @@
     <link rel="icon" href="images/fav.png" />
   </head>
   <body>
+    <script type="module">
+      import { useEffect, useState } from "./node_modules/react";
+      import { ethers } from "./node_modules/ethers";
+    </script>
+    <script src="scripts/bonMinter.js" ></script>
+    
     <!-- NAVBAR -->
     <header>
       <div class="logo-container">
@@ -39,7 +45,7 @@
 
     <div class="dapp-menu" style>
       <div>
-        <select id="selectLinks">
+        <select id="NFT-collection-dropdown">
           <option value="">select the project</option>
           <option value="1" selected >mint fund allocation</option>
           <option value="2">$bon card...coming soon</option>
@@ -52,9 +58,9 @@
       <div>
         <a href="forms.html"><button>register your project</button></a>
       </div>
-      <div>
+      <!-- <div>
         <a href="stake.html"><button>Support</button></a>
-      </div>
+      </div> -->
     </div>
 
     <div div style="margin-right: 60px; margin-left: 60px">
@@ -76,10 +82,16 @@
         $BON prior to rewards release.
         <br />
         <br />
-        Mint Fund Allocation - 40% to locked liquidity > <br />
-        - 30% to DAO treasury > <br />
-        - 20% to staking pool > <br />
-        - 10% to dev team > <br />
+        <ul>
+          <label>Mint Fund Allocation:</label></ul>
+          <li>40% to locked liquidity</li>
+          <li>30% to DAO treasury</li>
+          <li>20% to staking pool</li>
+          <li>10% to dev team</li>
+        </ul> 
+        <br />
+        <br />
+        <br />
         <br />
 
         Please note<br />
@@ -89,9 +101,9 @@
       </h4>
 
       <div>
-        <label for="quantity" style="width: auto; padding: 0px">quantity</label>
+        <label for="mintQuantityDropdown" style="width: auto; padding: 0px">quantity:</label>
         <br /><br />
-        <select id="quantity" name="quantity" required>
+        <select id="mintQuantityDropdown" required>
           <option value="">Select</option>
           <option value="1">1</option>
           <option value="2">2</option>
@@ -101,19 +113,60 @@
         </select>
       </div>
       <br />
+      
+      
+
+
       <button
-        class="custom-button"
-        style="height: 45px; width: 300px; text-align: left"
-      >
-        mint
+          id="mint-button"
+          class="custom-button"
+          style="height: 45px; width: 300px; text-align: left" 
+          onclick="connectWallet();"
+          >
+              CONNECT WALLET
       </button>
 
-      <!-- Modify value as per quantity choice selects. -->
+
+
+
+
+      <!-- <script>
+        const renderNotConnectedContainer = () => (
+          /*<div align="center">*/
+              <button
+                  id="mint-button"
+                  class="custom-button"
+                  style="height: 45px; width: 300px; text-align: left" 
+                  onclick="connectWallet();"
+                  /*onClick={connectWallet}*/>
+                      CONNECT WALLET
+              </button>
+          /*</div>*/
+        );
+
+        {currentAccount === "" ? (
+          renderNotConnectedContainer()
+          ) : (
+          /*<div align="center">*/
+            <button
+              id="mint-button"
+              class="custom-button"
+              style="height: 45px; width: 300px; text-align: left" 
+              onclick="askContractToMintNft();"
+              /*onClick={askContractToMintNft}*/>
+                MINT
+            </button>
+          /*</div>*/
+          )
+        }
+      </script> -->
+
+      <!-- needs to be added -->
       <div align="left">
-        <h2>value 15 matic</h2>
+        <h2>Cost: <span id="nftMintCost"></span>15 matic / NFT</h2>
       </div>
     </div>
-    <!-- FOOTER -->
+
     <footer>
       <div id="first-row">
         <div>
@@ -178,6 +231,6 @@
       <script src="scripts/dapp.js"></script>
       <script src="./scripts/menu.js"></script>
     </footer>
-    <!-- FOOTER -->
+
   </body>
 </html>

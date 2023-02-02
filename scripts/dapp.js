@@ -1,3 +1,4 @@
+/*
 document.getElementById('selectLinks').addEventListener('change', function () {
   var linkSelecionado = this.value;
   console.log(linkSelecionado);
@@ -14,4 +15,7 @@ document.getElementById('selectLinks').addEventListener('change', function () {
     default:
       break;
   }
-});
+}); */
+
+
+// document.getElementById("nftMintCost").innerText = tempCountPlaces;
