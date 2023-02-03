@@ -142,7 +142,7 @@ header {
 }
 
 .slide img {
-  height: 100%;
+  height: 85%;
   margin: auto;
 }
 
@@ -193,6 +193,27 @@ header {
   margin-left: 50px;
 }
 
+.button69 {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: solid;
+  border-color: #37bfa7;
+  background-color: transparent;
+  color: #FF6347;
+  cursor: pointer;
+  border-radius: 16px 0px 16px 0px;
+  font-family: 'biosBold', sans-serif;
+  font-size: 14px;
+}
+
+.button69:hover {
+  background-color: #37bfa7;
+  border-radius: 16px 0px 16px 0px;
+  transition: all 0.3s ease-in;
+  box-shadow: 0 0px 15px rgba(0, 255, 221, 0.4);
+  color: #FFF;
+}
+
 button {
   padding: 10px 20px;
   border-radius: 5px;
@@ -203,6 +224,7 @@ button {
   cursor: pointer;
   border-radius: 16px 0px 16px 0px;
   font-family: 'biosBold', sans-serif;
+  font-size: 14px;
 }
 
 button:hover {
@@ -328,7 +350,7 @@ input[type='number']:hover {
 }
 
 .wrapper {
-  width: 50%;
+  width: 80%;
   margin: auto;
 }
 
@@ -501,12 +523,60 @@ input[type='checkbox']:checked + label:before {
 .dapp-menu {
   display: flex;
   justify-content: center;
-  margin: 0 60px;
+  margin: 60px 0 30px;
 }
 
 .dapp-menu div {
   margin: 0 10px;
-  
+}
+
+#dapp-div-image {
+  margin: 0px 60px 30px;
+  width: calc(100% - 120px);
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-start;
+}
+
+#dapp-div-image div {
+  display: flex;
+  flex-direction: column;
+}
+
+#dapp-div-image img {
+  width: auto;
+  margin-left: 0;
+}
+
+@media screen and (max-width: 1055px) {
+  #dapp-div-image {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #dapp-div-image img {
+    width: 70%;
+    margin-left: 15%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .dapp-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 60px 0 30px;
+  }
+
+  .dapp-menu div {
+    margin: 10px;
+  }
+
+  #dapp-div-image img {
+    width: 100%;
+    margin-left: 0;
+  }
 }
 
 textarea {

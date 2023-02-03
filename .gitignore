@@ -9,6 +9,6 @@ artifacts/
 contracts/
 
 # OTHER
-# node_modules/
+node_modules/
 build/
 public/

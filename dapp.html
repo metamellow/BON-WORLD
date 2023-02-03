@@ -32,16 +32,13 @@
       <nav>
         <ul class="nav-links">
           <li><a href="index.html" class="button2">home</a></li>
-          <li><a href="whitepaper.html" class="button2">white paper</a></li>
+          <li><a href="whitepaper.html" class="button2">whitepaper</a></li>
           <li><a href="charts.html" class="button2">charts</a></li>
-          <li><a href="dapp.html" class="button2">crowdfunding</a></li>
-          <li><a href="stake.html" class="button2">stake</a></li>
+          <button class="button69" onclick='window.location.href = "dapp.html"'>DAPP</button>
         </ul>
       </nav>
     </header>
     <!-- NAVBAR -->
-
-    <br /><br /><br />
 
     <div class="dapp-menu" style>
       <div>
@@ -63,110 +60,105 @@
       </div> -->
     </div>
 
-    <div div style="margin-right: 60px; margin-left: 60px">
-      <img src="images/nft.png" align="left" />
-
-      <br />
-      <br />
-      <br />
-      <br />
-
-      <h1 style="color: #37bfa7">First Official NFT Collection <br /></h1>
-
-      <h4 align="left">
-        Welcome to Bank of Nowhere! This mint is the first official mint and
-        contains graphics created by MERP! All OFFICIAL Bank of Nowhere NFTs can
-        be used to access the BON staking pool. These rewards will be released
-        every quarter and all stakers will be able to withdraw thier reward via
-        the dApp. NOTE: Rewards will be held in $MATIC and then converted to
-        $BON prior to rewards release.
-        <br />
-        <br />
-        <ul>
-          <label>Mint Fund Allocation:</label></ul>
-          <li>40% to locked liquidity</li>
-          <li>30% to DAO treasury</li>
-          <li>20% to staking pool</li>
-          <li>10% to dev team</li>
-        </ul> 
-        <br />
-        <br />
-        <br />
-        <br />
-
-        Please note<br />
-        5 NFTs max per wallet<br />
-        Cost per mint is 15 MATIC<br />
-        Polygon network only<br />
-      </h4>
-
+    <div id="dapp-div-image">
+      <img src="images/nft.png" />
+      
       <div>
-        <label for="mintQuantityDropdown" style="width: auto; padding: 0px">quantity:</label>
-        <br /><br />
-        <select id="mintQuantityDropdown" required>
-          <option value="">Select</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
-      </div>
-      <br />
-      
-      
+        <h1 style="color: #37bfa7">First Official NFT Collection <br /></h1>
+        <h4 align="left">
+          Welcome to Bank of Nowhere! This mint is the first official mint and
+          contains graphics created by MERP! All OFFICIAL Bank of Nowhere NFTs can
+          be used to access the BON staking pool. These rewards will be released
+          every quarter and all stakers will be able to withdraw thier reward via
+          the dApp. NOTE: Rewards will be held in $MATIC and then converted to
+          $BON prior to rewards release.
+          <br />
+          <br />
+          <ul>
+            <label>Mint Fund Allocation:</label></ul>
+            <li>40% to locked liquidity</li>
+            <li>30% to DAO treasury</li>
+            <li>20% to staking pool</li>
+            <li>10% to dev team</li>
+          </ul> 
+          <br />
+          <br />
+          <br />
+          <br />
+
+          Please note<br />
+          5 NFTs max per wallet<br />
+          Cost per mint is 15 MATIC<br />
+          Polygon network only<br />
+        </h4>
+
+        <div>
+          <label for="mintQuantityDropdown" style="width: auto; padding: 0px">quantity:</label>
+          <br /><br />
+          <select id="mintQuantityDropdown" required>
+            <option value="">Select</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+        <br />
+        
+        
 
 
-      <button
-          id="mint-button"
-          class="custom-button"
-          style="height: 45px; width: 300px; text-align: left" 
-          onclick="connectWallet();"
-          >
-              CONNECT WALLET
-      </button>
+        <button
+            id="mint-button"
+            class="custom-button"
+            style="height: 45px; width: 300px; text-align: left" 
+            onclick="connectWallet();"
+            >
+                CONNECT WALLET
+        </button>
 
 
 
 
 
-      <!-- <script>
-        const renderNotConnectedContainer = () => (
-          /*<div align="center">*/
+        <!-- <script>
+          const renderNotConnectedContainer = () => (
+            /*<div align="center">*/
+                <button
+                    id="mint-button"
+                    class="custom-button"
+                    style="height: 45px; width: 300px; text-align: left" 
+                    onclick="connectWallet();"
+                    /*onClick={connectWallet}*/>
+                        CONNECT WALLET
+                </button>
+            /*</div>*/
+          );
+
+          {currentAccount === "" ? (
+            renderNotConnectedContainer()
+            ) : (
+            /*<div align="center">*/
               <button
-                  id="mint-button"
-                  class="custom-button"
-                  style="height: 45px; width: 300px; text-align: left" 
-                  onclick="connectWallet();"
-                  /*onClick={connectWallet}*/>
-                      CONNECT WALLET
+                id="mint-button"
+                class="custom-button"
+                style="height: 45px; width: 300px; text-align: left" 
+                onclick="askContractToMintNft();"
+                /*onClick={askContractToMintNft}*/>
+                  MINT
               </button>
-          /*</div>*/
-        );
+            /*</div>*/
+            )
+          }
+        </script> -->
 
-        {currentAccount === "" ? (
-          renderNotConnectedContainer()
-          ) : (
-          /*<div align="center">*/
-            <button
-              id="mint-button"
-              class="custom-button"
-              style="height: 45px; width: 300px; text-align: left" 
-              onclick="askContractToMintNft();"
-              /*onClick={askContractToMintNft}*/>
-                MINT
-            </button>
-          /*</div>*/
-          )
-        }
-      </script> -->
-
-      <!-- needs to be added -->
-      <div align="left">
-        <h2>Cost: <span id="nftMintCost"></span>15 matic / NFT</h2>
+        <!-- needs to be added -->
+        <div align="left">
+          <h2>Cost: <span id="nftMintCost"></span>15 matic / NFT</h2>
+        </div>
       </div>
     </div>
-
     <footer>
       <div id="first-row">
         <div>
