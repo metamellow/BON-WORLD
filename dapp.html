@@ -14,12 +14,6 @@
     <link rel="icon" href="images/fav.png" />
   </head>
   <body>
-    <script type="module">
-      import { useEffect, useState } from "./node_modules/react";
-      import { ethers } from "./node_modules/ethers";
-    </script>
-    <script src="scripts/bonMinter.js" ></script>
-    
     <!-- NAVBAR -->
     <header>
       <div class="logo-container">
@@ -34,30 +28,39 @@
           <li><a href="index.html" class="button2">home</a></li>
           <li><a href="whitepaper.html" class="button2">whitepaper</a></li>
           <li><a href="charts.html" class="button2">charts</a></li>
-          <button class="button69" onclick='window.location.href = "dapp.html"'>DAPP</button>
+          <button class="button69" onclick='window.location.href = "stake.html"'>DAPP</button>
         </ul>
       </nav>
     </header>
     <!-- NAVBAR -->
 
+    <br /><br /><br />
+    <div class="wrapper">
+      <button type="button" class="button3">
+        // CROWDFUND DAPP //
+      </button>
+    </div>
+
     <div class="dapp-menu" style>
       <div>
-        <select id="NFT-collection-dropdown">
+        <div>
+          <a href="rules.html"><button>INVESTMENT RULES</button></a>
+        </div> <br/>
+        <div>
+          <a href="forms.html"><button>REGISTER PROJECT</button></a>
+        </div>
+        <!-- <div>
+          <a href="stake.html"><button>NFT STAKING</button></a>
+        </div> -->
+      </div>
+      <div>
+        <select id="nftCollectionDropdownHTML" onchange="onSelectNFTCollection()">
           <option value="">select the project</option>
-          <option value="1" selected >mint fund allocation</option>
-          <option value="2">$bon card...coming soon</option>
-          <option value="3">ETH DENVER MKT..coming soon</option>
+          <option value="1" selected >BON NFT Collection #1</option>
+          <!-- <option value="2">$bon card...coming soon</option> -->
+          <!-- <option value="3">ETH DENVER MKT..coming soon</option> -->
         </select>
       </div>
-      <div>
-        <a href="rules.html"><button>investment rules</button></a>
-      </div>
-      <div>
-        <a href="forms.html"><button>register your project</button></a>
-      </div>
-      <!-- <div>
-        <a href="stake.html"><button>Support</button></a>
-      </div> -->
     </div>
 
     <div id="dapp-div-image">
@@ -72,31 +75,33 @@
           every quarter and all stakers will be able to withdraw thier reward via
           the dApp. NOTE: Rewards will be held in $MATIC and then converted to
           $BON prior to rewards release.
-          <br />
-          <br />
-          <ul>
-            <label>Mint Fund Allocation:</label></ul>
-            <li>40% to locked liquidity</li>
-            <li>30% to DAO treasury</li>
-            <li>20% to staking pool</li>
-            <li>10% to dev team</li>
-          </ul> 
-          <br />
+          <br/>
+          <br/>
+          <br/>
+          <u>Mint Fund Allocation</u><br/>
+          - 40% to locked liquidity<br/>
+          - 30% to DAO treasury<br/>
+          - 20% to staking pool<br/>
+          - 10% to dev team<br/>
           <br />
           <br />
           <br />
-
-          Please note<br />
-          5 NFTs max per wallet<br />
-          Cost per mint is 15 MATIC<br />
-          Polygon network only<br />
+          <u>Please note</u><br />
+          - 5 NFTs max per wallet<br />
+          - Cost per mint is 15 MATIC<br />
+          - Polygon network only<br />
         </h4>
 
+        <br/>
+        <br/>
+
+        <div align="left">
+          <h2>Cost: <span id="nftMintCost"></span>15 matic / NFT</h2>
+        </div>
+        
         <div>
-          <label for="mintQuantityDropdown" style="width: auto; padding: 0px">quantity:</label>
-          <br /><br />
-          <select id="mintQuantityDropdown" required>
-            <option value="">Select</option>
+          <select id="mintQuantityDropdownHTML" onchange="onSelectMintQuantity()" required>
+            <option value="">Quantity</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -107,58 +112,28 @@
         <br />
         
         
-
-
         <button
             id="mint-button"
             class="custom-button"
-            style="height: 45px; width: 300px; text-align: left" 
+            style="height: 45px; width: 300px; text-align: center" 
             onclick="connectWallet();"
             >
                 CONNECT WALLET
         </button>
 
-
-
-
-
-        <!-- <script>
-          const renderNotConnectedContainer = () => (
-            /*<div align="center">*/
-                <button
-                    id="mint-button"
-                    class="custom-button"
-                    style="height: 45px; width: 300px; text-align: left" 
-                    onclick="connectWallet();"
-                    /*onClick={connectWallet}*/>
-                        CONNECT WALLET
-                </button>
-            /*</div>*/
-          );
-
-          {currentAccount === "" ? (
-            renderNotConnectedContainer()
-            ) : (
-            /*<div align="center">*/
-              <button
-                id="mint-button"
-                class="custom-button"
-                style="height: 45px; width: 300px; text-align: left" 
-                onclick="askContractToMintNft();"
-                /*onClick={askContractToMintNft}*/>
-                  MINT
-              </button>
-            /*</div>*/
-            )
-          }
-        </script> -->
+        <button
+            id="mint-button"
+            class="custom-button"
+            style="height: 45px; width: 300px; text-align: center" 
+            onclick="connectWallet();"
+            >
+                MINT
+        </button>
 
         <!-- needs to be added -->
-        <div align="left">
-          <h2>Cost: <span id="nftMintCost"></span>15 matic / NFT</h2>
-        </div>
       </div>
     </div>
+
     <footer>
       <div id="first-row">
         <div>
@@ -220,8 +195,13 @@
         </div>
       </div>
       <div id="copyright">Copyright &copy; Bank of Nowhere</div>
+
       <script src="scripts/dapp.js"></script>
       <script src="./scripts/menu.js"></script>
+      <script src="https://cdn.ethers.io/lib/ethers-5.7.umd.min.js" type="application/javascript"></script>
+      
+      <script src="scripts/bonMinter.js" ></script>
+
     </footer>
 
   </body>
