@@ -22,14 +22,6 @@ To find out more please visit:
 - This repository is being synced through fleek onto IPFS and then sent to ENS bankofnowhere.eth
 
 # @Dev Notes
-- need to create a small JS script to link the dFunding form to our email
-- need to clean up the code and make it readable
-- need to fix whitepaper "container-column-left" "container-column-center" etc width
----- check the crowdfunding formatting bc its better than whitepaper
-- need to wire up the mint page buttons etc
-- need to import all the node modules etc
-- re-add the button from the original but put the 'dapp' inside and have it direct to the 'crowdfunding' page
-- remove the 'stake' link button
-- optimize image file sizes
-- need to fix homepage carracel card sizes to be responsive (again see rules.html maybe)
-- fix 'not secure' warning : https://uk.godaddy.com/help/install-my-ssl-certificate-16623
+- 
+
+
