@@ -13,7 +13,7 @@ To find out more please visit:
 
 [🐦 Twitter](https://twitter.com/bankofnowhere)
 
-[ℹ️ Website](https://bankofnowhere.eth.limo)
+[ℹ️ Website](https://bankofnowhere.world)
 
 # Notes 🔥
 
