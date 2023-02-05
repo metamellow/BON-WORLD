@@ -19,9 +19,9 @@ To find out more please visit:
 
 - THIS REPO IS STILL UNDER CONSTRUCTION
 - This is the repository for the Bank of Nowhere website! 
-- This repository is being synced through fleek onto IPFS and then sent to ENS bankofnowhere.eth
 
 # @Dev Notes
+- set up redirected for https://bankofnowhere.eth.limo
 - change CONNECT button to display wallet address if connected
 - not detecting correct polygon;  sees 0x13881 (which is mumbai, but actually connected to main?)
 - need to run through functions and make sure its calling all of them correctly
