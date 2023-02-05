@@ -22,6 +22,9 @@ To find out more please visit:
 - This repository is being synced through fleek onto IPFS and then sent to ENS bankofnowhere.eth
 
 # @Dev Notes
-- 
+- change CONNECT button to display wallet address if connected
+- not detecting correct polygon;  sees 0x13881 (which is mumbai, but actually connected to main?)
+- need to run through functions and make sure its calling all of them correctly
+- need to test an actual run through mint
 
 

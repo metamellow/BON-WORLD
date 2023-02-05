@@ -613,8 +613,7 @@ const bonMinter = () => {
         const accounts = await ethereum.request({ method: "eth_requestAccounts" });
 
         console.log("Connected", accounts[0]);
-        /* setCurrentAccount(accounts[0]); */
-        currentAccount = (accounts[0]); // NEW
+        currentAccount = (accounts[0]);
 
         // for connecting wallet first time
         setupEventListener() 
@@ -702,7 +701,6 @@ const bonMinter = () => {
         if (accounts.length !== 0) {
             const account = accounts[0];
             console.log("Found an authorized account:", account);
-            /* setCurrentAccount(account); */
             currentAccount = (account); // NEW
 
             // for user comes to our site and ALREADY had their wallet connected + authorized.
