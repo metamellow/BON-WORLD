@@ -21,7 +21,7 @@ To find out more please visit:
 - This is the repository for the Bank of Nowhere website! 
 
 # @Dev Notes
-- set up redirected for https://bankofnowhere.eth.limo
+- for https://bankofnowhere.eth.limo -- keep home page same, just change buttons to redirect to bonworld
 - change CONNECT button to display wallet address if connected
 - not detecting correct polygon;  sees 0x13881 (which is mumbai, but actually connected to main?)
 - need to run through functions and make sure its calling all of them correctly
