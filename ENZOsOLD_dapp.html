@@ -28,9 +28,7 @@
           <li><a href="index.html" class="button2">home</a></li>
           <li><a href="whitepaper.html" class="button2">whitepaper</a></li>
           <li><a href="charts.html" class="button2">charts</a></li>
-          <button class="button69" onclick='window.location.href = "dapp.html"'>
-            DAPP
-          </button>
+          <button class="button69" onclick='window.location.href = "stake.html"'>DAPP</button>
         </ul>
       </nav>
     </header>
@@ -38,15 +36,16 @@
 
     <br /><br /><br />
     <div class="wrapper">
-      <button type="button" class="button3">// CROWDFUND DAPP //</button>
+      <button type="button" class="button3">
+        // CROWDFUND DAPP //
+      </button>
     </div>
 
     <div class="dapp-menu" style>
       <div>
         <div>
           <a href="rules.html"><button>INVESTMENT RULES</button></a>
-        </div>
-        <br />
+        </div> <br/>
         <div>
           <a href="forms.html"><button>REGISTER PROJECT</button></a>
         </div>
@@ -55,12 +54,9 @@
         </div> -->
       </div>
       <div>
-        <select
-          id="nftCollectionDropdownHTML"
-          onchange="bonMinter.onSelectNFTCollection()"
-        >
+        <select id="nftCollectionDropdownHTML" onchange="onSelectNFTCollection()">
           <option value="">select the project</option>
-          <option value="BONNFT" selected>BON NFT Collection #1</option>
+          <option value="1" selected >BON NFT Collection #1</option>
           <!-- <option value="2">$bon card...coming soon</option> -->
           <!-- <option value="3">ETH DENVER MKT..coming soon</option> -->
         </select>
@@ -69,24 +65,24 @@
 
     <div id="dapp-div-image">
       <img src="images/nft.png" />
-
+      
       <div>
         <h1 style="color: #37bfa7">First Official NFT Collection <br /></h1>
         <h4 align="left">
           Welcome to Bank of Nowhere! This mint is the first official mint and
-          contains graphics created by MERP! All OFFICIAL Bank of Nowhere NFTs
-          can be used to access the BON staking pool. These rewards will be
-          released every quarter and all stakers will be able to withdraw thier
-          reward via the dApp. NOTE: Rewards will be held in $MATIC and then
-          converted to $BON prior to rewards release.
-          <br />
-          <br />
-          <br />
-          <u>Mint Fund Allocation</u><br />
-          - 40% to locked liquidity<br />
-          - 30% to DAO treasury<br />
-          - 20% to staking pool<br />
-          - 10% to dev team<br />
+          contains graphics created by MERP! All OFFICIAL Bank of Nowhere NFTs can
+          be used to access the BON staking pool. These rewards will be released
+          every quarter and all stakers will be able to withdraw thier reward via
+          the dApp. NOTE: Rewards will be held in $MATIC and then converted to
+          $BON prior to rewards release.
+          <br/>
+          <br/>
+          <br/>
+          <u>Mint Fund Allocation</u><br/>
+          - 40% to locked liquidity<br/>
+          - 30% to DAO treasury<br/>
+          - 20% to staking pool<br/>
+          - 10% to dev team<br/>
           <br />
           <br />
           <br />
@@ -96,19 +92,15 @@
           - Polygon network only<br />
         </h4>
 
-        <br />
-        <br />
+        <br/>
+        <br/>
 
         <div align="left">
           <h2>Cost: <span id="nftMintCost"></span>15 matic / NFT</h2>
         </div>
-
+        
         <div>
-          <select
-            id="mintQuantityDropdownHTML"
-            onchange="bonMinter.onSelectMintQuantity()"
-            required
-          >
+          <select id="mintQuantityDropdownHTML" onchange="onSelectMintQuantity()" required>
             <option value="">Quantity</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -118,25 +110,25 @@
           </select>
         </div>
         <br />
-
+        
+        
         <button
-          id="connectButtonHTML"
-          class="custom-button"
-          style="height: 45px; width: 300px; text-align: center"
-          onclick="bonMinter.connectWallet();"
-        >
-          CONNECT WALLET
+            id="mint-button"
+            class="custom-button"
+            style="height: 45px; width: 300px; text-align: center" 
+            onclick="connectWallet();"
+            >
+                CONNECT WALLET
         </button>
 
         <button
-          id="mintButtonHTML"
-          class="custom-button"
-          style="height: 45px; width: 300px; text-align: center"
-          onclick="bonMinter.connectWallet();"
-        >
-          MINT
+            id="mint-button"
+            class="custom-button"
+            style="height: 45px; width: 300px; text-align: center" 
+            onclick="connectWallet();"
+            >
+                MINT
         </button>
-
 
         <!-- needs to be added -->
       </div>
@@ -206,11 +198,11 @@
 
       <script src="scripts/dapp.js"></script>
       <script src="./scripts/menu.js"></script>
-      <script
-        src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"
-        type="application/javascript"
-      ></script>
-      <script src="scripts/bonMinter.js"></script>
+      <script src="https://cdn.ethers.io/lib/ethers-5.7.umd.min.js" type="application/javascript"></script>
+      
+      <script src="scripts/bonMinter.js" ></script>
+
     </footer>
+
   </body>
 </html>
