@@ -610,7 +610,7 @@ class BonMinter {
 
       // for connecting wallet first time
       /* setupEventListener(); */
-      // This has been moved here TEMPORARILY bc it wasnt calling correctly and this fixes it
+      // This has been moved here TEMPORARILY bc it wasnt calling correctly and this fixes it ********************************* try with 'this'
           try {
             const { ethereum } = window;
       
@@ -792,10 +792,10 @@ class BonMinter {
     let chainId = await ethereum.request({ method: 'eth_chainId' });
     console.log('Connected to chain ' + chainId);
 
-    const polygonChainId = '137';
+    const polygonChainId = '0x89'; // 137 in hex
     if (chainId !== polygonChainId) {
       alert(
-        'You are NOT connected to the POLYGON NETWORK! If you mint on any other network it will NOT WORK!'
+        'You are NOT connected to the POLYGON MAINNET! If you mint on any other network it will NOT WORK!'
       );
     }
   }
