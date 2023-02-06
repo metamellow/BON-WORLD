@@ -22,7 +22,7 @@ To find out more please visit:
 
 # @Dev Notes
 >> DO NOW
-- xx
+- check the finalization process; decentra had an issue AFTER the mint, error try mint again
 >> DO SOON
 - xx
 
