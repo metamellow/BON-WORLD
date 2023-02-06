@@ -22,9 +22,8 @@ To find out more please visit:
 
 # @Dev Notes
 >> DO NOW
-- not detecting correct polygon;  sees 0x13881 (which is mumbai, but actually connected to main?)
-- need to run through functions and make sure its calling all of them correctly
+- xx
 >> DO SOON
-- need to test an actual run through mint
+- xx
 
 

@@ -1,11 +1,4 @@
 // import contract data
-/*fetch('../utils/BONNFT.json')
-  .then((response) => {
-    return response.json();
-  })
-  .then((BONNFT) => console.log(BONNFT)); */
-
-// import contract data
 const BONNFT = (
   {
       "_format": "hh-sol-artifact-1",
@@ -583,7 +576,7 @@ class BonMinter {
     this.connectButton = document.getElementById('connectButtonHTML');
     this.mintButton = document.getElementById('mintButtonHTML');
 
-    this.NFTCostAmount = 0.15;
+    this.NFTCostAmount = 15; // 15000000000000000000
   }
 
   
@@ -609,38 +602,7 @@ class BonMinter {
       }`;
 
       // for connecting wallet first time
-      /* setupEventListener(); */
-      // This has been moved here TEMPORARILY bc it wasnt calling correctly and this fixes it ********************************* try with 'this'
-          try {
-            const { ethereum } = window;
-      
-            if (ethereum) {
-              const provider = new ethers.providers.Web3Provider(ethereum);
-              const signer = provider.getSigner();
-              const connectedContract = new ethers.Contract(
-                this.CONTRACT_ADDRESS,
-                BONNFT.abi,
-                signer
-              );
-      
-              // capture event when our contract throws it
-              connectedContract.on('NewBONNFTMinted', (from, tokenId) => {
-                console.log(from, tokenId.toNumber());
-                alert(
-                  `Congrats! You've minted your NFT and sent it to your wallet! 
-                  It can take a max of 10 min to show up on OpenSea. 
-                  Here's the link: https://opensea.io/assets/matic/${this.CONTRACT_ADDRESS}/${tokenId.toNumber()}`
-                );
-              });
-      
-              console.log('Setup event listener!');
-            } else {
-              console.log("Ethereum object doesn't exist!");
-            }
-          } catch (error) {
-            console.log(error);
-          }
-      //
+      this.setupEventListener();
 
     } catch (error) {
       console.log(error);
@@ -665,8 +627,7 @@ class BonMinter {
           console.log(from, tokenId.toNumber());
           alert(
             `Congrats! You've minted your NFT and sent it to your wallet! 
-            It can take a max of 10 min to show up on OpenSea. 
-            Here's the link: https://opensea.io/assets/matic/${this.CONTRACT_ADDRESS}/${tokenId.toNumber()}`
+            It should take less than 10 min to show up on OpenSea.`
           );
         });
 
@@ -714,7 +675,7 @@ class BonMinter {
         await nftTxn.wait();
 
         console.log(
-          `Mined, see transaction: https://polygonscan.com/tx/${nftTxn.hash}`
+          `Mined, see transaction: https://polygonscan.com/tx/${nftTxn.hash} && see NFT: https://opensea.io/assets/matic/${this.CONTRACT_ADDRESS}/${tokenId.toNumber()}`
         );
         this.mintButton.innerText = 'MINT AGAIN';
         this.mintButton.disabled = false;
@@ -752,38 +713,7 @@ class BonMinter {
       }`;
 
       // for user comes to our site and ALREADY had their wallet connected + authorized.
-      /* setupEventListener(); */
-      // This has been moved here TEMPORARILY bc it wasnt calling correctly and this fixes it
-            try {
-              const { ethereum } = window;
-        
-              if (ethereum) {
-                const provider = new ethers.providers.Web3Provider(ethereum);
-                const signer = provider.getSigner();
-                const connectedContract = new ethers.Contract(
-                  this.CONTRACT_ADDRESS,
-                  BONNFT.abi,
-                  signer
-                );
-        
-                // capture event when our contract throws it
-                connectedContract.on('NewBONNFTMinted', (from, tokenId) => {
-                  console.log(from, tokenId.toNumber());
-                  alert(
-                    `Congrats! You've minted your NFT and sent it to your wallet! 
-                    It can take a max of 10 min to show up on OpenSea. 
-                    Here's the link: https://opensea.io/assets/matic/${this.CONTRACT_ADDRESS}/${tokenId.toNumber()}`
-                  );
-                });
-        
-                console.log('Setup event listener!');
-              } else {
-                console.log("Ethereum object doesn't exist!");
-              }
-            } catch (error) {
-              console.log(error);
-            }
-      //
+      this.setupEventListener();
 
     } else {
       console.log('No authorized account found');
@@ -812,8 +742,6 @@ class BonMinter {
     console.log(this.selectedNFTCollection);
   }
 
-
-  
 }
 
 const bonMinter = new BonMinter();
