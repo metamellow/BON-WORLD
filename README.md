@@ -23,6 +23,7 @@ To find out more please visit:
 # @Dev Notes
 >> DO NOW
 - check the finalization process; decentra had an issue AFTER the mint, error try mint again
+- add a media evaluator to adjust the mint screen OVER a certian size margin/padding
 >> DO SOON
 - xx
 
