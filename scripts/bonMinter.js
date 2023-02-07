@@ -686,7 +686,7 @@ class BonMinter {
       }
     } catch (error) {
       console.log(error);
-      this.mintButton.innerText = '(ERROR) TRY MINT AGAIN';
+      this.mintButton.innerText = 'MINT AGAIN';
       this.mintButton.disabled = false;
     }
   }
