@@ -576,7 +576,7 @@ class BonMinter {
     this.connectButton = document.getElementById('connectButtonHTML');
     this.mintButton = document.getElementById('mintButtonHTML');
 
-    this.NFTCostAmount = 15; // 15000000000000000000
+    this.NFTCostAmount = 30; // 30000000000000000000
   }
 
   
