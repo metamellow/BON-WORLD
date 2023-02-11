@@ -549,7 +549,6 @@ input[type='checkbox']:checked + label:before {
 
 #dapp-div-image img {
   width: auto;
-  margin-left: 0;
   margin: 20px 20px 20px 20px;
 }
 
