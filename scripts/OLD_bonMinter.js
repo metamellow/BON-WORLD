@@ -1,5 +1,5 @@
 // import contract data
-const BONNFT = (
+const BONNFT1 = (
   {
       "_format": "hh-sol-artifact-1",
       "contractName": "BONNFT",
@@ -618,7 +618,7 @@ class BonMinter {
         const signer = provider.getSigner();
         const connectedContract = new ethers.Contract(
           this.CONTRACT_ADDRESS,
-          BONNFT.abi,
+          BONNFT1.abi,
           signer
         );
 
@@ -649,7 +649,7 @@ class BonMinter {
         const signer = provider.getSigner();
         const connectedContract = new ethers.Contract(
           this.CONTRACT_ADDRESS,
-          BONNFT.abi,
+          BONNFT1.abi,
           signer
         );
 
@@ -740,6 +740,13 @@ class BonMinter {
   onSelectNFTCollection() {
     this.selectedNFTCollection = this.nftCollectionDropdown.value;
     console.log(this.selectedNFTCollection);
+
+    if(this.selectedNFTCollection == "BONNFT1"){
+      window.location.href = "nftcollection/BONNFT1.html";
+    }
+    if(this.selectedNFTCollection == "BONxCULT1"){
+      window.location.href = "nftcollection/BONxCULT1.html";
+    }
   }
 
 }
