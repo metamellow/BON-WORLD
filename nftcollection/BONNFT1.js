@@ -3,7 +3,7 @@ const BONNFT1 = (
   {
       "_format": "hh-sol-artifact-1",
       "contractName": "BONNFT",
-      "sourceName": "contracts/BONNFT.sol", //!!!!!!!!
+      "sourceName": "contracts/BONNFT.sol",
       "abi": [
         {
           "inputs": [],
@@ -287,7 +287,7 @@ const BONNFT1 = (
           "outputs": [],
           "stateMutability": "payable",
           "type": "function"
-        }, //!!!!!!!!
+        },
         {
           "inputs": [],
           "name": "name",
