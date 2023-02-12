@@ -636,57 +636,65 @@ class BONxCULT1minter {
   }
 
   async askContractToMintNft() {
-    try {
-      const { ethereum } = window;
-
-      if (ethereum) {
-        const provider = new ethers.providers.Web3Provider(ethereum);
-        const signer = provider.getSigner();
-        const connectedContract = new ethers.Contract(
-          this.CONTRACT_ADDRESS,
-          BONxCULT1.abi,
-          signer
-        );
-
-        this.mintButton.innerText = '*please wait*';
-        this.mintButton.disabled = true;
-
-        const options = {
-          value: ethers.utils.parseEther(
-            `${this.selectedMintQuantity * this.NFTCostAmount}`
-          ),
-        };
-        console.log(
-          `Going to try enact a transaction to mint ${this.selectedMintQuantity} NFTs for a total of ${this.selectedMintQuantity * this.NFTCostAmount}MATIC.`
-        );
-        let nftTxn = await connectedContract.mint(
-          String(this.selectedMintQuantity),
-          options
-        );
-
-        console.log('Mining...please wait.');
-        await nftTxn.wait();
-
-        console.log(
-          `Mined, see transaction: https://polygonscan.com/tx/${nftTxn.hash} && see NFT: https://opensea.io/assets/matic/${this.CONTRACT_ADDRESS}/${tokenId.toNumber()}`
-        );
-
-        alert(
-          `Minted! TXN: https://polygonscan.com/tx/${nftTxn.hash} && NFT: https://opensea.io/assets/matic/${this.CONTRACT_ADDRESS}/${tokenId.toNumber()}`
-        );
-
-        this.mintButton.innerText = 'MINT AGAIN';
-        this.mintButton.disabled = false;
-      } else {
-        console.log("Ethereum object doesn't exist!");
-        this.mintButton.innerText = 'MINT AGAIN';
-        this.mintButton.disabled = false;
-      }
-    } catch (error) {
-      console.log(error);
-      this.mintButton.innerText = '-MINT AGAIN-';
-      this.mintButton.disabled = false;
-    }
+    if(this.selectedMintQuantity < 1){
+		alert(
+		  `Please select a mint quantity from the dropdown list.`
+		);
+	}
+	if(this.selectedMintQuantity >= 1){
+		try {
+			const { ethereum } = window;
+	  
+			if (ethereum) {
+			  const provider = new ethers.providers.Web3Provider(ethereum);
+			  const signer = provider.getSigner();
+			  const connectedContract = new ethers.Contract(
+				this.CONTRACT_ADDRESS,
+				BONxCULT1.abi,
+				signer
+			  );
+	  
+			  this.mintButton.innerText = '*please wait*';
+			  this.mintButton.disabled = true;
+	  
+			  const options = {
+				value: ethers.utils.parseEther(
+				  `${this.selectedMintQuantity * this.NFTCostAmount}`
+				),
+			  };
+			  console.log(
+				`Going to try enact a transaction to mint ${this.selectedMintQuantity} NFTs for a total of ${this.selectedMintQuantity * this.NFTCostAmount}MATIC.`
+			  );
+			  let nftTxn = await connectedContract.mint(
+				String(this.selectedMintQuantity),
+				options
+			  );
+	  
+			  console.log('Mining...please wait.');
+			  await nftTxn.wait();
+	  
+			  console.log(
+				`Mined, see transaction: https://polygonscan.com/tx/${nftTxn.hash} && see NFT: https://opensea.io/assets/matic/${this.CONTRACT_ADDRESS}/${tokenId.toNumber()}`
+			  );
+	  
+			  alert(
+				`Minted! TXN: https://polygonscan.com/tx/${nftTxn.hash} && NFT: https://opensea.io/assets/matic/${this.CONTRACT_ADDRESS}/${tokenId.toNumber()}`
+			  );
+	  
+			  this.mintButton.innerText = 'MINT AGAIN';
+			  this.mintButton.disabled = false;
+			} else {
+			  console.log("Ethereum object doesn't exist!");
+			  this.mintButton.innerText = '-MINT AGAIN-';
+			  this.mintButton.disabled = false;
+			}
+		} catch (error) {
+			console.log(error);
+			this.mintButton.innerText = '-MINT AGAIN-';
+			this.mintButton.disabled = false;
+		}
+	}
+	
   }
 
   async checkIfWalletIsConnected() {
