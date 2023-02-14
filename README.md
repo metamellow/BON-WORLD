@@ -22,7 +22,7 @@ To find out more please visit:
 
 # @Dev Notes
 >> DO NOW
-- xx
+- reapply to coingecko, coinmarketcap, polygonscan
 >> DO SOON
 - bonRedistributionWallet: 0xBddB0337CB05977106D2b1aCba46424205b52Ffb
 - start thinking about the modulus bridger
