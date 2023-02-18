@@ -539,3 +539,12 @@ textarea::-webkit-scrollbar-thumb {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: #37bfa7;
 }
+
+.container {
+  background-image: url('https://raw.githubusercontent.com/s0crates-eth/gm/main/images/black_opc25.png');
+  width: (100% - 25px);
+  padding: 25px;
+  border-collapse: collapse;
+  border-radius: 20px;
+  overflow: hidden
+}

@@ -142,8 +142,9 @@ header {
 }
 
 .slide img {
-  height: 85%;
-  margin: auto;
+  width: 75%;
+  margin-left: 5%;
+  height: auto;
 }
 
 .prev,
@@ -612,4 +613,13 @@ textarea::-webkit-scrollbar-thumb {
 
 .break-buffer {
   margin: 25px 0 25px;
+}
+
+.container {
+  background-image: url('https://raw.githubusercontent.com/s0crates-eth/gm/main/images/black_opc50.png');
+  width: (100% - 25px);
+  padding: 25px;
+  border-collapse: collapse;
+  border-radius: 20px;
+  overflow: hidden
 }
