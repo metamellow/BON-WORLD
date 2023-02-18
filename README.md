@@ -23,6 +23,7 @@ To find out more please visit:
 # @Dev Notes
 >> DO NOW
 - reapply to coingecko, coinmarketcap, polygonscan
+- fix twitter social share card img
 >> DO SOON
 - bonRedistributionWallet: 0xBddB0337CB05977106D2b1aCba46424205b52Ffb
 - start thinking about the modulus bridger
