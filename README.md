@@ -23,8 +23,11 @@ To find out more please visit:
 # @Dev Notes
 >> DO NOW
 - Nft airdrop;
--- needs to be built in on deploy due to opensea restrictor; testnet first with mini collection; loop through an array; first portion is DEV wallet pasted the number of times wanted, then the community wallets pasted; loop times is array length
--- use third party dapp; https://nft.multisender.app/#/
+-- needs to be built in on deploy due to opensea restrictor
+-- testnet first with mini collection
+-- loop through an array; copy paste BONNFT mapping and set loop to array length; this'll give dev wallet enough
+
+
 - coingecko, cmc, polygon
 >> DO SOON
 - bonRedistributionWallet: 0xBddB0337CB05977106D2b1aCba46424205b52Ffb
