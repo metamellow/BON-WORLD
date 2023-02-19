@@ -26,7 +26,7 @@ To find out more please visit:
 -- needs to be built in on deploy due to opensea restrictor
 -- testnet first with mini collection
 -- loop through an array; copy paste BONNFT mapping and set loop to array length; this'll give dev wallet enough
-
+- open application form
 
 - coingecko, cmc, polygon
 >> DO SOON
