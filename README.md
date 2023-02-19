@@ -23,7 +23,7 @@ To find out more please visit:
 # @Dev Notes
 >> DO NOW
 - Nft airdrop;
--- built in on deploy; testnet first with mini collection; loop through an array; first portion is DEV wallet pasted the number of times wanted, then the community wallets pasted; loop times is array length
+-- needs to be built in on deploy due to opensea restrictor; testnet first with mini collection; loop through an array; first portion is DEV wallet pasted the number of times wanted, then the community wallets pasted; loop times is array length
 -- use third party dapp; https://nft.multisender.app/#/
 - coingecko, cmc, polygon
 >> DO SOON
