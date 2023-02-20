@@ -10,7 +10,7 @@ contract NFT is ERC721, Ownable, DefaultOperatorFilterer {
     using Strings for uint256;
 
     uint public constant MAX_TOKENS = 2420;
-    uint private constant TOKENS_RESERVED = 66;
+    uint private constant TOKENS_RESERVED = 20;
     uint public price = 69000000000000000; // 0.069
     uint256 public constant MAX_MINT_PER_TX = 1;
 
@@ -21,8 +21,8 @@ contract NFT is ERC721, Ownable, DefaultOperatorFilterer {
     string public baseUri;
     string public baseExtesion = ".json";
 
-    constructor() ERC721("BoN x EthDenver", "BONxDEN") {
-        baseUri = "ipfs://xxxxxxxxxxxxxxxxxxxxxxxxxxxxx/";
+    constructor() ERC721("BoN x EthDenver", "BONxETHD") {
+        baseUri = "ipfs://bafybeibc5jwvpzixjrafqx5jofcui26pfmaeajzdndqswcrxyhan5njvdi/";
         for(uint256 i = 1; i <= TOKENS_RESERVED; ++i) {
             _safeMint(msg.sender, i);
         }
