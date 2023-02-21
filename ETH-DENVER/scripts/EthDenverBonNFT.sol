@@ -39,11 +39,14 @@ contract NFT is ERC721, Ownable, DefaultOperatorFilterer {
         }
         totalSupply = TOKENS_RESERVED;
 
-        for(uint256 i = 0; i < addresses.length; i++){
-            _safeMint(addresses[i], (totalSupply + 1));
-            totalSupply += 1;
+        uint length = addresses.length;
+        for (uint i; i < length; ) {
+            unchecked { 
+                _safeMint(addresses[i], ++totalSupply);
+                ++i;
+            }
+            //totalSupply += 1;
         }
-
     }
 
 
