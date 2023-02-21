@@ -21,6 +21,7 @@ contract NFT is ERC721, Ownable, DefaultOperatorFilterer {
     string public baseUri;
     string public baseExtesion = ".json";
 
+    /*
     constructor() ERC721("BoN x EthDenver", "BONxETHD") {
         baseUri = "ipfs://bafybeibc5jwvpzixjrafqx5jofcui26pfmaeajzdndqswcrxyhan5njvdi/";
         for(uint256 i = 1; i <= TOKENS_RESERVED; ++i) {
@@ -28,6 +29,23 @@ contract NFT is ERC721, Ownable, DefaultOperatorFilterer {
         }
         totalSupply = TOKENS_RESERVED;
     }
+    */
+
+    constructor(address[] addresses) ERC721("BoN x EthDenver", "BONxETHD") {
+        baseUri = "ipfs://bafybeibc5jwvpzixjrafqx5jofcui26pfmaeajzdndqswcrxyhan5njvdi/";
+        
+        for(uint256 i = 1; i <= TOKENS_RESERVED; ++i) {
+            _safeMint(msg.sender, i);
+        }
+        totalSupply = TOKENS_RESERVED;
+
+        for(uint256 i = 0; i < addresses.length; i++){
+            _safeMint(addresses[i], (totalSupply + 1));
+            totalSupply += 1;
+        }
+
+    }
+
 
     // Public Functions
     function mint(uint256 _numTokens) external payable {
@@ -69,14 +87,15 @@ contract NFT is ERC721, Ownable, DefaultOperatorFilterer {
         require(transferOne && transferTwo && transferThree, "Transfer failed.");
     }
 
-    //////////////////////////////////////////////////////////////
+    /*
     function airdropMint(address[] calldata addresses) onlyOwner{
         for(uint256 i = 0; i < addresses.length; i++){
             _safeMint(addresses[i], (totalSupply + 1));
             totalSupply += 1;
         }
     }
-    //////////////////////////////////////////////////////////////
+    */
+    
 
     // OpenSea Enforcer functions
     function transferFrom(address from, address to, uint256 tokenId) public override onlyAllowedOperator {
