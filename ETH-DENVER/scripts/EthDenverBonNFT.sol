@@ -41,11 +41,8 @@ contract NFT is ERC721, Ownable, DefaultOperatorFilterer {
 
         uint length = addresses.length;
         for (uint i; i < length; ) {
-            unchecked { 
-                _safeMint(addresses[i], ++totalSupply);
-                ++i;
-            }
-            //totalSupply += 1;
+            _safeMint(addresses[i], ++totalSupply);
+            unchecked { ++i; }
         }
     }
 
