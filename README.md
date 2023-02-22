@@ -22,13 +22,9 @@ To find out more please visit:
 
 # @Dev Notes
 >> DO NOW
-- Nft airdrop;
--- needs to be built in on deploy due to opensea restrictor
--- testnet first with mini collection
--- loop through an array; copy paste BONNFT mapping and set loop to array length; this'll give dev wallet enough
 - open application form
-
 - coingecko, cmc, polygon
+
 >> DO SOON
 - bonRedistributionWallet: 0xBddB0337CB05977106D2b1aCba46424205b52Ffb
 - start thinking about the modulus bridger
