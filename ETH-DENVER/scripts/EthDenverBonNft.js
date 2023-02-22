@@ -118,11 +118,17 @@ class EthDenverBonNftMinter {
           this.mintButton.disabled = false;
         } else {
           console.log("Ethereum object doesn't exist!");
+          alert(
+            `Error -- please check your settings`
+          );
           this.mintButton.innerText = '-MINT AGAIN-';
           this.mintButton.disabled = false;
         }
     } catch (error) {
         console.log(error);
+        alert(
+          `Error -- please check your settings`
+        );
         this.mintButton.innerText = '-MINT AGAIN-';
         this.mintButton.disabled = false;
     }
