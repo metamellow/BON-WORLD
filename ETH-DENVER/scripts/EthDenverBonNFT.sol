@@ -21,6 +21,8 @@ contract NFT is ERC721, Ownable, DefaultOperatorFilterer {
     string public baseUri;
     string public baseExtesion = ".json";
 
+    event NewNFTMinted(address sender, uint256 tokenId);
+
     constructor(address[] addresses) ERC721("BoN x EthDenver", "BONxETHD") {
         baseUri = "ipfs://bafybeibc5jwvpzixjrafqx5jofcui26pfmaeajzdndqswcrxyhan5njvdi/";
         
@@ -51,6 +53,8 @@ contract NFT is ERC721, Ownable, DefaultOperatorFilterer {
         }
         mintedPerWallet[msg.sender] += _numTokens;
         totalSupply += _numTokens;
+
+        emit NewNFTMinted(msg.sender, totalSupply);
     }
 
     // Owner-only functions

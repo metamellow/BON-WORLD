@@ -1,11 +1,11 @@
 // import contract data
 const EthDenverBonNft = (
 	{}
-);//!!!!!!!!
+);
 
 class EthDenverBonNftMinter {
   constructor() {
-    this.CONTRACT_ADDRESS = '0xA0Fa98901f9Ac8Fd0d59D281677a140664E6C0AE'; //!!!!!!!!
+    this.CONTRACT_ADDRESS = '0xA0Fa98901f9Ac8Fd0d59D281677a140664E6C0AE';
     this.currentAccount = '';
     this.selectedMintQuantity = 1;
 
