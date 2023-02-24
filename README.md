@@ -22,8 +22,9 @@ To find out more please visit:
 
 # @Dev Notes
 >> DO NOW
-- troubleshoot rewards buttons
+- clean up the rules page
 - coingecko, cmc, polygon
+- 
 
 >> DO SOON
 - bonRedistributionWallet: 0xBddB0337CB05977106D2b1aCba46424205b52Ffb
