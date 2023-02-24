@@ -22,9 +22,7 @@ To find out more please visit:
 
 # @Dev Notes
 >> DO NOW
-- coingecko
 - troubleshoot rewards buttons
-- fix form title.text
 - optimize rewards page images
 - coingecko, cmc, polygon
 
