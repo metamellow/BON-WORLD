@@ -23,7 +23,6 @@ To find out more please visit:
 # @Dev Notes
 >> DO NOW
 - troubleshoot rewards buttons
-- optimize rewards page images
 - coingecko, cmc, polygon
 
 >> DO SOON
