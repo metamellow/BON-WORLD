@@ -1,7 +1,9 @@
 // import contract data
+/*
 const EthDenverBonNft = (
 	{}
 );
+*/
 
 class EthDenverBonNftMinter {
   constructor() {
