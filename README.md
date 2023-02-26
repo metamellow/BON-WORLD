@@ -29,5 +29,6 @@ To find out more please visit:
 >> DO SOON
 - bonRedistributionWallet: 0xBddB0337CB05977106D2b1aCba46424205b52Ffb
 - start thinking about the modulus bridger
+- nfts to be staked should NOT have the opensea enforcer
 
 
