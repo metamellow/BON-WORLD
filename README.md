@@ -30,5 +30,7 @@ To find out more please visit:
 - bonRedistributionWallet: 0xBddB0337CB05977106D2b1aCba46424205b52Ffb
 - start thinking about the modulus bridger
 - nfts to be staked should NOT have the opensea enforcer
+- Uniswap functions: https://stackoverflow.com/questions/71001299/typeerror-msg-value-and-callvalue-can-only-be-used-in-payable-public-func
+- xxx
 
 
