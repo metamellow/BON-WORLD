@@ -746,4 +746,3 @@ class EthDenverBonNftMinter {
 }
 
 const EthDenverBonNftMinter_ = new EthDenverBonNftMinter();
-EthDenverBonNftMinter_.checkIfWalletIsConnected();
