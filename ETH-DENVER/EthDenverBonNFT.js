@@ -633,8 +633,7 @@ class EthDenverBonNftMinter {
         connectedContract.on('NewNFTMinted', (from, tokenId) => {
           console.log(from, tokenId.toNumber());
           alert(
-            `Congrats! You've minted your NFT and sent it to your wallet! 
-            It should take less than 10 min to show up on OpenSea.`
+            `Congrats! You've minted your NFT and sent it to your wallet! It should take less than 10 min to show up on OpenSea.`
           );
         });
 
@@ -692,7 +691,7 @@ class EthDenverBonNftMinter {
         } else {
           console.log("Ethereum object doesn't exist!");
           alert(
-            `Error -- please check your settings`
+            `please check your settings`
           );
           this.mintButton.innerText = '-MINT AGAIN-';
           this.mintButton.disabled = false;
@@ -700,7 +699,7 @@ class EthDenverBonNftMinter {
     } catch (error) {
         console.log(error);
         alert(
-          `Error -- please check your settings`
+          `please check your settings`
         );
         this.mintButton.innerText = '-MINT AGAIN-';
         this.mintButton.disabled = false;
