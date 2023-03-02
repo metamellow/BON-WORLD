@@ -22,6 +22,7 @@ To find out more please visit:
 
 # @Dev Notes
 >> DO NOW
+- update whitepaper
 - carouselle link to form broken
 - coingecko, cmc, polygon
 - claim button for modulus card
