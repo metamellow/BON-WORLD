@@ -1,7 +1,8 @@
 // import contract data
 const EthDenverBonNft = (
 	{
-
+    "contractName": "EthDenverBonNFT",
+    "abi":
     [
       {
         "inputs": [
@@ -571,7 +572,6 @@ const EthDenverBonNft = (
         "type": "function"
       }
     ]
-
   }
 );
 
