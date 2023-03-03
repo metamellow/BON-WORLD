@@ -690,17 +690,17 @@ class EthDenverBonNftMinter {
           this.mintButton.disabled = false;
         } else {
           console.log("Ethereum object doesn't exist!");
-          alert(
+          /*alert(
             `please check your settings`
-          );
+          );*/
           this.mintButton.innerText = '-MINT AGAIN-';
           this.mintButton.disabled = false;
         }
     } catch (error) {
         console.log(error);
-        alert(
+        /*alert(
           `please check your settings`
-        );
+        );*/
         this.mintButton.innerText = '-MINT AGAIN-';
         this.mintButton.disabled = false;
     }
