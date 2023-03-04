@@ -22,10 +22,10 @@ To find out more please visit:
 
 # @Dev Notes
 >> DO NOW
-- update whitepaper
 - carouselle link to form broken
 - coingecko, cmc, polygon
 - claim button for modulus card
+- bridger
 
 >> DO SOON
 - bonRedistributionWallet: 0xBddB0337CB05977106D2b1aCba46424205b52Ffb
