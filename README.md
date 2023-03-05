@@ -25,11 +25,8 @@ To find out more please visit:
 - carouselle link to form broken
 - coingecko, cmc, polygon
 - claim button for modulus card
-- bridger
 
 >> DO SOON
-- bonRedistributionWallet: 0xBddB0337CB05977106D2b1aCba46424205b52Ffb
-- start thinking about the modulus bridger
 - nfts to be staked should NOT have the opensea enforcer
 - Uniswap functions: https://stackoverflow.com/questions/71001299/typeerror-msg-value-and-callvalue-can-only-be-used-in-payable-public-func
 - xxx
@@ -41,4 +38,8 @@ To find out more please visit:
 >> mint new token
 - control over token functions
 - xx
+
+>> how to:
+- https://github.com/DanielMoralisSamples/27_ERC20_Bridge_POC &&& https://moralis.io/how-to-build-a-cross-chain-bridge/
+- 
 
