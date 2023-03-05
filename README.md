@@ -34,4 +34,11 @@ To find out more please visit:
 - Uniswap functions: https://stackoverflow.com/questions/71001299/typeerror-msg-value-and-callvalue-can-only-be-used-in-payable-public-func
 - xxx
 
+>> Bridge and mirror
+- wont drain value from one to another
+- united tokenomic system
+
+>> mint new token
+- control over token functions
+- xx
 
