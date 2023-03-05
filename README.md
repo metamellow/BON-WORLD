@@ -40,6 +40,6 @@ To find out more please visit:
 - xx
 
 >> how to:
-- https://github.com/DanielMoralisSamples/27_ERC20_Bridge_POC &&& https://moralis.io/how-to-build-a-cross-chain-bridge/
-- 
+- BRIDGE https://github.com/DanielMoralisSamples/27_ERC20_Bridge_POC &&& https://moralis.io/how-to-build-a-cross-chain-bridge/
+- MINT https://stackoverflow.com/questions/66728278/how-to-add-transaction-fee-to-erc20-or-bep20-smart-contracts && 
 
