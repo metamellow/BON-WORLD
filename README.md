@@ -42,6 +42,8 @@ To find out more please visit:
 >> how to:
 - BRIDGE https://github.com/DanielMoralisSamples/27_ERC20_Bridge_POC &&& https://moralis.io/how-to-build-a-cross-chain-bridge/
 - MINT https://stackoverflow.com/questions/66728278/how-to-add-transaction-fee-to-erc20-or-bep20-smart-contracts && https://forum.openzeppelin.com/t/bep-20-how-to-add-tax-fees-when-token-is-transfer/15031/2 
-- FOUR
-- 
+
+>> FOUR
+- onlyOwner but rare
+- ardrp lst
 
