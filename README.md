@@ -21,16 +21,7 @@ To find out more please visit:
 - This is the repository for the Bank of Nowhere website! 
 
 # @Dev Notes
-.   .   .   .   .   .   .   .   .   .<br>
-.   B   B   B   .   .   .   .   .   .<br>
-.   B   .   B   .   .   .   .   .   .<br>
-.   B   .   B   .   .   .   .   N   .
-.   B   B   .   .   .   .   .   N   .
-.   B   .   B   .   .   .   .   N   .
-.   B   .   B   .   .   .   .   N   .
-.   B   .   B   .   .   .   .   N   .
-.   B   B   B   .   .   .   .   N   .
-.   .   .   .   .   .   .   .   .   .
+____________________________
 
 >> DO NOW
 - archive boneth
