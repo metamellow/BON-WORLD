@@ -20,8 +20,12 @@ To find out more please visit:
 - THIS REPO IS STILL UNDER CONSTRUCTION
 - This is the repository for the Bank of Nowhere website! 
 
-# @Dev Notes
+____________________________
+____________________________
+____________________________
+____________________________
 
+# @Dev Notes
 
 >> DO NOW
 - archive boneth
