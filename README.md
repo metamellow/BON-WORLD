@@ -40,6 +40,8 @@ ____________________________
 - Uniswap functions: https://stackoverflow.com/questions/71001299/typeerror-msg-value-and-callvalue-can-only-be-used-in-payable-public-func
 - xxx
 
+>> NOTES
+
 >> Bridge and mirror
 - wont drain value from one to another
 - united tokenomic system
