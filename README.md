@@ -21,7 +21,21 @@ To find out more please visit:
 - This is the repository for the Bank of Nowhere website! 
 
 # @Dev Notes
+.   .   .   .   .   .   .   .   .   .
+.   B   B   B   .   .   .   .   .   .
+.   B   .   B   .   .   .   .   .   .
+.   B   .   B   .   .   .   .   N   .
+.   B   B   .   .   .   .   .   N   .
+.   B   .   B   .   .   .   .   N   .
+.   B   .   B   .   .   .   .   N   .
+.   B   .   B   .   .   .   .   N   .
+.   B   B   B   .   .   .   .   N   .
+.   .   .   .   .   .   .   .   .   .
+
 >> DO NOW
+- archive boneth
+- remove trouble shoot on closed
+- 
 - carouselle link to form broken
 - coingecko, cmc, polygon
 - claim button for modulus card
