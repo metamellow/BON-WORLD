@@ -29,32 +29,18 @@ ____________________________
 
 >> DO NOW
 - archive boneth
-- remove trouble shoot on closed
-- 
-- carouselle link to form broken
 - coingecko, cmc, polygon
-- claim button for modulus card
+
 
 >> DO SOON
 - nfts to be staked should NOT have the opensea enforcer
 - Uniswap functions: https://stackoverflow.com/questions/71001299/typeerror-msg-value-and-callvalue-can-only-be-used-in-payable-public-func
 - xxx
 
->> NOTES
+>> IDEAS
+- claim button for modulus card
 
->> Bridge and mirror
-- wont drain value from one to another
-- united tokenomic system
-
->> mint new token
-- control over token functions
-- xx
-
->> how to:
-- BRIDGE https://github.com/DanielMoralisSamples/27_ERC20_Bridge_POC &&& https://moralis.io/how-to-build-a-cross-chain-bridge/
-- MINT https://stackoverflow.com/questions/66728278/how-to-add-transaction-fee-to-erc20-or-bep20-smart-contracts && https://forum.openzeppelin.com/t/bep-20-how-to-add-tax-fees-when-token-is-transfer/15031/2 
-
->> DEGEN CHAD
-- onlyOwner but rare
-- ardrp lst
-
+>> V2 Token
+- (BRIDGE) https://github.com/DanielMoralisSamples/27_ERC20_Bridge_POC &&& https://moralis.io/how-to-build-a-cross-chain-bridge/
+- (TAX) https://stackoverflow.com/questions/66728278/how-to-add-transaction-fee-to-erc20-or-bep20-smart-contracts && https://forum.openzeppelin.com/t/bep-20-how-to-add-tax-fees-when-token-is-transfer/15031/2 
+- (EXCHANGE) https://forum.openzeppelin.com/t/how-to-migrate-an-old-token-to-a-new-token/8306 && 
