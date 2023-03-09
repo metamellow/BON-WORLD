@@ -33,7 +33,7 @@ ____________________________
 
 
 >> DO SOON
-- nfts to be staked should NOT have the opensea enforcer
+- nfts to be staked should NOT have the opensea enforcer || add an onlyOwner killswitch 
 - Uniswap functions: https://stackoverflow.com/questions/71001299/typeerror-msg-value-and-callvalue-can-only-be-used-in-payable-public-func
 - xxx
 
