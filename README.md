@@ -28,7 +28,6 @@ ____________________________
 # @Dev Notes
 
 >> DO NOW
-- archive boneth
 - coingecko, cmc, polygon
 
 
