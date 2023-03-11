@@ -44,4 +44,5 @@ ____________________________
 - (TAX) https://stackoverflow.com/questions/66728278/how-to-add-transaction-fee-to-erc20-or-bep20-smart-contracts && https://forum.openzeppelin.com/t/bep-20-how-to-add-tax-fees-when-token-is-transfer/15031/2 && should be onlyOwnerable && should also 1% on the way out dapp tax &&
 - (TOKEN MIGRATION) https://forum.openzeppelin.com/t/how-to-migrate-an-old-token-to-a-new-token/8306 && xxxxx
 - (CHAINSTACK BRIDGE) https://docs.chainstack.com/tutorials/polygon/bridging-erc20-from-ethereum-to-polygon#prerequisites && 
-- 
+- [DEPLOYER]
+nw ldgr wllt && maybe deploy a place holder on plygn same msgsender && do the bridge im two steps with dummy to claim first and chainlink second && 
