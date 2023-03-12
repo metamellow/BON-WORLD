@@ -5,12 +5,12 @@
 
 
 >> DO SOON
-- nfts to be staked should NOT have the opensea enforcer || add an onlyOwner killswitch 
+
 - Uniswap functions: https://stackoverflow.com/questions/71001299/typeerror-msg-value-and-callvalue-can-only-be-used-in-payable-public-func
 - xxx
 
 >> IDEAS
-- 
+- nfts to be staked should NOT have the opensea enforcer || add an onlyOwner killswitch 
 
 >> V2 Token
 - (MORALIS BRIDGE) https://github.com/DanielMoralisSamples/27_ERC20_Bridge_POC &&& https://moralis.io/how-to-build-a-cross-chain-bridge/ && 
