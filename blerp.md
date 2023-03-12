@@ -1,6 +1,10 @@
 # @Dev Notes
 
 >> DO NOW
+1. do token bridge stuff
+2. do degen prep
+3. do nft bridge and stake
+
 - coingecko, cmc, polygon
 
 
