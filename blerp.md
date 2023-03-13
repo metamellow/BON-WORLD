@@ -2,10 +2,18 @@
 
 >> DO NOW
 1. do token bridge stuff
+- token contract
+- new wllt
+- bridge v1
+- LP stuff
 2. do degen prep
+- token contract
+- LP
 3. do nft bridge and stake
+- new nft contracts
+- claim
+- stake
 
-- coingecko, cmc, polygon
 
 
 >> DO SOON
