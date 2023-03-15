@@ -18,7 +18,8 @@ To find out more please visit:
 # Notes 🔥
 
 - THIS REPO IS STILL UNDER CONSTRUCTION
-- This is the repository for the Bank of Nowhere website! 
+- This is the repository for the Bank of Nowhere website! >>> 
+https://www.BANKofNOWHERE.world
 
 ____________________________
 ____________________________
