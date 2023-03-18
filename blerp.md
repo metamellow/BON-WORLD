@@ -33,4 +33,4 @@
 nw ldgr wllt && maybe deploy a place holder on plygn same msgsender && do the bridge im two steps with dummy to claim first and chainlink second && 
 - [nfts] 
 airdrop all && modulus polygon dapptax to modulus && drop will need wallet id map and same uri && boncard plus nft && opensea with on off switch
-- wedding bump wedding bump2
+- wedding bump wedding bump2 bump3
