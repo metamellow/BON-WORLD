@@ -26,7 +26,7 @@
 
 >> V2 Token
 - (MORALIS BRIDGE) https://github.com/DanielMoralisSamples/27_ERC20_Bridge_POC &&& https://moralis.io/how-to-build-a-cross-chain-bridge/ && 
-- (TAX) https://stackoverflow.com/questions/66728278/how-to-add-transaction-fee-to-erc20-or-bep20-smart-contracts && https://forum.openzeppelin.com/t/taxable-contract-add-an-optional-tx-tax-to-your-token/30440 && should be onlyOwnerable && should also 1% on the way out dapp tax &&
+- (TAX) https://stackoverflow.com/questions/66728278/how-to-add-transaction-fee-to-erc20-or-bep20-smart-contracts && https://forum.openzeppelin.com/t/taxable-contract-add-an-optional-tx-tax-to-your-token/30440 && https://github.com/cultdao-developer/cultdao/blob/main/contracts/cult.sol && should be onlyOwnerable && should also 1% on the way out dapp tax &&
 - (TOKEN MIGRATION) https://forum.openzeppelin.com/t/how-to-migrate-an-old-token-to-a-new-token/8306 && xxxxx
 - (CHAINSTACK BRIDGE) https://docs.chainstack.com/tutorials/polygon/bridging-erc20-from-ethereum-to-polygon#prerequisites && 
 - [DEPLOYER]
