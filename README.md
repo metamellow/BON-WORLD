@@ -21,7 +21,7 @@ To find out more please visit:
 - This is the repository for the Bank of Nowhere website! >>> 
 https://www.BANKofNOWHERE.world
 
+
 ____________________________
-____________________________
-____________________________
+___________ $BON ___________
 ____________________________
