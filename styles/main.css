@@ -204,7 +204,7 @@ header {
   border: solid;
   border-color: #37bfa7;
   background-color: transparent;
-  color: #FF6347;
+  color: #ff6347;
   cursor: pointer;
   border-radius: 16px 0px 16px 0px;
   font-family: 'biosBold', sans-serif;
@@ -216,7 +216,7 @@ header {
   border-radius: 16px 0px 16px 0px;
   transition: all 0.3s ease-in;
   box-shadow: 0 0px 15px rgba(0, 255, 221, 0.4);
-  color: #FFF;
+  color: #fff;
 }
 
 button {
@@ -529,6 +529,17 @@ input[type='checkbox']:checked + label:before {
   display: flex;
   justify-content: center;
   margin: 30px 0 30px;
+  text-align: justify;
+  gap: 15px;
+}
+
+.dapp-menu-mint {
+  display: flex !important;
+  justify-content: center;
+  margin: 30px 0 30px;
+  text-align: justify;
+  gap: 15px;
+  flex-direction: row !important;
 }
 
 .dapp-menu div {
@@ -540,17 +551,22 @@ input[type='checkbox']:checked + label:before {
   width: calc(100% - 120px);
   box-sizing: border-box;
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
+}
+
+.word-wrap {
+  word-wrap: break-word;
 }
 
 #dapp-div-image div {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 #dapp-div-image img {
-  width: auto;
-  margin: 20px 20px 20px 20px;
+  width: 100%;
 }
 
 @media screen and (max-width: 1055px) {
@@ -621,5 +637,9 @@ textarea::-webkit-scrollbar-thumb {
   padding: 25px;
   border-collapse: collapse;
   border-radius: 20px;
-  overflow: hidden
+  overflow: hidden;
+}
+
+a {
+  color: #37bfa7;
 }
