@@ -63,7 +63,7 @@
     <div class="dapp-menu" style>
       <select
       id="nftCollectionDropdownHTML"
-      onchange="NFTminter_.onSelectNFTCollection()"
+      onchange="BONxLIB_minter_.onSelectNFTCollection()"
     >
       <option value="">select the project</option>
       <option value="BONNFT1">BON NFT Collection #1</option>
@@ -155,7 +155,7 @@ This proposal will cover about half of the total cost of operation for this time
         <div class="dapp-menu-mint">
           <select
             id="mintQuantityDropdownHTML"
-            onchange="NFTminter_.onSelectMintQuantity()"
+            onchange="BONxLIB_minter_.onSelectMintQuantity()"
             required
           >
             <option value="" selected>Quantity..</option>
@@ -184,7 +184,7 @@ This proposal will cover about half of the total cost of operation for this time
           id="connectButtonHTML"
           class="custom-button"
           style="height: 45px; width: 300px; text-align: center"
-          onclick="NFTminter_.connectWallet();"
+          onclick="BONxLIB_minter_.connectWallet();"
         >
           CONNECT WALLET
         </button>
@@ -193,7 +193,7 @@ This proposal will cover about half of the total cost of operation for this time
           id="mintButtonHTML"
           class="custom-button"
           style="height: 45px; width: 300px; text-align: center"
-          onclick="NFTminter_.askContractToMintNft();"
+          onclick="BONxLIB_minter_.askContractToMintNft();"
         >
           MINT
         </button>

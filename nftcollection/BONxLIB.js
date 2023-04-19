@@ -205,15 +205,15 @@ class NFTminter {
     if(this.selectedNFTCollection == "BONxCULT1"){
       window.location.href = "../nftcollection/BONxCULT1.html";
     }
-	if(this.selectedNFTCollection == "BONxRVLT"){
-		window.location.href = "../nftcollection/BONxRVLT.html";
-	}
-	if(this.selectedNFTCollection == "BONxLIB"){
-		window.location.href = "../nftcollection/BONxLIB.html";
-	}
+    if(this.selectedNFTCollection == "BONxRVLT"){
+      window.location.href = "../nftcollection/BONxRVLT.html";
+    }
+    if(this.selectedNFTCollection == "BONxLIB"){
+      window.location.href = "../nftcollection/BONxLIB.html";
+    }
   }//!!!!!!!!
 
 }
 
-const NFTminter_ = new NFTminter();
-NFTminter_.checkIfWalletIsConnected();
+const BONxLIB_minter_ = new NFTminter();
+BONxLIB_minter_.checkIfWalletIsConnected();
