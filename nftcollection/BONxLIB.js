@@ -1,12 +1,7 @@
 // import ABI contract data !!!!!!!!!!!!!!!!!!!!!
 const CONTRACT_ABI = (
 	{
-		"contractName": "BONxRVLT",
-		"abi":
 
-			
-
-		,
 	}
 );//!!!!!!!!
 
@@ -215,5 +210,5 @@ class NFTminter {
 
 }
 
-const BONxLIB_minter_ = new NFTminter();
-BONxLIB_minter_.checkIfWalletIsConnected();
+const NFTminter_ = new NFTminter();
+NFTminter_.checkIfWalletIsConnected();
