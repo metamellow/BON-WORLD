@@ -63,14 +63,13 @@
     <div class="dapp-menu" style>
       <select
       id="nftCollectionDropdownHTML"
-      onchange="BONxCULT1minter_.onSelectNFTCollection()"
+      onchange="NFTminter_.onSelectNFTCollection()"
     >
       <option value="">select the project</option>
       <option value="BONNFT1">BON NFT Collection #1</option>
-      <option value="BONxCULT1" selected>Earthquake Stone Soup</option>
+      <option value="BONxCULT1">Earthquake Stone Soup</option>
       <option value="BONxRVLT" selected>Modulusverse</option>
-      <option value="BONxRVLT" selected>Liberty Uncensored</option>
-      <!-- <option value="3">ETH DENVER</option> -->
+      <option value="BONxLIB">Liberty Uncensored</option>
     </select>
           <a href="../crowdfunding/rules.html"><button>INVESTMENT RULES</button></a>
           <a href="../crowdfunding/forms.html"><button>REGISTER PROJECT</button></a>
@@ -110,10 +109,10 @@ PROJECT WALLET: 0xEaCFaBA8dF608f88ae96bcCE1dA4554F66eBf0Cb<br>
   Modulusverse is an excellent example of the creative potential of blockchain technology. By leveraging the advantages of NFTs, the project allows investors to have a direct stake in the development of the Modulus ecosystem. The Modulusverse team has a long-term vision for the project, and with the support of the community, they aim to create a universe that will continue to grow and evolve for years to come.<br><br>
   
   Overall, Modulusverse is a fascinating project that combines blockchain technology with storytelling to create a new type of entertainment. It represents an excellent opportunity for investors who are looking to participate in the growth of the Modulus ecosystem while enjoying an immersive experience through comic books and animations.<br><br>
-  <br><br></p>
+  <br><br>
+</p>
 
-<br><br>
-TWITTER LINK: <a href="//twitter.com/modulusverse" target="_blank"> Modulusverse<br><br></a>
+  TWITTER LINK: <a href="https://twitter.com/modulusverse" target="_blank"> Modulusverse<br><br></a>
 
 
 
@@ -123,14 +122,14 @@ TWITTER LINK: <a href="//twitter.com/modulusverse" target="_blank"> Modulusverse
         <br />
 
         <div align="center">
-          <h2 style="color: #37bfa7;"><span id="nftMintCost"></span>[[ -- MINT OPEN -- ]]</h2>
+          <h2 style="color: #37bfa7;"><span id="nftMintCost"></span>COST: 186,900,000 RVLT (~$10 USD)</h2>
         </div><!-- !!!!!!!!!!! -->
 
         
         <div class="dapp-menu-mint">
           <select
             id="mintQuantityDropdownHTML"
-            onchange="BONxCULT1minter_.onSelectMintQuantity()"
+            onchange="NFTminter_.onSelectMintQuantity()"
             required
           >
             <option value="" selected>Quantity..</option>
@@ -159,7 +158,7 @@ TWITTER LINK: <a href="//twitter.com/modulusverse" target="_blank"> Modulusverse
           id="connectButtonHTML"
           class="custom-button"
           style="height: 45px; width: 300px; text-align: center"
-          onclick="BONxCULT1minter_.connectWallet();"
+          onclick="NFTminter_.connectWallet();"
         >
           CONNECT WALLET
         </button>
@@ -168,7 +167,7 @@ TWITTER LINK: <a href="//twitter.com/modulusverse" target="_blank"> Modulusverse
           id="mintButtonHTML"
           class="custom-button"
           style="height: 45px; width: 300px; text-align: center"
-          onclick="BONxCULT1minter_.askContractToMintNft();"
+          onclick="NFTminter_.askContractToMintNft();"
         >
           MINT
         </button>
@@ -181,9 +180,9 @@ TWITTER LINK: <a href="//twitter.com/modulusverse" target="_blank"> Modulusverse
           <ol>
             <u style="color: tomato; line-height: 30px;">Troubleshooting:</u>
             <li>Is the correct wallet address connected?</li>
-            <li>Do you have at least 20 MATIC in that wallet?</li>
+            <li>Do you have enough tokens in that wallet?</li>
             <li>Are you connected to the Polygon network?</li>
-            <li>Are you already at the 20 max wallet limit?</li>
+            <li>Are you already at the max wallet limit?</li>
           </ol>
         </h5>
       
@@ -257,7 +256,7 @@ TWITTER LINK: <a href="//twitter.com/modulusverse" target="_blank"> Modulusverse
 
       <script src="../scripts/menu.js"></script>
       <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
-      <script src="../nftcollection/BONxCULT1.js"></script><!-- !!!!!!!!!!! -->
+      <script src="../nftcollection/BONxRVLT.js"></script><!-- !!!!!!!!!!! -->
     </footer>
   </body>
 </html>

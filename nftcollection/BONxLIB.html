@@ -63,14 +63,13 @@
     <div class="dapp-menu" style>
       <select
       id="nftCollectionDropdownHTML"
-      onchange="BONxCULT1minter_.onSelectNFTCollection()"
+      onchange="NFTminter_.onSelectNFTCollection()"
     >
       <option value="">select the project</option>
       <option value="BONNFT1">BON NFT Collection #1</option>
-      <option value="BONxCULT1" selected>Earthquake Stone Soup</option>
-      <option value="BONxRVLT" selected>Modulusverse</option>
-      <option value="BONxRVLT" selected>Liberty Uncensored</option>
-      <!-- <option value="3">ETH DENVER</option> -->
+      <option value="BONxCULT1">Earthquake Stone Soup</option>
+      <option value="BONxRVLT">Modulusverse</option>
+      <option value="BONxLIB" selected>Liberty Uncensored</option>
     </select>
           <a href="../crowdfunding/rules.html"><button>INVESTMENT RULES</button></a>
           <a href="../crowdfunding/forms.html"><button>REGISTER PROJECT</button></a>
@@ -149,14 +148,14 @@ This proposal will cover about half of the total cost of operation for this time
         <br />
 
         <div align="center">
-          <h2 style="color: #37bfa7;"><span id="nftMintCost"></span>[[ -- MINT OPEN -- ]]</h2>
+          <h2 style="color: #37bfa7;"><span id="nftMintCost"></span>[[ -- MINT OPEN SOON -- ]] xxx</h2>
         </div><!-- !!!!!!!!!!! -->
 
         
         <div class="dapp-menu-mint">
           <select
             id="mintQuantityDropdownHTML"
-            onchange="BONxCULT1minter_.onSelectMintQuantity()"
+            onchange="NFTminter_.onSelectMintQuantity()"
             required
           >
             <option value="" selected>Quantity..</option>
@@ -185,7 +184,7 @@ This proposal will cover about half of the total cost of operation for this time
           id="connectButtonHTML"
           class="custom-button"
           style="height: 45px; width: 300px; text-align: center"
-          onclick="BONxCULT1minter_.connectWallet();"
+          onclick="NFTminter_.connectWallet();"
         >
           CONNECT WALLET
         </button>
@@ -194,7 +193,7 @@ This proposal will cover about half of the total cost of operation for this time
           id="mintButtonHTML"
           class="custom-button"
           style="height: 45px; width: 300px; text-align: center"
-          onclick="BONxCULT1minter_.askContractToMintNft();"
+          onclick="NFTminter_.askContractToMintNft();"
         >
           MINT
         </button>
@@ -207,9 +206,9 @@ This proposal will cover about half of the total cost of operation for this time
           <ol>
             <u style="color: tomato; line-height: 30px;">Troubleshooting:</u>
             <li>Is the correct wallet address connected?</li>
-            <li>Do you have at least 20 MATIC in that wallet?</li>
+            <li>Do you have enough tokens in that wallet?</li>
             <li>Are you connected to the Polygon network?</li>
-            <li>Are you already at the 20 max wallet limit?</li>
+            <li>Are you already at the max wallet limit?</li>
           </ol>
         </h5>
       
@@ -283,7 +282,7 @@ This proposal will cover about half of the total cost of operation for this time
 
       <script src="../scripts/menu.js"></script>
       <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
-      <script src="../nftcollection/BONxCULT1.js"></script><!-- !!!!!!!!!!! -->
+      <script src="../nftcollection/BONxLIB.js"></script><!-- !!!!!!!!!!! -->
     </footer>
   </body>
 </html>
