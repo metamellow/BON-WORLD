@@ -748,11 +748,17 @@ class BONxCULT1minter {
     console.log(this.selectedNFTCollection);
 
     if(this.selectedNFTCollection == "BONNFT1"){
-      window.location.href = "../nftcollection/BONNFT1.html";
-    }
-    if(this.selectedNFTCollection == "BONxCULT1"){
-      window.location.href = "../nftcollection/BONxCULT1.html";
-    }
+		window.location.href = "../nftcollection/BONNFT1.html";
+	  }
+	if(this.selectedNFTCollection == "BONxCULT1"){
+	window.location.href = "../nftcollection/BONxCULT1.html";
+	}
+	if(this.selectedNFTCollection == "BONxRVLT"){
+		window.location.href = "../nftcollection/BONxRVLT.html";
+	}
+	if(this.selectedNFTCollection == "BONxLIB"){
+		window.location.href = "../nftcollection/BONxLIB.html";
+	}
   }//!!!!!!!!
 
 }
