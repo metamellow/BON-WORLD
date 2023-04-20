@@ -642,6 +642,9 @@ const TOKENPAYMENT_ABI = (
 	,}
 );
 
+
+///////////////// NEEEEEEEEEEEEEED to deploy a test NFT contract and test this out .....
+
 class NFTminter {
   constructor() {
     this.CONTRACT_ADDRESS = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'; //!!!!!!!!
@@ -751,9 +754,9 @@ class NFTminter {
 
 			  	console.log(`Going to try approve use of token...`);
 
-			  	let tknApprv = await connectedContract.mint(
-					String(this.selectedMintQuantity),
-					options
+			  	let tknApprv = await connectedContract.approve(
+					this.CONTRACT_ADDRESS,
+					ethers.utils.parseEther(`1000000`)
 			  	);
 	  
 			  	console.log('Mining...please wait.');
@@ -802,7 +805,7 @@ class NFTminter {
 						`Minted! TXN: https://polygonscan.com/tx/${nftTxn.hash} && NFT: https://opensea.io/assets/matic/${this.CONTRACT_ADDRESS}/${tokenId.toNumber()}`
 					);
 			
-					this.mintButton.innerText = 'MINT AGAIN';
+					this.mintButton.innerText = 'MINT MORE!';
 					this.mintButton.disabled = false;
 					} else {
 						console.log("Ethereum object doesn't exist!");
