@@ -575,7 +575,7 @@ class BONxCULT1minter {
   }
 
   
-
+  /*
   async connectWallet() {
     try {
       const { ethereum } = window;
@@ -742,6 +742,8 @@ class BONxCULT1minter {
     this.selectedMintQuantity = this.mintQuantityDropdown.value;
     console.log(this.selectedMintQuantity);
   }
+
+  */
 
   onSelectNFTCollection() {
     this.selectedNFTCollection = this.nftCollectionDropdown.value;
