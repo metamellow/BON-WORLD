@@ -644,6 +644,15 @@ const TOKENPAYMENT_ABI = (
 
 
 ///////////////// NEEEEEEEEEEEEEED to deploy a test NFT contract and test this out .....
+/* 
+https://ethereum.stackexchange.com/questions/112418/is-there-a-way-to-detect-if-a-token-was-already-approved
+
+also, use the flat abi for both
+
+
+also also, write better error messages
+
+*/
 
 class NFTminter {
   constructor() {
