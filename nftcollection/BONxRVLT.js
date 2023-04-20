@@ -630,12 +630,23 @@ const CONTRACT_ABI = (
 			}
 		],
 	}
-);//!!!!!!!!
+);
 
-//!!!!!!!!
+const TOKENPAYMENT_ABI = (
+	{
+		"contractName": "BONxRVLT",
+		"abi":
+			[
+				{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"previousAdmin","type":"address"},{"indexed":false,"internalType":"address","name":"newAdmin","type":"address"}],"name":"AdminChanged","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"spender","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"beacon","type":"address"}],"name":"BeaconUpgraded","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"delegator","type":"address"},{"indexed":true,"internalType":"address","name":"fromDelegate","type":"address"},{"indexed":true,"internalType":"address","name":"toDelegate","type":"address"}],"name":"DelegateChanged","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"delegate","type":"address"},{"indexed":false,"internalType":"uint256","name":"previousBalance","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"newBalance","type":"uint256"}],"name":"DelegateVotesChanged","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"account","type":"address"}],"name":"Paused","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"taxAmount","type":"uint256"}],"name":"TaxUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"newTreasury","type":"address"}],"name":"TreasuryAddressUpdated","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"account","type":"address"}],"name":"Unpaused","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"implementation","type":"address"}],"name":"Upgraded","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"whitelistAccount","type":"address"},{"indexed":false,"internalType":"bool","name":"value","type":"bool"}],"name":"WhitelistAddressUpdated","type":"event"},{"inputs":[],"name":"DOMAIN_SEPARATOR","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"spender","type":"address"}],"name":"allowance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"},{"internalType":"uint32","name":"pos","type":"uint32"}],"name":"checkpoints","outputs":[{"components":[{"internalType":"uint32","name":"fromBlock","type":"uint32"},{"internalType":"uint224","name":"votes","type":"uint224"}],"internalType":"struct ERC20VotesUpgradeable.Checkpoint","name":"","type":"tuple"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"subtractedValue","type":"uint256"}],"name":"decreaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"delegatee","type":"address"}],"name":"delegate","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"delegatee","type":"address"},{"internalType":"uint256","name":"nonce","type":"uint256"},{"internalType":"uint256","name":"expiry","type":"uint256"},{"internalType":"uint8","name":"v","type":"uint8"},{"internalType":"bytes32","name":"r","type":"bytes32"},{"internalType":"bytes32","name":"s","type":"bytes32"}],"name":"delegateBySig","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"delegates","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"getCurrentVotes","outputs":[{"internalType":"uint96","name":"","type":"uint96"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"blockNumber","type":"uint256"}],"name":"getPastTotalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"},{"internalType":"uint256","name":"blockNumber","type":"uint256"}],"name":"getPastVotes","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"},{"internalType":"uint256","name":"blockNumber","type":"uint256"}],"name":"getPriorVotes","outputs":[{"internalType":"uint96","name":"","type":"uint96"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"getVotes","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"addedValue","type":"uint256"}],"name":"increaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"initialHolder","type":"address"},{"internalType":"uint256","name":"initialSupply","type":"uint256"}],"name":"initialize","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"}],"name":"nonces","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"numCheckpoints","outputs":[{"internalType":"uint32","name":"","type":"uint32"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"paused","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"value","type":"uint256"},{"internalType":"uint256","name":"deadline","type":"uint256"},{"internalType":"uint8","name":"v","type":"uint8"},{"internalType":"bytes32","name":"r","type":"bytes32"},{"internalType":"bytes32","name":"s","type":"bytes32"}],"name":"permit","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_tax","type":"uint256"}],"name":"setTax","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_treasury","type":"address"}],"name":"setTreasuryAddress","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_whitelist","type":"address"},{"internalType":"bool","name":"_status","type":"bool"}],"name":"setWhitelistAddress","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"tax","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transfer","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"sender","type":"address"},{"internalType":"address","name":"recipient","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transferFrom","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"treasury","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"newImplementation","type":"address"}],"name":"upgradeTo","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newImplementation","type":"address"},{"internalType":"bytes","name":"data","type":"bytes"}],"name":"upgradeToAndCall","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"whitelistedAddress","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"}
+			]
+	,}
+);
+
 class NFTminter {
   constructor() {
     this.CONTRACT_ADDRESS = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'; //!!!!!!!!
+	// NOTE: vvvvv this is the ACTUAL contract, not the public that uses a proxy
+	this.TOKENPAYMENT_ADDRESS = '0xb12ca3dBf866DA26B0f55a20A51fea8efd8592f9'; //!!!!!!!!
     this.currentAccount = '';
     this.selectedMintQuantity = 0;
     this.selectedNFTCollection = '';
@@ -709,6 +720,7 @@ class NFTminter {
     }
   }
 
+
   async askContractToMintNft() {
     if(this.selectedMintQuantity < 1){
 		alert(
@@ -716,55 +728,103 @@ class NFTminter {
 		);
 	}
 	if(this.selectedMintQuantity >= 1){
+		
+		// APPROVE STUFF
 		try {
 			const { ethereum } = window;
 	  
 			if (ethereum) {
-			  const provider = new ethers.providers.Web3Provider(ethereum);
-			  const signer = provider.getSigner();
-			  const connectedContract = new ethers.Contract(
-				this.CONTRACT_ADDRESS,
-				CONTRACT_ABI.abi,
-				signer
-			  );
+			  	const provider = new ethers.providers.Web3Provider(ethereum);
+			  	const signer = provider.getSigner();
+			  	const connectedContract = new ethers.Contract(
+					this.TOKENPAYMENT_ADDRESS,
+					TOKENPAYMENT_ABI.abi,
+					signer
+			  	);
 	  
-			  this.mintButton.innerText = '*please wait*';
-			  this.mintButton.disabled = true;
+			  	this.mintButton.innerText = '*approving please wait*';
+				this.mintButton.disabled = true;
 	  
-			  const options = {
-				value: ethers.utils.parseEther(
-				  `${this.selectedMintQuantity * this.NFTCostAmount}`
-				),
-			  };
-			  console.log(
-				`Going to try enact a transaction to mint ${this.selectedMintQuantity} NFTs for a total added gas of ${this.selectedMintQuantity * this.NFTCostAmount}.`
-			  );
-			  let nftTxn = await connectedContract.mint(
-				String(this.selectedMintQuantity),
-				options
-			  );
+			  	const options = {
+					value: ethers.utils.parseEther(`0`),
+			  	};
+
+			  	console.log(`Going to try approve use of token...`);
+
+				// HEEEERRRRRRRRRREEEEEEEEEE need to continue connecting JS to contract!!!!!!!!!!!!!!!!!!!!!!
+
+			  	let tknApprv = await connectedContract.mint(
+					String(this.selectedMintQuantity),
+					options
+			  	);
 	  
-			  console.log('Mining...please wait.');
-			  await nftTxn.wait();
+			  	console.log('Mining...please wait.');
+			  	await tknApprv.wait();
 	  
-			  console.log(
-				`Mined, see transaction: https://polygonscan.com/tx/${nftTxn.hash} && see NFT: https://opensea.io/assets/matic/${this.CONTRACT_ADDRESS}/${tokenId.toNumber()}`
-			  );
-	  
-			  alert(
-				`Minted! TXN: https://polygonscan.com/tx/${nftTxn.hash} && NFT: https://opensea.io/assets/matic/${this.CONTRACT_ADDRESS}/${tokenId.toNumber()}`
-			  );
-	  
-			  this.mintButton.innerText = 'MINT AGAIN';
-			  this.mintButton.disabled = false;
+			  	console.log(`Approved!`);
+	  			alert(`Approved!`);
+				
+				//MINT STUFF
+					try {
+						const { ethereum } = window;
+				
+						if (ethereum) {
+						const provider = new ethers.providers.Web3Provider(ethereum);
+						const signer = provider.getSigner();
+						const connectedContract = new ethers.Contract(
+							this.CONTRACT_ADDRESS,
+							CONTRACT_ABI.abi,
+							signer
+						);
+				
+						this.mintButton.innerText = '*minting please wait*';
+						this.mintButton.disabled = true;
+				
+						const options = {
+							value: ethers.utils.parseEther(
+							`${this.selectedMintQuantity * this.NFTCostAmount}`
+							),
+						};
+						console.log(
+							`Going to try enact a transaction to mint ${this.selectedMintQuantity} NFTs for a total added gas of ${this.selectedMintQuantity * this.NFTCostAmount}.`
+						);
+						let nftTxn = await connectedContract.mint(
+							String(this.selectedMintQuantity),
+							options
+						);
+				
+						console.log('Mining...please wait.');
+						await nftTxn.wait();
+				
+						console.log(
+							`Mined, see transaction: https://polygonscan.com/tx/${nftTxn.hash} && see NFT: https://opensea.io/assets/matic/${this.CONTRACT_ADDRESS}/${tokenId.toNumber()}`
+						);
+				
+						alert(
+							`Minted! TXN: https://polygonscan.com/tx/${nftTxn.hash} && NFT: https://opensea.io/assets/matic/${this.CONTRACT_ADDRESS}/${tokenId.toNumber()}`
+						);
+				
+						this.mintButton.innerText = 'MINT AGAIN';
+						this.mintButton.disabled = false;
+						} else {
+							console.log("Ethereum object doesn't exist!");
+							this.mintButton.innerText = '-MINT AGAIN-';
+							this.mintButton.disabled = false;
+						}
+					} catch (error) {
+						console.log(error);
+						this.mintButton.innerText = '-MINT AGAIN-';
+						this.mintButton.disabled = false;
+					}
+
 			} else {
-			  console.log("Ethereum object doesn't exist!");
-			  this.mintButton.innerText = '-MINT AGAIN-';
-			  this.mintButton.disabled = false;
+				console.log("Ethereum object doesn't exist!");
+				this.mintButton.innerText = '-TRY APPROVE AGAIN-';
+				this.mintButton.disabled = false;
 			}
 		} catch (error) {
 			console.log(error);
-			this.mintButton.innerText = '-MINT AGAIN-';
+			this.mintButton.innerText = '-TRY APPROVE AGAIN-';
 			this.mintButton.disabled = false;
 		}
 	}
