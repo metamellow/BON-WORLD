@@ -21,8 +21,9 @@ const TOKENPAYMENT_ABI = (
 
 
 To do: --------------------------------------------------------------------------
+0) I dont think it approved bc its not showing up on the tokenApprovalChecker, so try other rvlt contract
 1) integrate an 'already approved' checker (on page load?)
-1) have the button actually change based on the results; could reload the page on approve?
+2) have the button actually change based on the results; could reload the page on approve?
 2) test online with the fake NFT contract
 3) clean up shop and tell MERP; err mssg
 4) then start MODxLIB
@@ -33,9 +34,12 @@ To do: -------------------------------------------------------------------------
 class NFTminter {
   constructor() {
     // NOTE: vvvvv this is the TEST NFT contract address
-	this.CONTRACT_ADDRESS = '0x953916d65f03dc93265858c2793d52b9a6c8eb15'; //!!!!!!!!
-	// NOTE: vvvvv this is the ACTUAL contract, not the public that uses a proxy
-	this.TOKENPAYMENT_ADDRESS = '0xb12ca3dBf866DA26B0f55a20A51fea8efd8592f9'; //!!!!!!!!
+    this.CONTRACT_ADDRESS = '0x953916d65f03dc93265858c2793d52b9a6c8eb15'; //!!!!!!!!
+	  // NOTE: vvvvv this is the ACTUAL contract, not the public that uses a proxy
+	  // this.TOKENPAYMENT_ADDRESS = '0xb12ca3dBf866DA26B0f55a20A51fea8efd8592f9'; //!!!!!!!!
+    // NOTE: vvvvv this public rvlt contract that uses a proxy
+    // --------------------------------------------------------------------------------------------------test this
+	  this.TOKENPAYMENT_ADDRESS = '0xf0f9D895aCa5c8678f706FB8216fa22957685A13'; //!!!!!!!!
     this.currentAccount = '';
     this.selectedMintQuantity = 0;
     this.selectedNFTCollection = '';
