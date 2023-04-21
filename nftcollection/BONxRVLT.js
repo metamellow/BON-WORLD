@@ -21,7 +21,8 @@ const TOKENPAYMENT_ABI = (
 
 
 To do: --------------------------------------------------------------------------
-1) integrate an 'already approved' checker
+1) integrate an 'already approved' checker (on page load?)
+1) have the button actually change based on the results; could reload the page on approve?
 2) test online with the fake NFT contract
 3) clean up shop and tell MERP; err mssg
 4) then start MODxLIB
@@ -117,7 +118,7 @@ class NFTminter {
 	}
 	if(this.selectedMintQuantity >= 1){
 		
-		// APPROVE STUFF (check first, then push approve if fail) ---------------------------------------------
+		// APPROVE STUFF
 		try {
 			const { ethereum } = window;
 	  
