@@ -10,7 +10,7 @@ contract bonNFT is ERC721, Ownable{
     using Strings for uint256;
 
     address public erc20contract = 0xf0f9D895aCa5c8678f706FB8216fa22957685A13; // RVLT polygon token
-    uint256 public erc20Price = 186900000000000000000000000; // 186900000 ERC20 token
+    uint256 public erc20Price = 186900000000000000000000000; // 186_900_000 ERC20 token
     uint256 public gasPrice = 1000000000000000; // 0.001 gas token
     uint256 public constant maxTokens = 3000;
     uint256 private constant tokensReserved = 40;

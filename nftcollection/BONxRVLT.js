@@ -17,9 +17,16 @@ const TOKENPAYMENT_ABI = (
 
 
 /* 
-- NEEEEEEEEEEEEEED to deploy a test NFT contract and test this out .....
 - https://ethereum.stackexchange.com/questions/112418/is-there-a-way-to-detect-if-a-token-was-already-approved
-- also, write better error messages
+
+
+To do: --------------------------------------------------------------------------
+1) integrate an 'already approved' checker
+2) test online with the fake NFT contract
+3) clean up shop and tell MERP; err mssg
+4) then start MODxLIB
+
+
 */
 
 class NFTminter {
