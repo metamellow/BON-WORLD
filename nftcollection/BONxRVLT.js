@@ -45,6 +45,8 @@ class NFTminter {
         this.mintQuantityDropdown = document.getElementById('mintQuantityDropdownHTML');
         this.connectButton = document.getElementById('connectButtonHTML');
         this.mintButton = document.getElementById('mintButtonHTML');
+
+        this.connectedUsersAddress = ''; // NEW!!
     }
 
   
@@ -64,6 +66,7 @@ class NFTminter {
 
             console.log('Connected', accounts[0]);
             this.currentAccount = accounts[0]; 
+            this.connectedUsersAddress = `${accounts[0]}`; // NEWWW!
             this.connectButton.innerText = `${
                 this.currentAccount.substring(0, 6)}...${
                 this.currentAccount.substring((this.currentAccount.length-4), this.currentAccount.length)
@@ -133,11 +136,10 @@ class NFTminter {
                         this.mintButton.disabled = true;
                         console.log(`Checking token allowance`);
                         let tknAllwnc = await connectedContract1.allowance(
-                            String(signer),
-                            String(this.CONTRACT_ADDRESS)
+                            this.connectedUsersAddress,
+                            this.CONTRACT_ADDRESS
                         );
-                        //let allowanceResult = tknAllwnc.toString().wait();
-                        //if(allowanceResult > 0){
+                        await tknAllwnc.wait();
                         if(tknAllwnc > 0){
                             /*try {
                                 // --- MINT STUFF ---
