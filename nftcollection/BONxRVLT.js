@@ -130,9 +130,6 @@ class NFTminter {
                         );
                         this.mintButton.innerText = '*please wait*';
                         this.mintButton.disabled = true;
-                        /*const options = {
-                            value: ethers.utils.parseEther(`0`),
-                        };*/
                         console.log(`Checking token allowance`);
                         let tknAllwnc = await connectedContract1.allowance(
                             signer,
@@ -140,7 +137,7 @@ class NFTminter {
                         );
                         let allowanceResult = tknAllwnc.toString().wait();
                         if(allowanceResult > 0){
-                            try {
+                            /*try {
                                 // --- MINT STUFF ---
                                 const connectedContract2 = new ethers.Contract(
                                     this.CONTRACT_ADDRESS,
@@ -175,9 +172,9 @@ class NFTminter {
                                 console.log(error);
                                 this.mintButton.innerText = '-TRY MINT AGAIN-';
                                 this.mintButton.disabled = false;
-                            }
+                            }*/
                         } else {
-                            try{
+                            /*try{
                                 // --- APPROVAL STUFF ---
                                 const connectedContract1 = new ethers.Contract(
                                     this.TOKENPAYMENT_ADDRESS,
@@ -186,9 +183,6 @@ class NFTminter {
                                 );
                                 this.mintButton.innerText = '*approving*';
                                 this.mintButton.disabled = true;
-                                /*const options = {
-                                    value: ethers.utils.parseEther(`0`),
-                                };*/
                                 console.log(`Trying to approve token spending`);
                                 let tknApprv = await connectedContract1.approve(
                                     this.CONTRACT_ADDRESS,
@@ -204,23 +198,20 @@ class NFTminter {
                                 console.log(error);
                                 this.mintButton.innerText = '-TRY APPROVAL AGAIN-';
                                 this.mintButton.disabled = false;
-                            }
+                            }*/
                         }
                     } catch (error) {
                     console.log(error);
                     console.log("Major error in allowance check -- contact administrator");
                     this.mintButton.innerText = '-ERROR-';
-                    //this.mintButton.disabled = false;
                     }
                 } /*else {
                     console.log("Ethereum object doesn't exist!");
                     this.mintButton.innerText = '-GET METAMASK-';
-                    //this.mintButton.disabled = false;
                 }*/
             } catch (error) {
                 console.log("Ethereum object doesn't exist!");
                 this.mintButton.innerText = '-GET METAMASK-';
-                //this.mintButton.disabled = false;
             }
         }
     }
