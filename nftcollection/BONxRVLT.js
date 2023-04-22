@@ -1,4 +1,4 @@
-// import ABI contract data !!!!!!!!!!!!!!!!!!!!!
+// import ABI contract data
 const CONTRACT_ABI = (
 	{
         "contractName": "BONxRVLT",
@@ -15,29 +15,12 @@ const TOKENPAYMENT_ABI = (
 	,}
 );
 
-
-/* 
-- https://ethereum.stackexchange.com/questions/112418/is-there-a-way-to-detect-if-a-token-was-already-approved
-
-
-To do: --------------------------------------------------------------------------
-0) I dont think it approved bc its not showing up on the tokenApprovalChecker, so try other rvlt contract
-1) integrate an 'already approved' checker (on page load?)
-2) have the button actually change based on the results; could reload the page on approve?
-2) test online with the fake NFT contract
-3) clean up shop and tell MERP; send all test NFTs to burn wallet
-4) then start MODxLIB
-
-
-*/
-
 class NFTminter {
     constructor() {
-        // NOTE: vvvvv this is the TEST NFT contract address
-        this.CONTRACT_ADDRESS = '0x953916d65f03dc93265858c2793d52b9a6c8eb15'; //!!!!!!!!
+        this.CONTRACT_ADDRESS = '0x953916d65f03dc93265858c2793d52b9a6c8eb15'; // xxxxxxx This is a test contract xxxxxx
         //this.TOKENPAYMENT_ADDRESS = '0xf0f9D895aCa5c8678f706FB8216fa22957685A13'; // public proxy for RVLT
         this.TOKENPAYMENT_ADDRESS = '0xb12ca3dbf866da26b0f55a20a51fea8efd8592f9'; // base RVLT erc20 contract
-        this.NFTCostAmount = 0.001; // 1000000000000000 //!!!!!!!!
+        this.NFTCostAmount = 0.001; // 1000000000000000
         this.currentAccount = '';
         this.selectedMintQuantity = 0;
         this.selectedNFTCollection = '';
@@ -54,16 +37,13 @@ class NFTminter {
     async connectWallet() {
         try {
             const { ethereum } = window;
-
             if (!ethereum) {
                 alert('Get MetaMask!');
                 return;
             }
-
             const accounts = await ethereum.request({
                 method: 'eth_requestAccounts',
             });
-
             console.log('Connected', accounts[0]);
             this.currentAccount = accounts[0]; 
             this.connectedUsersAddress = `${accounts[0]}`; // NEWWW!
@@ -71,8 +51,6 @@ class NFTminter {
                 this.currentAccount.substring(0, 6)}...${
                 this.currentAccount.substring((this.currentAccount.length-4), this.currentAccount.length)
             }`;
-
-            // for connecting wallet first time
             this.setupEventListener();
         } catch (error) {
             console.log(error);            
@@ -82,17 +60,14 @@ class NFTminter {
     async setupEventListener() {
         try {
             const { ethereum } = window;
-
             if (ethereum) {
                 const provider = new ethers.providers.Web3Provider(ethereum);
                 const signer = provider.getSigner();
-
                 const connectedContract1 = new ethers.Contract(
                     this.CONTRACT_ADDRESS,
                     CONTRACT_ABI.abi,
                     signer
                 );
-
                 connectedContract1.on('NewNFTMinted', (from, tokenId) => {
                     console.log(from, tokenId.toNumber());
                     alert(
@@ -101,7 +76,6 @@ class NFTminter {
                     );
                     }
                 );
-
                 console.log('Setup event listener!');
             } else {
                 console.log("Ethereum object doesn't exist!");
@@ -141,7 +115,8 @@ class NFTminter {
                         );
                         await tknAllwnc.wait();
                         if(tknAllwnc > 0){
-                            /*try {
+                            /*
+                            try {
                                 // --- MINT STUFF ---
                                 const connectedContract2 = new ethers.Contract(
                                     this.CONTRACT_ADDRESS,
@@ -176,9 +151,11 @@ class NFTminter {
                                 console.log(error);
                                 this.mintButton.innerText = '-TRY MINT AGAIN-';
                                 this.mintButton.disabled = false;
-                            }*/
+                            }
+                            */
                         } else {
-                            /*try{
+                            /*
+                            try{
                                 // --- APPROVAL STUFF ---
                                 const connectedContract1 = new ethers.Contract(
                                     this.TOKENPAYMENT_ADDRESS,
@@ -202,17 +179,18 @@ class NFTminter {
                                 console.log(error);
                                 this.mintButton.innerText = '-TRY APPROVAL AGAIN-';
                                 this.mintButton.disabled = false;
-                            }*/
+                            }
+                            */
                         }
                     } catch (error) {
                     console.log(error);
                     console.log("Major error in allowance check -- contact administrator");
                     this.mintButton.innerText = '-ERROR-';
                     }
-                } /*else {
+                } else {
                     console.log("Ethereum object doesn't exist!");
                     this.mintButton.innerText = '-GET METAMASK-';
-                }*/
+                }
             } catch (error) {
                 console.log("Ethereum object doesn't exist!");
                 this.mintButton.innerText = '-GET METAMASK-';
