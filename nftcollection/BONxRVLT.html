@@ -126,6 +126,15 @@ PROJECT WALLET: 0xEaCFaBA8dF608f88ae96bcCE1dA4554F66eBf0Cb<br>
 
         
         <div class="dapp-menu-mint">
+          <button
+          id="connectButtonHTML"
+          class="custom-button"
+          style="height: 45px; width: 300px; text-align: center"
+          onclick="NFTminter_.connectWallet();"
+          >
+            CONNECT WALLET
+          </button>
+          
           <select
             id="mintQuantityDropdownHTML"
             onchange="NFTminter_.onSelectMintQuantity()"
@@ -153,14 +162,6 @@ PROJECT WALLET: 0xEaCFaBA8dF608f88ae96bcCE1dA4554F66eBf0Cb<br>
             <option value="19">19</option>
             <option value="20">20</option>
           </select>
-          <button
-          id="connectButtonHTML"
-          class="custom-button"
-          style="height: 45px; width: 300px; text-align: center"
-          onclick="NFTminter_.connectWallet();"
-        >
-          CONNECT WALLET
-        </button>
 
         <button
           id="mintButtonHTML"

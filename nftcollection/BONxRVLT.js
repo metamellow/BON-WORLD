@@ -32,195 +32,235 @@ To do: -------------------------------------------------------------------------
 */
 
 class NFTminter {
-  constructor() {
-    // NOTE: vvvvv this is the TEST NFT contract address
-    this.CONTRACT_ADDRESS = '0x953916d65f03dc93265858c2793d52b9a6c8eb15'; //!!!!!!!!
-	  // NOTE: vvvvv this is the ACTUAL contract, not the public that uses a proxy
-	  // this.TOKENPAYMENT_ADDRESS = '0xb12ca3dBf866DA26B0f55a20A51fea8efd8592f9'; //!!!!!!!!
-    // NOTE: vvvvv this public rvlt contract that uses a proxy
-    // --------------------------------------------------------------------------------------------------test this
-	  this.TOKENPAYMENT_ADDRESS = '0xf0f9D895aCa5c8678f706FB8216fa22957685A13'; //!!!!!!!!
-    this.currentAccount = '';
-    this.selectedMintQuantity = 0;
-    this.selectedNFTCollection = '';
-
-    this.nftCollectionDropdown = document.getElementById('nftCollectionDropdownHTML');
-    this.mintQuantityDropdown = document.getElementById('mintQuantityDropdownHTML');
-    this.connectButton = document.getElementById('connectButtonHTML');
-    this.mintButton = document.getElementById('mintButtonHTML');
-
-    this.NFTCostAmount = 0.001; // 1000000000000000 //!!!!!!!!
-  }
+    constructor() {
+        // NOTE: vvvvv this is the TEST NFT contract address
+        this.CONTRACT_ADDRESS = '0x953916d65f03dc93265858c2793d52b9a6c8eb15'; //!!!!!!!!
+        this.TOKENPAYMENT_ADDRESS = '0xf0f9D895aCa5c8678f706FB8216fa22957685A13'; //!!!!!!!!
+        this.NFTCostAmount = 0.001; // 1000000000000000 //!!!!!!!!
+        this.currentAccount = '';
+        this.selectedMintQuantity = 0;
+        this.selectedNFTCollection = '';
+        this.nftCollectionDropdown = document.getElementById('nftCollectionDropdownHTML');
+        this.mintQuantityDropdown = document.getElementById('mintQuantityDropdownHTML');
+        this.connectButton = document.getElementById('connectButtonHTML');
+        this.mintButton = document.getElementById('mintButtonHTML');
+    }
 
   
 
-  async connectWallet() {
-    try {
-      const { ethereum } = window;
+    async connectWallet() {
+        try {
+            const { ethereum } = window;
 
-      if (!ethereum) {
-        alert('Get MetaMask!');
-        return;
-      }
+            if (!ethereum) {
+                alert('Get MetaMask!');
+                return;
+            }
 
-      const accounts = await ethereum.request({
-        method: 'eth_requestAccounts',
-      });
+            const accounts = await ethereum.request({
+                method: 'eth_requestAccounts',
+            });
 
-      console.log('Connected', accounts[0]);
-      this.currentAccount = accounts[0]; 
-      this.connectButton.innerText = `${
-        this.currentAccount.substring(0, 6)}...${
-          this.currentAccount.substring((this.currentAccount.length-4), this.currentAccount.length)
-      }`;
+            console.log('Connected', accounts[0]);
+            this.currentAccount = accounts[0]; 
+            this.connectButton.innerText = `${
+                this.currentAccount.substring(0, 6)}...${
+                this.currentAccount.substring((this.currentAccount.length-4), this.currentAccount.length)
+            }`;
 
-      // for connecting wallet first time
-      this.setupEventListener();
-
-    } catch (error) {
-      console.log(error);
+            // for connecting wallet first time
+            this.setupEventListener();
+        } catch (error) {
+            console.log(error);            
+        }
     }
-  }
 
-  async setupEventListener() {
-    try {
-      const { ethereum } = window;
+    async setupEventListener() {
+        try {
+            const { ethereum } = window;
 
-      if (ethereum) {
-        const provider = new ethers.providers.Web3Provider(ethereum);
-        const signer = provider.getSigner();
-        const connectedContract = new ethers.Contract(
-          this.CONTRACT_ADDRESS,
-          CONTRACT_ABI.abi,
-          signer
-        );
+            if (ethereum) {
+                const provider = new ethers.providers.Web3Provider(ethereum);
+                const signer = provider.getSigner();
 
-        // capture event when our contract throws it
-        connectedContract.on('NewNFTMinted', (from, tokenId) => {
-          console.log(from, tokenId.toNumber());
-          alert(
-            `Congrats! You've minted your NFT and sent it to your wallet! 
-            It should take less than 10 min to show up on OpenSea.`
-          );
-        });
+                const connectedContract1 = new ethers.Contract(
+                    this.CONTRACT_ADDRESS,
+                    CONTRACT_ABI.abi,
+                    signer
+                );
+                const connectedContract2 = new ethers.Contract(
+                    this.TOKENPAYMENT_ADDRESS,
+                    TOKENPAYMENT_ABI.abi,
+                    signer
+                );
 
-        console.log('Setup event listener!');
-      } else {
-        console.log("Ethereum object doesn't exist!");
-      }
-    } catch (error) {
-      console.log(error);
+                connectedContract1.on('NewNFTMinted', (from, tokenId) => {
+                    console.log(from, tokenId.toNumber());
+                    alert(
+                        `Congrats! You've minted your NFT and sent it to your wallet! 
+                        It should take less than 10 min to show up on OpenSea.`
+                    );
+                };
+
+                connectedContract2.on('NewNFTMinted', (from, tokenId) => {
+                    console.log(from, tokenId.toNumber());
+                    alert(
+                        `Congrats! You've minted your NFT and sent it to your wallet! 
+                        It should take less than 10 min to show up on OpenSea.`
+                    );
+                }
+            );
+
+            console.log('Setup event listener!');
+            } else {
+                console.log("Ethereum object doesn't exist!");
+            }
+        } catch (error) {
+            console.log(error);
+        }
     }
-  }
 
 
-  async askContractToMintNft() {
-    if(this.selectedMintQuantity < 1){
-		alert(
-		  `Please select a mint quantity from the dropdown list.`
-		);
-	}
-	if(this.selectedMintQuantity >= 1){
-		
-		// APPROVE STUFF
-		try {
-			const { ethereum } = window;
-	  
-			if (ethereum) {
-			  	const provider = new ethers.providers.Web3Provider(ethereum);
-			  	const signer = provider.getSigner();
-			  	const connectedContract = new ethers.Contract(
-					this.TOKENPAYMENT_ADDRESS,
-					TOKENPAYMENT_ABI.abi,
-					signer
-			  	);
-	  
-			  	this.mintButton.innerText = '*approving please wait*';
-				this.mintButton.disabled = true;
-	  
-			  	const options = {
-					value: ethers.utils.parseEther(`0`),
-			  	}; // I think this is right?
+    async askContractToMintNft() {
+        if(this.selectedMintQuantity < 1){
+            alert(
+            `Please select a mint quantity from the dropdown list.`
+            );
+        }
+        if(this.selectedMintQuantity >= 1){
+            try {
+                const { ethereum } = window;
 
-			  	console.log(`Going to try approve use of token...`);
+                if (ethereum) {
+                    const provider = new ethers.providers.Web3Provider(ethereum);
+                    const signer = provider.getSigner();
+                    
 
-			  	let tknApprv = await connectedContract.approve(
-					this.CONTRACT_ADDRESS,
-					ethers.utils.parseEther(`1000000`)
-			  	);
-	  
-			  	console.log('Mining...please wait.');
-			  	await tknApprv.wait();
-	  
-			  	console.log(`Approved!`);
-	  			alert(`Approved!`);
-				
-				//MINT STUFF
-				try {
-					const { ethereum } = window;
-			
-					if (ethereum) {
-					const provider = new ethers.providers.Web3Provider(ethereum);
-					const signer = provider.getSigner();
-					const connectedContract = new ethers.Contract(
-						this.CONTRACT_ADDRESS,
-						CONTRACT_ABI.abi,
-						signer
-					);
-			
-					this.mintButton.innerText = '*minting please wait*';
-					this.mintButton.disabled = true;
-			
-					const options = {
-						value: ethers.utils.parseEther(
-						`${this.selectedMintQuantity * this.NFTCostAmount}`
-						),
-					};
-					console.log(
-						`Going to try enact a transaction to mint ${this.selectedMintQuantity} NFTs for a total added gas of ${this.selectedMintQuantity * this.NFTCostAmount}.`
-					);
-					let nftTxn = await connectedContract.mint(
-						String(this.selectedMintQuantity),
-						options
-					);
-			
-					console.log('Mining...please wait.');
-					await nftTxn.wait();
-			
-					console.log(
-						`Mined, see transaction: https://polygonscan.com/tx/${nftTxn.hash} && see NFT: https://opensea.io/assets/matic/${this.CONTRACT_ADDRESS}/${tokenId.toNumber()}`
-					);
-			
-					alert(
-						`Minted! TXN: https://polygonscan.com/tx/${nftTxn.hash} && NFT: https://opensea.io/assets/matic/${this.CONTRACT_ADDRESS}/${tokenId.toNumber()}`
-					);
-			
-					this.mintButton.innerText = 'MINT MORE!';
-					this.mintButton.disabled = false;
-					} else {
-						console.log("Ethereum object doesn't exist!");
-						this.mintButton.innerText = '-MINT AGAIN-';
-						this.mintButton.disabled = false;
-					}
-				} catch (error) {
-					console.log(error);
-					this.mintButton.innerText = '-MINT AGAIN-';
-					this.mintButton.disabled = false;
-				}
+                    // ------------------------------------------------HERREREREREREREREREREREREREREREEEEEEEEEEE
+                    /*
+                    (1) send out the allowance
+                    (2) if there is a number returned that is greater than 0, then move on to mint
+                    (3) if less than 0, then run the approval and then reset button to mint button
+                    */
+                    try{
+                        // --- TEST ALLOWANCE ---
+                        const connectedContract1 = new ethers.Contract(
+                            this.TOKENPAYMENT_ADDRESS,
+                            TOKENPAYMENT_ABI.abi,
+                            signer
+                        );
+                    
+                        this.mintButton.innerText = '*checking allowance*';
+                        this.mintButton.disabled = true;
+                    
+                        const options = {
+                            value: ethers.utils.parseEther(`0`),
+                        }; // I think this is right?
 
-			} else {
-				console.log("Ethereum object doesn't exist!");
-				this.mintButton.innerText = '-TRY APPROVE AGAIN-';
-				this.mintButton.disabled = false;
-			}
-		} catch (error) {
-			console.log(error);
-			this.mintButton.innerText = '-TRY APPROVE AGAIN-';
-			this.mintButton.disabled = false;
-		}
-	}
-	
-  }
+                        console.log(`Going to check allowance of token...`);
+
+                        let tknApprv = await connectedContract1.approve(
+                            this.CONTRACT_ADDRESS,
+                            '115792089237316195423570985008687907853269984665640564039457584007913129639935'
+                        ); // I still have the options, but its not included here, so maybe delete
+                        console.log('Approving...please wait.');
+
+                        await tknApprv.wait();
+                        console.log(`Approved!`);
+                    } catch (error) {
+                        console.log(error);
+                        this.mintButton.innerText = '-TRY AGAIN-';
+                        this.mintButton.disabled = false;
+                    }
+                        
+
+
+
+
+
+
+
+
+                        // --- APPROVAL STUFF ---
+                        const connectedContract1 = new ethers.Contract(
+                            this.TOKENPAYMENT_ADDRESS,
+                            TOKENPAYMENT_ABI.abi,
+                            signer
+                        );
+                    
+                        this.mintButton.innerText = '*approving please wait*';
+                        this.mintButton.disabled = true;
+                    
+                        const options = {
+                            value: ethers.utils.parseEther(`0`),
+                        }; // I think this is right?
+
+                        console.log(`Going to try approve use of token...`);
+
+                        let tknApprv = await connectedContract1.approve(
+                            this.CONTRACT_ADDRESS,
+                            '115792089237316195423570985008687907853269984665640564039457584007913129639935'
+                        );
+                        console.log('Approving...please wait.');
+
+                        await tknApprv.wait();
+                        console.log(`Approved!`);
+                    } catch (error) {
+                        console.log(error);
+                        this.mintButton.innerText = '-TRY AGAIN-';
+                        this.mintButton.disabled = false;
+                    }
+
+                    try {
+                        // --- MINT STUFF ---
+                        const connectedContract2 = new ethers.Contract(
+                            this.CONTRACT_ADDRESS,
+                            CONTRACT_ABI.abi,
+                            signer
+                        );
+                
+                        this.mintButton.innerText = '*minting please wait*';
+                        this.mintButton.disabled = true;
+                
+                        const options = {
+                            value: ethers.utils.parseEther(
+                            `${this.selectedMintQuantity * this.NFTCostAmount}`
+                            ),
+                        };
+                        console.log(
+                            `Going to try enact a transaction to mint ${this.selectedMintQuantity} NFTs for a total added gas of ${this.selectedMintQuantity * this.NFTCostAmount}.`
+                        );
+                        let nftTxn = await connectedContract2.mint(
+                            String(this.selectedMintQuantity),
+                            options
+                        );
+                
+                        console.log('Mining...please wait.');
+                        await nftTxn.wait();
+                
+                        console.log(
+                            `Minted! TXN: https://polygonscan.com/tx/${nftTxn.hash} && see NFT: https://opensea.io/assets/matic/${this.CONTRACT_ADDRESS}/${tokenId.toNumber()}`
+                        );
+                        alert(
+                            `Minted! TXN: https://polygonscan.com/tx/${nftTxn.hash} && NFT: https://opensea.io/assets/matic/${this.CONTRACT_ADDRESS}/${tokenId.toNumber()}`
+                        );
+                
+                        this.mintButton.innerText = 'MINT MORE!';
+                        this.mintButton.disabled = false;
+                    } catch (error) {
+                        console.log(error);
+                        this.mintButton.innerText = '-MINT AGAIN-';
+                        this.mintButton.disabled = false;
+                    }
+                }
+            } catch (error) {
+                console.log(error);
+                console.log("Ethereum object doesn't exist!");
+                this.mintButton.innerText = '-NO WEB3 FOUND-';
+                this.mintButton.disabled = false;
+            }
+        }
+    }
 
   async checkIfWalletIsConnected() {
     const { ethereum } = window;
