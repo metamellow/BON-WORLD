@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-contract bonNFT is ERC721, Ownable{
+contract BONxRVLT is ERC721, Ownable{
     using Strings for uint256;
 
     address public erc20contract = 0xf0f9D895aCa5c8678f706FB8216fa22957685A13; // RVLT polygon token
@@ -16,7 +16,7 @@ contract bonNFT is ERC721, Ownable{
     uint256 private constant tokensReserved = 40;
     uint256 public constant maxMintAmount = 20;
     uint256 public totalSupply;
-    string public baseUri = "ipfs://bafybeif7d6m5r276btnjp47n7al4doeijsllg36734df4suhvirw3vltvq/";
+    string public baseUri = "ipfs://xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/";
     string public baseExtension = ".json";
     bool public isSaleActive;
     

@@ -25,7 +25,7 @@ To do: -------------------------------------------------------------------------
 1) integrate an 'already approved' checker (on page load?)
 2) have the button actually change based on the results; could reload the page on approve?
 2) test online with the fake NFT contract
-3) clean up shop and tell MERP; err mssg
+3) clean up shop and tell MERP; send all test NFTs to burn wallet
 4) then start MODxLIB
 
 
@@ -88,11 +88,6 @@ class NFTminter {
                     CONTRACT_ABI.abi,
                     signer
                 );
-                const connectedContract2 = new ethers.Contract(
-                    this.TOKENPAYMENT_ADDRESS,
-                    TOKENPAYMENT_ABI.abi,
-                    signer
-                );
 
                 connectedContract1.on('NewNFTMinted', (from, tokenId) => {
                     console.log(from, tokenId.toNumber());
@@ -100,18 +95,10 @@ class NFTminter {
                         `Congrats! You've minted your NFT and sent it to your wallet! 
                         It should take less than 10 min to show up on OpenSea.`
                     );
-                };
+                    }
+                );
 
-                connectedContract2.on('NewNFTMinted', (from, tokenId) => {
-                    console.log(from, tokenId.toNumber());
-                    alert(
-                        `Congrats! You've minted your NFT and sent it to your wallet! 
-                        It should take less than 10 min to show up on OpenSea.`
-                    );
-                }
-            );
-
-            console.log('Setup event listener!');
+                console.log('Setup event listener!');
             } else {
                 console.log("Ethereum object doesn't exist!");
             }
@@ -119,6 +106,8 @@ class NFTminter {
             console.log(error);
         }
     }
+
+    
 
 
     async askContractToMintNft() {
@@ -128,136 +117,110 @@ class NFTminter {
             );
         }
         if(this.selectedMintQuantity >= 1){
-            try {
-                const { ethereum } = window;
-
+            try { const { ethereum } = window;
                 if (ethereum) {
                     const provider = new ethers.providers.Web3Provider(ethereum);
                     const signer = provider.getSigner();
-                    
-
-                    // ------------------------------------------------HERREREREREREREREREREREREREREREEEEEEEEEEE
-                    /*
-                    (1) send out the allowance
-                    (2) if there is a number returned that is greater than 0, then move on to mint
-                    (3) if less than 0, then run the approval and then reset button to mint button
-                    */
                     try{
-                        // --- TEST ALLOWANCE ---
+                        // --- ALLOWANCE STUFF ---
                         const connectedContract1 = new ethers.Contract(
                             this.TOKENPAYMENT_ADDRESS,
                             TOKENPAYMENT_ABI.abi,
                             signer
                         );
-                    
-                        this.mintButton.innerText = '*checking allowance*';
+                        this.mintButton.innerText = '*please wait*';
                         this.mintButton.disabled = true;
-                    
-                        const options = {
+                        /*const options = {
                             value: ethers.utils.parseEther(`0`),
-                        }; // I think this is right?
-
-                        console.log(`Going to check allowance of token...`);
-
-                        let tknApprv = await connectedContract1.approve(
-                            this.CONTRACT_ADDRESS,
-                            '115792089237316195423570985008687907853269984665640564039457584007913129639935'
-                        ); // I still have the options, but its not included here, so maybe delete
-                        console.log('Approving...please wait.');
-
-                        await tknApprv.wait();
-                        console.log(`Approved!`);
+                        };*/
+                        console.log(`Checking token allowance`);
+                        let tknAllwnc = await connectedContract1.allowance(
+                            signer,
+                            this.TOKENPAYMENT_ADDRESS
+                        );
+                        let allowanceResult = tknAllwnc.toString().wait();
+                        if(allowanceResult > 0){
+                            try {
+                                // --- MINT STUFF ---
+                                const connectedContract2 = new ethers.Contract(
+                                    this.CONTRACT_ADDRESS,
+                                    CONTRACT_ABI.abi,
+                                    signer
+                                );
+                                this.mintButton.innerText = '*minting*';
+                                this.mintButton.disabled = true;
+                                const options = {
+                                    value: ethers.utils.parseEther(
+                                    `${this.selectedMintQuantity * this.NFTCostAmount}`
+                                    ),
+                                };
+                                console.log(
+                                    `Going to try enact a transaction to mint ${this.selectedMintQuantity} NFTs for a total added gas of ${this.selectedMintQuantity * this.NFTCostAmount}.`
+                                );
+                                let nftTxn = await connectedContract2.mint(
+                                    String(this.selectedMintQuantity),
+                                    options
+                                );
+                                console.log('Mining...please wait.');
+                                await nftTxn.wait();
+                                console.log(
+                                    `Minted! TXN: https://polygonscan.com/tx/${nftTxn.hash} && see NFT: https://opensea.io/assets/matic/${this.CONTRACT_ADDRESS}/${tokenId.toNumber()}`
+                                );
+                                alert(
+                                    `Minted! TXN: https://polygonscan.com/tx/${nftTxn.hash} && NFT: https://opensea.io/assets/matic/${this.CONTRACT_ADDRESS}/${tokenId.toNumber()}`
+                                );
+                                this.mintButton.innerText = 'MINT MORE!';
+                                this.mintButton.disabled = false;
+                            } catch (error) {
+                                console.log(error);
+                                this.mintButton.innerText = '-TRY MINT AGAIN-';
+                                this.mintButton.disabled = false;
+                            }
+                        } else {
+                            try{
+                                // --- APPROVAL STUFF ---
+                                const connectedContract1 = new ethers.Contract(
+                                    this.TOKENPAYMENT_ADDRESS,
+                                    TOKENPAYMENT_ABI.abi,
+                                    signer
+                                );
+                                this.mintButton.innerText = '*approving*';
+                                this.mintButton.disabled = true;
+                                /*const options = {
+                                    value: ethers.utils.parseEther(`0`),
+                                };*/
+                                console.log(`Trying to approve token spending`);
+                                let tknApprv = await connectedContract1.approve(
+                                    this.CONTRACT_ADDRESS,
+                                    '115792089237316195423570985008687907853269984665640564039457584007913129639935'
+                                );
+                                console.log('Approving...please wait.');
+                                await tknApprv.wait();
+                                console.log(`Approved!`);
+                                alert(
+                                    `Approved! You can now mint NFTs!`
+                                );
+                            } catch (error) {
+                                console.log(error);
+                                this.mintButton.innerText = '-TRY APPROVAL AGAIN-';
+                                this.mintButton.disabled = false;
+                            }
+                        }
                     } catch (error) {
-                        console.log(error);
-                        this.mintButton.innerText = '-TRY AGAIN-';
-                        this.mintButton.disabled = false;
+                    console.log(error);
+                    console.log("Major error in allowance check -- contact administrator");
+                    this.mintButton.innerText = '-ERROR-';
+                    //this.mintButton.disabled = false;
                     }
-                        
-
-
-
-
-
-
-
-
-                        // --- APPROVAL STUFF ---
-                        const connectedContract1 = new ethers.Contract(
-                            this.TOKENPAYMENT_ADDRESS,
-                            TOKENPAYMENT_ABI.abi,
-                            signer
-                        );
-                    
-                        this.mintButton.innerText = '*approving please wait*';
-                        this.mintButton.disabled = true;
-                    
-                        const options = {
-                            value: ethers.utils.parseEther(`0`),
-                        }; // I think this is right?
-
-                        console.log(`Going to try approve use of token...`);
-
-                        let tknApprv = await connectedContract1.approve(
-                            this.CONTRACT_ADDRESS,
-                            '115792089237316195423570985008687907853269984665640564039457584007913129639935'
-                        );
-                        console.log('Approving...please wait.');
-
-                        await tknApprv.wait();
-                        console.log(`Approved!`);
-                    } catch (error) {
-                        console.log(error);
-                        this.mintButton.innerText = '-TRY AGAIN-';
-                        this.mintButton.disabled = false;
-                    }
-
-                    try {
-                        // --- MINT STUFF ---
-                        const connectedContract2 = new ethers.Contract(
-                            this.CONTRACT_ADDRESS,
-                            CONTRACT_ABI.abi,
-                            signer
-                        );
-                
-                        this.mintButton.innerText = '*minting please wait*';
-                        this.mintButton.disabled = true;
-                
-                        const options = {
-                            value: ethers.utils.parseEther(
-                            `${this.selectedMintQuantity * this.NFTCostAmount}`
-                            ),
-                        };
-                        console.log(
-                            `Going to try enact a transaction to mint ${this.selectedMintQuantity} NFTs for a total added gas of ${this.selectedMintQuantity * this.NFTCostAmount}.`
-                        );
-                        let nftTxn = await connectedContract2.mint(
-                            String(this.selectedMintQuantity),
-                            options
-                        );
-                
-                        console.log('Mining...please wait.');
-                        await nftTxn.wait();
-                
-                        console.log(
-                            `Minted! TXN: https://polygonscan.com/tx/${nftTxn.hash} && see NFT: https://opensea.io/assets/matic/${this.CONTRACT_ADDRESS}/${tokenId.toNumber()}`
-                        );
-                        alert(
-                            `Minted! TXN: https://polygonscan.com/tx/${nftTxn.hash} && NFT: https://opensea.io/assets/matic/${this.CONTRACT_ADDRESS}/${tokenId.toNumber()}`
-                        );
-                
-                        this.mintButton.innerText = 'MINT MORE!';
-                        this.mintButton.disabled = false;
-                    } catch (error) {
-                        console.log(error);
-                        this.mintButton.innerText = '-MINT AGAIN-';
-                        this.mintButton.disabled = false;
-                    }
-                }
+                } /*else {
+                    console.log("Ethereum object doesn't exist!");
+                    this.mintButton.innerText = '-GET METAMASK-';
+                    //this.mintButton.disabled = false;
+                }*/
             } catch (error) {
-                console.log(error);
                 console.log("Ethereum object doesn't exist!");
-                this.mintButton.innerText = '-NO WEB3 FOUND-';
-                this.mintButton.disabled = false;
+                this.mintButton.innerText = '-GET METAMASK-';
+                //this.mintButton.disabled = false;
             }
         }
     }
