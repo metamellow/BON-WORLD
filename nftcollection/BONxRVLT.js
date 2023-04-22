@@ -133,8 +133,8 @@ class NFTminter {
                         this.mintButton.disabled = true;
                         console.log(`Checking token allowance`);
                         let tknAllwnc = await connectedContract1.allowance(
-                            signer,
-                            this.CONTRACT_ADDRESS
+                            string(signer),
+                            string(this.CONTRACT_ADDRESS)
                         );
                         let allowanceResult = tknAllwnc.toString().wait();
                         if(allowanceResult > 0){
