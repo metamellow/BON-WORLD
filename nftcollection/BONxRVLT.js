@@ -18,8 +18,8 @@ const TOKENPAYMENT_ABI = (
 class NFTminter {
     constructor() {
         this.CONTRACT_ADDRESS = '0x953916d65f03dc93265858c2793d52b9a6c8eb15'; // xxxxxxx This is a test contract xxxxxx
-        //this.TOKENPAYMENT_ADDRESS = '0xf0f9D895aCa5c8678f706FB8216fa22957685A13'; // public proxy for RVLT
-        this.TOKENPAYMENT_ADDRESS = '0xb12ca3dbf866da26b0f55a20a51fea8efd8592f9'; // base RVLT erc20 contract
+        this.TOKENPAYMENT_ADDRESS = '0xf0f9D895aCa5c8678f706FB8216fa22957685A13'; // public proxy for RVLT
+        //this.TOKENPAYMENT_ADDRESS = '0xb12ca3dbf866da26b0f55a20a51fea8efd8592f9'; // base RVLT erc20 contract
         this.NFTCostAmount = 0.001; // 1000000000000000
         this.currentAccount = '';
         this.selectedMintQuantity = 0;
