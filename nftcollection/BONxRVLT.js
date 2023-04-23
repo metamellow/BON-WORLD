@@ -25,7 +25,7 @@ const PUBLICTOKEN_ABI = (
 
 class NFTminter {
     constructor() {
-        this.CONTRACT_ADDRESS = '0x953916d65f03dc93265858c2793d52b9a6c8eb15'; // xxxxxxx This is a test contract xxxxxx
+        this.CONTRACT_ADDRESS = 'xxxxxx'; // xxxxxxx This is a test contract xxxxxx
         this.PUBLICTOKEN_ADDRESS = '0xf0f9D895aCa5c8678f706FB8216fa22957685A13'; // RVLY
         this.PROXYTOKEN_ADDRESS = '0xb12ca3dbf866da26b0f55a20a51fea8efd8592f9'; // RVLT
         this.NFTCostAmount = 0.001; // 1000000000000000
@@ -52,9 +52,9 @@ class NFTminter {
             const accounts = await ethereum.request({
                 method: 'eth_requestAccounts',
             });
-            console.log('Connected', accounts[0]);
             this.currentAccount = accounts[0]; 
-            this.connectedUsersAddress = `${accounts[0]}`; // NEWWW!
+            this.connectedUsersAddress = accounts[0]; // NEWWW!
+            console.log('Connected: ', this.connectedUsersAddress);
             this.connectButton.innerText = `${
                 this.currentAccount.substring(0, 6)}...${
                 this.currentAccount.substring((this.currentAccount.length-4), this.currentAccount.length)
@@ -86,11 +86,11 @@ class NFTminter {
                 // --- TOKEN CONTRACT ---
                 const connectedContract2 = new ethers.Contract(
                     this.PUBLICTOKEN_ADDRESS,
-                    PUBLICTOKEN_ABI.abi,
+                    PROXYTOKEN_ABI.abi,
                     signer
                 );
                 connectedContract2.on('Approval', (owner, spender, value) => {
-                    console.log(owner, spender, value.toNumber());
+                    console.log(owner, spender, value);
                     alert(`Congrats! Now you can mint!`);
                     this.mintButton.innerText = 'MINT!';
                     this.mintButton.disabled = false;
@@ -130,9 +130,9 @@ class NFTminter {
                         this.mintButton.disabled = true;
                         console.log(`Attempting allowance() call`);
                         let tknAllwnc = await connectedContract1.allowance(
-                            '0x4d28B3b1A14c90F859675e9c9bFc0852edDd1574',
-                            '0x953916d65f03dc93265858c2793d52b9a6c8eb15'
-                        ); // temporarily hard coded in--------------------------------------
+                            this.connectedUsersAddress,
+                            this.CONTRACT_ADDRESS
+                        );
                         console.log('Awaiting allowance() result');
                         await tknAllwnc;
                         console.log('Checking allowance() result');
@@ -226,12 +226,13 @@ class NFTminter {
     const accounts = await ethereum.request({ method: 'eth_accounts' });
 
     if (accounts.length !== 0) {
-      const account = accounts[0];
-      console.log('Found an authorized account:', account);
-      this.currentAccount = account; // NEW
-      this.connectButton.innerText = `${
+        const account = accounts[0];
+        this.currentAccount = account;
+        this.connectedUsersAddress = accounts[0]; // NEWWW!
+        console.log('Connected: ', this.connectedUsersAddress);
+        this.connectButton.innerText = `${
         this.currentAccount.substring(0, 6)}...${
-          this.currentAccount.substring((this.currentAccount.length-4), this.currentAccount.length)
+            this.currentAccount.substring((this.currentAccount.length-4), this.currentAccount.length)
       }`;
 
       // for user comes to our site and ALREADY had their wallet connected + authorized.

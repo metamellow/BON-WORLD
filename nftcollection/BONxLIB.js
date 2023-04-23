@@ -18,7 +18,7 @@ class NFTminter {
     this.connectButton = document.getElementById('connectButtonHTML');
     this.mintButton = document.getElementById('mintButtonHTML');
 
-    this.NFTCostAmount = 0.001; // 1000000000000000 //!!!!!!!!
+    this.NFTCostAmount = 21; // 21000000000000000000 //!!!!!!!!
   }
 
   

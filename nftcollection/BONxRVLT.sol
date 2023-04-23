@@ -16,7 +16,7 @@ contract BONxRVLT is ERC721, Ownable{
     uint256 private constant tokensReserved = 40;
     uint256 public constant maxMintAmount = 20;
     uint256 public totalSupply;
-    string public baseUri = "ipfs://xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx/";
+    string public baseUri = "ipfs://bafybeiclavwr2b54yjoyxcswrr5wumf6q5hmzayerrguvzlkltlrbfvfqe/";
     string public baseExtension = ".json";
     bool public isSaleActive;
     
