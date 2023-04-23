@@ -7,7 +7,7 @@ const CONTRACT_ABI = (
 	,}
 );
 
-const TOKENPAYMENT_ABI = (
+const PROXYTOKEN_ABI = (
 	{
         "contractName": "RVLT",
         "abi":
@@ -15,11 +15,19 @@ const TOKENPAYMENT_ABI = (
 	,}
 );
 
+const PUBLICTOKEN_ABI = (
+	{
+        "contractName": "RVLT",
+        "abi":
+            [{"inputs":[{"internalType":"address","name":"_logic","type":"address"},{"internalType":"bytes","name":"_data","type":"bytes"}],"stateMutability":"payable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"previousAdmin","type":"address"},{"indexed":false,"internalType":"address","name":"newAdmin","type":"address"}],"name":"AdminChanged","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"beacon","type":"address"}],"name":"BeaconUpgraded","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"implementation","type":"address"}],"name":"Upgraded","type":"event"},{"stateMutability":"payable","type":"fallback"},{"stateMutability":"payable","type":"receive"}]
+        ,}
+);
+
 class NFTminter {
     constructor() {
         this.CONTRACT_ADDRESS = '0x953916d65f03dc93265858c2793d52b9a6c8eb15'; // xxxxxxx This is a test contract xxxxxx
-        this.TOKENPAYMENT_ADDRESS = '0xf0f9D895aCa5c8678f706FB8216fa22957685A13'; // public proxy for RVLT
-        //this.TOKENPAYMENT_ADDRESS = '0xb12ca3dbf866da26b0f55a20a51fea8efd8592f9'; // base RVLT erc20 contract
+        this.PUBLICTOKEN_ADDRESS = '0xf0f9D895aCa5c8678f706FB8216fa22957685A13'; // RVLY
+        this.PROXYTOKEN_ADDRESS = '0xb12ca3dbf866da26b0f55a20a51fea8efd8592f9'; // RVLT
         this.NFTCostAmount = 0.001; // 1000000000000000
         this.currentAccount = '';
         this.selectedMintQuantity = 0;
@@ -63,6 +71,7 @@ class NFTminter {
             if (ethereum) {
                 const provider = new ethers.providers.Web3Provider(ethereum);
                 const signer = provider.getSigner();
+                // --- NFT CONTRACT ---
                 const connectedContract1 = new ethers.Contract(
                     this.CONTRACT_ADDRESS,
                     CONTRACT_ABI.abi,
@@ -70,13 +79,24 @@ class NFTminter {
                 );
                 connectedContract1.on('NewNFTMinted', (from, tokenId) => {
                     console.log(from, tokenId.toNumber());
-                    alert(
-                        `Congrats! You've minted your NFT and sent it to your wallet! 
-                        It should take less than 10 min to show up on OpenSea.`
-                    );
+                    alert(`Congrats! You've minted your NFT and sent it to your wallet!`);
                     }
                 );
-                console.log('Setup event listener!');
+                console.log('NFT event listener!');
+                // --- TOKEN CONTRACT ---
+                const connectedContract2 = new ethers.Contract(
+                    this.PUBLICTOKEN_ADDRESS,
+                    PUBLICTOKEN_ABI.abi,
+                    signer
+                );
+                connectedContract2.on('Approval', (owner, spender, value) => {
+                    console.log(owner, spender, value.toNumber());
+                    alert(`Congrats! Now you can mint!`);
+                    this.mintButton.innerText = 'MINT!';
+                    this.mintButton.disabled = false;
+                    }
+                );
+                console.log('Approve event listener!');
             } else {
                 console.log("Ethereum object doesn't exist!");
             }
@@ -102,20 +122,22 @@ class NFTminter {
                     try{
                         // --- ALLOWANCE STUFF ---
                         const connectedContract1 = new ethers.Contract(
-                            this.TOKENPAYMENT_ADDRESS,
-                            TOKENPAYMENT_ABI.abi,
+                            this.PUBLICTOKEN_ADDRESS,
+                            PROXYTOKEN_ABI.abi,
                             signer
                         );
                         this.mintButton.innerText = '*please wait*';
                         this.mintButton.disabled = true;
-                        console.log(`Checking token allowance`);
+                        console.log(`Attempting allowance() call`);
                         let tknAllwnc = await connectedContract1.allowance(
-                            this.connectedUsersAddress,
-                            this.CONTRACT_ADDRESS
-                        );
-                        await tknAllwnc.wait();
+                            '0x4d28B3b1A14c90F859675e9c9bFc0852edDd1574',
+                            '0x953916d65f03dc93265858c2793d52b9a6c8eb15'
+                        ); // temporarily hard coded in--------------------------------------
+                        console.log('Awaiting allowance() result');
+                        await tknAllwnc;
+                        console.log('Checking allowance() result');
                         if(tknAllwnc > 0){
-                            /*
+                            console.log('Allowance accepted; starting mint');
                             try {
                                 // --- MINT STUFF ---
                                 const connectedContract2 = new ethers.Contract(
@@ -139,52 +161,45 @@ class NFTminter {
                                 );
                                 console.log('Mining...please wait.');
                                 await nftTxn.wait();
-                                console.log(
-                                    `Minted! TXN: https://polygonscan.com/tx/${nftTxn.hash} && see NFT: https://opensea.io/assets/matic/${this.CONTRACT_ADDRESS}/${tokenId.toNumber()}`
-                                );
-                                alert(
-                                    `Minted! TXN: https://polygonscan.com/tx/${nftTxn.hash} && NFT: https://opensea.io/assets/matic/${this.CONTRACT_ADDRESS}/${tokenId.toNumber()}`
-                                );
+                                // Emit event should trigger the listener on success
                                 this.mintButton.innerText = 'MINT MORE!';
                                 this.mintButton.disabled = false;
                             } catch (error) {
                                 console.log(error);
-                                this.mintButton.innerText = '-TRY MINT AGAIN-';
+                                this.mintButton.innerText = '[-MINT AGAIN-]';
                                 this.mintButton.disabled = false;
                             }
-                            */
+                            
                         } else {
-                            /*
+                            console.log('Allowance failed; starting approval');
                             try{
                                 // --- APPROVAL STUFF ---
                                 const connectedContract1 = new ethers.Contract(
-                                    this.TOKENPAYMENT_ADDRESS,
-                                    TOKENPAYMENT_ABI.abi,
+                                    this.PUBLICTOKEN_ADDRESS,
+                                    PROXYTOKEN_ABI.abi,
                                     signer
                                 );
                                 this.mintButton.innerText = '*approving*';
                                 this.mintButton.disabled = true;
-                                console.log(`Trying to approve token spending`);
+                                console.log(`Attemting approve() call`);
                                 let tknApprv = await connectedContract1.approve(
                                     this.CONTRACT_ADDRESS,
                                     '115792089237316195423570985008687907853269984665640564039457584007913129639935'
                                 );
-                                console.log('Approving...please wait.');
+                                console.log('Awaiting approve() results');
                                 await tknApprv.wait();
-                                console.log(`Approved!`);
-                                alert(
-                                    `Approved! You can now mint NFTs!`
-                                );
+                                // Emit event should trigger the listener on success
+                                // that trigger should relabel mint button and reenable
                             } catch (error) {
                                 console.log(error);
-                                this.mintButton.innerText = '-TRY APPROVAL AGAIN-';
+                                this.mintButton.innerText = '[-APPROVE AGAIN-]';
                                 this.mintButton.disabled = false;
                             }
-                            */
+                            
                         }
                     } catch (error) {
                     console.log(error);
-                    console.log("Major error in allowance check -- contact administrator");
+                    console.log("Major error -- contact administrator");
                     this.mintButton.innerText = '-ERROR-';
                     }
                 } else {
