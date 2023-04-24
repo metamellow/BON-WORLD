@@ -25,7 +25,7 @@ const PUBLICTOKEN_ABI = (
 
 class NFTminter {
     constructor() {
-        this.CONTRACT_ADDRESS = 'xxxxxx'; // xxxxxxx This is a test contract xxxxxx
+        this.CONTRACT_ADDRESS = '0xa5de9da193f86895aec0c0521ee93e6c5b44a67c';
         this.PUBLICTOKEN_ADDRESS = '0xf0f9D895aCa5c8678f706FB8216fa22957685A13'; // RVLY
         this.PROXYTOKEN_ADDRESS = '0xb12ca3dbf866da26b0f55a20a51fea8efd8592f9'; // RVLT
         this.NFTCostAmount = 0.001; // 1000000000000000
