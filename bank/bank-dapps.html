@@ -1,0 +1,263 @@
+<!--
+NOTES:
+- bc I dont know the final location, make all code in a BLOCK that can be easily moved
+- make notes on ALL things that need to be edited repeatedly; or put in vars
+
+-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bank Of Nowhere $BON</title>
+        <meta name="title" content="Bank Of Nowhere $BON" />
+        <meta name="description" content="// DONT TRUST THE BANKERS -- TRUST THE TECHNOLOGY //" />
+
+        <!-- Facebook -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://bankofnowhere.world" />
+        <meta property="og:title" content="Bank Of Nowhere $BON" />
+        <meta property="og:description" content="// DONT TRUST THE BANKERS -- TRUST THE TECHNOLOGY //" />
+        <meta property="og:image" content="images/bonlib.png" />
+
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://bankofnowhere.world" />
+        <meta property="twitter:title" content="Bank Of Nowhere $BON" />
+        <meta property="twitter:description" content="// DONT TRUST THE BANKERS -- TRUST THE TECHNOLOGY //" />
+        <meta property="twitter:image" content="https://raw.githubusercontent.com/s0crates-eth/gm/main/images/1500x500.jpg" />
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="../styles/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+      integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
+      crossorigin="anonymous"
+    />
+    <link rel="icon" href="../images/fav.png" />
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <header>
+      <div class="logo-container">
+        <img src="../images/logoGrande.png" alt="Logo" class="logo-grande" />
+        <img src="../images/logoMini.png" alt="Logo" class="logo-pequeno" />
+      </div>
+      <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="../index.html" class="button2">home</a></li>
+          <li><a href="../whitepaper.html" class="button2">whitepaper</a></li>
+          <li><a href="../charts.html" class="button2">charts</a></li>
+          <button class="button69" onclick='window.location.href = "../dapp.html"'>
+            DAPP
+          </button>
+        </ul>
+      </nav>
+    </header>
+    <!-- NAVBAR -->
+
+    <div class="break-buffer">
+
+    </div>
+    <div class="wrapper">
+      <button type="button" class="button3">// CROWDFUND DAPP //</button>
+    </div>
+
+<!-- DAPP MENU START -->
+    <div class="dapp-menu" style>
+      <select
+      id="nftCollectionDropdownHTML"
+      onchange="NFTminter_.onSelectNFTCollection()"
+      >
+        <option value="">select the project</option>
+        <option value="BONNFT1">BON NFT Collection #1</option>
+        <option value="BONxCULT1">Earthquake Stone Soup</option>
+        <option value="BONxRVLT" selected>Modulusverse</option>
+        <option value="BONxLIB">Liberty Uncensored</option>
+      </select>
+      <a href="../crowdfunding/rules.html"><button>INVESTMENT RULES</button></a>
+      <a href="../crowdfunding/forms.html"><button>REGISTER PROJECT</button></a>
+    </div>
+
+        <!-- DAPP MENU END -->
+        <br />
+       
+        
+        <!-- <div>
+          <a href="stake.html"><button>NFT STAKING</button></a>
+        </div> -->
+   
+
+    <div id="dapp-div-image">
+      <img src="https://raw.githubusercontent.com/s0crates-eth/BON-WORLD/main/nftcollection/BONxRVLT.png"/><!-- !!!!!!!!!!! -->
+
+      <div>
+        <h1 style="color: #37bfa7">
+          Modulusverse
+          <br />
+        </h1>
+        <h4 class="word-wrap">
+PROJECT NAME:  Modulusverse<br>
+PROJECT TYPE: Virtual<br>
+PROJECT WALLET: 0xEaCFaBA8dF608f88ae96bcCE1dA4554F66eBf0Cb<br>
+</h4><!-- !!!!!!!!!!! -->
+<h2>PROJECT DESCRIPTION:</h2><br>
+ 
+<p>Modulusverse is an innovative project that seeks to provide a unique experience to its audience. By combining the worlds of comics, animation, and blockchain, Modulusverse creates a new form of storytelling that engages the imagination of viewers and investors. The project is not only designed to entertain but also to inform the community about the latest developments in the Modulus ecosystem.<br><br>
+
+  The creation of a universe of characters, each representing a different project, is a brilliant strategy to showcase the diversity of the Modulus ecosystem. The team behind the project is composed of experienced artists, programmers, and storytellers who are committed to bringing this universe to life. The NFTs, being offered for sale, represent not only a unique piece of digital art but also a ticket 
+  to access the first three comic books and be part of the Modulusverse community.<br><br>
+  
+  Modulusverse is an excellent example of the creative potential of blockchain technology. By leveraging the advantages of NFTs, the project allows investors to have a direct stake in the development of the Modulus ecosystem. The Modulusverse team has a long-term vision for the project, and with the support of the community, they aim to create a universe that will continue to grow and evolve for years to come.<br><br>
+  
+  Overall, Modulusverse is a fascinating project that combines blockchain technology with storytelling to create a new type of entertainment. It represents an excellent opportunity for investors who are looking to participate in the growth of the Modulus ecosystem while enjoying an immersive experience through comic books and animations.<br><br>
+  <br><br>
+  TWITTER LINK: <a href="https://twitter.com/modulusverse" target="_blank"> Modulusverse</a>
+</p>
+        <br />
+        <br />
+
+        <div align="center">
+          <h2 style="color: #37bfa7;"><span id="nftMintCost"></span>COST: 186,900,000 RVLT (~$10 USD)</h2>
+        </div><!-- !!!!!!!!!!! -->
+
+        
+        <div class="dapp-menu-mint">
+          <button
+          id="connectButtonHTML"
+          class="custom-button"
+          style="height: 45px; width: 300px; text-align: center"
+          onclick="NFTminter_.connectWallet();"
+          >
+            CONNECT WALLET
+          </button>
+          
+          <select
+            id="mintQuantityDropdownHTML"
+            onchange="NFTminter_.onSelectMintQuantity()"
+            required
+          >
+            <option value="" selected>Quantity..</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+          </select>
+
+        <button
+          id="mintButtonHTML"
+          class="custom-button"
+          style="height: 45px; width: 300px; text-align: center"
+          onclick="NFTminter_.askContractToMintNft();"
+        >
+          MINT
+        </button>
+        </div>
+        <br />
+
+        
+
+        <h5>
+          <ol>
+            <u style="color: tomato; line-height: 30px;">Troubleshooting:</u>
+            <li>Is the correct wallet address connected?</li>
+            <li>Do you have enough tokens in that wallet?</li>
+            <li>Are you connected to the Polygon network?</li>
+            <li>Are you already at the max wallet limit?</li>
+          </ol>
+        </h5>
+      
+      
+
+      </div>
+    </div>
+
+    <footer>
+      <div id="first-row">
+        <div>
+          <img src="../images/logoMini.png" style="height: 60px" alt="Logo" />
+        </div>
+
+        <div class="imagens-footer">
+          <h2>trade on</h2>
+          <div>
+            <a
+              href="https://quickswap.exchange/#/swap?swapIndex=0&currency0=ETH&currency1=0x47E53f0Ddf71210F2C45dc832732aA188F78AA4f"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="https://raw.githubusercontent.com/s0crates-eth/BON-WORLD/main/images/quicklogo%201.png"
+                alt="Logo"
+                style="height: 40px"
+              />
+            </a>
+            <a
+              href="https://www.dextools.io/app/en/polygon/pair-explorer/0x26432f7cf51e644c0adcaf3574216ee1c0a9af6d"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="https://raw.githubusercontent.com/s0crates-eth/BON-WORLD/main/images/dextools%201.png"
+                alt="Logo"
+                style="height: 40px"
+              />
+            </a>
+          </div>
+        </div>
+        <div class="imagens-footer">
+          <h2>join us</h2>
+          <div>
+            <a
+              href="https://twitter.com/BankOfNowhere"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="https://raw.githubusercontent.com/s0crates-eth/BON-WORLD/main/images/twitter.png" alt="Logo" style="height: 34px" />
+            </a>
+            <a
+              href="https://t.me/BankOfNowhereChat"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="https://raw.githubusercontent.com/s0crates-eth/BON-WORLD/main/images/Telegram.png" alt="Logo" style="height: 45px" />
+            </a>
+
+            <a
+              href="https://snapshot.org/#/bankofnowhere.eth"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="https://raw.githubusercontent.com/s0crates-eth/BON-WORLD/main/images/snapshot.png" alt="Logo" style="height: 40px" />
+            </a>
+          </div>
+        </div>
+      </div>
+      <div id="copyright">Copyright &copy; Bank of Nowhere</div>
+
+      <script src="../scripts/menu.js"></script>
+      <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+      <script src="../nftcollection/BONxRVLT.js"></script><!-- !!!!!!!!!!! -->
+    </footer>
+  </body>
+</html>
