@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+
+    <body>
+        
+        <div id="dapp_interface_1">
+            <button
+                id="HTML_connect_button_1"
+                class="custom_button_1"
+                style="height: 30px; width: 250px; text-align: center"
+                onclick="NFTminter_.connectWallet();"
+            >
+                CONNECT WALLET
+            </button>
+            
+            <br/>
+            <br/>
+            
+            <select
+                id="HTML_quantity_dropdown_1"
+                class="custom_dropdown_1"
+                style="height: 30px; width: 250px; text-align: center"
+                onchange="NFTminter_.onSelectMintQuantity()"
+                required
+            >
+                <option value="" selected>Quantity..</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+        </div>
+        
+        <footer>
+            <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+            <script src="../web/bank-dapps.js"></script>
+        </footer>
+
+    </body>
+</html>
