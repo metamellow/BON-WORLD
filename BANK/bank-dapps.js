@@ -65,7 +65,7 @@ class DappInterface {
                 const provider = new ethers.providers.Web3Provider(ethereum);
                 const signer = provider.getSigner();
 
-                // --- Contract 1 ---
+                // --- Contract 1 --- (usually the dapp)
                     const connectedContract1 = new ethers.Contract(
                         this.contractAddress1,
                         CONTRACT1_ABI.abi,
@@ -77,11 +77,13 @@ class DappInterface {
                     connectedContract1.on('eventNamexxx', (xxx, yyy) => {
                         console.log(xxx, yyy);
                         alert(`xxxyyy`);
+                        this.JSfunctionButton1.innerText = 'SEND FUNCTIONxxx AGAIN';
+                        this.JSfunctionButton1.disabled = false;
                         }
                     );
                     console.log('Contract 1A listener success');
 
-                // --- Contract 2 ---
+                // --- Contract 2 --- (usually erc20 token)
                     const connectedContract2 = new ethers.Contract(
                         this.contractAddress2,
                         CONTRACT2_ABI.abi,
@@ -93,6 +95,8 @@ class DappInterface {
                     connectedContract2.on('eventNamexxx', (xxx, yyy) => {
                         console.log(xxx, yyy);
                         alert(`xxxyyy`);
+                        this.JSfunctionButton1.innerText = 'CONTINUE WITH FUNCTIONxxx';
+                        this.JSfunctionButton1.disabled = false;
                         }
                     );
                     console.log('Contract 2A listener success');
@@ -115,6 +119,7 @@ class DappInterface {
         if(this.selectedQuantity1 < 1){alert(`Please select a quantity from the dropdown list.`);}
         if(this.selectedQuantity1 >= 1){
         // ^^^^
+
         try { const { ethereum } = window;
             if (ethereum) {
                 const provider = new ethers.providers.Web3Provider(ethereum);
@@ -145,6 +150,8 @@ class DappInterface {
                         console.log('Allowance accepted!');
                         try {
                             // Contract 1 function
+                            this.mintButton.innerText = '*sending txn*';
+                            
                             console.log(`Connecting contract1...`);
                             const connectedContract1 = new ethers.Contract(
                                 this.contractAddress1,
@@ -152,113 +159,146 @@ class DappInterface {
                                 signer
                             );
 
-                            console.log(`Attempting function - Q:${this.selectedQuantity1}, G:${this.txnCost}`);
-                            
-                            /////////////////////////////////////////////////////////////////////////////////////////////////////////
-                            
+                            console.log(`Attempting function call - Q:${this.selectedQuantity1}, G:${this.txnCost}`);
                             const options = {
                                 value: ethers.utils.parseEther(
                                 `${this.txnCost}`
                                 ),
                             };
-
-                            let nftTxn = await connectedContract2.mint(
+                            let nftTxn = await connectedContract1.functionXxx(
                                 String(this.selectedQuantity1),
                                 options
                             );
-                            console.log('Mining...please wait.');
+
+                            console.log('Awaiting function results...');
                             await nftTxn.wait();
                             // Emit event should trigger the listener on success
-                            this.mintButton.innerText = 'MINT MORE!';
-                            this.mintButton.disabled = false;
+
                         } catch (error) {
                             console.log(error);
-                            this.mintButton.innerText = '[-MINT AGAIN-]';
+                            console.log('Allowance success, function failed.');
+                            this.mintButton.innerText = '[TRY-TXN-AGAIN]';
                             this.mintButton.disabled = false;
                         }
                         
                     } else {
                         console.log('Allowance failed; starting approval');
+
                         try{
                             // --- APPROVAL STUFF ---
-                            const connectedContract1 = new ethers.Contract(
-                                this.PUBLICTOKEN_ADDRESS,
-                                PROXYTOKEN_ABI.abi,
+                            this.mintButton.innerText = '*approving wallet*';
+                            
+                            console.log(`Connecting contract2...`);
+                            const connectedContract2 = new ethers.Contract(
+                                this.contractAddress2,
+                                CONTRACT2_ABI.abi,
                                 signer
                             );
-                            this.mintButton.innerText = '*approving*';
-                            this.mintButton.disabled = true;
-                            console.log(`Attemting approve() call`);
-                            let tknApprv = await connectedContract1.approve(
-                                this.CONTRACT_ADDRESS,
+
+                            console.log(`Attempting approve call...`);
+                            let tknApprv = await connectedContract2.approve(
+                                this.contractAddress1,
                                 '115792089237316195423570985008687907853269984665640564039457584007913129639935'
+                                // ^^ max possible token value
                             );
-                            console.log('Awaiting approve() results');
+
+                            console.log('Awaiting approve results...');
                             await tknApprv.wait();
                             // Emit event should trigger the listener on success
-                            // that trigger should relabel mint button and reenable
+
                         } catch (error) {
                             console.log(error);
-                            this.mintButton.innerText = '[-APPROVE AGAIN-]';
+                            console.log('Allowance success, function failed.');
+                            this.mintButton.innerText = '[TRY-APPROVE-AGAIN]';
                             this.mintButton.disabled = false;
-                        }
-                        
+                        }   
                     }
                 } catch (error) {
                 console.log(error);
-                console.log("Major error -- contact administrator");
-                this.mintButton.innerText = '-ERROR-';
+                console.log("ERROR - CONTACT ADMIN");
+                this.mintButton.innerText = '[-ERROR-]';
                 }
             } else {
                 console.log("Ethereum object doesn't exist!");
-                this.mintButton.innerText = '-GET METAMASK-';
+                this.mintButton.innerText = '[GET-METAMASK]';
             }
         } catch (error) {
             console.log("Ethereum object doesn't exist!");
-            this.mintButton.innerText = '-GET METAMASK-';
+            this.mintButton.innerText = '[GET-METAMASK]';
         }
         } // << quantity tag ender
     }
 
-  async checkIfWalletIsConnected() {
-    const { ethereum } = window;
+    // Functions that without approval
+    async function_Xxx() {
+        // vvvv these tags can be commented out if not needed 
+        if(this.selectedQuantity1 < 1){alert(`Please select a quantity from the dropdown list.`);}
+        if(this.selectedQuantity1 >= 1){
+        // ^^^^
 
-    if (!ethereum) {
-      console.log('Make sure you have metamask!');
-      return;
-    } else {
-      console.log('We have the ethereum object', ethereum);
+        try { const { ethereum } = window;
+            if (ethereum) {
+                const provider = new ethers.providers.Web3Provider(ethereum);
+                const signer = provider.getSigner();
+                try{
+                    // Contract 1 function
+                    this.mintButton.innerText = '*sending txn*';
+                    
+                    console.log(`Connecting contract1...`);
+                    const connectedContract1 = new ethers.Contract(
+                        this.contractAddress1,
+                        CONTRACT1_ABI.abi,
+                        signer
+                    );
+
+                    console.log(`Attempting function call - Q:${this.selectedQuantity1}, G:${this.txnCost}`);
+                    const options = {
+                        value: ethers.utils.parseEther(
+                        `${this.txnCost}`
+                        ),
+                    };
+                    let nftTxn = await connectedContract1.functionXxx(
+                        String(this.selectedQuantity1),
+                        options
+                    );
+
+                    console.log('Awaiting function results...');
+                    await nftTxn.wait();
+                    // Emit event should trigger the listener on success
+
+                } catch (error) {
+                    console.log(error);
+                    console.log('Allowance success, function failed.');
+                    this.mintButton.innerText = '[TRY-TXN-AGAIN]';
+                    this.mintButton.disabled = false;
+                }
+            } else {
+                console.log("Ethereum object doesn't exist!");
+                this.mintButton.innerText = '[GET-METAMASK]';
+            }
+        } catch (error) {
+            console.log("Ethereum object doesn't exist!");
+            this.mintButton.innerText = '[GET-METAMASK]';
+        }
+
+        } // << quantity tag ender
     }
 
-    const accounts = await ethereum.request({ method: 'eth_accounts' });
+    async dappInitializeProcess() {
+        try{
+            await this.connectWallet(); // new needs to be tested --------------------------------------------------------
 
-    if (accounts.length !== 0) {
-        const account = accounts[0];
-        this.currentAccount = account;
-        this.connectedUsersAddress = accounts[0]; // NEWWW!
-        console.log('Connected: ', this.connectedUsersAddress);
-        this.connectButton.innerText = `${
-        this.currentAccount.substring(0, 6)}...${
-            this.currentAccount.substring((this.currentAccount.length-4), this.currentAccount.length)
-      }`;
+            let chainId = await ethereum.request({ method: 'eth_chainId' });
+            console.log('Connected to chain ' + chainId);
 
-      // for user comes to our site and ALREADY had their wallet connected + authorized.
-      this.setupEventListener();
-
-    } else {
-      console.log('No authorized account found');
+            const polygonChainId = '0x89'; // 137 in hex
+            if (chainId !== polygonChainId) {
+                alert('Please use POLYGON MAINNET! Other networks will NOT WORK!');
+            }
+        } catch (error) {
+            console.log(error); 
+        }
     }
-
-    let chainId = await ethereum.request({ method: 'eth_chainId' });
-    console.log('Connected to chain ' + chainId);
-
-    const polygonChainId = '0x89'; // 137 in hex
-    if (chainId !== polygonChainId) {
-      alert(
-        'You are NOT connected to the POLYGON MAINNET! If you mint on any other network it will NOT WORK!'
-      );
-    }
-  }
 
   // basic html to js fuctions ------
 
