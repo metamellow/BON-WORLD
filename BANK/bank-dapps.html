@@ -25,7 +25,7 @@
                 style="height: 30px; width: 250px; text-align: center"
                 onclick="DappInterface_.approveThen_Xxx();"
             >
-                APPROVE_THEN_FUNCTION_XXX
+                approveThenFunction
             </button>
 
             <br/>
@@ -37,7 +37,7 @@
             style="height: 30px; width: 250px; text-align: center"
             onclick="DappInterface_.function1_Xxx();"
             >
-                FUNCTION_XXX
+                nonallowanceFunction
             </button>
 
             <br/>
@@ -47,7 +47,7 @@
                 id="HTML_quantity_dropdown_1"
                 class="custom_dropdown_1"
                 style="height: 30px; width: 250px; text-align: center"
-                onchange="NFTminter_.onSelectMintQuantity()"
+                onchange="DappInterface_.onSelectQuantity()"
                 required
             >
                 <option value="" selected>Quantity..</option>
@@ -59,7 +59,7 @@
         
         <footer>
             <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
-            <script src="../web/bank-dapps.js"></script>
+            <script src="../BANK/bank-dapps.js" type="application/javascript"></script>
         </footer>
 
     </body>
