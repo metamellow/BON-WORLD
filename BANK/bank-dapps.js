@@ -2,7 +2,7 @@
 
 
 // -------- time to make a burnBON smartcontract and then deploy it and use it in here as a reusable template -----
-
+// more emits more fun
 
 
 
