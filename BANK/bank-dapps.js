@@ -191,7 +191,7 @@ class DappInterface {
                                 value: ethers.utils.parseEther(
                                 `${this.txnCost}`
                                 ),
-                            };
+                            }; // options may be 0 depending on the smart contract setup, payable or not
                             let nftTxn = await connectedContract1.functionXxx(
                                 String(this.selectedQuantity1),
                                 options
