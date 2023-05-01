@@ -1,14 +1,3 @@
-
-
-
-// -------- time to make a burnBON smartcontract and then deploy it and use it in here as a reusable template -----
-// more emits more fun
-// perhaps add a 'return' into each 'catch' and error points
-
-
-
-
-
 // Import ABI contract data
 const CONTRACT1_ABI = (
 	{
