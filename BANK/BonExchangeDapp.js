@@ -38,13 +38,15 @@ class DappInterface {
         this.txnCost = 0.0001; // converted to '100000000000000'
         this.currentAccount = ''; // loaded on connectWallet
         this.selectedQuantity1 = 0; // set via the HTML dropdown
+        this.selectedInput1 = 0; // set via the HTML input
 
 
         // All HTML Elements
         this.JSconnectButton1 = document.getElementById('HTML_connect_button'); //connectWallet
         this.JSfunctionButton1 = document.getElementById('HTML_function_button_1'); // approveThenFunction
-        this.JSfunctionButton2 = document.getElementById('HTML_function_button_2'); // nonallowanceFunction
+        this.JSfunctionButton2 = document.getElementById('HTML_function_button_2'); // checkExchangeBANKBalance()
         this.JSquantityDropdown1 = document.getElementById('HTML_quantity_dropdown_1');
+        this.JSquantityInput1 = document.getElementById('HTML_quantity_input_1');
     }
 
     // --- SETUP PROCESSES --
@@ -103,13 +105,14 @@ class DappInterface {
                     console.log('Contract 1 connected to listener');
 
                     // Event listener 1A
-                    connectedContract1.on('eventNamexxx', (xxx, yyy) => {
-                        console.log(xxx, yyy);
-                        alert(`xxxyyy`);
-                        this.JSfunctionButton1.innerText = 'SEND FUNCTIONxxx AGAIN';
-                        this.JSfunctionButton1.disabled = false;
+                    connectedContract1.on('MigrateToBANK', (user, amountExchanged, newBankBalance) => {
+                        console.log(user, amountExchanged.toNumber(), newBankBalance.toNumber());
+                        alert(`BON<>BANK Exchange Success - amount exchanged: ${this.amountExchanged}, new BANK bal:${this.newBankBalance}`);
+                        //this.JSfunctionButton1.innerText = 'SEND FUNCTIONxxx AGAIN';
+                        //this.JSfunctionButton1.disabled = false;
                         }
                     );
+
                     console.log('Contract 1A listener success');
 
                 // --- Contract 2 --- (usually erc20 token)
@@ -121,14 +124,32 @@ class DappInterface {
                     console.log('Contract 2 connected to listener');
                     
                     // Event listener 2A
-                    connectedContract2.on('eventNamexxx', (xxx, yyy) => {
-                        console.log(xxx, yyy);
-                        alert(`xxxyyy`);
-                        this.JSfunctionButton1.innerText = 'CONTINUE WITH FUNCTIONxxx';
-                        this.JSfunctionButton1.disabled = false;
+                    connectedContract2.on('Approval', (owner, spender, value) => {
+                        console.log(owner, spender, value);
+                        alert(`BANK approved! Please continue...`);
+                        //this.JSfunctionButton1.innerText = 'CONTINUE';
+                        //this.JSfunctionButton1.disabled = false;
                         }
                     );
                     console.log('Contract 2A listener success');
+
+                // --- Contract 3 --- (usually erc20 token)
+                    const connectedContract3 = new ethers.Contract(
+                        this.contractAddress3,
+                        CONTRACT3_ABI.abi,
+                        signer
+                    );
+                    console.log('Contract 3 connected to listener');
+                    
+                    // Event listener 3A
+                    connectedContract3.on('Approval', (owner, spender, value) => {
+                        console.log(owner, spender, value);
+                        alert(`BON approved! Please continue...`);
+                        //this.JSfunctionButton1.innerText = 'CONTINUE WITH FUNCTIONxxx';
+                        //this.JSfunctionButton1.disabled = false;
+                        }
+                    );
+                    console.log('Contract 3A listener success');
 
             } else {
                 console.log("Ethereum object doesn't exist!");
@@ -142,6 +163,8 @@ class DappInterface {
 
     // --- CONTRACT FUNCTIONS ---
     
+
+    /*
     // Functions that require erc20 approve() first
     async approveThen_Xxx() {
         // vvvv these tags can be commented out if not needed 
@@ -258,12 +281,37 @@ class DappInterface {
         } // << quantity tag ender
     }
 
+    */
+
+
+
+    // ^^^^^^^^^^^^^^^^^^ here
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // Functions that without approval
-    async function_Xxx() {
+    async checkExchangeBANKBalance() {
+        /*
         // vvvv these tags can be commented out if not needed 
-        if(this.selectedQuantity1 < 1){alert(`Please select a quantity from the dropdown list.`);}
-        if(this.selectedQuantity1 >= 1){
+        if(this.selectedInput1 < 1){alert(`Please enter the input amount`);}
+        if(this.selectedInput1 >= 1){
         // ^^^^
+        */
 
         try { const { ethereum } = window;
             if (ethereum) {
@@ -271,33 +319,47 @@ class DappInterface {
                 const signer = provider.getSigner();
                 try{
                     // Contract 1 function
-                    this.mintButton.innerText = '*sending txn*';
+                    this.JSfunctionButton2.disabled = true;
+                    this.JSfunctionButton2.innerText = '*sending txn*';
                     
-                    console.log(`Connecting contract1...`);
-                    const connectedContract1 = new ethers.Contract(
-                        this.contractAddress1,
-                        CONTRACT1_ABI.abi,
+                    console.log(`Connecting contract2...`);
+                    const connectedContract2 = new ethers.Contract(
+                        this.contractAddress2,
+                        CONTRACT2_ABI.abi,
                         signer
                     );
 
-                    console.log(`Attempting function call - Q:${this.selectedQuantity1}, G:${this.txnCost}`);
+                    console.log(`Attempting balanceOf() call..`);
                     const options = {
                         value: ethers.utils.parseEther(
-                        `${this.txnCost}`
+                        /*`${this.txnCost}`*/ `0`
                         ),
                     };
-                    let nftTxn = await connectedContract1.functionXxx(
-                        String(this.selectedQuantity1),
+                    let balOf = await connectedContract2.balanceOf(
+                        String(this.contractAddress1),
                         options
                     );
 
                     console.log('Awaiting function results...');
-                    await nftTxn.wait();
-                    // Emit event should trigger the listener on success
+                    await balOf;
+                    
+                    console.log("Analzying results...");
+                    if (balOf >= 1){
+                        alert(`The BON<>BANK exchange currently holds: ${balOf}`);
+                        console.log(`The BON<>BANK exchange currently holds: ${balOf}`)
+                        this.JSfunctionButton2.disabled = false;
+                        this.JSfunctionButton2.innerText = '[CHECK-EXCHANGE-POOL]';
+                    ;
+                    } else {
+                        alert(`The BON<>BANK exchange is CLOSED.`);
+                        console.log(`The BON<>BANK exchange is CLOSED.`);
+                        this.JSfunctionButton2.disabled = false;
+                        this.JSfunctionButton2.innerText = '[CHECK-EXCHANGE-POOL]';
+                    }
 
                 } catch (error) {
                     console.log(error);
-                    console.log('Allowance success, function failed.');
+                    console.log('function call failed');
                     this.mintButton.innerText = '[TRY-TXN-AGAIN]';
                     this.mintButton.disabled = false;
                 }
@@ -309,13 +371,14 @@ class DappInterface {
             console.log("Ethereum object doesn't exist!");
             this.mintButton.innerText = '[GET-METAMASK]';
         }
-
+        /*
         } // << quantity tag ender
+        */
     }
 
     async dappInitializeProcess() {
         try{
-            await this.connectWallet(); // new needs to be tested --------------------------------------------------------
+            await this.connectWallet();
 
             let chainId = await ethereum.request({ method: 'eth_chainId' });
             if(chainId !== this.dappChain){
@@ -397,9 +460,14 @@ class DappInterface {
 
   // basic html to js fuctions ------
 
-  onSelectQuantity() {
+  onSelectQuantity1() {
     this.selectedQuantity1 = this.JSquantityDropdown1.value;
-    console.log(this.selectedQuantity1);
+    console.log(`New dropdown: ${this.selectedQuantity1}`);
+  }
+
+  onSelectInput1() {
+    this.selectedInput1 = this.JSquantityInput1.value;
+    console.log(`New input: ${this.selectedInput1}`);
   }
 
   /*
