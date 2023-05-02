@@ -166,6 +166,8 @@ class DappInterface {
 
     // make the approveThen a modular chunk that autoplays the intended function on completion, maybe by putting the func into a var and then awaitingg
 
+// perhaps make the allowance check run on boot, and switch any needed approveThen function buttons to the approve button function which would then reenable
+
     /*
     // Functions that require erc20 approve() first
     async approveThen_Xxx() {
