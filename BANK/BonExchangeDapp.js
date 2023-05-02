@@ -289,25 +289,7 @@ class DappInterface {
 
 
 
-    // ^^^^^^^^^^^^^^^^^^ here
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// for parsing numbers: https://docs.ethers.org/v4/api-utils.html#ether-strings-and-wei
     // Functions that without approval
     async checkExchangeBANKBalance() {
         /*
