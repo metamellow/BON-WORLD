@@ -194,7 +194,7 @@ class DappInterface {
 
                         try{
                             // --- APPROVAL STUFF ---
-                            this.mintButton.innerText = '*approving wallet*';
+                            //this.mintButton.innerText = '*approving wallet*';
                             
                             console.log(`Connecting contract3...`);
                             const connectedContract3 = new ethers.Contract(
