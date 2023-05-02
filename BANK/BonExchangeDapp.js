@@ -164,6 +164,8 @@ class DappInterface {
     // --- CONTRACT FUNCTIONS ---
     
 
+    // make the approveThen a modular chunk that autoplays the intended function on completion, maybe by putting the func into a var and then awaitingg
+
     /*
     // Functions that require erc20 approve() first
     async approveThen_Xxx() {
