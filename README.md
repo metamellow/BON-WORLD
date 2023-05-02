@@ -6,6 +6,7 @@
 ![](https://pbs.twimg.com/profile_banners/1543484568917135361/1671210983/1500x500)
 
 // DONT TRUST THE BANKERS -- TRUST THE TECHNOLOGY //
+// Using blockchain to enable TRUSTLESS financial systems //
 
 To find out more please visit:
 
