@@ -311,6 +311,11 @@ class DappInterface {
 
 
 
+
+
+// shoud be if else for the input check
+
+
     async exchangeBONforBANK() {
         if(this.selectedInput2 < 1){alert(`Please input amount.`);}
         if(this.selectedInput2 >= 1){
