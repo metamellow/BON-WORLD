@@ -389,7 +389,7 @@ class DappInterface {
         await approvalCheck;
 
         console.log('Loader starting function...');
-        if (approvalCheck = true){ this.exchangeBONforBANK(); }
+        if (approvalCheck == true){ this.exchangeBONforBANK(); }
     }
 
 
