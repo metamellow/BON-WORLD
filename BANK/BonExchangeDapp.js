@@ -365,7 +365,7 @@ class DappInterface {
                     );
 
                     console.log('Awaiting function results...');
-                    await functionResult;
+                    await functionResult; // this may want the dotwaitfunc like the other above
                     
                     console.log("Awaing the emit event...");
 
