@@ -1,5 +1,4 @@
 // --- Import ABI contract data ---
-
 // EXCHANGE
 const CONTRACT1_ABI = (
 	{
@@ -39,14 +38,17 @@ class DappInterface {
         this.currentAccount = ''; // loaded on connectWallet
         this.selectedQuantity1 = 0; // set via the HTML dropdown
         this.selectedInput1 = 0; // set via the HTML input
+        this.selectedInput2 = 0; // set via the HTML input
 
 
         // All HTML Elements
         this.JSconnectButton1 = document.getElementById('HTML_connect_button'); //connectWallet
         this.JSfunctionButton1 = document.getElementById('HTML_function_button_1'); // approveThenFunction
         this.JSfunctionButton2 = document.getElementById('HTML_function_button_2'); // checkExchangeBANKBalance()
+        this.JSfunctionButton3 = document.getElementById('HTML_function_button_3'); // exchangeBONforBANK()
         this.JSquantityDropdown1 = document.getElementById('HTML_quantity_dropdown_1');
         this.JSquantityInput1 = document.getElementById('HTML_quantity_input_1');
+        this.JSquantityInput2 = document.getElementById('HTML_quantity_input_2'); // input BON2BANK amount
     }
 
     // --- SETUP PROCESSES --
@@ -107,11 +109,10 @@ class DappInterface {
                     // Event listener 1A
                     connectedContract1.on('MigrateToBANK', (user, amountExchanged, newBankBalance) => {
                         console.log(user, amountExchanged.toNumber(), newBankBalance.toNumber());
-                        alert(`BON<>BANK Exchange Success - amount exchanged: ${this.amountExchanged}, new BANK bal:${this.newBankBalance}`);
-                        //this.JSfunctionButton1.innerText = 'SEND FUNCTIONxxx AGAIN';
-                        //this.JSfunctionButton1.disabled = false;
-                        }
-                    );
+                        alert(`BON<>BANK Exchange Success - Amount exchanged: ${this.amountExchanged}, New BANK bal:${this.newBankBalance}`);
+                        this.HTML_function_button_3.disabled = false;
+                        this.HTML_function_button_3.innerText = '[EXCHANGE-MORE]';
+                    });
 
                     console.log('Contract 1A listener success');
 
@@ -127,8 +128,7 @@ class DappInterface {
                     connectedContract2.on('Approval', (owner, spender, value) => {
                         console.log(owner, spender, value);
                         alert(`BANK approved! Please continue...`);
-                        //this.JSfunctionButton1.innerText = 'CONTINUE';
-                        //this.JSfunctionButton1.disabled = false;
+
                         }
                     );
                     console.log('Contract 2A listener success');
@@ -145,8 +145,6 @@ class DappInterface {
                     connectedContract3.on('Approval', (owner, spender, value) => {
                         console.log(owner, spender, value);
                         alert(`BON approved! Please continue...`);
-                        //this.JSfunctionButton1.innerText = 'CONTINUE WITH FUNCTIONxxx';
-                        //this.JSfunctionButton1.disabled = false;
                         }
                     );
                     console.log('Contract 3A listener success');
@@ -161,39 +159,24 @@ class DappInterface {
 
     
 
-    // --- CONTRACT FUNCTIONS ---
+    // --- UNIVERSAL CONTRACT FUNCTIONS ---
     
-
-    // make the approveThen a modular chunk that autoplays the intended function on completion, maybe by putting the func into a var and then awaitingg
-
-// perhaps make the allowance check run on boot, and switch any needed approveThen function buttons to the approve button function which would then reenable
-
-    /*
-    // Functions that require erc20 approve() first
-    async approveThen_Xxx() {
-        // vvvv these tags can be commented out if not needed 
-        if(this.selectedQuantity1 < 1){alert(`Please select a quantity from the dropdown list.`);}
-        if(this.selectedQuantity1 >= 1){
-        // ^^^^
-
+    async contract3AllowanceCheck() {
         try { const { ethereum } = window;
             if (ethereum) {
                 const provider = new ethers.providers.Web3Provider(ethereum);
                 const signer = provider.getSigner();
                 try{
-                    // Contract 2 Allowance check
-                    this.JSfunctionButton1.innerText = '*please wait*';
-                    this.JSfunctionButton1.disabled = true;
-                    
-                    console.log(`Connecting contract2...`);
-                    const connectedContract2 = new ethers.Contract(
-                        this.contractAddress2,
-                        CONTRACT2_ABI.abi,
+                    // Contract 3 Allowance check
+                    console.log(`Connecting contract3...`);
+                    const connectedContract3 = new ethers.Contract(
+                        this.contractAddress3,
+                        CONTRACT3_ABI.abi,
                         signer
                     );
                     
                     console.log(`Attempting allowance call...`);
-                    let tknAllwnc = await connectedContract2.allowance(
+                    let tknAllwnc = await connectedContract3.allowance(
                         this.currentAccount,
                         this.connectedContract1
                     );
@@ -204,39 +187,8 @@ class DappInterface {
                     
                     if(tknAllwnc > 0){
                         console.log('Allowance accepted!');
-                        try {
-                            // Contract 1 function
-                            this.mintButton.innerText = '*sending txn*';
-                            
-                            console.log(`Connecting contract1...`);
-                            const connectedContract1 = new ethers.Contract(
-                                this.contractAddress1,
-                                CONTRACT1_ABI.abi,
-                                signer
-                            );
-
-                            console.log(`Attempting function call - Q:${this.selectedQuantity1}, G:${this.txnCost}`);
-                            const options = {
-                                value: ethers.utils.parseEther(
-                                `${this.txnCost}`
-                                ),
-                            }; // options may be 0 depending on the smart contract setup, payable or not
-                            let nftTxn = await connectedContract1.functionXxx(
-                                String(this.selectedQuantity1),
-                                options
-                            );
-
-                            console.log('Awaiting function results...');
-                            await nftTxn.wait();
-                            // Emit event should trigger the listener on success
-
-                        } catch (error) {
-                            console.log(error);
-                            console.log('Allowance success, function failed.');
-                            this.mintButton.innerText = '[TRY-TXN-AGAIN]';
-                            this.mintButton.disabled = false;
-                        }
-                        
+                        return true;
+                        // this should trigger the next function
                     } else {
                         console.log('Allowance failed; starting approval');
 
@@ -244,15 +196,15 @@ class DappInterface {
                             // --- APPROVAL STUFF ---
                             this.mintButton.innerText = '*approving wallet*';
                             
-                            console.log(`Connecting contract2...`);
-                            const connectedContract2 = new ethers.Contract(
-                                this.contractAddress2,
-                                CONTRACT2_ABI.abi,
+                            console.log(`Connecting contract3...`);
+                            const connectedContract3 = new ethers.Contract(
+                                this.contractAddress3,
+                                CONTRACT3_ABI.abi,
                                 signer
                             );
 
                             console.log(`Attempting approve call...`);
-                            let tknApprv = await connectedContract2.approve(
+                            let tknApprv = await connectedContract3.approve(
                                 this.contractAddress1,
                                 '115792089237316195423570985008687907853269984665640564039457584007913129639935'
                                 // ^^ max possible token value
@@ -262,49 +214,47 @@ class DappInterface {
                             await tknApprv.wait();
                             // Emit event should trigger the listener on success
 
+                            return true;
+                            // this should trigger the next function
+
                         } catch (error) {
                             console.log(error);
                             console.log('Allowance success, function failed.');
-                            this.mintButton.innerText = '[TRY-APPROVE-AGAIN]';
-                            this.mintButton.disabled = false;
+                            //this.mintButton.innerText = '[TRY-APPROVE-AGAIN]';
+                            //this.mintButton.disabled = false;
+                            return false;
                         }   
                     }
                 } catch (error) {
                 console.log(error);
                 console.log("ERROR - CONTACT ADMIN");
-                this.mintButton.innerText = '[-ERROR-]';
+                //this.mintButton.innerText = '[-ERROR-]';
+                return false;
                 }
             } else {
                 console.log("Ethereum object doesn't exist!");
-                this.mintButton.innerText = '[GET-METAMASK]';
+                //this.mintButton.innerText = '[GET-METAMASK]';
+                return false;
             }
         } catch (error) {
             console.log("Ethereum object doesn't exist!");
-            this.mintButton.innerText = '[GET-METAMASK]';
+            //this.mintButton.innerText = '[GET-METAMASK]';
+            return false;
         }
-        } // << quantity tag ender
     }
 
-    */
 
 
 
-// for parsing numbers: https://docs.ethers.org/v4/api-utils.html#ether-strings-and-wei
-    // Functions that without approval
+    // --- BON<>BANK EXCHANGE FUNCTIONS ---
+
     async checkExchangeBANKBalance() {
-        /*
-        // vvvv these tags can be commented out if not needed 
-        if(this.selectedInput1 < 1){alert(`Please enter the input amount`);}
-        if(this.selectedInput1 >= 1){
-        // ^^^^
-        */
-
         try { const { ethereum } = window;
             if (ethereum) {
                 const provider = new ethers.providers.Web3Provider(ethereum);
                 const signer = provider.getSigner();
                 try{
-                    // Contract 1 function
+                    // Contract 2 function
                     this.JSfunctionButton2.disabled = true;
                     this.JSfunctionButton2.innerText = '*sending txn*';
                     
@@ -331,13 +281,13 @@ class DappInterface {
                     
                     console.log("Analzying results...");
                     if (balOf >= 1){
-                        //alert(`The BON<>BANK exchange currently holds: ${balOf}`);
-                        console.log(`The BON<>BANK exchange currently holds: ${balOf}`)
+                        console.log(`The BON<>BANK exchange currently holds: ${ethers.utils.formatEther(balOf)}`)
                         this.JSfunctionButton2.disabled = false;
-                        this.JSfunctionButton2.innerText = `${ethers.utils.parseEther(String(balOf))}`;
+                        this.JSfunctionButton2.innerText = `${
+                            ethers.utils.commify(Math.trunc(parseInt(ethers.utils.formatEther(String(balOf)))))
+                        }`;
                     ;
                     } else {
-                        //alert(`The BON<>BANK exchange is CLOSED.`);
                         console.log(`The BON<>BANK exchange is CLOSED.`);
                         this.JSfunctionButton2.disabled = false;
                         this.JSfunctionButton2.innerText = '[EXCHANGE-CLOSED]';
@@ -357,12 +307,95 @@ class DappInterface {
             console.log("Ethereum object doesn't exist!");
             this.mintButton.innerText = '[GET-METAMASK]';
         }
-        /*
-        } // << quantity tag ender
-        */
     }
 
-    // This will run
+
+
+    async exchangeBONforBANK() {
+        if(this.selectedInput2 < 1){alert(`Please input amount.`);}
+        if(this.selectedInput2 >= 1){
+        
+        try { const { ethereum } = window;
+            if (ethereum) {
+                const provider = new ethers.providers.Web3Provider(ethereum);
+                const signer = provider.getSigner();
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                // this function is failing -- it could be that the approve doesnt work correctly?
+                try{
+                    // Contract 1 function
+                    this.JSfunctionButton3.disabled = true;
+                    this.JSfunctionButton3.innerText = '*sending txn*';
+                    
+                    console.log(`Connecting contract1...`);
+                    const connectedContract1 = new ethers.Contract(
+                        this.contractAddress1,
+                        CONTRACT1_ABI.abi,
+                        signer
+                    );
+
+                    console.log(`Attempting exchangeToken call..`);
+                    const options = {
+                        value: ethers.utils.parseEther(
+                        /*`${this.txnCost}`*/ `0`
+                        ),
+                    };
+                    let functionResult = await connectedContract1.exchangeToken(
+                        String(this.selectedInput2),
+                        options
+                    );
+
+                    console.log('Awaiting function results...');
+                    await functionResult;
+                    
+                    console.log("Awaing the emit event...");
+
+                } catch (error) {
+                    console.log(error);
+                    console.log('function call failed');
+                    this.JSfunctionButton3.innerText = '[TRY-TXN-AGAIN]';
+                    this.JSfunctionButton3.disabled = false;
+                }
+            } else {
+                console.log("Ethereum object doesn't exist!");
+                this.JSfunctionButton3.innerText = '[GET-METAMASK]';
+            }
+        } catch (error) {
+            console.log("Ethereum object doesn't exist!");
+            this.JSfunctionButton3.innerText = '[GET-METAMASK]';
+        }
+        } // << quantity tag ender
+    }
+
+    async exchangeBONforBANK_Loader(){
+        console.log("Loader starting ApprovalCheck");
+        let approvalCheck = await this.contract3AllowanceCheck();
+
+        console.log('Loader ApprovalCheck results...');
+        await approvalCheck;
+
+        console.log('Loader starting function...');
+        if (approvalCheck = true){ this.exchangeBONforBANK(); }
+    }
+
+
+
+
+    // This will run after the initialize process
     async customConstructorFunctions(){
         try{
             await this.checkExchangeBANKBalance();
@@ -460,17 +493,23 @@ class DappInterface {
         }
     }
 
-  // basic html to js fuctions ------
+    // basic html to js fuctions ------
 
-  onSelectQuantity1() {
-    this.selectedQuantity1 = this.JSquantityDropdown1.value;
-    console.log(`New dropdown: ${this.selectedQuantity1}`);
-  }
+    onSelectQuantity1() {
+        this.selectedQuantity1 = this.JSquantityDropdown1.value;
+        console.log(`New dropdown: ${this.selectedQuantity1}`);
+    }
 
-  onSelectInput1() {
-    this.selectedInput1 = this.JSquantityInput1.value;
-    console.log(`New input: ${this.selectedInput1}`);
-  }
+    onSelectInput1() {
+        this.selectedInput1 = this.JSquantityInput1.value;
+        console.log(`New input: ${this.selectedInput1}`);
+    }
+
+    // InputBONBANKAmount
+    onSelectInput2() {
+        this.selectedInput2 = this.JSquantityInput2.value;
+        console.log(`New input: ${this.selectedInput2}`);
+      }
 
   /*
   The following code would work to auto direct through website pages --
