@@ -400,6 +400,9 @@ class DappInterface {
 
 
 
+// this might need the dotwaitfunc tag also?
+
+
     // This will run after the initialize process
     async customConstructorFunctions(){
         try{
