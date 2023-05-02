@@ -345,16 +345,16 @@ class DappInterface {
                     
                     console.log("Analzying results...");
                     if (balOf >= 1){
-                        alert(`The BON<>BANK exchange currently holds: ${balOf}`);
+                        //alert(`The BON<>BANK exchange currently holds: ${balOf}`);
                         console.log(`The BON<>BANK exchange currently holds: ${balOf}`)
                         this.JSfunctionButton2.disabled = false;
-                        this.JSfunctionButton2.innerText = '[CHECK-EXCHANGE-POOL]';
+                        this.JSfunctionButton2.innerText = `${ethers.utils.parseEther(String(balOf))}`;
                     ;
                     } else {
-                        alert(`The BON<>BANK exchange is CLOSED.`);
+                        //alert(`The BON<>BANK exchange is CLOSED.`);
                         console.log(`The BON<>BANK exchange is CLOSED.`);
                         this.JSfunctionButton2.disabled = false;
-                        this.JSfunctionButton2.innerText = '[CHECK-EXCHANGE-POOL]';
+                        this.JSfunctionButton2.innerText = '[EXCHANGE-CLOSED]';
                     }
 
                 } catch (error) {
@@ -376,9 +376,20 @@ class DappInterface {
         */
     }
 
+    // This will run
+    async customConstructorFunctions(){
+        try{
+            await this.checkExchangeBANKBalance();
+            //await this.XXX();
+        } catch (error) {
+            console.log(error); 
+        }
+    }
+    
     async dappInitializeProcess() {
         try{
             await this.connectWallet();
+            
 
             let chainId = await ethereum.request({ method: 'eth_chainId' });
             if(chainId !== this.dappChain){
@@ -453,6 +464,11 @@ class DappInterface {
                     console.log('Connected to MUMBAI TESTNET (' + chainId + ')');
                 }
             }
+        } catch (error) {
+            console.log(error); 
+        }
+        try{
+            await this.customConstructorFunctions();
         } catch (error) {
             console.log(error); 
         }

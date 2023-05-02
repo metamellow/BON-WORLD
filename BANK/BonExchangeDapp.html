@@ -8,18 +8,39 @@
         
         <div id="dapp_interface_1" align="center">
             
-            <!-- CONNECT BUTTON - NOT NEEDED BUT NICE TO HAVE -->
+            <!-- ________ USER / DATA INFORMATION SECTION ________ -->
+
+            <label for="ConnectWalletButtonDisplay">USER:</label>
             <button
+                name="ConnectWalletButtonDisplay"
                 id="HTML_connect_button"
                 class="custom_button_1"
                 style="height: 30px; width: 250px; text-align: center"
                 onclick="DappInterface_.connectWallet();"
             >
-                CONNECT WALLET
+                [CONNECT-WALLET]
             </button>
 
             <br/>
             <br/>
+
+            <label for="CheckBONBANKPool">REMAINING:</label>
+            <button
+            name="CheckBONBANKPool"
+            id="HTML_function_button_2"
+            class="custom_button_1"
+            style="height: 30px; width: 250px; text-align: center"
+            onclick="DappInterface_.checkExchangeBANKBalance();"
+            >
+                [CHECK-EXCHANGE-POOL]
+            </button>
+
+            <br/>
+            <br/>
+
+            <!-- ________ BON TO BANK EXCHANGE SECTION ________ -->
+
+            <!-- ________ BANK STAKING SECTION SECTION ________ -->
             
             <!-- INPUT AMOUNT FIELD -->
             <form>
@@ -57,7 +78,7 @@
             <br/>
             <br/>
 
-            <!-- ALLOWANCE NEEDED FUNCTIONS -->
+
             <button
                 id="HTML_function_button_1"
                 class="custom_button_1"
@@ -70,35 +91,8 @@
             <br/>
             <br/>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <!-- vv hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee-->
-
             <!-- ALLOWANCE NOT NEEDED FUNCTIONS -->
-            <button
-            id="HTML_function_button_2"
-            class="custom_button_1"
-            style="height: 30px; width: 250px; text-align: center"
-            onclick="DappInterface_.checkExchangeBANKBalance();"
-            >
-                [CHECK-EXCHANGE-POOL]
-            </button>
 
-            <br/>
-            <br/>
             
             
         </div>
