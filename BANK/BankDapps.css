@@ -26,7 +26,11 @@ button {
     align-items:start;
     font-size: 30px;
     border: none;
+    align-items: center;
+ 
 }
+
+
 
 button:hover {
 	background-image: linear-gradient(to right, #54FF65,  #00BCD4 );
@@ -88,7 +92,8 @@ select {
     color: #54FF65;
     font-style: normal;
     font-weight: 400;
-    font-size: 76px;
+    font-size: 30px;
+    
  
 }
 
@@ -96,7 +101,16 @@ select {
     color: #54FF65;
     font-style: normal;
     font-size: 50px;
- 
+  
+}
+
+
+.title3 {
+  color: #54FF65;
+  font-style: normal;
+  font-size: 20px;
+  
+
 }
 
 .logotopo {
@@ -116,6 +130,8 @@ select {
     height: 100%;
     align-items: center;
     flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
     
     
 }
@@ -143,6 +159,7 @@ footer {
   #first-row div {
     display: flex;
     align-items: center;
+    
   }
   
   #first-row div img {
@@ -173,3 +190,51 @@ footer {
       flex-direction: column;
     }
   }
+
+  .user {
+    display: flex;
+    align-items: center;
+    margin: 30px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content:space-evenly;
+    
+    
+    
+  }
+  .buttonuser {
+    display: table-row; 
+  }
+
+  a {
+font-size: 30px;
+color: #54FF65;
+margin: 50px;
+text-decoration: none;
+
+
+  }
+
+  a:hover{
+  color: #00BCD4;
+
+  }
+
+.submenu {
+display: flex;
+align-items: center;
+justify-content:center;
+flex-wrap: wrap;
+
+  }
+
+.bgbuttons {
+border:solid;
+border-color: #54FF65;
+padding: 20px;
+border-radius: 16px;
+  
+}
+
+
