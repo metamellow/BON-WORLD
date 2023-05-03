@@ -1,20 +1,68 @@
 <!DOCTYPE html>
 <html>
-    <head>
-    </head>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bank of Nowhere</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="empty-templates/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+      integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
+      crossorigin="anonymous"
+    />
+    <link rel="icon" href="images/favcon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <body>
-        
-        <div id="dapp_interface_1" align="center">
-            
+    <title>Bank Of Nowhere $BON</title>
+        <meta name="title" content="Bank Of Nowhere $BON" />
+        <meta name="description" content="// DONT TRUST THE BANKERS -- TRUST THE TECHNOLOGY //" />
+
+        <!-- Facebook -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://bankofnowhere.world" />
+        <meta property="og:title" content="Bank Of Nowhere $BON" />
+        <meta property="og:description" content="// DONT TRUST THE BANKERS -- TRUST THE TECHNOLOGY //" />
+        <meta property="og:image" content="https://raw.githubusercontent.com/s0crates-eth/gm/main/images/1500x500.jpg" />
+
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://bankofnowhere.world" />
+        <meta property="twitter:title" content="Bank Of Nowhere $BON" />
+        <meta property="twitter:description" content="// DONT TRUST THE BANKERS -- TRUST THE TECHNOLOGY //" />
+        <meta property="twitter:image" content="https://raw.githubusercontent.com/s0crates-eth/gm/main/images/1500x500.jpg" />
+
+  </head>
+
+    <body style="background-image: url('images/background2.png'); background-repeat: no-repeat; background-size: cover;" >
+        <br><br>
+<div align="center">
+<img class="logotopo" src="images\banklogo.svg">
+</div>
+
+<br><br><br>
+
+<div class="alinhamento">
+
+<div class="title2" style="margin: 150px;">
+    <h1>small bussines, <br>big dreams! </h1>
+    <img src="images/detail.png">
+    
+   
+</div>
+
+<div>
+
+            <div id="dapp_interface_1">
+            <div class="title"> exchange </div>
             <!-- ________ USER / DATA INFORMATION SECTION ________ -->
 
-            <label for="ConnectWalletButtonDisplay">USER:</label>
+            <label for="ConnectWalletButtonDisplay">USER:</label> <br>
             <button
                 name="ConnectWalletButtonDisplay"
-                id="HTML_connect_button"
-                class="custom_button_1"
-                style="height: 30px; width: 250px; text-align: center"
+                id="HTML_connect_button" 
                 onclick="DappInterface_.connectWallet();"
             >
                 [CONNECT-WALLET]
@@ -29,13 +77,11 @@
             <!-- ________ BON TO BANK EXCHANGE SECTION ________ -->
 
             <label for="CheckBONBANKPool">
-                BANK-POOL:
+                BANK-POOL:<br>
                 </label>
                 <button
                     name="CheckBONBANKPool"
                     id="HTML_function_button_2"
-                    class="custom_button_1"
-                    style="height: 30px; width: 250px; text-align: center"
                     onclick="DappInterface_.checkExchangeBANKBalance();"
                     >
                     [CHECK-EXCHANGE-POOL]
@@ -44,8 +90,8 @@
             <br/>
             <br/>
 
-            <form><label for="InputBONBANKAmount">
-                AMOUNT:
+            <form><label for="InputBONBANKAmount" class="amount">
+                AMOUNT:<br>
                 </label>
                 <input 
                     type="number"
@@ -53,7 +99,6 @@
                     id="HTML_quantity_input_2"
                     min="0"
                     value="0"
-                    style="height: 30px; width: 200px; text-align: center"
                     onchange="DappInterface_.onSelectInput2()"
                     required
                 >
@@ -63,17 +108,17 @@
             <br/>
 
             <label for="ExchangeBONforBANK">
-                BON2BANK:
+                BON2BANK: <br>
                 </label>
                 <button
                     name="ExchangeBONforBANK"
                     id="HTML_function_button_3"
                     class="custom_button_1"
-                    style="height: 30px; width: 250px; text-align: center"
                     onclick="DappInterface_.exchangeBONforBANK_Loader();"
                     >
                     [EXCHANGE]
             </button>
+          
 
 
 
@@ -82,14 +127,7 @@
             <br/>
             <br/><br/>
             <br/><br/>
-            <br/><br/>
-            <br/><br/>
-            <br/><br/>
-            <br/><br/>
-            <br/><br/>
-            <br/><br/>
-            <br/><br/>
-            <br/>
+           
 
 
 
@@ -102,8 +140,6 @@
             <!-- QUANTITY DROPDOWN FIELD -->
             <select
                 id="HTML_quantity_dropdown_1"
-                class="custom_dropdown_1"
-                style="height: 30px; width: 250px; text-align: center"
                 onchange="DappInterface_.onSelectQuantity1()"
                 required
             >
@@ -119,25 +155,43 @@
 
             <button
                 id="HTML_function_button_1"
-                class="custom_button_1"
-                style="height: 30px; width: 250px; text-align: center"
                 onclick="DappInterface_.approveThen_Xxx();"
             >
                 approveThenFunction
             </button>
+            <br><br>
+            <img src="images/detail2.svg">
 
             <br/>
             <br/>
 
             <!-- ALLOWANCE NOT NEEDED FUNCTIONS -->
 
-            
-            
         </div>
-        
-        <footer>
+</div>
+</div>    
+<br><br>
+    <footer>
+        <div id="first-row">
+            <div>
+              <img src="images\banklogosmall.svg" style="height: 60px" alt="Logo" />
+            </div>
+    
+  
+<p >Copyright © Bank of Nowhere</p>
+
+
+<img src="images\moduluslogogreen.svg">
+
+
+
+
+
+
             <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
             <script src="../BANK/BonExchangeDapp.js" type="application/javascript"></script>
+
+
         </footer>
 
     </body>
