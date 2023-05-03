@@ -62,8 +62,10 @@
 
             <div id="dapp_interface_1">
 
+
+
                 <!-- ________ USER / DATA INFORMATION SECTION ________ -->
-                <div class="title"> USER DETAILS </div>
+                <div class="title"> USER ACCOUNT DETAILS </div>
 
                 <label for="ConnectWalletButtonDisplay">USER:</label> <br>
                 <button
@@ -108,11 +110,18 @@
 
 
 
+
+
+                <br/><br/>
+                <img src="images/detail2.svg">
+                <br/><br/>
+                <br/><br/>
+
                 <!-- ________ BON TO BANK EXCHANGE SECTION ________ -->
                 <div class="title"> BON<>BANK EXCHANGE </div>
 
                 <label for="CheckBONBANKPool">
-                    BANK-POOL:<br>
+                    REMAINING:<br>
                     </label>
                     <button
                         name="CheckBONBANKPool"
@@ -143,7 +152,7 @@
                 <br/>
 
                 <label for="ExchangeBONforBANK">
-                    BON2BANK: <br>
+                    EXCHANGE: <br>
                     </label>
                     <button
                         name="ExchangeBONforBANK"
@@ -151,81 +160,122 @@
                         class="custom_button_1"
                         onclick="DappInterface_.exchangeBONforBANK_Loader();"
                         >
-                        [EXCHANGE]
+                        [SWAP]
                 </button>
+
+                <br/>
+                <br/>
             
 
 
 
-
-
-                <br/>
                 <br/><br/>
-                <br/><br/>
-            
-
-
-
-
-                <!-- ________ BANK STAKING SECTION SECTION ________ -->
-                
-                <br/>
-                <br/>
-
-                <!-- QUANTITY DROPDOWN FIELD -->
-                <select
-                    id="HTML_quantity_dropdown_1"
-                    onchange="DappInterface_.onSelectQuantity1()"
-                    required
-                >
-                    <option value="" selected>Quantity..</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                </select>
-
-                <br/>
-                <br/>
-
-
-                <button
-                    id="HTML_function_button_1"
-                    onclick="DappInterface_.approveThen_Xxx();"
-                >
-                    approveThenFunction
-                </button>
-                <br><br>
                 <img src="images/detail2.svg">
+                <br/><br/>
+                <br/><br/>
+
+                <!-- ________ BANK STAKING SECTION ________ -->
+                <div class="title"> BANK STAKING REWARDS </div>
+                
+                <label for="CheckBANKstakedAmount">
+                    BANK-STAKED:<br>
+                    </label>
+                    <button
+                        name="CheckBANKstakedAmount"
+                        id="HTML_function_button_6"
+                        onclick="DappInterface_.checkBANKstakingBal();"
+                        >
+                        [CHECK-STAKING-BALANCE]
+                </button>
 
                 <br/>
                 <br/>
 
-                <!-- ALLOWANCE NOT NEEDED FUNCTIONS -->
+                <label for="CheckBANKstakedTime">
+                    TIME-LEFT:<br>
+                    </label>
+                    <button
+                        name="CheckBANKstakedTime"
+                        id="HTML_function_button_7"
+                        onclick="DappInterface_.checkBANKstakingTime();"
+                        >
+                        [CHECK-STAKING-TIME]
+                </button>
+
+                <br/>
+                <br/>
+
+                <label for="CheckBANKstakedReward">
+                    YOUR-REWARDS:<br>
+                    </label>
+                    <button
+                        name="CheckBANKstakedReward"
+                        id="HTML_function_button_8"
+                        onclick="DappInterface_.checkBANKstakingReward();"
+                        >
+                        [CHECK-STAKING-TIME]
+                </button>
+
+                <br/>
+                <br/>
+
+                <form><label for="InputBANKStakingAmount" class="amount">
+                    AMOUNT:<br>
+                    </label>
+                    <input 
+                        type="number"
+                        name="InputBANKStakingAmount"
+                        id="HTML_quantity_input_3"
+                        min="0"
+                        value="0"
+                        onchange="DappInterface_.onSelectInput3()"
+                        required
+                    >
+                </form>
+
+                <br/>
+                <br/>
+
+                <label for="StakeBANKTokens">
+                    DEPOSIT: <br>
+                    </label>
+                    <button
+                        name="StakeBANKTokens"
+                        id="HTML_function_button_9"
+                        class="custom_button_1"
+                        onclick="DappInterface_.stakeBankTokens_Loader();"
+                        >
+                        [STAKE]
+                </button>
+
+                <br/>
+                <br/>
+
+
+
+
+
+
+
+
+
+
             </div>
         </div>    
-<br><br>
-    <footer>
-        <div id="first-row">
-            <div>
-              <img src="images\banklogosmall.svg" style="height: 60px" alt="Logo" />
-            </div>
     
-  
-<p >Copyright © Bank of Nowhere</p>
-
-
-<img src="images\moduluslogogreen.svg">
-
-
-
-
-
-
-            <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
-            <script src="BankDapps.js" type="application/javascript"></script>
-
-
+        <br><br>
+    
+        <footer>
+            <div id="first-row">
+                <div>
+                <img src="images\banklogosmall.svg" style="height: 60px" alt="Logo" />
+                </div>
+                <p >Copyright © Bank of Nowhere</p>
+                <img src="images\moduluslogogreen.svg">
+            </div>
         </footer>
 
+        <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+        <script src="BankDapps.js" type="application/javascript"></script>
     </body>
 </html>

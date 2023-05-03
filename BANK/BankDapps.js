@@ -49,6 +49,7 @@ class DappInterface {
         this.JSfunctionButton3 = document.getElementById('HTML_function_button_3'); // exchangeBONforBANK()
         this.JSfunctionButton4 = document.getElementById('HTML_function_button_4'); // checkBONbalance()
         this.JSfunctionButton5 = document.getElementById('HTML_function_button_5'); // checkBANKbalance()
+        this.JSfunctionButton6 = document.getElementById('HTML_function_button_6'); // checkBANKstakingBal()
         this.JSquantityDropdown1 = document.getElementById('HTML_quantity_dropdown_1');
         this.JSquantityInput1 = document.getElementById('HTML_quantity_input_1');
         this.JSquantityInput2 = document.getElementById('HTML_quantity_input_2'); // input BON2BANK amount
@@ -112,9 +113,9 @@ class DappInterface {
                     // Event listener 1A
                     connectedContract1.on('MigrateToBANK', (user, amountExchanged, newBankBalance) => {
                         console.log(user, ethers.utils.formatEther(amountExchanged), ethers.utils.formatEther(newBankBalance));
-                        alert(`BON<>BANK Exchange Success - Amount exchanged: ${ethers.utils.formatEther(this.amountExchanged)}, New BANK bal:${ethers.utils.formatEther(this.newBankBalance)}`);
-                        this.HTML_function_button_3.disabled = false;
-                        this.HTML_function_button_3.innerText = '[EXCHANGE-MORE]';
+                        alert(`BON<>BANK Exchange Success!`);
+                        this.JSfunctionButton3.disabled = false;
+                        this.JSfunctionButton3.innerText = '[EXCHANGE-MORE]';
                     });
 
                     console.log('Contract 1A listener success');
@@ -429,13 +430,6 @@ class DappInterface {
         }
     }
 
-
-
-
-
-    // shoud be if else for the input check
-
-
     async exchangeBONforBANK() {
         if(this.selectedInput2 < 1){alert(`Please input amount.`);}else{
         
@@ -506,6 +500,13 @@ class DappInterface {
             console.log('Approval check -- FALSE');
         }
     }
+
+
+    // ________________ BANK STAKING SECTION ________________
+    
+    // this.JSfunctionButton6 = document.getElementById('HTML_function_button_6'); // checkBANKstakingBal()
+
+
 
 
 
