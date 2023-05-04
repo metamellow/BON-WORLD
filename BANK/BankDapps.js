@@ -161,8 +161,6 @@ class DappInterface {
         }
     }
 
-    
-
     // ________________ UNIVERSAL CONTRACT FUNCTIONS SECTION ________________
     
     // Function to check allowance on a erc20 contract; then return TRUE or initial approval
@@ -365,8 +363,6 @@ class DappInterface {
         }
     }
 
-
-
     // ________________ BON<>BANK EXCHANGE FUNCTIONS SECTION ________________
 
     async checkExchangeBANKBalance() {
@@ -508,8 +504,6 @@ class DappInterface {
 
 
 
-
-
     // ________________ SETUP PROCESSES SECTION 2 ________________
 
     // This will run after the initialize process **************************************************
@@ -624,8 +618,7 @@ class DappInterface {
         console.log(`New input: ${this.selectedInput2}`);
       }
 
-  /*
-  The following code would work to auto direct through website pages --
+  /* The following code would work to auto direct through website pages --
     onSelectNFTCollection() {
         this.selectedNFTCollection = this.nftCollectionDropdown.value;
         console.log(this.selectedNFTCollection);
