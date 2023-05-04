@@ -46,12 +46,6 @@ class DappInterface {
         this.contractAddress3 = '0xf647981f9417eeaf70cb92ae14978fdf489a11b8'; // bon
         this.contractAddress4 = '0x4d76c0c07d32f6b5860e9a612d76c88367df2361'; // the bank staking dapp
         this.currentAccount = ''; // loaded on connectWallet
-        /*this.txnCost = 0.0001; // converted to '100000000000000' (delete?)*/
-        /*this.selectedQuantity1 = 0; // set via the HTML dropdown*/
-        /*this.selectedInput1 = 0; // set via the HTML input*/
-        this.selectedInput2 = 0; // set via the HTML input
-        this.selectedInput3 = 0; // set via the HTML input
-
 
         // All HTML Elements
         this.JSconnectButton1 = document.getElementById('HTML_connect_button'); //connectWallet
@@ -63,8 +57,13 @@ class DappInterface {
         this.JSfunctionButton6 = document.getElementById('HTML_function_button_6'); // checkBANKstakingBal()
         this.JSfunctionButton7 = document.getElementById('HTML_function_button_7'); // checkBANKstakingTime()
         this.JSfunctionButton8 = document.getElementById('HTML_function_button_8'); // checkBANKstakingReward()
-        /*this.JSquantityDropdown1 = document.getElementById('HTML_quantity_dropdown_1');*/
-        /*this.JSquantityInput1 = document.getElementById('HTML_quantity_input_1');*/
+        this.JSfunctionButton9 = document.getElementById('HTML_function_button_9'); // checkBANKstakingTime()
+        this.JSfunctionButton10 = document.getElementById('HTML_function_button_10'); // ClaimStakingRewards()
+        this.JSfunctionButton11 = document.getElementById('HTML_function_button_11'); // WithdawStakedTokens()
+        /*this.JSfunctionButton12 = document.getElementById('HTML_function_button_12'); // xxx() */
+
+        this.selectedInput2 = 0; // set via the HTML input
+        this.selectedInput3 = 0; // set via the HTML input
         this.JSquantityInput2 = document.getElementById('HTML_quantity_input_2'); // input BON2BANK amount
         this.JSquantityInput3 = document.getElementById('HTML_quantity_input_3'); // input BANKStaking amount
     }
@@ -145,8 +144,7 @@ class DappInterface {
                     // Event listener 2A
                     connectedContract2.on('Approval', (owner, spender, value) => {
                         console.log(owner, spender, value);
-                        alert(`BANK approved! Please continue...`);
-
+                        //alert(`BANK approved! Please continue...`);
                         }
                     );
                     console.log('Contract 2A listener success');
@@ -162,10 +160,45 @@ class DappInterface {
                     // Event listener 3A
                     connectedContract3.on('Approval', (owner, spender, value) => {
                         console.log(owner, spender, value);
-                        alert(`BON approved! Please continue...`);
+                        //alert(`BON approved! Please continue...`);
                         }
                     );
                     console.log('Contract 3A listener success');
+
+                // --- Contract 4 --- (usually the dapp)
+                    const connectedContract4 = new ethers.Contract(
+                        this.contractAddress4,
+                        CONTRACT4_ABI.abi,
+                        signer
+                    );
+                    console.log('Contract 4 connected to listener');
+
+                    // Event listener 4A
+                    connectedContract4.on('DepositEmit', (user, amountStaked, stakedBalance) => {
+                        console.log(user, ethers.utils.formatEther(amountStaked), ethers.utils.formatEther(stakedBalance));
+                        alert(`BANK staking success!`);
+                        this.JSfunctionButton9.disabled = false;
+                        this.JSfunctionButton9.innerText = '[STAKE-MORE]';
+                    });
+                    console.log('Contract 4A listener success');
+
+                    // Event listener 4B
+                    connectedContract4.on('RewardsEmit', (user, userBalance, userRewards) => {
+                        console.log(user, ethers.utils.formatEther(userBalance), ethers.utils.formatEther(userRewards));
+                        alert(`BANK rewards success!`);
+                        this.JSfunctionButton10.disabled = false;
+                        this.JSfunctionButton10.innerText = 'Have a nice day!';
+                    });
+                    console.log('Contract 4B listener success');
+
+                    // Event listener 4C
+                    connectedContract4.on('WithdrawEmit', (user, userBalance) => {
+                        console.log(user, ethers.utils.formatEther(userBalance));
+                        alert(`BANK tokens withdrawn!`);
+                        this.JSfunctionButton11.disabled = false;
+                        this.JSfunctionButton11.innerText = 'So sad! See you again!';
+                    });
+                    console.log('Contract 4C listener success');
 
             } else {
                 console.log("Ethereum object doesn't exist!");
@@ -454,6 +487,21 @@ class DappInterface {
         }
     }
 
+    // nifty seconds to time converter; returns string
+    async timeConverter(secs) {
+        let seconds = Number(secs);
+        var d = Math.floor(seconds / (3600*24));
+        var h = Math.floor(seconds % (3600*24) / 3600);
+        var m = Math.floor(seconds % 3600 / 60);
+        var s = Math.floor(seconds % 60);
+        
+        var dDisplay = d > 0 ? d + (d == 1 ? "d, " : "d, ") : "";
+        var hDisplay = h > 0 ? h + (h == 1 ? "h, " : "h, ") : "";
+        var mDisplay = m > 0 ? m + (m == 1 ? "m, " : "m, ") : "";
+        var sDisplay = s > 0 ? s + (s == 1 ? "s" : "s") : "";
+        return dDisplay + hDisplay + mDisplay + sDisplay;
+      }
+
     // ________________ BON<>BANK EXCHANGE FUNCTIONS SECTION ________________
 
     async checkExchangeBANKBalance() {
@@ -693,9 +741,11 @@ class DappInterface {
                     
                     console.log("Analzying results...");
                     if (balOf >= 1){
-                        console.log(`Time remaining: ${balOf}`)
+                        let convertedTime = await this.timeConverter(balOf);
+                        await convertedTime;
+                        console.log(`Time passed: ${convertedTime}`)
                         this.JSfunctionButton7.disabled = false;
-                        this.JSfunctionButton7.innerText = `${balOf}`;
+                        this.JSfunctionButton7.innerText = `${convertedTime}`;
                     ;
                     } else {
                         console.log(`User is not staked.`);
@@ -754,7 +804,9 @@ class DappInterface {
                     if (balOf >= 1){
                         console.log(`Possible rewards: ${balOf}`)
                         this.JSfunctionButton8.disabled = false;
-                        this.JSfunctionButton8.innerText = `${balOf}`;
+                        this.JSfunctionButton8.innerText = `${
+                            ethers.utils.commify(Math.trunc(parseInt(ethers.utils.formatEther(String(balOf)))))
+                        }`;
                     ;
                     } else {
                         console.log(`User is not staked.`);
@@ -779,7 +831,142 @@ class DappInterface {
     }
 
     async stakeBankTokens(){
-        ///////////////////////////////////////////////////////////
+        if(this.selectedInput3 < 1){alert(`Please input amount.`);}else{
+        
+        try { const { ethereum } = window;
+            if (ethereum) {
+                const provider = new ethers.providers.Web3Provider(ethereum);
+                const signer = provider.getSigner();
+                
+                try{
+                    // Contract 4 function
+                    this.JSfunctionButton9.disabled = true;
+                    this.JSfunctionButton9.innerText = '*please wait*';
+                    
+                    console.log(`Connecting contract4...`);
+                    const connectedContract4 = new ethers.Contract(
+                        this.contractAddress4,
+                        CONTRACT4_ABI.abi,
+                        signer
+                    );
+
+                    console.log(`Attempting depositToStaking() call..`);
+                    const options = {
+                        value: ethers.utils.parseEther(
+                        /*`${this.txnCost}`*/ `0`
+                        ),
+                    };
+                    let functionResult = await connectedContract4.depositToStaking(
+                        ethers.utils.parseEther(String(this.selectedInput3)),
+                        options
+                    );
+
+                    console.log('Awaiting function results...');
+                    await functionResult;
+                    
+                    console.log("Awaing the emit event...");
+
+                } catch (error) {
+                    console.log(error);
+                    console.log('function call failed');
+                    this.JSfunctionButton9.innerText = '[TRY-TXN-AGAIN]';
+                    this.JSfunctionButton9.disabled = false;
+                }
+            } else {
+                console.log("Ethereum object doesn't exist!");
+                this.JSfunctionButton9.innerText = '[GET-METAMASK]';
+            }
+        } catch (error) {
+            console.log("Ethereum object doesn't exist!");
+            this.JSfunctionButton9.innerText = '[GET-METAMASK]';
+        }
+
+        } // << quantity tag ender
+    }
+
+    async claimStakingRewards(){
+        try { const { ethereum } = window;
+            if (ethereum) {
+                const provider = new ethers.providers.Web3Provider(ethereum);
+                const signer = provider.getSigner();
+                
+                try{
+                    // Contract 4 function
+                    this.JSfunctionButton10.disabled = true;
+                    this.JSfunctionButton10.innerText = '*please wait*';
+                    
+                    console.log(`Connecting contract4...`);
+                    const connectedContract4 = new ethers.Contract(
+                        this.contractAddress4,
+                        CONTRACT4_ABI.abi,
+                        signer
+                    );
+
+                    console.log(`Attempting withdrawRewards() call..`);
+                    let functionResult = await connectedContract4.withdrawRewards();
+
+                    console.log('Awaiting function results...');
+                    await functionResult;
+                    
+                    console.log("Awaing the emit event...");
+
+                } catch (error) {
+                    console.log(error);
+                    console.log('function call failed');
+                    this.JSfunctionButton10.innerText = 'Please check your time - must be +7 days';
+                    this.JSfunctionButton10.disabled = false;
+                }
+            } else {
+                console.log("Ethereum object doesn't exist!");
+                this.JSfunctionButton10.innerText = '[GET-METAMASK]';
+            }
+        } catch (error) {
+            console.log("Ethereum object doesn't exist!");
+            this.JSfunctionButton10.innerText = '[GET-METAMASK]';
+        }
+    }
+
+    async withdawStakedTokens(){
+        alert(`NOTE: Must claim any pending rewards FIRST, before withdrawing.`);
+        try { const { ethereum } = window;
+            if (ethereum) {
+                const provider = new ethers.providers.Web3Provider(ethereum);
+                const signer = provider.getSigner();
+                
+                try{
+                    // Contract 4 function
+                    this.JSfunctionButton11.disabled = true;
+                    this.JSfunctionButton11.innerText = '*please wait*';
+                    
+                    console.log(`Connecting contract4...`);
+                    const connectedContract4 = new ethers.Contract(
+                        this.contractAddress4,
+                        CONTRACT4_ABI.abi,
+                        signer
+                    );
+
+                    console.log(`Attempting withdrawAll() call..`);
+                    let functionResult = await connectedContract4.withdrawAll();
+
+                    console.log('Awaiting function results...');
+                    await functionResult;
+                    
+                    console.log("Awaing the emit event...");
+
+                } catch (error) {
+                    console.log(error);
+                    console.log('function call failed');
+                    this.JSfunctionButton11.innerText = 'Unable to withdraw.';
+                    this.JSfunctionButton11.disabled = false;
+                }
+            } else {
+                console.log("Ethereum object doesn't exist!");
+                this.JSfunctionButton11.innerText = '[GET-METAMASK]';
+            }
+        } catch (error) {
+            console.log("Ethereum object doesn't exist!");
+            this.JSfunctionButton11.innerText = '[GET-METAMASK]';
+        }
     }
 
     async stakeBankTokens_Loader(){

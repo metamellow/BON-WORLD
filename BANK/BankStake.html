@@ -139,7 +139,7 @@
                     <br/>
 
                     <label for="CheckBANKstakedTime">
-                        TIME-LEFT<br>
+                        TIME-PAST<br>
                         </label>
                         <button
                             name="CheckBANKstakedTime"
@@ -166,7 +166,8 @@
                     <br/>
                     <br/>
 
-                    <div class="title"> __________ </div>
+                    <div class="title"><hr></div>
+                    <br/>
 
                     <form><label for="InputBANKStakingAmount" class="amount">
                         AMOUNT<br>
@@ -195,6 +196,36 @@
                             onclick="DappInterface_.stakeBankTokens_Loader();"
                             >
                             [STAKE]
+                    </button>
+
+                    <br/>
+                    <br/>
+
+                    <label for="ClaimStakingRewards">
+                        REWARDS <br>
+                        </label>
+                        <button
+                            name="ClaimStakingRewards"
+                            id="HTML_function_button_10"
+                            class="custom_button_1"
+                            onclick="DappInterface_.claimStakingRewards();"
+                            >
+                            [CLAIM-REWARDS]
+                    </button>
+
+                    <br/>
+                    <br/>
+
+                    <label for="WithdawStakedTokens">
+                        WITHDRAW <br>
+                        </label>
+                        <button
+                            name="WithdawStakedTokens"
+                            id="HTML_function_button_11"
+                            class="custom_button_1"
+                            onclick="DappInterface_.withdawStakedTokens();"
+                            >
+                            [WITHDRAW-STAKED]
                     </button>
 
                     <br/>
