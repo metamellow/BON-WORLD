@@ -26,20 +26,31 @@ const CONTRACT3_ABI = (
     ,}
 );
 
+// STAKING
+const CONTRACT4_ABI = (
+	{
+        "contractName": "bankTokenStaking",
+        "abi":
+        [{"inputs":[{"internalType":"address","name":"_bankTokenAddress","type":"address"},{"internalType":"uint256","name":"_timerDuration","type":"uint256"},{"internalType":"uint256","name":"_rwdRate","type":"uint256"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"amountDeposited","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"userBalance","type":"uint256"}],"name":"DepositEmit","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"userBalance","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"userReward","type":"uint256"}],"name":"RewardsEmit","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"userBalance","type":"uint256"}],"name":"WithdrawEmit","type":"event"},{"inputs":[],"name":"bankTokenAddress","outputs":[{"internalType":"contract IERC20","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_user","type":"address"}],"name":"calculateRewards","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_user","type":"address"}],"name":"calculateTime","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"closeRewardsPool","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_amount","type":"uint256"}],"name":"depositToStaking","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"isStaked","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"rwdRate","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_rwdRate","type":"uint256"}],"name":"setRate","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bool","name":"_trueOrFalse","type":"bool"}],"name":"setStakingOpen","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_time","type":"uint256"}],"name":"setTimer","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_newTokenAddress","type":"address"}],"name":"setTokenAddress","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"stakedPoolBalances","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"stakedPoolSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"stakingOpen","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"timerDuration","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"withdrawAll","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"withdrawRewards","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"withdrawTimer","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"}]
+    ,}
+);
+
 class DappInterface {
     
     // ________________ VARIABLES AND OBJECTS SECTION ________________
 
     constructor() {
         this.dappChain = '0x13881'; //Ethereum=='0x1', Polygon=='0x89', Binance=='0x38', Modulus=='0x666', Mumbai=='0x13881'
-        this.contractAddress1 = '0x1c056a00a402185004795a2e97c1834ac08deaf5'; // the dapp; exchange
+        this.contractAddress1 = '0x1c056a00a402185004795a2e97c1834ac08deaf5'; // the bon2bank exchange dapp
         this.contractAddress2 = '0x8cf86efbc5b5155377de65df6ef0db4c96611487'; // bank
         this.contractAddress3 = '0xf647981f9417eeaf70cb92ae14978fdf489a11b8'; // bon
-        this.txnCost = 0.0001; // converted to '100000000000000' (delete?)
+        this.contractAddress4 = '0x4d76c0c07d32f6b5860e9a612d76c88367df2361'; // the bank staking dapp
         this.currentAccount = ''; // loaded on connectWallet
-        this.selectedQuantity1 = 0; // set via the HTML dropdown
-        this.selectedInput1 = 0; // set via the HTML input
+        /*this.txnCost = 0.0001; // converted to '100000000000000' (delete?)*/
+        /*this.selectedQuantity1 = 0; // set via the HTML dropdown*/
+        /*this.selectedInput1 = 0; // set via the HTML input*/
         this.selectedInput2 = 0; // set via the HTML input
+        this.selectedInput3 = 0; // set via the HTML input
 
 
         // All HTML Elements
@@ -50,9 +61,12 @@ class DappInterface {
         this.JSfunctionButton4 = document.getElementById('HTML_function_button_4'); // checkBONbalance()
         this.JSfunctionButton5 = document.getElementById('HTML_function_button_5'); // checkBANKbalance()
         this.JSfunctionButton6 = document.getElementById('HTML_function_button_6'); // checkBANKstakingBal()
-        this.JSquantityDropdown1 = document.getElementById('HTML_quantity_dropdown_1');
-        this.JSquantityInput1 = document.getElementById('HTML_quantity_input_1');
+        this.JSfunctionButton7 = document.getElementById('HTML_function_button_7'); // checkBANKstakingTime()
+        this.JSfunctionButton8 = document.getElementById('HTML_function_button_8'); // checkBANKstakingReward()
+        /*this.JSquantityDropdown1 = document.getElementById('HTML_quantity_dropdown_1');*/
+        /*this.JSquantityInput1 = document.getElementById('HTML_quantity_input_1');*/
         this.JSquantityInput2 = document.getElementById('HTML_quantity_input_2'); // input BON2BANK amount
+        this.JSquantityInput3 = document.getElementById('HTML_quantity_input_3'); // input BANKStaking amount
     }
 
     // ________________ SETUP PROCESSES SECTION 1 ________________
@@ -163,7 +177,84 @@ class DappInterface {
 
     // ________________ UNIVERSAL CONTRACT FUNCTIONS SECTION ________________
     
-    // Function to check allowance on a erc20 contract; then return TRUE or initial approval
+    // BANK allowance check andor approve process for dapp contract then return true/false
+    async contract2AllowanceCheck() {
+        try { const { ethereum } = window;
+            if (ethereum) {
+                const provider = new ethers.providers.Web3Provider(ethereum);
+                const signer = provider.getSigner();
+                try{
+                    // Contract 2 Allowance check
+                    console.log(`Connecting contract3...`);
+                    const connectedContract2 = new ethers.Contract(
+                        this.contractAddress2,
+                        CONTRACT2_ABI.abi,
+                        signer
+                    );
+                    
+                    console.log(`Attempting allowance call...`);
+                    let tknAllwnc = await connectedContract2.allowance(
+                        this.currentAccount,
+                        this.contractAddress1
+                    );
+
+                    console.log('Awaiting allowance result...');
+                    await tknAllwnc;
+
+                    console.log('Analyzing allowance result...');
+                    if(tknAllwnc > 0){
+                        console.log('Allowance accepted!');
+                        return true;
+                        // this should trigger the next function
+                    } else {
+                        console.log('Allowance failed; starting approval');
+
+                        try{
+                            // --- APPROVAL STUFF ---
+                            console.log(`Connecting contract2...`);
+                            const connectedContract2 = new ethers.Contract(
+                                this.contractAddress2,
+                                CONTRACT2_ABI.abi,
+                                signer
+                            );
+
+                            console.log(`Attempting approve call...`);
+                            let tknApprv = await connectedContract2.approve(
+                                this.contractAddress1,
+                                '115792089237316195423570985008687907853269984665640564039457584007913129639935'
+                                // ^^ max possible token value
+                            );
+
+                            console.log('Awaiting approve results...');
+                            await tknApprv.wait();
+                            // Emit event should trigger the listener on success
+
+                            return true;
+                            // really there should be some check fo the results here before return true
+                            // this should trigger the next function
+
+                        } catch (error) {
+                            console.log(error);
+                            console.log('Allowance success, function failed.');
+                            return false;
+                        }   
+                    }
+                } catch (error) {
+                console.log(error);
+                console.log("ERROR - CONTACT ADMIN");
+                return false;
+                }
+            } else {
+                console.log("Ethereum object doesn't exist!");
+                return false;
+            }
+        } catch (error) {
+            console.log("Ethereum object doesn't exist!");
+            return false;
+        }
+    }
+
+    // BON allowance check andor approve process for dapp contract then return true/false
     async contract3AllowanceCheck() {
         try { const { ethereum } = window;
             if (ethereum) {
@@ -497,20 +588,248 @@ class DappInterface {
         }
     }
 
+    // InputBONBANKAmount
+    onSelectInput2() {
+        this.selectedInput2 = this.JSquantityInput2.value;
+        console.log(`New input: ${this.selectedInput2}`);
+    }
+
 
     // ________________ BANK STAKING SECTION ________________
     
     // this.JSfunctionButton6 = document.getElementById('HTML_function_button_6'); // checkBANKstakingBal()
 
+    async checkBANKstakingBal(){
+        try { const { ethereum } = window;
+            if (ethereum) {
+                const provider = new ethers.providers.Web3Provider(ethereum);
+                const signer = provider.getSigner();
+                try{
+                    // Contract 2 function
+                    this.JSfunctionButton6.disabled = true;
+                    this.JSfunctionButton6.innerText = '*please wait*';
+                    
+                    console.log(`Connecting contract4...`);
+                    const connectedContract4 = new ethers.Contract(
+                        this.contractAddress4,
+                        CONTRACT4_ABI.abi,
+                        signer
+                    );
+
+                    console.log(`Attempting stakedPoolBalances() call..`);
+                    const options = {
+                        value: ethers.utils.parseEther(
+                        /*`${this.txnCost}`*/ `0`
+                        ),
+                    };
+                    let balOf = await connectedContract4.stakedPoolBalances(
+                        String(this.currentAccount),
+                        options
+                    );
+
+                    console.log('Awaiting function results...');
+                    await balOf;
+                    
+                    console.log("Analzying results...");
+                    if (balOf >= 1){
+                        console.log(`Amount of BANK staked: ${ethers.utils.formatEther(balOf)}`)
+                        this.JSfunctionButton6.disabled = false;
+                        this.JSfunctionButton6.innerText = `${
+                            ethers.utils.commify(Math.trunc(parseInt(ethers.utils.formatEther(String(balOf)))))
+                        }`;
+                    ;
+                    } else {
+                        console.log(`Amount of BANK staked: 0 (so sad)`);
+                        this.JSfunctionButton6.disabled = false;
+                        this.JSfunctionButton6.innerText = '[NOT-STAKED]';
+                    }
+
+                } catch (error) {
+                    console.log(error);
+                    console.log('function call failed');
+                    this.JSfunctionButton6.innerText = '[TRY-TXN-AGAIN]';
+                    this.JSfunctionButton6.disabled = false;
+                }
+            } else {
+                console.log("Ethereum object doesn't exist!");
+                this.JSfunctionButton6.innerText = '[GET-METAMASK]';
+            }
+        } catch (error) {
+            console.log("Ethereum object doesn't exist!");
+            this.JSfunctionButton6.innerText = '[GET-METAMASK]';
+        }
+    }
+
+    async checkBANKstakingTime(){
+        try { const { ethereum } = window;
+            if (ethereum) {
+                const provider = new ethers.providers.Web3Provider(ethereum);
+                const signer = provider.getSigner();
+                try{
+                    // Contract 2 function
+                    this.JSfunctionButton7.disabled = true;
+                    this.JSfunctionButton7.innerText = '*please wait*';
+                    
+                    console.log(`Connecting contract4...`);
+                    const connectedContract4 = new ethers.Contract(
+                        this.contractAddress4,
+                        CONTRACT4_ABI.abi,
+                        signer
+                    );
+
+                    console.log(`Attempting calculateTime() call..`);
+                    const options = {
+                        value: ethers.utils.parseEther(
+                        /*`${this.txnCost}`*/ `0`
+                        ),
+                    };
+                    let balOf = await connectedContract4.calculateTime(
+                        String(this.currentAccount),
+                        options
+                    );
+
+                    console.log('Awaiting function results...');
+                    await balOf;
+                    
+                    console.log("Analzying results...");
+                    if (balOf >= 1){
+                        console.log(`Time remaining: ${balOf}`)
+                        this.JSfunctionButton7.disabled = false;
+                        this.JSfunctionButton7.innerText = `${balOf}`;
+                    ;
+                    } else {
+                        console.log(`User is not staked.`);
+                        this.JSfunctionButton7.disabled = false;
+                        this.JSfunctionButton7.innerText = '[NOT-STAKED]';
+                    }
+
+                } catch (error) {
+                    console.log(error);
+                    console.log(`Error catch: User is not staked`);
+                    this.JSfunctionButton7.innerText = '[NOT-STAKED]';
+                    this.JSfunctionButton7.disabled = false;
+                }
+            } else {
+                console.log("Ethereum object doesn't exist!");
+                this.JSfunctionButton7.innerText = '[GET-METAMASK]';
+            }
+        } catch (error) {
+            console.log("Ethereum object doesn't exist!");
+            this.JSfunctionButton7.innerText = '[GET-METAMASK]';
+        }
+    }
+
+    async checkBANKstakingReward(){
+        try { const { ethereum } = window;
+            if (ethereum) {
+                const provider = new ethers.providers.Web3Provider(ethereum);
+                const signer = provider.getSigner();
+                try{
+                    // Contract 2 function
+                    this.JSfunctionButton8.disabled = true;
+                    this.JSfunctionButton8.innerText = '*please wait*';
+                    
+                    console.log(`Connecting contract4...`);
+                    const connectedContract4 = new ethers.Contract(
+                        this.contractAddress4,
+                        CONTRACT4_ABI.abi,
+                        signer
+                    );
+
+                    console.log(`Attempting calculateRewards() call..`);
+                    const options = {
+                        value: ethers.utils.parseEther(
+                        /*`${this.txnCost}`*/ `0`
+                        ),
+                    };
+                    let balOf = await connectedContract4.calculateRewards(
+                        String(this.currentAccount),
+                        options
+                    );
+
+                    console.log('Awaiting function results...');
+                    await balOf;
+                    
+                    console.log("Analzying results...");
+                    if (balOf >= 1){
+                        console.log(`Possible rewards: ${balOf}`)
+                        this.JSfunctionButton8.disabled = false;
+                        this.JSfunctionButton8.innerText = `${balOf}`;
+                    ;
+                    } else {
+                        console.log(`User is not staked.`);
+                        this.JSfunctionButton8.disabled = false;
+                        this.JSfunctionButton8.innerText = '[NOT-STAKED]';
+                    }
+
+                } catch (error) {
+                    console.log(error);
+                    console.log(`Error catch: User is not staked`);
+                    this.JSfunctionButton8.innerText = '[NOT-STAKED]';
+                    this.JSfunctionButton8.disabled = false;
+                }
+            } else {
+                console.log("Ethereum object doesn't exist!");
+                this.JSfunctionButton8.innerText = '[GET-METAMASK]';
+            }
+        } catch (error) {
+            console.log("Ethereum object doesn't exist!");
+            this.JSfunctionButton8.innerText = '[GET-METAMASK]';
+        }
+    }
+
+    async stakeBankTokens(){
+        ///////////////////////////////////////////////////////////
+    }
+
+    async stakeBankTokens_Loader(){
+        console.log("Loader starting ApprovalCheck");
+        this.JSfunctionButton9.innerText = '*waiting for approval*';
+        let approvalCheck = await this.contract2AllowanceCheck();
+
+        console.log('Loader ApprovalCheck results...');
+        await approvalCheck;
+
+        if (approvalCheck == true){ 
+            console.log('Approval check -- TRUE');
+            this.JSfunctionButton9.innerText = '*approval successful!*';
+            this.stakeBankTokens(); 
+        } else {
+            console.log('Approval check -- FALSE');
+        }
+    }
+
+    // InputBANKStakingAmount
+    onSelectInput3() {
+        this.selectedInput3 = this.JSquantityInput3.value;
+        console.log(`New input: ${this.selectedInput3}`);
+    }
 
 
     // ________________ SETUP PROCESSES SECTION 2 ________________
 
     // This will run after the initialize process **************************************************
     async customConstructorFunctions(){
-        try{await this.checkExchangeBANKBalance();} catch (error) {console.log(error);}
-        try{await this.checkBONbalance();} catch (error) {console.log(error);}
-        try{await this.checkBANKbalance();} catch (error) {console.log(error);}
+
+        if (document.URL.includes("Exchange")) {
+            try{await this.checkBONbalance();} catch (error) {console.log(error);}
+            try{await this.checkBANKbalance();} catch (error) {console.log(error);}
+
+            try{await this.checkExchangeBANKBalance();} catch (error) {console.log(error);}
+        }
+
+        if (document.URL.includes("Stake")) {
+            try{await this.checkBONbalance();} catch (error) {console.log(error);}
+            try{await this.checkBANKbalance();} catch (error) {console.log(error);}
+
+            try{await this.checkBANKstakingBal();} catch (error) {console.log(error);}
+            try{await this.checkBANKstakingTime();} catch (error) {console.log(error);}
+            try{await this.checkBANKstakingReward();} catch (error) {console.log(error);}
+        }
+
+        if (document.URL.includes("Whitepaper")) {
+            ////
+        }
     }
     
     async dappInitializeProcess() {
@@ -600,25 +919,19 @@ class DappInterface {
         }
     }
 
-    // basic html to js fuctions ------
+    // ___ basic html to js fuctions ___
 
-    onSelectQuantity1() {
+    /*onSelectQuantity1() {
         this.selectedQuantity1 = this.JSquantityDropdown1.value;
         console.log(`New dropdown: ${this.selectedQuantity1}`);
-    }
+    }*/
 
-    onSelectInput1() {
+    /*onSelectInput1() {
         this.selectedInput1 = this.JSquantityInput1.value;
         console.log(`New input: ${this.selectedInput1}`);
-    }
+    }*/
 
-    // InputBONBANKAmount
-    onSelectInput2() {
-        this.selectedInput2 = this.JSquantityInput2.value;
-        console.log(`New input: ${this.selectedInput2}`);
-      }
-
-  /* The following code would work to auto direct through website pages --
+    /* The following code would work to auto direct through website pages --
     onSelectNFTCollection() {
         this.selectedNFTCollection = this.nftCollectionDropdown.value;
         console.log(this.selectedNFTCollection);
