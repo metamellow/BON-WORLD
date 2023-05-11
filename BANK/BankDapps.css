@@ -284,3 +284,57 @@ color: #54FF65;
 
   justify-content: center;
 }
+
+/* -------------------- BANKbutton Effects -------------------- */
+.BANKbutton {
+  background-color: #54FF65;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+/* Animation for mouseover */
+.BANKbutton:hover {
+  box-shadow: 4px 0 #54FF65, -4px 0 #54FF65, 0 4px #54FF65, 0 -4px #54FF65;
+}
+
+/* Animation for focus (i.e., tabbing onto button) */
+.BANKbutton:focus {
+  outline: thin dotted white;
+  outline-offset: 1px;
+}
+
+/* Additional animation styles if desired */
+.BANKbutton:active, .BANKbutton:visited {
+  color: #fff;
+  transform: scale(1.1);
+}
+
+.BANKbutton:link {
+  transition: all .2s ease-in-out;
+}
+
+.BANKbutton:hover:not(.transparent), .BANKbutton:focus:not(.transparent), .BANKbutton:active:not(.transparent), .BANKbutton:visited:not(.transparent){
+  filter: drop-shadow(2px 0 #ccc, 0 2px #ccc, 2px -2px #eee, 0 0 #eee, 2px 2px #999);
+}
+
+@media only screen and (max-width : 767px), only screen and (-webkit-min-device-pixel-ratio : 3/2) {
+  .BANKbutton {
+    width: auto !important;
+    height: auto !important;
+    margin-top: 20px;
+  }
+}
+
+@media only screen and (max-height: 450px) {
+  .BANKbutton{
+      width:auto;
+      height:auto;
+      margin-right:-20px;
+  }
+}
+
+
