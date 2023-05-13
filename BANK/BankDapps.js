@@ -42,7 +42,7 @@ Here are the steps on how to integrate an onscreen completion-percentage bar:
 #progress-bar {
   width: 100%;
   height: 20px;
-  background-color: #39FF14; /* Neon green */
+  background-color: #39FF14;
   border: 1px solid #000;
   overflow: hidden;
   animation: pulse 5s infinite;
