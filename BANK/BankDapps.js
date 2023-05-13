@@ -1,3 +1,83 @@
+
+
+/*
+
+
+Here are the steps on how to integrate an onscreen completion-percentage bar:
+
+1. Create a HTML file with the following code:
+
+```html
+<div id="progress-bar">
+  <div id="progress"></div>
+</div>
+```
+
+2. Create a CSS file with the following code:
+
+```css
+#progress-bar {
+  width: 100%;
+  height: 20px;
+  background-color: #ccc;
+  border: 1px solid #000;
+}
+
+#progress {
+  width: 0%;
+  height: 100%;
+  background-color: #000;
+}
+```
+
+3. Create a JS file with the following code:
+
+```js
+var progressBar = document.getElementById("progress");
+var progress = document.getElementById("progress");
+
+var percentage = 50; // This is the percentage that will be displayed on the progress bar.
+
+progressBar.style.width = percentage + "%";
+progress.style.width = percentage + "%";
+```
+
+4. Open the HTML file in a web browser. You should see a progress bar with the percentage that you specified.
+
+Here is an example of how to update the percentage of the progress bar dynamically:
+
+```js
+var progressBar = document.getElementById("progress");
+var progress = document.getElementById("progress");
+
+var percentage = 0;
+
+setInterval(function() {
+  percentage += 1;
+  progressBar.style.width = percentage + "%";
+  progress.style.width = percentage + "%";
+}, 1000);
+```
+
+This code will update the percentage of the progress bar every second.
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // --- Import ABI contract data ---
 // EXCHANGE
 const CONTRACT1_ABI = (
