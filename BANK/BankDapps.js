@@ -28,6 +28,37 @@ Here are the steps on how to integrate an onscreen completion-percentage bar:
   height: 100%;
   background-color: #000;
 }
+
+------- updated:
+
+#progress {
+  width: 0%;
+  height: 100%;
+  background-color: #000;
+  float: left;
+  margin-right: 1px;
+}
+
+#progress-bar {
+  width: 100%;
+  height: 20px;
+  background-color: #39FF14; /* Neon green */
+  border: 1px solid #000;
+  overflow: hidden;
+  animation: pulse 5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}
 ```
 
 3. Create a JS file with the following code:
