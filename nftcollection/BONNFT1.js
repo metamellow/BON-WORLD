@@ -572,7 +572,7 @@ class BONNFT1minter {
     this.connectButton = document.getElementById('connectButtonHTML');
     this.mintButton = document.getElementById('mintButtonHTML');
 
-    this.NFTCostAmount = 30; // 30000000000000000000
+    this.NFTCostAmount = 45; // 45000000000000000000
   }
 
   
