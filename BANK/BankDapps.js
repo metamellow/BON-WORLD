@@ -46,6 +46,7 @@ Here are the steps on how to integrate an onscreen completion-percentage bar:
   border: 1px solid #000;
   overflow: hidden;
   animation: pulse 5s infinite;
+  box-shadow: 0 0 10px 0 #39FF14;
 }
 
 @keyframes pulse {
