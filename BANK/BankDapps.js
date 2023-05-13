@@ -49,6 +49,14 @@ Here are the steps on how to integrate an onscreen completion-percentage bar:
   box-shadow: 0 0 10px 0 #39FF14;
 }
 
+#progress-bar .percentage {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 12px;
+  color: #39FF14;
+}
+
 @keyframes pulse {
   0% {
     width: 0%;
