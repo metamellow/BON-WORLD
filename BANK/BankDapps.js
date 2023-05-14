@@ -1,8 +1,6 @@
 
 
 /*
-
-
 Here are the steps on how to integrate an onscreen completion-percentage bar:
 
 1. Create a HTML file with the following code:
