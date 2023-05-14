@@ -184,6 +184,9 @@ class DappInterface {
         this.selectedInput3 = 0; // set via the HTML input
         this.JSquantityInput2 = document.getElementById('HTML_quantity_input_2'); // input BON2BANK amount
         this.JSquantityInput3 = document.getElementById('HTML_quantity_input_3'); // input BANKStaking amount
+
+        /*this.progressBar = document.getElementById('progress-bar');
+        this.progress = document.getElementById('progress');*/
     }
 
     // ________________ SETUP PROCESSES SECTION 1 ________________
@@ -858,7 +861,10 @@ class DappInterface {
                     await balOf;
                     
                     console.log("Analzying results...");
+                    await this.formatBANKStakingTimeProgressBar(balOf);
+                    /*
                     if (balOf >= 1){
+                        
                         let convertedTime = await this.timeConverter(balOf);
                         await convertedTime;
                         console.log(`Time passed: ${convertedTime}`)
@@ -870,6 +876,7 @@ class DappInterface {
                         this.JSfunctionButton7.disabled = false;
                         this.JSfunctionButton7.innerText = '[NOT-STAKED]';
                     }
+                    */
 
                 } catch (error) {
                     console.log(error);
@@ -884,6 +891,33 @@ class DappInterface {
         } catch (error) {
             console.log("Ethereum object doesn't exist!");
             this.JSfunctionButton7.innerText = '[GET-METAMASK]';
+        }
+    }
+
+    async formatBANKStakingTimeProgressBar(secs){
+        if (secs >= 1){        
+            let convertedTime = await this.timeConverter(secs);
+            console.log(`Time passed: ${convertedTime}`)
+
+            var progressBar = document.getElementById("HTML_custom_div_1b");
+            var progress = document.getElementById("HTML_custom_div_1c");
+            
+            var percentage;
+            if (secs < 604800){var percentage = secs/604800;
+            } else {var percentage = 99;}
+
+            percentage += 1;
+            progressBar.style.width = percentage + "%";
+            progress.style.width = percentage + "%";
+
+            this.JSfunctionButton7.disabled = false;
+            this.JSfunctionButton7.innerText = `${percentage + "%"}`;
+            this.JSfunctionButton7.style.color = "white";
+            this.JSfunctionButton7.style.textShadow = "2px 2px 3px rgba(0, 0, 0, 0.4)";
+        } else {
+            console.log(`User is not staked.`);
+            this.JSfunctionButton7.disabled = false;
+            this.JSfunctionButton7.innerText = '[NOT-STAKED]';
         }
     }
 
@@ -1031,7 +1065,7 @@ class DappInterface {
                 } catch (error) {
                     console.log(error);
                     console.log('function call failed');
-                    this.JSfunctionButton10.innerText = 'Please check your time - must be +7 days';
+                    this.JSfunctionButton10.innerText = 'Check timer - must be +7 days';
                     this.JSfunctionButton10.disabled = false;
                 }
             } else {
