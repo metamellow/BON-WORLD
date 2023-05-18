@@ -1,7 +1,3 @@
-
-const JSfile_bankWhitepaper = (window.location.href == "../Bankwhitepaper.html") ? import("./NEWbankWhitepaper.js") : undefined;
-
-
 // --- Import ABI contract data ---
 // EXCHANGE
 const CONTRACT1_ABI = (
@@ -38,6 +34,26 @@ const CONTRACT4_ABI = (
         [{"inputs":[{"internalType":"address","name":"_bankTokenAddress","type":"address"},{"internalType":"uint256","name":"_timerDuration","type":"uint256"},{"internalType":"uint256","name":"_rwdRate","type":"uint256"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"amountDeposited","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"userBalance","type":"uint256"}],"name":"DepositEmit","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"userBalance","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"userReward","type":"uint256"}],"name":"RewardsEmit","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"userBalance","type":"uint256"}],"name":"WithdrawEmit","type":"event"},{"inputs":[],"name":"bankTokenAddress","outputs":[{"internalType":"contract IERC20","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_user","type":"address"}],"name":"calculateRewards","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_user","type":"address"}],"name":"calculateTime","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"closeRewardsPool","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_amount","type":"uint256"}],"name":"depositToStaking","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"isStaked","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"rwdRate","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_rwdRate","type":"uint256"}],"name":"setRate","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bool","name":"_trueOrFalse","type":"bool"}],"name":"setStakingOpen","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_time","type":"uint256"}],"name":"setTimer","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_newTokenAddress","type":"address"}],"name":"setTokenAddress","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"stakedPoolBalances","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"stakedPoolSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"stakingOpen","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"timerDuration","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"withdrawAll","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"withdrawRewards","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"withdrawTimer","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"}]
     ,}
 );
+
+// Import the correct JS scripts /////////////////////////////////////////////////////////////////////////////
+let KeyFuncHolder;
+if(document.URL.includes("BANK_Exchange") == true){KeyFuncHolder = import("./BANK_Exchange.js")};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 class DappInterface {
     
@@ -651,8 +667,6 @@ class DappInterface {
 
 
     // ________________ BANK STAKING SECTION ________________
-    
-    // this.JSfunctionButton6 = document.getElementById('HTML_function_button_6'); // checkBANKstakingBal()
 
     async checkBANKstakingBal(){
         try { const { ethereum } = window;
@@ -1143,40 +1157,29 @@ class DappInterface {
             console.log(error); 
         }
     }
-
-    // ___ basic html to js fuctions ___
-
-    /*onSelectQuantity1() {
-        this.selectedQuantity1 = this.JSquantityDropdown1.value;
-        console.log(`New dropdown: ${this.selectedQuantity1}`);
-    }*/
-
-    /*onSelectInput1() {
-        this.selectedInput1 = this.JSquantityInput1.value;
-        console.log(`New input: ${this.selectedInput1}`);
-    }*/
-
-    /* The following code would work to auto direct through website pages --
-    onSelectNFTCollection() {
-        this.selectedNFTCollection = this.nftCollectionDropdown.value;
-        console.log(this.selectedNFTCollection);
-
-        if(this.selectedNFTCollection == "BONNFT1"){
-            window.location.href = "../nftcollection/BONNFT1.html";
-        }
-        if(this.selectedNFTCollection == "BONxCULT1"){
-            window.location.href = "../nftcollection/BONxCULT1.html";
-        }
-        if(this.selectedNFTCollection == "BONxRVLT"){
-            window.location.href = "../nftcollection/BONxRVLT.html";
-        }
-        if(this.selectedNFTCollection == "BONxLIB"){
-            window.location.href = "../nftcollection/BONxLIB.html";
-        }
-    }
-  */
-
 }
 
 const DappInterface_ = new DappInterface();
 DappInterface_.dappInitializeProcess();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+console.log("random number: " + KeyFuncHolder.getRandomNumber());

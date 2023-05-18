@@ -1,13 +1,3 @@
-
-<!-- add button images to the custom CSS tag, make them super cool, maybe even a gif of a manimated , and a glass dial display for any of the number buttons, -->
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -57,7 +47,9 @@
         </div>
         <br>
 
-        <!-- ________ USER INFORMATION SECTION ________ -->
+
+
+        <!-- ________ USER / DATA INFORMATION SECTION ________ -->
         <div class="title3" align="center"> USER ACCOUNT DETAILS </div>
         <br>
 
@@ -109,13 +101,14 @@
         <!-- ________ NAVIGATION SECTION ________ -->
 
         <div class="submenu"> 
-            <a href="./BankExchange.html"> EXCHANGE </a>
-            <a href="./BankStake.html"> STAKING </a>
-            <a href="./Bankwhitepaper.html"> WHITEPAPER </a>
+            <a href="./BANK_Exchange.html"> EXCHANGE </a>
+            <a href="./BANK_Stake.html"> STAKING </a>
+            <a href="./BANK_Whitepaper.html"> WHITEPAPER </a>
         </div>
         <br><br>
 
-        <!-- ________ MAIN DAPP SECTION (STAKING) ________ -->
+        <!-- ________ MAIN DAPP SECTION (EXCHANGE) ________ -->
+
         <div class="alinhamento">
 
             <div class="title2">
@@ -128,99 +121,82 @@
                 <img src="images/detail.png">
             </div>
             <br><br>
-            
+
             <div class="bgbuttons">
+                
                 <div id="dapp_interface_1">
 
-                <div class="title"> BANK STAKING DEPOSTS</div>
-                <br/>
-                
-                <label for="CheckBANKstakedAmount">
-                        BANK-STAKED<br>
+                    <div class="title"> BON >> BANK EXCHANGE </div>
+
+                    <label for="CheckBONBANKPool">
+                        REMAINING<br>
                         </label>
                         <button
-                            name="CheckBANKstakedAmount"
-                            id="HTML_function_button_6"
-                            onclick="DappInterface_.checkBANKstakingBal();"
+                            name="CheckBONBANKPool"
+                            id="HTML_function_button_2"
+                            class="button"
+                            onclick="DappInterface_.checkExchangeBANKBalance();"
                             >
                             [CHECK]
                     </button>
 
                     <br/>
                     <br/>
-                    
-                    <form><label for="InputBANKStakingAmount" class="amount">
-                        STAKE-TOKENS<br>
+
+                    <form><label for="InputBONBANKAmount" class="amount">
+                        AMOUNT<br>
                         </label>
                         <input 
                             type="number"
-                            name="InputBANKStakingAmount"
-                            id="HTML_quantity_input_3"
+                            name="InputBONBANKAmount"
+                            id="HTML_quantity_input_2"
                             min="0"
                             value="0"
-                            onchange="DappInterface_.onSelectInput3()"
+                            onchange="DappInterface_.onSelectInput2()"
                             required
-                        >
+                        > 
+                        <br>
+                        <div align="right">
+                        <label style="margin: 10px;"> 21m </label>
+                        <label > max. </label>
+                    </div>
                     </form>
-                    <label for="StakeBANKTokens"></label>
-                        <button
-                            name="StakeBANKTokens"
-                            id="HTML_function_button_9"
-                            class="custom_button_1"
-                            onclick="DappInterface_.stakeBankTokens_Loader();"
-                            >
-                            [STAKE]
-                    </button>
 
                     <br/>
                     <br/>
 
-                    <label for="WithdawStakedTokens">
-                        WITHDRAW-ALL<br>
+                    <label for="ExchangeBONforBANK">
+                        EXCHANGE <br>
                         </label>
                         <button
-                            name="WithdawStakedTokens"
-                            id="HTML_function_button_11"
+                            name="ExchangeBONforBANK"
+                            id="HTML_function_button_3"
                             class="custom_button_1"
-                            onclick="DappInterface_.withdawStakedTokens();"
+                            onclick="DappInterface_.exchangeBONforBANK_Loader();"
                             >
-                            [WITHDRAW-STAKED]
+                            [SWAP]
                     </button>
 
                     <br/>
                     <br/>
-                    
+
                     <div class="title"><hr></div>
                     <br/>
 
-                    <div class="title"> BANK STAKING REWARDS </div>
-                    <br/>
+                    <div class="title"> BANK >> EXCHANGE </div>
 
-                    <label for="CheckBANKstakedTime">
-                        SEVEN-DAY-TIMER<br>
-                        </label>
-                        <div id="HTML_custom_div_1a" class="progress-bar-holder">
-                            <div id="HTML_custom_div_1b" class="progress-bar">
-                                <button
-                                name="CheckBANKstakedTime"
-                                id="HTML_function_button_7"
-                                onclick="DappInterface_.checkBANKstakingTime();"
-                                >
-                                    [CHECK]
-                                </button>
-                                <div id="HTML_custom_div_1c" class="progress"></div>
-                            </div>
-                    </div>
 
-                    <br/>
+                    <!-- NEEEEEEEEEEEEEEEEEEEDDDDDDDDDDDDDDDDD WWWWWWWWWWWWWOOOOOOOOOOOOOORRRRRRRRRRRRRKKKKKK
 
-                    <label for="CheckBANKstakedReward">
-                        YOUR-REWARDS<br>
+                        
+                    <label for="CheckBONBANKPool">
+                        REMAINING<br>
                         </label>
                         <button
-                            name="CheckBANKstakedReward"
-                            id="HTML_function_button_8"
-                            onclick="DappInterface_.checkBANKstakingReward();"
+                            name="CheckBONBANKPool"
+                            id="HTML_function_button_2"
+                            class="button"
+                            onclick="DappInterface_.checkExchangeBANKBalance();"
                             >
                             [CHECK]
                     </button>
@@ -228,23 +204,55 @@
                     <br/>
                     <br/>
 
-                    <label for="ClaimStakingRewards">
-                        REWARDS <br>
+                    <form><label for="InputBONBANKAmount" class="amount">
+                        AMOUNT<br>
+                        </label>
+                        <input 
+                            type="number"
+                            name="InputBONBANKAmount"
+                            id="HTML_quantity_input_2"
+                            min="0"
+                            value="0"
+                            onchange="DappInterface_.onSelectInput2()"
+                            required
+                        > 
+                        <br>
+                        <div align="right">
+                        <label style="margin: 10px;"> 21m </label>
+                        <label > max. </label>
+                    </div>
+                    </form>
+
+                    <br/>
+                    <br/>
+
+                    <label for="ExchangeBONforBANK">
+                        EXCHANGE <br>
                         </label>
                         <button
-                            name="ClaimStakingRewards"
-                            id="HTML_function_button_10"
+                            name="ExchangeBONforBANK"
+                            id="HTML_function_button_3"
                             class="custom_button_1"
-                            onclick="DappInterface_.claimStakingRewards();"
+                            onclick="DappInterface_.exchangeBONforBANK_Loader();"
                             >
-                            [CLAIM]
+                            [SWAP]
                     </button>
 
                     <br/>
                     <br/>
+                    -->
 
 
-                </div>
+
+
+                    
+                </div>            
+
+                <br/><br/>
+                <img src="images/detail2.svg" align="left">
+                <br/><br/>
+                <br/><br/>
+
             </div>
         </div>    
     
@@ -255,10 +263,8 @@
                 <div>
                 <img src="images\banklogosmall.svg" style="height: 60px" alt="Logo" />
                 </div>
-                <p >Copyright © Bank of Nowhere</p> 
-                <div>
+                <p >Copyright © Bank of Nowhere</p>
                 <img src="images\moduluslogogreen.svg">
-            </div>
             </div>
         </footer>
 
