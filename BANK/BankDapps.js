@@ -1,3 +1,7 @@
+
+const JSfile_bankWhitepaper = (window.location.href == "../Bankwhitepaper.html") ? import("./NEWbankWhitepaper.js") : undefined;
+
+
 // --- Import ABI contract data ---
 // EXCHANGE
 const CONTRACT1_ABI = (
