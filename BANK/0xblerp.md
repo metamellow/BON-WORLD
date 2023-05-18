@@ -6,4 +6,4 @@
 - make the button text a little smoother; like if its empty, then show an empty icon
 
 
-- Need to edit/create/format the BANK to BON stuff
+- Need to edit/create/format the BANK to BON stuff;;;; its on polygon, so its harder

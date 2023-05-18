@@ -1,4 +1,4 @@
-// --- Import ABI contract data ---
+// --- Import all ABI contract data ---
 // EXCHANGE
 const CONTRACT1_ABI = (
 	{
@@ -35,25 +35,6 @@ const CONTRACT4_ABI = (
     ,}
 );
 
-// Import the correct JS scripts /////////////////////////////////////////////////////////////////////////////
-let KeyFuncHolder;
-if(document.URL.includes("BANK_Exchange") == true){KeyFuncHolder = import("./BANK_Exchange.js")};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 class DappInterface {
     
@@ -61,10 +42,10 @@ class DappInterface {
 
     constructor() {
         this.dappChain = '0x13881'; //Ethereum=='0x1', Polygon=='0x89', Binance=='0x38', Modulus=='0x666', Mumbai=='0x13881'
-        this.contractAddress1 = '0x1c056a00a402185004795a2e97c1834ac08deaf5'; // the bon2bank exchange dapp
-        this.contractAddress2 = '0x8cf86efbc5b5155377de65df6ef0db4c96611487'; // bank
-        this.contractAddress3 = '0xf647981f9417eeaf70cb92ae14978fdf489a11b8'; // bon
-        this.contractAddress4 = '0x4d76c0c07d32f6b5860e9a612d76c88367df2361'; // the bank staking dapp
+        this.contractAddress1 = '0x1c056a00a402185004795a2e97c1834ac08deaf5'; // bon2bank exchange
+        this.contractAddress2 = '0x8cf86efbc5b5155377de65df6ef0db4c96611487'; // bank token
+        this.contractAddress3 = '0xf647981f9417eeaf70cb92ae14978fdf489a11b8'; // bon token
+        this.contractAddress4 = '0x4d76c0c07d32f6b5860e9a612d76c88367df2361'; // bank staking
         this.currentAccount = ''; // loaded on connectWallet
 
         // All HTML Elements
@@ -87,11 +68,9 @@ class DappInterface {
         this.JSquantityInput2 = document.getElementById('HTML_quantity_input_2'); // input BON2BANK amount
         this.JSquantityInput3 = document.getElementById('HTML_quantity_input_3'); // input BANKStaking amount
 
-        /*this.progressBar = document.getElementById('progress-bar');
-        this.progress = document.getElementById('progress');*/
     }
 
-    // ________________ SETUP PROCESSES SECTION 1 ________________
+    // ________________ FIRST SETUP PROCESSES SECTION ________________
 
     // Generic web3 wallet connect process
     async connectWallet() {
@@ -130,7 +109,8 @@ class DappInterface {
         }
     }
 
-    // Listeners that pick up emit events from onchain functions *********************************
+    // Listeners that pick up emit events from onchain functions
+    // Needs to be consistently updated everytime a new contract is added
     async setupEventListener() {
         try {
             const { ethereum } = window;
@@ -138,7 +118,7 @@ class DappInterface {
                 const provider = new ethers.providers.Web3Provider(ethereum);
                 const signer = provider.getSigner();
 
-                // --- Contract 1 --- (usually the dapp)
+                // --- Contract 1 ---
                     const connectedContract1 = new ethers.Contract(
                         this.contractAddress1,
                         CONTRACT1_ABI.abi,
@@ -156,7 +136,7 @@ class DappInterface {
 
                     console.log('Contract 1A listener success');
 
-                // --- Contract 2 --- (usually erc20 token)
+                // --- Contract 2 ---
                     const connectedContract2 = new ethers.Contract(
                         this.contractAddress2,
                         CONTRACT2_ABI.abi,
@@ -172,7 +152,7 @@ class DappInterface {
                     );
                     console.log('Contract 2A listener success');
 
-                // --- Contract 3 --- (usually erc20 token)
+                // --- Contract 3 ---
                     const connectedContract3 = new ethers.Contract(
                         this.contractAddress3,
                         CONTRACT3_ABI.abi,
@@ -188,7 +168,7 @@ class DappInterface {
                     );
                     console.log('Contract 3A listener success');
 
-                // --- Contract 4 --- (usually the dapp)
+                // --- Contract 4 ---
                     const connectedContract4 = new ethers.Contract(
                         this.contractAddress4,
                         CONTRACT4_ABI.abi,
@@ -660,7 +640,7 @@ class DappInterface {
     }
 
     // InputBONBANKAmount
-    onSelectInput2() {
+    async onSelectInput2() {
         this.selectedInput2 = this.JSquantityInput2.value;
         console.log(`New input: ${this.selectedInput2}`);
     }
@@ -1039,15 +1019,14 @@ class DappInterface {
     }
 
     // InputBANKStakingAmount
-    onSelectInput3() {
+    async onSelectInput3() {
         this.selectedInput3 = this.JSquantityInput3.value;
         console.log(`New input: ${this.selectedInput3}`);
     }
 
+    // ________________ SECOND SETUP PROCESSES SECTION 2 ________________
 
-    // ________________ SETUP PROCESSES SECTION 2 ________________
-
-    // This will run after the initialize process **************************************************
+    // (2) This will run after initialize and boot up custom funcs
     async customConstructorFunctions(){
 
         if (document.URL.includes("Exchange")) {
@@ -1071,6 +1050,7 @@ class DappInterface {
         }
     }
     
+    // (1) This will check and set the correct web3 chain
     async dappInitializeProcess() {
         try{
             await this.connectWallet();
@@ -1164,22 +1144,3 @@ DappInterface_.dappInitializeProcess();
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-///////////////////////////////////////////////////////////////////////////////////////////
-console.log("random number: " + KeyFuncHolder.getRandomNumber());
