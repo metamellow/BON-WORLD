@@ -55,11 +55,17 @@ class DappInterface {
         this.JSfunctionButton5 = document.getElementById('HTML_function_button_5'); // checkBANKbalance()
         this.JSfunctionButton1 = document.getElementById('HTML_function_button_1'); // approveThenFunction
 
-        // --- Exchange BON2BANK HTML Elements ---        
+        // --- Exchange HTML Elements ---        
+        // - dropdown redirect -
+        this.selectedDropdown1 = ''; // set via the HTML input; captures the chosen token exchange
+        this.JSDropdownInput1 = document.getElementById('HTML_dropdown_input_1'); // dropdown to choose tokens
+        // - bon to bank -
         this.JSfunctionButton2 = document.getElementById('HTML_function_button_2'); // checkExchangeBANKBalance()
         this.JSfunctionButton3 = document.getElementById('HTML_function_button_3'); // exchangeBONforBANK()
         this.selectedInput2 = 0; // set via the HTML input; holds input BON2BANK amount
         this.JSquantityInput2 = document.getElementById('HTML_quantity_input_2'); // input BON2BANK amount
+        // - bank to bon
+
 
         // --- Staking HTML Elements --- 
         this.JSfunctionButton6 = document.getElementById('HTML_function_button_6'); // checkBANKstakingBal()
@@ -510,6 +516,19 @@ class DappInterface {
 
     // ________________ BON<>BANK EXCHANGE FUNCTIONS SECTION ________________
 
+    async chooseWhichExchange(){
+        this.selectedDropdown1 = this.JSDropdownInput1.value;
+        console.log(this.selectedDropdown1);
+
+        if(this.selectedDropdown1 == "BON2BANK"){
+        window.location.href = "./BANK_Bon2Bank.html";
+        }
+        if(this.selectedDropdown1 == "BANK2BON"){
+        window.location.href = "./BANK_Bank2Bon.html";
+        }
+    }
+
+    // bon2bank
     async checkExchangeBANKBalance() {
         try { const { ethereum } = window;
             if (ethereum) {
@@ -646,6 +665,8 @@ class DappInterface {
         this.selectedInput2 = this.JSquantityInput2.value;
         console.log(`New input: ${this.selectedInput2}`);
     }
+    // bank2bon
+    //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
     // ________________ BANK STAKING SECTION ________________
 
