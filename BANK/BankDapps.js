@@ -1,5 +1,5 @@
-// --- Import all ABI contract data ---
-// EXCHANGE
+    // ________________ ESTABLISH ALL SMART CONTRACT ABIs ________________
+// "bonExchange"
 const CONTRACT1_ABI = (
 	{
         "contractName": "bonExchange",
@@ -8,7 +8,7 @@ const CONTRACT1_ABI = (
 	,}
 );
 
-// BANK
+// "bankToken"
 const CONTRACT2_ABI = (
 	{
         "contractName": "bankToken",
@@ -17,7 +17,7 @@ const CONTRACT2_ABI = (
     ,}
 );
 
-// BON
+// "bonToken"
 const CONTRACT3_ABI = (
 	{
         "contractName": "bonToken",
@@ -26,7 +26,7 @@ const CONTRACT3_ABI = (
     ,}
 );
 
-// STAKING
+// "bankTokenStaking"
 const CONTRACT4_ABI = (
 	{
         "contractName": "bankTokenStaking",
@@ -642,7 +642,6 @@ class DappInterface {
         }
     }
 
-    // InputBONBANKAmount
     async onSelectInput2() {
         this.selectedInput2 = this.JSquantityInput2.value;
         console.log(`New input: ${this.selectedInput2}`);
@@ -1020,35 +1019,39 @@ class DappInterface {
         }
     }
 
-    // InputBANKStakingAmount
     async onSelectInput3() {
         this.selectedInput3 = this.JSquantityInput3.value;
         console.log(`New input: ${this.selectedInput3}`);
     }
 
-    // ________________ SECOND SETUP PROCESSES SECTION 2 ________________
+    // ________________ SECOND SETUP PROCESSES SECTION ________________
 
-    // (2) This will run after initialize and boot up custom funcs
+    // (2) This will run after dappInitializeProcess() and boot up custom funcs
     async customConstructorFunctions(){
 
         if (document.URL.includes("Exchange")) {
+            // universals
             try{await this.checkBONbalance();} catch (error) {console.log(error);}
             try{await this.checkBANKbalance();} catch (error) {console.log(error);}
-
+            // customs
             try{await this.checkExchangeBANKBalance();} catch (error) {console.log(error);}
         }
 
         if (document.URL.includes("Stake")) {
+            // universals
             try{await this.checkBONbalance();} catch (error) {console.log(error);}
             try{await this.checkBANKbalance();} catch (error) {console.log(error);}
-
+            // customs
             try{await this.checkBANKstakingBal();} catch (error) {console.log(error);}
             try{await this.checkBANKstakingTime();} catch (error) {console.log(error);}
             try{await this.checkBANKstakingReward();} catch (error) {console.log(error);}
         }
 
         if (document.URL.includes("Whitepaper")) {
-            ////
+            // universals
+
+            // customs
+            
         }
     }
     

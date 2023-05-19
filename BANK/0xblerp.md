@@ -4,6 +4,7 @@
 - it seems like the timerbar either shows 100 or 0 ....
 - update ALL the text ON BUTTONS to have a cool little shadow (like the progress bar)
 - make the button text a little smoother; like if its empty, then show an empty icon
+- dappInitializeProcess() needs work; also includes the MUMBAIONLY prompt
 
 
 - Need to edit/create/format the BANK to BON stuff;;;; its on polygon, so its harder
