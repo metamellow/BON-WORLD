@@ -41,6 +41,7 @@ class DappInterface {
     // ________________ VARIABLES AND OBJECTS SECTION ________________
 
     constructor() {
+        // --- Universal web3 Variables
         this.dappChain = '0x13881'; //Ethereum=='0x1', Polygon=='0x89', Binance=='0x38', Modulus=='0x666', Mumbai=='0x13881'
         this.contractAddress1 = '0x1c056a00a402185004795a2e97c1834ac08deaf5'; // bon2bank exchange
         this.contractAddress2 = '0x8cf86efbc5b5155377de65df6ef0db4c96611487'; // bank token
@@ -48,24 +49,26 @@ class DappInterface {
         this.contractAddress4 = '0x4d76c0c07d32f6b5860e9a612d76c88367df2361'; // bank staking
         this.currentAccount = ''; // loaded on connectWallet
 
-        // All HTML Elements
+        // --- Universal HTML Elements --- 
         this.JSconnectButton1 = document.getElementById('HTML_connect_button'); //connectWallet
-        this.JSfunctionButton1 = document.getElementById('HTML_function_button_1'); // approveThenFunction
-        this.JSfunctionButton2 = document.getElementById('HTML_function_button_2'); // checkExchangeBANKBalance()
-        this.JSfunctionButton3 = document.getElementById('HTML_function_button_3'); // exchangeBONforBANK()
         this.JSfunctionButton4 = document.getElementById('HTML_function_button_4'); // checkBONbalance()
         this.JSfunctionButton5 = document.getElementById('HTML_function_button_5'); // checkBANKbalance()
+        this.JSfunctionButton1 = document.getElementById('HTML_function_button_1'); // approveThenFunction
+
+        // --- Exchange BON2BANK HTML Elements ---        
+        this.JSfunctionButton2 = document.getElementById('HTML_function_button_2'); // checkExchangeBANKBalance()
+        this.JSfunctionButton3 = document.getElementById('HTML_function_button_3'); // exchangeBONforBANK()
+        this.selectedInput2 = 0; // set via the HTML input; holds input BON2BANK amount
+        this.JSquantityInput2 = document.getElementById('HTML_quantity_input_2'); // input BON2BANK amount
+
+        // --- Staking HTML Elements --- 
         this.JSfunctionButton6 = document.getElementById('HTML_function_button_6'); // checkBANKstakingBal()
         this.JSfunctionButton7 = document.getElementById('HTML_function_button_7'); // checkBANKstakingTime()
         this.JSfunctionButton8 = document.getElementById('HTML_function_button_8'); // checkBANKstakingReward()
         this.JSfunctionButton9 = document.getElementById('HTML_function_button_9'); // checkBANKstakingTime()
         this.JSfunctionButton10 = document.getElementById('HTML_function_button_10'); // ClaimStakingRewards()
         this.JSfunctionButton11 = document.getElementById('HTML_function_button_11'); // WithdawStakedTokens()
-        /*this.JSfunctionButton12 = document.getElementById('HTML_function_button_12'); // xxx() */
-
-        this.selectedInput2 = 0; // set via the HTML input
-        this.selectedInput3 = 0; // set via the HTML input
-        this.JSquantityInput2 = document.getElementById('HTML_quantity_input_2'); // input BON2BANK amount
+        this.selectedInput3 = 0; // set via the HTML input; holds BANKStaking amount
         this.JSquantityInput3 = document.getElementById('HTML_quantity_input_3'); // input BANKStaking amount
 
     }
@@ -503,7 +506,7 @@ class DappInterface {
         var mDisplay = m > 0 ? m + (m == 1 ? "m, " : "m, ") : "";
         var sDisplay = s > 0 ? s + (s == 1 ? "s" : "s") : "";
         return dDisplay + hDisplay + mDisplay + sDisplay;
-      }
+    }
 
     // ________________ BON<>BANK EXCHANGE FUNCTIONS SECTION ________________
 
@@ -644,7 +647,6 @@ class DappInterface {
         this.selectedInput2 = this.JSquantityInput2.value;
         console.log(`New input: ${this.selectedInput2}`);
     }
-
 
     // ________________ BANK STAKING SECTION ________________
 
