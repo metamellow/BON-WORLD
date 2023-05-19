@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Bank of Nowhere</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" type="text/css" href="BankDapps.css" />
+        <link
+        rel="stylesheet"
+        href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+        integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
+        crossorigin="anonymous"
+        />
+        <link rel="icon" href="images/favcon.png" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+        <title>Bank Of Nowhere $BON</title>
+            <meta name="title" content="Bank Of Nowhere $BON" />
+            <meta name="description" content="// DONT TRUST THE BANKERS -- TRUST THE TECHNOLOGY //" />
+
+            <!-- Facebook -->
+            <meta property="og:type" content="website" />
+            <meta property="og:url" content="https://bankofnowhere.world" />
+            <meta property="og:title" content="Bank Of Nowhere $BON" />
+            <meta property="og:description" content="// DONT TRUST THE BANKERS -- TRUST THE TECHNOLOGY //" />
+            <meta property="og:image" content="https://raw.githubusercontent.com/s0crates-eth/gm/main/images/1500x500.jpg" />
+
+            <!-- Twitter -->
+            <meta property="twitter:card" content="summary_large_image" />
+            <meta property="twitter:url" content="https://bankofnowhere.world" />
+            <meta property="twitter:title" content="Bank Of Nowhere $BON" />
+            <meta property="twitter:description" content="// DONT TRUST THE BANKERS -- TRUST THE TECHNOLOGY //" />
+            <meta property="twitter:image" content="https://raw.githubusercontent.com/s0crates-eth/gm/main/images/1500x500.jpg" />
+
+            <!-- for mobile responsivness -->
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+
+    <body 
+        style="background-image: url('images/background2.png'); 
+        background-repeat: no-repeat; 
+        background-size: cover;"
+        >
+        
+        <br><br>
+        <div align="center">
+            <img class="logotopo" src="images\banklogo.svg">
+        </div>
+        <br>
+
+
+
+        <!-- ________ USER / DATA INFORMATION SECTION ________ -->
+        <div class="title3" align="center"> USER ACCOUNT DETAILS </div>
+        <br>
+
+        <div class="user">
+            
+            <div class="buttonuser">
+                <label for="ConnectWalletButtonDisplay">
+                    USER
+                </label><br>
+                <button
+                    name="ConnectWalletButtonDisplay"
+                    id="HTML_connect_button" 
+                    onclick="DappInterface_.connectWallet();"
+                    >
+                    [CONNECT-WALLET]
+                </button>
+            </div>
+
+            <div class="buttonuser">
+                <label for="CheckBONbalance">
+                    BON>>>BALANCE
+                </label><br>
+                <button
+                    name="CheckBONbalance"
+                    id="HTML_function_button_4"
+                    onclick="DappInterface_.checkBONbalance();"
+                    >
+                    [CHECK-BON-BAL]
+                </button>
+            </div>
+
+            <div class="buttonuser">
+                <label for="CheckBANKbalance">
+                    BANK>>>BALANCE
+                </label><br>
+                <button
+                    name="CheckBANKbalance"
+                    id="HTML_function_button_5"
+                    onclick="DappInterface_.checkBANKbalance();"
+                    >
+                    [CHECK-BANK-BAL]
+                </button>
+
+            </div>
+        </div>
+        <br>
+     
+
+        <!-- ________ NAVIGATION SECTION ________ -->
+
+        <div class="submenu"> 
+            <a href="./BANK_Exchange.html"> EXCHANGE </a>
+            <a href="./BANK_Stake.html"> STAKING </a>
+            <a href="./BANK_Whitepaper.html"> WHITEPAPER </a>
+        </div>
+        <br><br>
+
+        <!-- ________ MAIN DAPP SECTION (EXCHANGE) ________ -->
+
+        <div class="alinhamento">
+
+            <div class="title2">
+                <div>
+                    <h1>
+                        small business,<br>
+                        big dreams!
+                    </h1>
+                </div>
+                <img src="images/detail.png">
+            </div>
+            <br><br>
+
+            <div class="bgbuttons">
+                
+                <div id="dapp_interface_1">
+
+                    <div class="title"> BON >> BANK EXCHANGE </div>
+
+                    <label for="CheckBONBANKPool">
+                        REMAINING<br>
+                        </label>
+                        <button
+                            name="CheckBONBANKPool"
+                            id="HTML_function_button_2"
+                            class="button"
+                            onclick="DappInterface_.checkExchangeBANKBalance();"
+                            >
+                            [CHECK]
+                    </button>
+
+                    <br/>
+                    <br/>
+
+                    <form><label for="InputBONBANKAmount" class="amount">
+                        AMOUNT<br>
+                        </label>
+                        <input 
+                            type="number"
+                            name="InputBONBANKAmount"
+                            id="HTML_quantity_input_2"
+                            min="0"
+                            value="0"
+                            onchange="DappInterface_.onSelectInput2()"
+                            required
+                        > 
+                        <br>
+                        <div align="right">
+                        <label style="margin: 10px;"> 21m </label>
+                        <label > max. </label>
+                    </div>
+                    </form>
+
+                    <br/>
+                    <br/>
+
+                    <label for="ExchangeBONforBANK">
+                        EXCHANGE <br>
+                        </label>
+                        <button
+                            name="ExchangeBONforBANK"
+                            id="HTML_function_button_3"
+                            class="custom_button_1"
+                            onclick="DappInterface_.exchangeBONforBANK_Loader();"
+                            >
+                            [SWAP]
+                    </button>
+
+                    <br/>
+                    <br/>
+
+                    <div class="title"><hr></div>
+                    <br/>
+
+                    <div class="title"> BANK >> EXCHANGE </div>
+
+
+                    <!-- NEEEEEEEEEEEEEEEEEEEDDDDDDDDDDDDDDDDD WWWWWWWWWWWWWOOOOOOOOOOOOOORRRRRRRRRRRRRKKKKKK
+
+                        
+                    <label for="CheckBONBANKPool">
+                        REMAINING<br>
+                        </label>
+                        <button
+                            name="CheckBONBANKPool"
+                            id="HTML_function_button_2"
+                            class="button"
+                            onclick="DappInterface_.checkExchangeBANKBalance();"
+                            >
+                            [CHECK]
+                    </button>
+
+                    <br/>
+                    <br/>
+
+                    <form><label for="InputBONBANKAmount" class="amount">
+                        AMOUNT<br>
+                        </label>
+                        <input 
+                            type="number"
+                            name="InputBONBANKAmount"
+                            id="HTML_quantity_input_2"
+                            min="0"
+                            value="0"
+                            onchange="DappInterface_.onSelectInput2()"
+                            required
+                        > 
+                        <br>
+                        <div align="right">
+                        <label style="margin: 10px;"> 21m </label>
+                        <label > max. </label>
+                    </div>
+                    </form>
+
+                    <br/>
+                    <br/>
+
+                    <label for="ExchangeBONforBANK">
+                        EXCHANGE <br>
+                        </label>
+                        <button
+                            name="ExchangeBONforBANK"
+                            id="HTML_function_button_3"
+                            class="custom_button_1"
+                            onclick="DappInterface_.exchangeBONforBANK_Loader();"
+                            >
+                            [SWAP]
+                    </button>
+
+                    <br/>
+                    <br/>
+                    -->
+
+
+
+
+                    
+                </div>            
+
+                <br/><br/>
+                <img src="images/detail2.svg" align="left">
+                <br/><br/>
+                <br/><br/>
+
+            </div>
+        </div>    
+    
+        <br><br>
+    
+        <footer>
+            <div id="first-row">
+                <div>
+                <img src="images\banklogosmall.svg" style="height: 60px" alt="Logo" />
+                </div>
+                <p >Copyright © Bank of Nowhere</p>
+                <img src="images\moduluslogogreen.svg">
+            </div>
+        </footer>
+
+        <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+        <script src="BankDapps.js" type="application/javascript"></script>
+    </body>
+</html>

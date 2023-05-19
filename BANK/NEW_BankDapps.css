@@ -1,0 +1,284 @@
+
+body {
+  color: antiquewhite;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 24px;
+  align-content: center;
+  background-image:'background2.png';
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  width: auto; /* Defina a largura desejada */
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+button {
+  background-color: #54FF65;
+  color: black;
+  width: 570px;
+  height: 70px;
+  left: 744px;
+  top: 382px;
+  align-items:start;
+  font-size: 30px;
+  border: none;
+  align-items: center;
+  border-radius: 10px;
+  animation: gradient 2.5s ease infinite;
+}
+
+button:hover {
+	background-image: linear-gradient(to right, #54FF65,  #00BCD4 );
+	background-size: 200% auto;
+	animation: gradient 0.5s ease infinite;
+}
+  
+@keyframes gradient {
+	0% {background-position: 0% 50%;}
+	50% {background-position: 100% 50%;}
+	100% {background-position: 0% 50%;}
+}
+
+input {
+  border:solid;
+  border-color: #54FF65;
+  background-color:transparent;
+  width: 550px;
+  height: 70px;
+  left: 744px;
+  top: 382px;
+  font-family: 'Orbitron', sans-serif;
+  color: #54FF65;
+  font-size: 30px;
+  padding-left: 16px;
+  border-radius: 10px;
+}
+
+select {
+  border:solid;
+  border-color: #54FF65;
+  background-color:#54FF65;
+  width: 568px;
+  height: 70px;
+  left: 744px;
+  top: 382px; 
+  font-family: 'Orbitron', sans-serif;
+  color:black;
+  font-size: 30px;
+  align-content: center;
+  text-align: center;
+}
+
+
+div .principal {
+  flex-direction: column;
+}
+
+.title {
+  color: #54FF65;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+}
+
+.title2 {
+  color: #54FF65;
+  font-style: normal;
+  font-size: 50px;
+}
+
+.title3 {
+  color: #54FF65;
+  font-style: normal;
+  font-size: 20px;
+}
+
+.logotopo {
+  width: auto;
+}
+
+.moduluslogo {
+  width: 100%;
+}
+
+.alinhamento {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;  
+}
+
+.main {
+  display: flexbox;
+  flex-direction: row;
+}
+
+
+footer {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  padding: 0 5%;
+}
+  
+#first-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+  
+#first-row div {
+  display: flex;
+  align-items: center;
+  
+}
+  
+#first-row div img {
+  margin: 0 15px;
+}
+  
+.imagens-footer div {
+  display: flex;
+}
+  
+#copyright {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 30px 0;
+}
+  
+
+
+.user {
+  display: flex;
+  align-items: center;
+  margin: 30px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content:space-evenly;
+}
+
+.buttonuser {
+  display: table-row; 
+}
+
+a {
+  font-size: 30px;
+  color: #54FF65;
+  margin: 50px;
+  text-decoration: none;
+}
+
+a:hover{
+  color: #00BCD4;
+}
+
+.submenu {
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  flex-wrap: wrap;
+}
+
+.bgbuttons {
+  border:solid;
+  border-color: #54FF65;
+  padding: 20px;
+  border-radius: 16px;
+}
+
+.logog {
+  padding: 100px;
+}
+
+.topowhitepaper {
+  flex: 100%;
+}
+
+.container {
+  width: 100%;
+  height: 100px;
+  background: #54FF65;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  color: black;
+  font-size: 60px;
+  justify-content: center;
+  text-align: left;
+}
+
+
+.whitepapertext {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  font-size: 24px;
+  background-color: black;
+  text-align: justify;
+  color: #ffffff;
+}
+
+.textcontainer {
+  margin: 30px;
+}
+
+.arrow2 {
+  margin-left: 50px;
+  margin-top: 30px;
+  justify-content: center;
+}
+
+/* --- Progress Bar --- */
+
+.progress-bar-holder {
+  border:solid;
+  border-color: #54FF65;
+  background-color: rgba(84, 255, 101, 0.15);
+  width: 560px;
+  height: 70px;
+  left: 744px;
+  top: 382px;
+  padding-top: 1px;
+  padding-right: 2px;
+  padding-bottom: 2px;
+  border-radius: 10px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 100%;
+  background-color: #39FF14;
+  border: 1px solid #000;
+  overflow: hidden;
+  box-shadow: 0 0 10px 0 #39FF14;
+  border-radius: 5px;
+}
+
+.progress {
+  width: 0%;
+  height: 100%;
+  background-color: transparent;
+  float: left;
+  margin-right: 1px;
+  border-radius: 5px;
+}
+
+/* --- Screen Adaptivness --- */
+
+@media screen and (max-width: 767px) {
+  #first-row div:first-child {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+  }
+  .imagens-footer {
+    width: 100%;
+    flex-direction: column;
+  }
+}

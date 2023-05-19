@@ -127,6 +127,13 @@ header {
   }
 }
 
+.titulo-carousel {
+  font-size: 70px;
+  margin-top: 0;
+  color: #37bfa7;
+  text-shadow: rgba(0, 255, 221, 0.4) 0 0 30px;
+}
+
 .carousel {
   display: flex;
   overflow: hidden;
@@ -167,13 +174,6 @@ header {
 
 .next {
   right: 0;
-}
-
-.titulo-carousel {
-  font-size: 70px;
-  margin-top: 0;
-  color: #37bfa7;
-  text-shadow: rgba(0, 255, 221, 0.4) 0 0 30px;
 }
 
 .slide p {
