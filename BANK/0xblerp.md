@@ -8,3 +8,4 @@
 
 
 - need to add BETA TESTING VERSION disclaimertio the website
+- remove the BANK prefix from all files within the BANK folder
