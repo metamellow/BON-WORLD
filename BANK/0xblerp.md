@@ -7,4 +7,4 @@
 - dappInitializeProcess() needs work; also includes the MUMBAIONLY prompt
 
 
-- Need to edit/create/format the BANK to BON stuff;;;; its on polygon, so its harder
+- need to add BETA TESTING VERSION disclaimertio the website
