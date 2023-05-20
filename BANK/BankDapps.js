@@ -88,9 +88,9 @@ class DappInterface {
             if (!ethereum) {
                 alert('Can not find web3 etherum. Please install Metamask!');
                 console.log("NO ETHEREUM OBJECT");
-                this.JSconnectButton1.innerText = '[sorry]';
-                this.JSfunctionButton1.innerText = '[sorry]';
-                this.JSfunctionButton2.innerText = '[sorry]';
+                this.JSconnectButton1.innerText = 'error: metamask missing';
+                this.JSfunctionButton1.innerText = 'error: metamask missing';
+                this.JSfunctionButton2.innerText = 'error: metamask missing';
                 this.JSconnectButton1.disabled = true;
                 this.JSfunctionButton1.disabled = true;
                 this.JSfunctionButton2.disabled = true;
@@ -109,9 +109,9 @@ class DappInterface {
         } catch (error) {
             alert('Can not find web3 etherum. Please install Metamask!');
                 console.log("NO ETHEREUM OBJECT");
-                this.JSconnectButton1.innerText = '[sorry]';
-                this.JSfunctionButton1.innerText = '[sorry]';
-                this.JSfunctionButton2.innerText = '[sorry]';
+                this.JSconnectButton1.innerText = 'error: metamask missing';
+                this.JSfunctionButton1.innerText = 'error: metamask missing';
+                this.JSfunctionButton2.innerText = 'error: metamask missing';
                 this.JSconnectButton1.disabled = true;
                 this.JSfunctionButton1.disabled = true;
                 this.JSfunctionButton2.disabled = true;           
@@ -140,7 +140,7 @@ class DappInterface {
                         console.log(user, ethers.utils.formatEther(amountExchanged), ethers.utils.formatEther(newBankBalance));
                         alert(`BON<>BANK Exchange Success!`);
                         this.JSfunctionButton3.disabled = false;
-                        this.JSfunctionButton3.innerText = '[EXCHANGE-MORE]';
+                        this.JSfunctionButton3.innerText = '-exchange more-';
                     });
 
                     console.log('Contract 1A listener success');
@@ -190,7 +190,7 @@ class DappInterface {
                         console.log(user, ethers.utils.formatEther(amountStaked), ethers.utils.formatEther(stakedBalance));
                         alert(`BANK staking success!`);
                         this.JSfunctionButton9.disabled = false;
-                        this.JSfunctionButton9.innerText = '[STAKE-MORE]';
+                        this.JSfunctionButton9.innerText = '-stake more-';
                     });
                     console.log('Contract 4A listener success');
 
@@ -199,7 +199,7 @@ class DappInterface {
                         console.log(user, ethers.utils.formatEther(userBalance), ethers.utils.formatEther(userRewards));
                         alert(`BANK rewards success!`);
                         this.JSfunctionButton10.disabled = false;
-                        this.JSfunctionButton10.innerText = 'Have a nice day!';
+                        this.JSfunctionButton10.innerText = 'have a nice day';
                     });
                     console.log('Contract 4B listener success');
 
@@ -208,7 +208,7 @@ class DappInterface {
                         console.log(user, ethers.utils.formatEther(userBalance));
                         alert(`BANK tokens withdrawn!`);
                         this.JSfunctionButton11.disabled = false;
-                        this.JSfunctionButton11.innerText = 'So sad! See you again!';
+                        this.JSfunctionButton11.innerText = 'so sad';
                     });
                     console.log('Contract 4C listener success');
 
@@ -286,7 +286,7 @@ class DappInterface {
                     }
                 } catch (error) {
                 console.log(error);
-                console.log("ERROR - CONTACT ADMIN");
+                console.log("error: contact admin");
                 return false;
                 }
             } else {
@@ -362,7 +362,7 @@ class DappInterface {
                     }
                 } catch (error) {
                 console.log(error);
-                console.log("ERROR - CONTACT ADMIN");
+                console.log("error: contact admin");
                 return false;
                 }
             } else {
@@ -424,16 +424,16 @@ class DappInterface {
                 } catch (error) {
                     console.log(error);
                     console.log('function call failed');
-                    this.JSfunctionButton4.innerText = '[TRY-TXN-AGAIN]';
+                    this.JSfunctionButton4.innerText = '-try again-';
                     this.JSfunctionButton4.disabled = false;
                 }
             } else {
                 console.log("Ethereum object doesn't exist!");
-                this.JSfunctionButton4.innerText = '[GET-METAMASK]';
+                this.JSfunctionButton4.innerText = 'error: metamask missing';
             }
         } catch (error) {
             console.log("Ethereum object doesn't exist!");
-            this.JSfunctionButton4.innerText = '[GET-METAMASK]';
+            this.JSfunctionButton4.innerText = 'error: metamask missing';
         }
     }
 
@@ -486,16 +486,16 @@ class DappInterface {
                 } catch (error) {
                     console.log(error);
                     console.log('function call failed');
-                    this.JSfunctionButton5.innerText = '[TRY-TXN-AGAIN]';
+                    this.JSfunctionButton5.innerText = '-try again-';
                     this.JSfunctionButton5.disabled = false;
                 }
             } else {
                 console.log("Ethereum object doesn't exist!");
-                this.JSfunctionButton5.innerText = '[GET-METAMASK]';
+                this.JSfunctionButton5.innerText = 'error: metamask missing';
             }
         } catch (error) {
             console.log("Ethereum object doesn't exist!");
-            this.JSfunctionButton5.innerText = '[GET-METAMASK]';
+            this.JSfunctionButton5.innerText = 'error: metamask missing';
         }
     }
 
@@ -509,9 +509,9 @@ class DappInterface {
         
         var dDisplay = d > 0 ? d + (d == 1 ? "d, " : "d, ") : "";
         var hDisplay = h > 0 ? h + (h == 1 ? "h, " : "h, ") : "";
-        var mDisplay = m > 0 ? m + (m == 1 ? "m, " : "m, ") : "";
+        var mDisplay = m > 0 ? m + (m == 1 ? "m" : "m" /*"m, " : "m, "*/) : "";
         var sDisplay = s > 0 ? s + (s == 1 ? "s" : "s") : "";
-        return dDisplay + hDisplay + mDisplay + sDisplay;
+        return dDisplay + hDisplay + mDisplay /* + sDisplay*/;
     }
 
     // ________________ BON<>BANK EXCHANGE FUNCTIONS SECTION ________________
@@ -571,27 +571,26 @@ class DappInterface {
                     } else {
                         console.log(`The BON<>BANK exchange is CLOSED.`);
                         this.JSfunctionButton2.disabled = false;
-                        this.JSfunctionButton2.innerText = '[EXCHANGE-CLOSED]';
+                        this.JSfunctionButton2.innerText = 'exchange closed';
                     }
 
                 } catch (error) {
                     console.log(error);
                     console.log('function call failed');
-                    this.JSfunctionButton2.innerText = '[TRY-TXN-AGAIN]';
+                    this.JSfunctionButton2.innerText = '-try again-';
                     this.JSfunctionButton2.disabled = false;
                 }
             } else {
                 console.log("Ethereum object doesn't exist!");
-                this.JSfunctionButton2.innerText = '[GET-METAMASK]';
+                this.JSfunctionButton2.innerText = 'error: metamask missing';
             }
         } catch (error) {
             console.log("Ethereum object doesn't exist!");
-            this.JSfunctionButton2.innerText = '[GET-METAMASK]';
+            this.JSfunctionButton2.innerText = 'error: metamask missing';
         }
     }
 
     async exchangeBONforBANK() {
-        if(this.selectedInput2 < 1){alert(`Please input amount.`);}else{
         
         try { const { ethereum } = window;
             if (ethereum) {
@@ -629,19 +628,17 @@ class DappInterface {
                 } catch (error) {
                     console.log(error);
                     console.log('function call failed');
-                    this.JSfunctionButton3.innerText = '[TRY-TXN-AGAIN]';
+                    this.JSfunctionButton3.innerText = '-try again-';
                     this.JSfunctionButton3.disabled = false;
                 }
             } else {
                 console.log("Ethereum object doesn't exist!");
-                this.JSfunctionButton3.innerText = '[GET-METAMASK]';
+                this.JSfunctionButton3.innerText = 'error: metamask missing';
             }
         } catch (error) {
             console.log("Ethereum object doesn't exist!");
-            this.JSfunctionButton3.innerText = '[GET-METAMASK]';
+            this.JSfunctionButton3.innerText = 'error: metamask missing';
         }
-
-        } // << quantity tag ender
     }
 
     async exchangeBONforBANK_Loader(){
@@ -654,10 +651,17 @@ class DappInterface {
 
         if (approvalCheck == true){ 
             console.log('Approval check -- TRUE');
-            this.JSfunctionButton3.innerText = '*approval successful!*';
-            this.exchangeBONforBANK(); 
+            if(this.selectedInput3 >= 1){
+                this.JSfunctionButton3.innerText = '*approval successful!*';
+                this.stakeBankTokens(); 
+            } else {
+                alert(`Please input amount.`);
+                this.JSfunctionButton3.innerText = '-try again-';
+            }
+
         } else {
             console.log('Approval check -- FALSE');
+            this.JSfunctionButton3.innerText = '-try again-'
         }
     }
 
@@ -712,22 +716,22 @@ class DappInterface {
                     } else {
                         console.log(`Amount of BANK staked: 0 (so sad)`);
                         this.JSfunctionButton6.disabled = false;
-                        this.JSfunctionButton6.innerText = '[NOT-STAKED]';
+                        this.JSfunctionButton6.innerText = 'not staked';
                     }
 
                 } catch (error) {
                     console.log(error);
                     console.log('function call failed');
-                    this.JSfunctionButton6.innerText = '[TRY-TXN-AGAIN]';
+                    this.JSfunctionButton6.innerText = '-try again-';
                     this.JSfunctionButton6.disabled = false;
                 }
             } else {
                 console.log("Ethereum object doesn't exist!");
-                this.JSfunctionButton6.innerText = '[GET-METAMASK]';
+                this.JSfunctionButton6.innerText = 'error: metamask missing';
             }
         } catch (error) {
             console.log("Ethereum object doesn't exist!");
-            this.JSfunctionButton6.innerText = '[GET-METAMASK]';
+            this.JSfunctionButton6.innerText = 'error: metamask missing';
         }
     }
 
@@ -764,35 +768,20 @@ class DappInterface {
                     
                     console.log("Analzying results...");
                     await this.formatBANKStakingTimeProgressBar(balOf);
-                    /*
-                    if (balOf >= 1){
-                        
-                        let convertedTime = await this.timeConverter(balOf);
-                        await convertedTime;
-                        console.log(`Time passed: ${convertedTime}`)
-                        this.JSfunctionButton7.disabled = false;
-                        this.JSfunctionButton7.innerText = `${convertedTime}`;
-                    ;
-                    } else {
-                        console.log(`User is not staked.`);
-                        this.JSfunctionButton7.disabled = false;
-                        this.JSfunctionButton7.innerText = '[NOT-STAKED]';
-                    }
-                    */
 
                 } catch (error) {
                     console.log(error);
                     console.log(`Error catch: User is not staked`);
-                    this.JSfunctionButton7.innerText = '[NOT-STAKED]';
+                    this.JSfunctionButton7.innerText = '[not staked';
                     this.JSfunctionButton7.disabled = false;
                 }
             } else {
                 console.log("Ethereum object doesn't exist!");
-                this.JSfunctionButton7.innerText = '[GET-METAMASK]';
+                this.JSfunctionButton7.innerText = 'error: metamask missing';
             }
         } catch (error) {
             console.log("Ethereum object doesn't exist!");
-            this.JSfunctionButton7.innerText = '[GET-METAMASK]';
+            this.JSfunctionButton7.innerText = 'error: metamask missing';
         }
     }
 
@@ -867,28 +856,26 @@ class DappInterface {
                     } else {
                         console.log(`User is not staked.`);
                         this.JSfunctionButton8.disabled = false;
-                        this.JSfunctionButton8.innerText = '[NOT-STAKED]';
+                        this.JSfunctionButton8.innerText = 'not staked';
                     }
 
                 } catch (error) {
                     console.log(error);
                     console.log(`Error catch: User is not staked`);
-                    this.JSfunctionButton8.innerText = '[NOT-STAKED]';
+                    this.JSfunctionButton8.innerText = 'not staked';
                     this.JSfunctionButton8.disabled = false;
                 }
             } else {
                 console.log("Ethereum object doesn't exist!");
-                this.JSfunctionButton8.innerText = '[GET-METAMASK]';
+                this.JSfunctionButton8.innerText = 'error: metamask missing';
             }
         } catch (error) {
             console.log("Ethereum object doesn't exist!");
-            this.JSfunctionButton8.innerText = '[GET-METAMASK]';
+            this.JSfunctionButton8.innerText = 'error: metamask missing';
         }
     }
 
     async stakeBankTokens(){
-        if(this.selectedInput3 < 1){alert(`Please input amount.`);}else{
-        
         try { const { ethereum } = window;
             if (ethereum) {
                 const provider = new ethers.providers.Web3Provider(ethereum);
@@ -925,19 +912,17 @@ class DappInterface {
                 } catch (error) {
                     console.log(error);
                     console.log('function call failed');
-                    this.JSfunctionButton9.innerText = '[TRY-TXN-AGAIN]';
+                    this.JSfunctionButton9.innerText = '-try again-';
                     this.JSfunctionButton9.disabled = false;
                 }
             } else {
                 console.log("Ethereum object doesn't exist!");
-                this.JSfunctionButton9.innerText = '[GET-METAMASK]';
+                this.JSfunctionButton9.innerText = 'error: metamask missing';
             }
         } catch (error) {
             console.log("Ethereum object doesn't exist!");
-            this.JSfunctionButton9.innerText = '[GET-METAMASK]';
+            this.JSfunctionButton9.innerText = 'error: metamask missing';
         }
-
-        } // << quantity tag ender
     }
 
     async claimStakingRewards(){
@@ -969,16 +954,16 @@ class DappInterface {
                 } catch (error) {
                     console.log(error);
                     console.log('function call failed');
-                    this.JSfunctionButton10.innerText = 'Check timer - must be +7 days';
+                    this.JSfunctionButton10.innerText = 'check timer - must be 100%';
                     this.JSfunctionButton10.disabled = false;
                 }
             } else {
                 console.log("Ethereum object doesn't exist!");
-                this.JSfunctionButton10.innerText = '[GET-METAMASK]';
+                this.JSfunctionButton10.innerText = 'error: metamask missing';
             }
         } catch (error) {
             console.log("Ethereum object doesn't exist!");
-            this.JSfunctionButton10.innerText = '[GET-METAMASK]';
+            this.JSfunctionButton10.innerText = 'error: metamask missing';
         }
     }
 
@@ -1012,16 +997,16 @@ class DappInterface {
                 } catch (error) {
                     console.log(error);
                     console.log('function call failed');
-                    this.JSfunctionButton11.innerText = 'Unable to withdraw.';
+                    this.JSfunctionButton11.innerText = 'unable to withdraw';
                     this.JSfunctionButton11.disabled = false;
                 }
             } else {
                 console.log("Ethereum object doesn't exist!");
-                this.JSfunctionButton11.innerText = '[GET-METAMASK]';
+                this.JSfunctionButton11.innerText = 'error: metamask missing';
             }
         } catch (error) {
             console.log("Ethereum object doesn't exist!");
-            this.JSfunctionButton11.innerText = '[GET-METAMASK]';
+            this.JSfunctionButton11.innerText = 'error: metamask missing';
         }
     }
 
@@ -1035,10 +1020,17 @@ class DappInterface {
 
         if (approvalCheck == true){ 
             console.log('Approval check -- TRUE');
-            this.JSfunctionButton9.innerText = '*approval successful!*';
-            this.stakeBankTokens(); 
+            if(this.selectedInput3 >= 1){
+                this.JSfunctionButton9.innerText = '*approval successful!*';
+                this.stakeBankTokens(); 
+            } else {
+                alert(`Please input amount.`);
+                this.JSfunctionButton9.innerText = '-try again-';
+            }
+
         } else {
             console.log('Approval check -- FALSE');
+            this.JSfunctionButton9.innerText = '-try again-'
         }
     }
 

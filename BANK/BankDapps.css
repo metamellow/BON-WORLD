@@ -76,13 +76,13 @@ select {
   text-align: center;
 
   color: black;
-  text-shadow: 1.2px 1.2px 1.2px rgba(0, 0, 0, 0.5);
+  text-shadow: 1.2px 1.2px 2.8px rgba(0, 0, 0, 0.7);
   font-family: 'Roboto Mono'
 }
 
 select option {
   color: black;
-  text-shadow: 1.2px 1.2px 1.2px rgba(0, 0, 0, 0.5);
+  text-shadow: 1.2px 1.2px 2.8px rgba(0, 0, 0, 0.7);
   font-family: 'Roboto Mono'
 }
 
@@ -90,8 +90,7 @@ select option {
   border:solid;
   border-color: #54FF65;
   background-color: rgba(84, 255, 101, 0.15);
-  /*width: 560px;*/
-  width: (attr(button, width)-(attr(button, width)*0.02));
+  width: 560px;
   height: 70px;
   left: 744px;
   top: 382px;
@@ -294,7 +293,6 @@ color: black;
 font-size: 60px;
 justify-content: center;
 text-align: left;
-
 }
 
 
