@@ -267,8 +267,19 @@ text-decoration: none;
 display: flex;
 align-items: center;
 justify-content:center;
-flex-wrap: wrap;
 
+  }
+  @media screen and (max-width: 767px) {
+    .submenu  {
+      display: flex;
+      align-items: left;
+      flex-direction: column;
+      align-items: start;
+      gap: 10px;
+      padding-top: 2px;
+      padding-bottom: 2px;
+    }
+  
   }
 
 .bgbuttons {
