@@ -213,6 +213,13 @@ footer {
     width: 100%;
     margin: 30px 0;
   }
+
+ .whitepaperimg {
+
+width: 50%;
+height: 50%;
+justify-content: center;
+ } 
   
   @media screen and (max-width: 767px) {
     #first-row div:first-child {
@@ -300,12 +307,9 @@ text-align: left;
 margin-top: 50px;
 margin-bottom: 50px;
 font-size: 24px;
-background-color: black;
+background-color:transparent;
 text-align: justify;
 color: #ffffff;
-
-
-
 
 }
 
