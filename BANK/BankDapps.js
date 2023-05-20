@@ -805,17 +805,19 @@ class DappInterface {
             var progress = document.getElementById("HTML_custom_div_1c");
             
             var percentage;
-            if (secs < 604800){var percentage = (secs/604800)*100;
-            } else {var percentage = 99;}
+            if (secs < 604800){
+                var percentage = (secs/604800)*100;
+                this.JSfunctionButton7.innerText = await this.timeConverter(secs);
+            } else {
+                var percentage = 99;
+                this.JSfunctionButton7.innerText = `100%`;
+            }
 
             percentage += 1;
             progressBar.style.width = percentage + "%";
             progress.style.width = percentage + "%";
 
             this.JSfunctionButton7.disabled = false;
-            this.JSfunctionButton7.innerText = `${await this.timeConverter(secs)}`;
-            //this.JSfunctionButton7.style.color = "white";
-            //this.JSfunctionButton7.style.textShadow = "2px 2px 3px rgba(0, 0, 0, 0.4)";
         } else {
             console.log(`no staked tokens`);
             this.JSfunctionButton7.disabled = false;
