@@ -521,10 +521,10 @@ class DappInterface {
         console.log(this.selectedDropdown1);
 
         if(this.selectedDropdown1 == "BON2BANK"){
-        window.location.href = "./BANK_Bon2Bank.html";
+        window.location.href = "./bon2bank.html";
         }
         if(this.selectedDropdown1 == "BANK2BON"){
-        window.location.href = "./BANK_Bank2Bon.html";
+        window.location.href = "./bank2bon.html";
         }
     }
 
@@ -805,7 +805,7 @@ class DappInterface {
             var progress = document.getElementById("HTML_custom_div_1c");
             
             var percentage;
-            if (secs < 604800){var percentage = secs/604800;
+            if (secs < 604800){var percentage = (secs/604800)*100;
             } else {var percentage = 99;}
 
             percentage += 1;
@@ -813,13 +813,13 @@ class DappInterface {
             progress.style.width = percentage + "%";
 
             this.JSfunctionButton7.disabled = false;
-            this.JSfunctionButton7.innerText = `${percentage + "%"}`;
-            this.JSfunctionButton7.style.color = "white";
-            this.JSfunctionButton7.style.textShadow = "2px 2px 3px rgba(0, 0, 0, 0.4)";
+            this.JSfunctionButton7.innerText = `${await this.timeConverter(secs)}`;
+            //this.JSfunctionButton7.style.color = "white";
+            //this.JSfunctionButton7.style.textShadow = "2px 2px 3px rgba(0, 0, 0, 0.4)";
         } else {
-            console.log(`User is not staked.`);
+            console.log(`no staked tokens`);
             this.JSfunctionButton7.disabled = false;
-            this.JSfunctionButton7.innerText = '[NOT-STAKED]';
+            this.JSfunctionButton7.innerText = 'no staked tokens';
         }
     }
 
@@ -1048,17 +1048,23 @@ class DappInterface {
     // ________________ SECOND SETUP PROCESSES SECTION ________________
 
     // (2) This will run after dappInitializeProcess() and boot up custom funcs
+    // --- these will all have to be updated on mainnet launch
     async customConstructorFunctions(){
 
-        if (document.URL.includes("Exchange")) {
+        if (document.URL.includes("exchange")) {
+            this.dappChain = '0x13881'; //Ethereum=='0x1', Polygon=='0x89', Binance=='0x38', Modulus=='0x666', Mumbai=='0x13881'
+            
             // universals
             try{await this.checkBONbalance();} catch (error) {console.log(error);}
             try{await this.checkBANKbalance();} catch (error) {console.log(error);}
+
             // customs
-            try{await this.checkExchangeBANKBalance();} catch (error) {console.log(error);}
+
         }
 
-        if (document.URL.includes("Stake")) {
+        if (document.URL.includes("stake")) {
+            this.dappChain = '0x13881'; //Ethereum=='0x1', Polygon=='0x89', Binance=='0x38', Modulus=='0x666', Mumbai=='0x13881'
+
             // universals
             try{await this.checkBONbalance();} catch (error) {console.log(error);}
             try{await this.checkBANKbalance();} catch (error) {console.log(error);}
@@ -1068,10 +1074,35 @@ class DappInterface {
             try{await this.checkBANKstakingReward();} catch (error) {console.log(error);}
         }
 
-        if (document.URL.includes("Whitepaper")) {
+        if (document.URL.includes("whitepaper")) {
+            this.dappChain = '0x13881'; //Ethereum=='0x1', Polygon=='0x89', Binance=='0x38', Modulus=='0x666', Mumbai=='0x13881'
             // universals
 
             // customs
+            
+        }
+
+        if (document.URL.includes("bon2bank")) {
+            this.dappChain = '0x13881'; //Ethereum=='0x1', Polygon=='0x89', Binance=='0x38', Modulus=='0x666', Mumbai=='0x13881'
+
+            // universals
+            try{await this.checkBONbalance();} catch (error) {console.log(error);}
+            try{await this.checkBANKbalance();} catch (error) {console.log(error);}
+
+            // customs
+            try{await this.checkExchangeBANKBalance();} catch (error) {console.log(error);}
+            
+        }
+
+        if (document.URL.includes("bank2bon")) {
+            this.dappChain = '0x13881'; //Ethereum=='0x1', Polygon=='0x89', Binance=='0x38', Modulus=='0x666', Mumbai=='0x13881'
+
+            // universals
+            try{await this.checkBONbalance();} catch (error) {console.log(error);} // these wont work on Polygon
+            try{await this.checkBANKbalance();} catch (error) {console.log(error);}
+
+            // customs
+            // need one of these but to check wbank try{await this.checkExchangeBANKBalance();} catch (error) {console.log(error);}
             
         }
     }

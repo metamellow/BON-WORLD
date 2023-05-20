@@ -18,7 +18,6 @@ body {
 
 button {
   background-color: #54FF65;
-  color: black;
   width: 570px;
   height: 70px;
   left: 744px;
@@ -29,6 +28,10 @@ button {
   align-items: center;
   border-radius: 10px;
   animation: gradient 2.5s ease infinite;
+  
+  color: black;
+  text-shadow: 1.2px 1.2px 2.8px rgba(0, 0, 0, 0.7);
+  font-family: 'Roboto Mono'
 }
 
 button:hover {
@@ -51,27 +54,38 @@ input {
   height: 70px;
   left: 744px;
   top: 382px;
-  font-family: 'Orbitron', sans-serif;
   color: #54FF65;
   font-size: 30px;
   padding-left: 16px;
   border-radius: 10px;
+
+  text-shadow: 1.2px 1.2px 2.8px rgba(0, 255, 60, 0.5);
+  font-family: 'Roboto Mono'
 }
 
 select {
-    border:solid;
-    border-color: #54FF65;
-    background-color:#54FF65;
-    width: 568px;
-    height: 70px;
-    left: 744px;
-    top: 382px; 
-    font-family: 'Orbitron', sans-serif;
-    color:black;
-    font-size: 30px;
-    align-content: center;
-    text-align: center;
+  border:solid;
+  border-color: #54FF65;
+  background-color:#54FF65;
+  width: 568px;
+  height: 70px;
+  left: 744px;
+  top: 382px; 
+  font-size: 30px;
+  align-content: center;
+  text-align: center;
+
+  color: black;
+  text-shadow: 1.2px 1.2px 1.2px rgba(0, 0, 0, 0.5);
+  font-family: 'Roboto Mono'
 }
+
+select option {
+  color: black;
+  text-shadow: 1.2px 1.2px 1.2px rgba(0, 0, 0, 0.5);
+  font-family: 'Roboto Mono'
+}
+
 
 
 div .principal {
