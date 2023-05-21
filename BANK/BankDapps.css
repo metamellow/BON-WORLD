@@ -26,6 +26,7 @@ button {
 
   color: black;
   font-family: 'Orbitron', sans-serif;
+  text-shadow: 1.2px 1.2px 2.8px rgba(0, 0, 0, 0.3);
 }
 
 button:hover {
@@ -54,13 +55,13 @@ input {
   height: 70px;
   left: 744px;
   top: 382px;
-  color: #54ff65;
   font-size: 30px;
   padding-left: 16px;
   border-radius: 10px;
 
-  text-shadow: 1.2px 1.2px 2.8px rgba(0, 255, 60, 0.5);
+  color: #54ff65;
   font-family: 'Orbitron', sans-serif;
+  text-shadow: 1.2px 1.2px 2.8px rgba(0, 255, 60, 0.5);
 }
 
 select {
@@ -77,6 +78,7 @@ select {
 
   color: black;
   font-family: 'Orbitron', sans-serif;
+  text-shadow: 1.2px 1.2px 2.8px rgba(0, 255, 60, 0.5);
 }
 
 select option {
