@@ -1,3 +1,21 @@
+
+// - make the icons at the bottom link to twitters
+// - 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // ________________ ESTABLISH ALL SMART CONTRACT ABIs ________________
 // "bonExchange"
 const CONTRACT1_ABI = (
