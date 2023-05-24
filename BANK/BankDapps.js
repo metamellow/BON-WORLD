@@ -2,18 +2,11 @@
 // - make the icons at the bottom link to twitters
 // - make exchanges show percentage of total supply in pool as progress bar
 // - 
-
-
-
-
-
-
-
-
-
-
-
-
+// - 
+// - 
+// - 
+// - 
+// - 
 
 
 
