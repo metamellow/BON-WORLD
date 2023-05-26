@@ -130,7 +130,7 @@
                 <div id="dapp_interface_1">
 
                     <div class="title"> BON-to-BANK EXCHANGE </div><br/>
-
+<!--
                     <label for="CheckBONBANKPool">
                         REMAINING-POOL<br>
                         </label>
@@ -142,12 +142,29 @@
                             >
                             -check-
                     </button>
+-->
+
+                    <label for="CheckBONBANKPool" id="HTML_label_text_1">
+                        REMAINING-POOL<br>
+                        </label>
+                        <div id="HTML_custom_div_2a" class="progress-bar-holder">
+                            <div id="HTML_custom_div_2b" class="progress-bar">
+                                <button
+                                    name="CheckBONBANKPool"
+                                    id="HTML_function_button_2"
+                                    onclick="DappInterface_.checkBANKstakingTime();"
+                                >
+                                    -check-
+                                </button>
+                                <div id="HTML_custom_div_2c" class="progress"></div>
+                            </div>
+                    </div>
 
                     <br/>
                     <br/>
 
                     <form><label for="InputBONBANKAmount" class="amount">
-                        AMOUNT<br>
+                        SWAP-AMOUNT<br>
                         </label>
                         <input 
                             type="number"

@@ -76,6 +76,7 @@ class DappInterface {
         this.JSfunctionButton3 = document.getElementById('HTML_function_button_3'); // exchangeBONforBANK()
         this.selectedInput2 = 0; // set via the HTML input; holds input BON2BANK amount
         this.JSquantityInput2 = document.getElementById('HTML_quantity_input_2'); // input BON2BANK amount
+        this.JSlabelText1 = document.getElementById('HTML_label_text_1'); // label for the Bank Pool
         // - bank to bon
 
 
@@ -574,11 +575,8 @@ class DappInterface {
                     
                     console.log("Analzying results...");
                     if (balOf >= 1){
-                        console.log(`The BON<>BANK exchange currently holds: ${ethers.utils.formatEther(balOf)}`)
-                        this.JSfunctionButton2.disabled = false;
-                        this.JSfunctionButton2.innerText = `${
-                            ethers.utils.commify(Math.trunc(parseInt(ethers.utils.formatEther(String(balOf)))))
-                        }`;
+                        console.log(`The BON2BANK exchange currently holds: ${ethers.utils.formatEther(balOf)}`)
+                        await this.formatExchangeBANKBalanceProgressBar(ethers.utils.formatEther(balOf));
                     ;
                     } else {
                         console.log(`The BON<>BANK exchange is CLOSED.`);
@@ -602,6 +600,22 @@ class DappInterface {
         }
     }
 
+    async formatExchangeBANKBalanceProgressBar(balOf){
+        var progressBar = document.getElementById("HTML_custom_div_2b");
+        var progress = document.getElementById("HTML_custom_div_2c");
+        
+        var percentage;
+        var percentage = (balOf/21_000_000)*100;
+        this.JSfunctionButton2.innerText = `${Math.round(percentage)}%`;
+        this.JSlabelText1.innerText = `AVAILABLE: ${ethers.utils.commify(Math.round(balOf))}`;
+
+        percentage += 1;
+        progressBar.style.width = percentage + "%";
+        progress.style.width = percentage + "%";
+
+        this.JSfunctionButton2.disabled = false;
+    }
+    
     async exchangeBONforBANK() {
         
         try { const { ethereum } = window;
