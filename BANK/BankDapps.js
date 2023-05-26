@@ -1,11 +1,7 @@
 
 // --- TODO --------------------------------------------------------------
 // - make exchanges show percentage of total supply in pool as progress bar
-<<<<<<< Updated upstream
-// - bump
-=======
 // - add a 'max' option for staking that pulls from balance
->>>>>>> Stashed changes
 // - 
 // - 
 // - 
