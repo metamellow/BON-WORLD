@@ -281,4 +281,4 @@ class NFTminter {
 }
 
 const NFTminter_ = new NFTminter();
-NFTminter_.checkIfWalletIsConnected();
+// NFTminter_.checkIfWalletIsConnected();

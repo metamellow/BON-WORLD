@@ -766,4 +766,4 @@ class BONxCULT1minter {
 }
 
 const BONxCULT1minter_ = new BONxCULT1minter();//!!!!!!!!
-BONxCULT1minter_.checkIfWalletIsConnected();//!!!!!!!!
+//BONxCULT1minter_.checkIfWalletIsConnected();//!!!!!!!!

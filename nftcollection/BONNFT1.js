@@ -760,4 +760,4 @@ class BONNFT1minter {
 }
 
 const BONNFT1minter_ = new BONNFT1minter();
-BONNFT1minter_.checkIfWalletIsConnected(); //!!!!!!!!
+//BONNFT1minter_.checkIfWalletIsConnected(); //!!!!!!!!
