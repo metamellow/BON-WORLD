@@ -154,7 +154,8 @@ class DappInterface {
                     // Event listener 2B
                     connectedContract2.on('WithdrawEmit', (user, userBalance) => {
                         console.log(user, userBalance);
-                        //alert(`...`);
+                        alert(`Withdraw all tokens successful!`);
+                        this.JSfunctionButton4.innerText = 'success';
                         }
                     );
                     console.log('Contract 2B listener success');

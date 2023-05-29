@@ -309,3 +309,37 @@ p {
 
 /* Media queries para tornar a barra de nave
 }
+
+/* --- Progress Bar --- */
+.progress-bar-holder {
+  border: solid;
+  border-color: #54ff65;
+  background-color: rgba(84, 255, 101, 0.15);
+  width: 560px;
+  height: 70px;
+  left: 744px;
+  top: 382px;
+  padding-top: 1px;
+  padding-right: 2px;
+  padding-bottom: 2px;
+  border-radius: 10px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 100%;
+  background-color: #39ff14;
+  border: 1px solid #000;
+  overflow: hidden;
+  box-shadow: 0 0 10px 0 #39ff14;
+  border-radius: 5px;
+}
+
+.progress {
+  width: 0%;
+  height: 100%;
+  background-color: transparent;
+  float: left;
+  margin-right: 1px;
+  border-radius: 5px;
+}
