@@ -232,14 +232,8 @@ class DappInterface {
                             await tknApprv.wait();
                             // Emit event should trigger the listener on success
 
-                            if(tknApprv == true){
-                                console.log('Allowance accepted!');
-                                return true;
-                            }
-                            else {
-                                console.log('Allowance rejected!');
-                                return false
-                            }
+                            return true;
+                            // this should trigger the next function
 
                         } catch (error) {
                             console.log(error);
