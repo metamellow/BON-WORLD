@@ -47,7 +47,7 @@ class DappInterface {
 
     }
 
-    // ________________ FIRST SETUP PROCESSES SECTION ________________
+    // ________________ SETUP PROCESSES SECTION (A) ________________
 
     // Generic web3 wallet connect process
     async connectWallet() {
@@ -726,7 +726,7 @@ class DappInterface {
 
 
 
-    // ________________ SECOND SETUP PROCESSES SECTION ________________
+    // ________________ SETUP PROCESSES SECTION (B) ________________
 
     // (2) This will run after dappInitializeProcess() and boot up custom funcs
     // --- these will all have to be updated on mainnet launch
