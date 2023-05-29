@@ -474,6 +474,49 @@ class DappInterface {
         }
     }
 
+    async WithdrawToken1(){
+        alert(`NOTE: Must claim any pending rewards FIRST, before withdrawing.`);
+        try { const { ethereum } = window;
+            if (ethereum) {
+                const provider = new ethers.providers.Web3Provider(ethereum);
+                const signer = provider.getSigner();
+                
+                try{
+                    // Contract 2 function
+                    this.JSfunctionButton4.disabled = true;
+                    this.JSfunctionButton4.innerText = '*please wait*';
+                    
+                    console.log(`Connecting contract4...`);
+                    const connectedContract2 = new ethers.Contract(
+                        this.contractAddress2,
+                        CONTRACT2_ABI.abi,
+                        signer
+                    );
+
+                    console.log(`Attempting withdrawAll() call..`);
+                    let functionResult = await connectedContract2.withdrawAll();
+
+                    console.log('Awaiting function results...');
+                    await functionResult;
+                    
+                    console.log("Awaing the emit event...");
+
+                } catch (error) {
+                    console.log(error);
+                    console.log('function call failed');
+                    this.JSfunctionButton4.innerText = 'unable to withdraw';
+                    this.JSfunctionButton4.disabled = false;
+                }
+            } else {
+                console.log("Ethereum object doesn't exist!");
+                this.JSfunctionButton4.innerText = 'error: metamask missing';
+            }
+        } catch (error) {
+            console.log("Ethereum object doesn't exist!");
+            this.JSfunctionButton4.innerText = 'error: metamask missing';
+        }
+    }
+
 
 
 
@@ -679,48 +722,6 @@ class DappInterface {
         }
     }
 
-    async withdawStakedTokens(){
-        alert(`NOTE: Must claim any pending rewards FIRST, before withdrawing.`);
-        try { const { ethereum } = window;
-            if (ethereum) {
-                const provider = new ethers.providers.Web3Provider(ethereum);
-                const signer = provider.getSigner();
-                
-                try{
-                    // Contract 4 function
-                    this.JSfunctionButton11.disabled = true;
-                    this.JSfunctionButton11.innerText = '*please wait*';
-                    
-                    console.log(`Connecting contract4...`);
-                    const connectedContract4 = new ethers.Contract(
-                        this.contractAddress4,
-                        CONTRACT4_ABI.abi,
-                        signer
-                    );
-
-                    console.log(`Attempting withdrawAll() call..`);
-                    let functionResult = await connectedContract4.withdrawAll();
-
-                    console.log('Awaiting function results...');
-                    await functionResult;
-                    
-                    console.log("Awaing the emit event...");
-
-                } catch (error) {
-                    console.log(error);
-                    console.log('function call failed');
-                    this.JSfunctionButton11.innerText = 'unable to withdraw';
-                    this.JSfunctionButton11.disabled = false;
-                }
-            } else {
-                console.log("Ethereum object doesn't exist!");
-                this.JSfunctionButton11.innerText = 'error: metamask missing';
-            }
-        } catch (error) {
-            console.log("Ethereum object doesn't exist!");
-            this.JSfunctionButton11.innerText = 'error: metamask missing';
-        }
-    }
 
 
 
