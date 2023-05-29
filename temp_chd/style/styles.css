@@ -1,0 +1,311 @@
+/* Estilos básicos */
+body {
+    margin: 0;
+    padding: 0; 
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+  }
+  .container {
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 10px;
+    
+  }
+
+  /* Barra de navegação */
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: ECECEC;
+    padding: 10px;
+    color: #fff;
+    width: 100%;
+ 
+  }
+
+  @media screen and (max-width: 768px) {
+    .navbar {
+      
+      max-width: 1500px;
+      margin: 5px;
+      padding: 10px;
+      display: flex;
+      float:inline-end;
+      flex-wrap: wrap;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      }
+      .navbar img {
+       
+      margin: 30px;
+      }
+
+      
+
+    } 
+
+  a {
+
+    color: black;
+    font-weight:bolder;
+    font-size: 28px;
+    margin-left: 10px;
+    text-decoration: none;
+
+  }
+
+  a .image {
+
+    color: black;
+    font-weight:bolder;
+    font-size: 28px;
+    margin-left: 10px;
+    text-decoration: none;
+
+  }
+
+ 
+  a:hover {
+
+    color:#565252;
+    font-weight:bolder;
+    font-size: 28px;
+    margin-left: 10px;
+    text-decoration: none;
+
+  }
+
+
+  .navbar .logo {
+    display: inline-block;
+    margin-right: 20px;
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .navbar .menu-toggle {
+    display: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  @media screen and (max-width: 768px) {
+    .content {
+      display:inline-block;
+      
+      
+      }
+
+    } 
+
+  .content .image {
+    flex: 1;
+    text-align: right;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    justify-content: center;
+  
+  }
+
+  .content .image img {
+    max-width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+
+  }
+  .content .text {
+    flex: 1;
+    margin-right: 20px;
+  }
+ 
+  .footer {
+    background-color: ECECEC;
+    padding: 10px;
+    color:#565252;
+    text-align: center;
+  }
+  .footer .footer-logo {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  .footer .copyright {
+    font-size: 12px;
+  }
+  .footer .logos {
+    margin-top: 10px;
+  }
+  .footer .logos img {
+    max-width: 30px;
+    margin-right: 5px;
+  }
+
+  .title {
+   
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight:bolder;
+  font-size: 150px;
+  line-height: 150px;
+  margin-bottom: 50px;
+  margin-top: 100px;
+  text-align: justify;
+  }
+
+  @media screen and (max-width: 768px) {
+    .title {
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight:bolder;
+      font-size: 60px;
+      line-height: 60px;
+      margin-bottom: 50px;
+      margin-top: 100px;
+      text-align: center;
+      }
+
+    } 
+
+  .title2 {
+    font-size: 50px;
+    font-weight:bolder;
+    margin-bottom: 50px;
+    line-height: 55px;
+
+  }
+
+  @media screen and (max-width: 768px) {
+    .title2 {
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight:bolder;
+      font-size: 30px;
+      line-height: 30px;
+      margin-bottom: 50px;
+      margin-top: 100px;
+      text-align:center;
+      }
+
+    } 
+
+
+  .title3 {
+    font-size: 50px;
+    font-weight:bolder;
+    margin-bottom: 5px;
+    margin-top: 20px;
+  }
+
+  .title4 {
+    font-size: 100px;
+    font-weight:bolder;
+    margin-bottom: 20px;
+    margin-top: 50px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .title4 {
+    font-size: 40px;
+    font-weight:bolder;
+    margin-bottom: 20px;
+    margin-top: 50px;
+    align-content: center;
+
+    } 
+  }
+  .title5 {
+    font-size: 50px;
+    font-weight:bolder;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    text-align: center;
+  }
+
+  .copyright {
+    color: black;
+  }
+
+p {
+    text-align: justify;
+    font-size: 1.5rem;
+}
+
+@media screen and (max-width: 768px) {
+  p {
+    text-align: left;
+    font-size: 1.5rem;
+  }
+
+}
+
+
+
+
+.icons {
+
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  padding: 0px;
+  gap: 15px;  
+
+}
+
+
+@media screen and (max-width: 768px) {
+  .icons {
+      flex-direction: row;
+      justify-content: center;
+      flex-wrap: wrap;
+  }
+
+}
+
+
+
+@media screen and (max-width: 768px) {
+    .container {
+      margin: 50px;
+    }
+
+}
+
+
+.image2 {
+  display: flex;
+  float: right;
+  margin: 50px;
+}
+
+@media screen and (max-width: 768px) {
+  .image2 {
+    display: flex;
+    width: 100%;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 50px;
+   
+  }
+
+}
+
+.text2 {
+  margin-top: 150px;
+  margin-bottom: 150px;
+  flex: 1;
+  margin-right: 20px;
+}
+
+/* Media queries para tornar a barra de nave
+}
