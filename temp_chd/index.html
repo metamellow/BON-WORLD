@@ -152,9 +152,9 @@
         <div class="user">
                 
             <div class="buttonuser">
-                <label for="ConnectWalletButtonDisplay">USER</label><br>
+                <label for="connectWallet">USER</label><br>
                 <button
-                    name="ConnectWalletButtonDisplay"
+                    name="connectWallet"
                     id="HTML_connect_button" 
                     onclick="DappInterface_.connectWallet();"
                     >
@@ -163,11 +163,11 @@
             </div>
 
             <div class="buttonuser">
-                <label for="ChadGPTBal">CHADGPT</label><br>
+                <label for="checkBalToken1">CHADGPT</label><br>
                 <button
-                    name="CheckChadGPTBal"
+                    name="checkBalToken1"
                     id="HTML_function_button_1"
-                    onclick="DappInterface_.checkChadGPTBal();"
+                    onclick="DappInterface_.checkBalToken1();"
                     >
                     -check-
                 </button>
@@ -178,11 +178,11 @@
 
         <div id="dapp">
         
-            <label for="CheckChadGPTStkdAmount">STAKED-AMOUNT<br></label>
+            <label for="CheckStkdToken1Amount">STAKED-AMOUNT<br></label>
             <button
-                name="CheckChadGPTStkdAmount"
+                name="CheckStkdToken1Amount"
                 id="HTML_function_button_2"
-                onclick="DappInterface_.CheckChadGPTStkdAmount();"
+                onclick="DappInterface_.CheckStkdToken1Amount();"
                 >
                 -check-
             </button>
@@ -190,10 +190,10 @@
             <br/>
             <br/>
             
-            <form><label for="InputChadGPTStkdAmount" class="amount">STAKE-MORE<br></label>
+            <form><label for="onSelectInput1" class="amount">STAKE-MORE<br></label>
                 <input 
                     type="number"
-                    name="InputChadGPTStkdAmount"
+                    name="onSelectInput1"
                     id="HTML_quantity_input_1"
                     min="0"
                     value="0"
@@ -201,11 +201,11 @@
                     required
                 >
             </form>
-            <label for="StakeChadGPT"></label>
+            <label for="StakeToken1_Loader"></label>
                 <button
-                    name="StakeChadGPT"
+                    name="StakeToken1_Loader"
                     id="HTML_function_button_3"
-                    onclick="DappInterface_.StakeChadGPT_Loader();"
+                    onclick="DappInterface_.StakeToken1_Loader();"
                     >
                     -stake-
                 </button>
@@ -213,12 +213,12 @@
             <br/>
             <br/>
 
-            <label for="WithdrawChadGPT">WITHDRAW-ALL<br></label>
+            <label for="WithdrawToken1">WITHDRAW-ALL<br></label>
                 <button
-                    name="WithdrawChadGPT"
+                    name="WithdrawToken1"
                     id="HTML_function_button_4"
                     class="custom_button_1"
-                    onclick="DappInterface_.WithdrawChadGPT();"
+                    onclick="DappInterface_.WithdrawToken1();"
                     >
                     -withdraw-
                 </button>
@@ -228,13 +228,13 @@
             
             <hr><br/>
 
-            <label for="CheckChadGPTStkdTime">69-HOUR-TIMER<br></label>
+            <label for="CheckToken1StkdTime">69-HOUR-TIMER<br></label>
                 <div id="HTML_custom_div_1a" class="progress-bar-holder">
                     <div id="HTML_custom_div_1b" class="progress-bar">
                         <button
-                        name="CheckChadGPTStkdTime"
+                        name="CheckToken1StkdTime"
                         id="HTML_function_button_5"
-                        onclick="DappInterface_.CheckChadGPTStkdTime();"
+                        onclick="DappInterface_.CheckToken1StkdTime();"
                         >
                             -check-
                         </button>
@@ -246,24 +246,22 @@
 
             <label for="CheckChadGPTStkdReward">YOUR-REWARDS<br></label>
                 <button
-                    name="CheckChadGPTStkdReward"
+                    name="CheckToken1StkdReward"
                     id="HTML_function_button_6"
-                    onclick="DappInterface_.CheckChadGPTStkdReward();"
+                    onclick="DappInterface_.CheckToken1StkdReward();"
                     >
                     -check-
                 </button>
 
-            <br/>
-            <br/>
+                <br/>
 
-            <label for="ClaimChadGPTStkdReward">REWARDS<br></label>
                 <button
-                    name="ClaimChadGPTStkdReward"
+                    name="ClaimToken1StkdReward"
                     id="HTML_function_button_7"
-                    onclick="DappInterface_.ClaimChadGPTStkdReward();"
-                    >
-                    -claim-
-                </button>
+                    onclick="DappInterface_.ClaimToken1StkdReward();"
+                >
+                -claim-
+            </button>
 
             <br/>
             <br/>

@@ -32,15 +32,15 @@ class DappInterface {
 
         // --- Universal HTML Elements --- 
         this.JSconnectButton1 = document.getElementById('HTML_connect_button'); // connectWallet()
-        this.JSfunctionButton1 = document.getElementById('HTML_function_button_1'); // checkChadGPTBal()
+        this.JSfunctionButton1 = document.getElementById('HTML_function_button_1'); // checkBalToken1()
 
         // --- Staking HTML Elements --- 
-        this.JSfunctionButton2 = document.getElementById('HTML_function_button_2'); // CheckChadGPTStkdAmount()
-        this.JSfunctionButton3 = document.getElementById('HTML_function_button_3'); // StakeChadGPT_Loader()
-        this.JSfunctionButton4 = document.getElementById('HTML_function_button_4'); // WithdrawChadGPT()
-        this.JSfunctionButton5 = document.getElementById('HTML_function_button_5'); // CheckChadGPTStkdTime()
-        this.JSfunctionButton6 = document.getElementById('HTML_function_button_6'); // CheckChadGPTStkdReward()
-        this.JSfunctionButton7 = document.getElementById('HTML_function_button_7'); // ClaimChadGPTStkdReward()
+        this.JSfunctionButton2 = document.getElementById('HTML_function_button_2'); // CheckStkdToken1Amount()
+        this.JSfunctionButton3 = document.getElementById('HTML_function_button_3'); // StakeToken1_Loader()
+        this.JSfunctionButton4 = document.getElementById('HTML_function_button_4'); // WithdrawToken1()
+        this.JSfunctionButton5 = document.getElementById('HTML_function_button_5'); // CheckToken1StkdTime()
+        this.JSfunctionButton6 = document.getElementById('HTML_function_button_6'); // CheckToken1StkdReward()
+        this.JSfunctionButton7 = document.getElementById('HTML_function_button_7'); // ClaimToken1StkdReward()
 
         this.selectedInput1 = 0; // set via the HTML input; holds staking amount
         this.JSquantityInput1 = document.getElementById('HTML_quantity_input_1'); // onSelectInput1()
@@ -123,7 +123,7 @@ class DappInterface {
                     console.log('Contract 1 connected to listener');
 
                     // Event listener 1A
-                    // ...empty 
+                        // ...empty 
 
                 // --- Contract 2 ---
                     const connectedContract2 = new ethers.Contract(
@@ -165,53 +165,27 @@ class DappInterface {
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
     // ________________ UNIVERSAL CONTRACT FUNCTIONS SECTION ________________
     
-    // BANK allowance check andor approve process for dapp contract then return true/false
-    async contract2AllowanceCheck() {
+    // Token allowance check andor approve process for dapp contract then return true/false
+    async contract1AllowanceCheck() {
         try { const { ethereum } = window;
             if (ethereum) {
                 const provider = new ethers.providers.Web3Provider(ethereum);
                 const signer = provider.getSigner();
                 try{
-                    // Contract 2 Allowance check
+                    // Contract 1 Allowance check
                     console.log(`Connecting contract3...`);
-                    const connectedContract2 = new ethers.Contract(
-                        this.contractAddress2,
-                        CONTRACT2_ABI.abi,
+                    const connectedContract1 = new ethers.Contract(
+                        this.contractAddress1,
+                        CONTRACT1_ABI.abi,
                         signer
                     );
                     
                     console.log(`Attempting allowance call...`);
-                    let tknAllwnc = await connectedContract2.allowance(
+                    let tknAllwnc = await connectedContract1.allowance(
                         this.currentAccount,
-                        this.contractAddress1
+                        this.contractAddress2
                     );
 
                     console.log('Awaiting allowance result...');
@@ -227,16 +201,16 @@ class DappInterface {
 
                         try{
                             // --- APPROVAL STUFF ---
-                            console.log(`Connecting contract2...`);
-                            const connectedContract2 = new ethers.Contract(
+                            console.log(`Connecting contract1...`);
+                            const connectedContract1 = new ethers.Contract(
+                                this.contractAddress1,
+                                CONTRACT1_ABI.abi,
+                                signer
+                            );
+
+                            console.log(`Attempting approve call...`);
+                            let tknApprv = await connectedContract1.approve(
                                 this.contractAddress2,
-                                CONTRACT2_ABI.abi,
-                                signer
-                            );
-
-                            console.log(`Attempting approve call...`);
-                            let tknApprv = await connectedContract2.approve(
-                                this.contractAddress1,
                                 '115792089237316195423570985008687907853269984665640564039457584007913129639935'
                                 // ^^ max possible token value
                             );
@@ -245,9 +219,14 @@ class DappInterface {
                             await tknApprv.wait();
                             // Emit event should trigger the listener on success
 
-                            return true;
-                            // really there should be some check fo the results here before return true
-                            // this should trigger the next function
+                            if(tknApprv == true){
+                                console.log('Allowance accepted!');
+                                return true;
+                            }
+                            else {
+                                console.log('Allowance rejected!');
+                                return false
+                            }
 
                         } catch (error) {
                             console.log(error);
@@ -270,97 +249,22 @@ class DappInterface {
         }
     }
 
-    // BON allowance check andor approve process for dapp contract then return true/false
-    async contract3AllowanceCheck() {
-        try { const { ethereum } = window;
-            if (ethereum) {
-                const provider = new ethers.providers.Web3Provider(ethereum);
-                const signer = provider.getSigner();
-                try{
-                    // Contract 3 Allowance check
-                    console.log(`Connecting contract3...`);
-                    const connectedContract3 = new ethers.Contract(
-                        this.contractAddress3,
-                        CONTRACT3_ABI.abi,
-                        signer
-                    );
-                    
-                    console.log(`Attempting allowance call...`);
-                    let tknAllwnc = await connectedContract3.allowance(
-                        this.currentAccount,
-                        this.contractAddress1
-                    );
-
-                    console.log('Awaiting allowance result...');
-                    await tknAllwnc;
-
-                    console.log('Analyzing allowance result...');
-                    if(tknAllwnc > 0){
-                        console.log('Allowance accepted!');
-                        return true;
-                        // this should trigger the next function
-                    } else {
-                        console.log('Allowance failed; starting approval');
-
-                        try{
-                            // --- APPROVAL STUFF ---
-                            console.log(`Connecting contract3...`);
-                            const connectedContract3 = new ethers.Contract(
-                                this.contractAddress3,
-                                CONTRACT3_ABI.abi,
-                                signer
-                            );
-
-                            console.log(`Attempting approve call...`);
-                            let tknApprv = await connectedContract3.approve(
-                                this.contractAddress1,
-                                '115792089237316195423570985008687907853269984665640564039457584007913129639935'
-                                // ^^ max possible token value
-                            );
-
-                            console.log('Awaiting approve results...');
-                            await tknApprv.wait();
-                            // Emit event should trigger the listener on success
-
-                            return true;
-                            // this should trigger the next function
-
-                        } catch (error) {
-                            console.log(error);
-                            console.log('Allowance success, function failed.');
-                            return false;
-                        }   
-                    }
-                } catch (error) {
-                console.log(error);
-                console.log("error: contact admin");
-                return false;
-                }
-            } else {
-                console.log("Ethereum object doesn't exist!");
-                return false;
-            }
-        } catch (error) {
-            console.log("Ethereum object doesn't exist!");
-            return false;
-        }
-    }
 
     // Checks the erc20 balance and then updates the onscreen button to show
-    async checkBONbalance() {
+    async checkBalToken1() {
         try { const { ethereum } = window;
             if (ethereum) {
                 const provider = new ethers.providers.Web3Provider(ethereum);
                 const signer = provider.getSigner();
                 try{
                     // Contract 3 function
-                    this.JSfunctionButton4.disabled = true;
-                    this.JSfunctionButton4.innerText = '*loading*';
+                    this.JSfunctionButton1.disabled = true;
+                    this.JSfunctionButton1.innerText = '*loading*';
                     
-                    console.log(`Connecting contract3...`);
-                    const connectedContract3 = new ethers.Contract(
-                        this.contractAddress3,
-                        CONTRACT3_ABI.abi,
+                    console.log(`Connecting contract1...`);
+                    const connectedContract1 = new ethers.Contract(
+                        this.contractAddress1,
+                        CONTRACT1_ABI.abi,
                         signer
                     );
 
@@ -370,7 +274,7 @@ class DappInterface {
                         /*`${this.txnCost}`*/ `0`
                         ),
                     };
-                    let balOf = await connectedContract3.balanceOf(
+                    let balOf = await connectedContract1.balanceOf(
                         String(this.currentAccount),
                         options
                     );
@@ -380,93 +284,31 @@ class DappInterface {
                     
                     console.log("Analzying results...");
                     if (balOf >= 1){
-                        console.log(`Current account holds: ${ethers.utils.formatEther(balOf)} BON`)
-                        this.JSfunctionButton4.disabled = false;
-                        this.JSfunctionButton4.innerText = `${
+                        console.log(`Current account holds: ${ethers.utils.formatEther(balOf)}`)
+                        this.JSfunctionButton1.disabled = false;
+                        this.JSfunctionButton1.innerText = `${
                             ethers.utils.commify(Math.trunc(parseInt(ethers.utils.formatEther(String(balOf)))))
                         }`;
                     ;
                     } else {
-                        console.log(`Current account holds: 0 BON`);
-                        this.JSfunctionButton4.disabled = false;
-                        this.JSfunctionButton4.innerText = '0 (so sad)';
+                        console.log(`Current account holds: 0`);
+                        this.JSfunctionButton1.disabled = false;
+                        this.JSfunctionButton1.innerText = '0 (so sad)';
                     }
 
                 } catch (error) {
                     console.log(error);
                     console.log('function call failed');
-                    this.JSfunctionButton4.innerText = '-try again-';
-                    this.JSfunctionButton4.disabled = false;
+                    this.JSfunctionButton1.innerText = '-try again-';
+                    this.JSfunctionButton1.disabled = false;
                 }
             } else {
                 console.log("Ethereum object doesn't exist!");
-                this.JSfunctionButton4.innerText = 'error: metamask missing';
+                this.JSfunctionButton1.innerText = 'error: metamask missing';
             }
         } catch (error) {
             console.log("Ethereum object doesn't exist!");
-            this.JSfunctionButton4.innerText = 'error: metamask missing';
-        }
-    }
-
-    // Checks the erc20 balance and then updates the onscreen button to show
-    async checkBANKbalance() {
-        try { const { ethereum } = window;
-            if (ethereum) {
-                const provider = new ethers.providers.Web3Provider(ethereum);
-                const signer = provider.getSigner();
-                try{
-                    // Contract 2 function
-                    this.JSfunctionButton5.disabled = true;
-                    this.JSfunctionButton5.innerText = '*loading*';
-                    
-                    console.log(`Connecting contract2...`);
-                    const connectedContract2 = new ethers.Contract(
-                        this.contractAddress2,
-                        CONTRACT2_ABI.abi,
-                        signer
-                    );
-
-                    console.log(`Attempting balanceOf() call..`);
-                    const options = {
-                        value: ethers.utils.parseEther(
-                        /*`${this.txnCost}`*/ `0`
-                        ),
-                    };
-                    let balOf = await connectedContract2.balanceOf(
-                        String(this.currentAccount),
-                        options
-                    );
-
-                    console.log('Awaiting function results...');
-                    await balOf;
-                    
-                    console.log("Analzying results...");
-                    if (balOf >= 1){
-                        console.log(`Current account holds: ${ethers.utils.formatEther(balOf)} BANK`)
-                        this.JSfunctionButton5.disabled = false;
-                        this.JSfunctionButton5.innerText = `${
-                            ethers.utils.commify(Math.trunc(parseInt(ethers.utils.formatEther(String(balOf)))))
-                        }`;
-                    ;
-                    } else {
-                        console.log(`Current account holds: 0 BANK`);
-                        this.JSfunctionButton5.disabled = false;
-                        this.JSfunctionButton5.innerText = '0 (so sad)';
-                    }
-
-                } catch (error) {
-                    console.log(error);
-                    console.log('function call failed');
-                    this.JSfunctionButton5.innerText = '-try again-';
-                    this.JSfunctionButton5.disabled = false;
-                }
-            } else {
-                console.log("Ethereum object doesn't exist!");
-                this.JSfunctionButton5.innerText = 'error: metamask missing';
-            }
-        } catch (error) {
-            console.log("Ethereum object doesn't exist!");
-            this.JSfunctionButton5.innerText = 'error: metamask missing';
+            this.JSfunctionButton1.innerText = 'error: metamask missing';
         }
     }
 
@@ -485,22 +327,22 @@ class DappInterface {
         return dDisplay + hDisplay + mDisplay /* + sDisplay*/;
     }
 
-    // ________________ ChadGPT STAKING SECTION ________________
+    // ________________ STAKING SECTION ________________
 
-    async checkBANKstakingBal(){
+    async CheckStkdToken1Amount(){
         try { const { ethereum } = window;
             if (ethereum) {
                 const provider = new ethers.providers.Web3Provider(ethereum);
                 const signer = provider.getSigner();
                 try{
                     // Contract 2 function
-                    this.JSfunctionButton6.disabled = true;
-                    this.JSfunctionButton6.innerText = '*please wait*';
+                    this.JSfunctionButton2.disabled = true;
+                    this.JSfunctionButton2.innerText = '*please wait*';
                     
-                    console.log(`Connecting contract4...`);
-                    const connectedContract4 = new ethers.Contract(
-                        this.contractAddress4,
-                        CONTRACT4_ABI.abi,
+                    console.log(`Connecting contract2...`);
+                    const connectedContract2 = new ethers.Contract(
+                        this.contractAddress2,
+                        CONTRACT2_ABI.abi,
                         signer
                     );
 
@@ -510,7 +352,7 @@ class DappInterface {
                         /*`${this.txnCost}`*/ `0`
                         ),
                     };
-                    let balOf = await connectedContract4.stakedPoolBalances(
+                    let balOf = await connectedContract2.stakedPoolBalances(
                         String(this.currentAccount),
                         options
                     );
@@ -520,33 +362,53 @@ class DappInterface {
                     
                     console.log("Analzying results...");
                     if (balOf >= 1){
-                        console.log(`Amount of BANK staked: ${ethers.utils.formatEther(balOf)}`)
-                        this.JSfunctionButton6.disabled = false;
-                        this.JSfunctionButton6.innerText = `${
+                        console.log(`Amount staked: ${ethers.utils.formatEther(balOf)}`)
+                        this.JSfunctionButton2.disabled = false;
+                        this.JSfunctionButton2.innerText = `${
                             ethers.utils.commify(Math.trunc(parseInt(ethers.utils.formatEther(String(balOf)))))
                         }`;
                     ;
                     } else {
-                        console.log(`Amount of BANK staked: 0 (so sad)`);
-                        this.JSfunctionButton6.disabled = false;
-                        this.JSfunctionButton6.innerText = 'not staked';
+                        console.log(`Amount staked: 0 (so sad)`);
+                        this.JSfunctionButton2.disabled = false;
+                        this.JSfunctionButton2.innerText = 'not staked';
                     }
 
                 } catch (error) {
                     console.log(error);
                     console.log('function call failed');
-                    this.JSfunctionButton6.innerText = '-try again-';
-                    this.JSfunctionButton6.disabled = false;
+                    this.JSfunctionButton2.innerText = '-try again-';
+                    this.JSfunctionButton2.disabled = false;
                 }
             } else {
                 console.log("Ethereum object doesn't exist!");
-                this.JSfunctionButton6.innerText = 'error: metamask missing';
+                this.JSfunctionButton2.innerText = 'error: metamask missing';
             }
         } catch (error) {
             console.log("Ethereum object doesn't exist!");
-            this.JSfunctionButton6.innerText = 'error: metamask missing';
+            this.JSfunctionButton2.innerText = 'error: metamask missing';
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
 
     async checkBANKstakingTime(){
         try { const { ethereum } = window;
@@ -847,9 +709,9 @@ class DappInterface {
         }
     }
 
-    async onSelectInput3() {
-        this.selectedInput3 = this.JSquantityInput3.value;
-        console.log(`New input: ${this.selectedInput3}`);
+    async onSelectInput1() {
+        this.selectedInput1 = this.JSquantityInput1.value;
+        console.log(`New input: ${this.selectedInput1}`);
     }
 
     // ________________ SECOND SETUP PROCESSES SECTION ________________
