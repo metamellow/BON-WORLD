@@ -1,5 +1,8 @@
 
-// ________________ ESTABLISH ALL SMART CONTRACT ABIs ________________
+// _____________________________________________________________
+// _____________ ESTABLISH ALL SMART CONTRACT ABIs _____________
+// _____________________________________________________________
+
 // "ChadGPT"
 const CONTRACT1_ABI = (
 	{
@@ -21,7 +24,9 @@ const CONTRACT2_ABI = (
 
 class DappInterface {
     
-    // ________________ VARIABLES AND OBJECTS SECTION ________________
+    // _____________________________________________________________
+    // _______________ VARIABLES AND OBJECTS SECTION _______________
+    // _____________________________________________________________
 
     constructor() {
         // --- Universal web3 Variables
@@ -45,9 +50,14 @@ class DappInterface {
         this.selectedInput1 = 0; // set via the HTML input; holds staking amount
         this.JSquantityInput1 = document.getElementById('HTML_quantity_input_1'); // onSelectInput1()
 
+        this.stakingTimeGoal = 248400;
+
     }
 
+
+    // _____________________________________________________________
     // ________________ SETUP PROCESSES SECTION (A) ________________
+    // _____________________________________________________________
 
     // Generic web3 wallet connect process
     async connectWallet() {
@@ -165,7 +175,10 @@ class DappInterface {
         }
     }
 
-    // ________________ UNIVERSAL CONTRACT FUNCTIONS SECTION ________________
+
+    // _____________________________________________________________
+    // ___________ UNIVERSAL CONTRACT FUNCTIONS SECTION ____________
+    // _____________________________________________________________
     
     // Token allowance check andor approve process for dapp contract then return true/false
     async contract1AllowanceCheck() {
@@ -249,7 +262,6 @@ class DappInterface {
         }
     }
 
-
     // Checks the erc20 balance and then updates the onscreen button to show
     async checkBalToken1() {
         try { const { ethereum } = window;
@@ -327,7 +339,10 @@ class DappInterface {
         return dDisplay + hDisplay + mDisplay /* + sDisplay*/;
     }
 
-    // ________________ STAKING SECTION ________________
+
+    // _____________________________________________________________
+    // ______________________ STAKING SECTION ______________________
+    // _____________________________________________________________
 
     async CheckStkdToken1Amount(){
         try { const { ethereum } = window;
@@ -517,39 +532,20 @@ class DappInterface {
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    async checkBANKstakingTime(){
+    async CheckToken1StkdTime(){
         try { const { ethereum } = window;
             if (ethereum) {
                 const provider = new ethers.providers.Web3Provider(ethereum);
                 const signer = provider.getSigner();
                 try{
                     // Contract 2 function
-                    this.JSfunctionButton7.disabled = true;
-                    this.JSfunctionButton7.innerText = '*please wait*';
+                    this.JSfunctionButton5.disabled = true;
+                    this.JSfunctionButton5.innerText = '*please wait*';
                     
                     console.log(`Connecting contract4...`);
-                    const connectedContract4 = new ethers.Contract(
-                        this.contractAddress4,
-                        CONTRACT4_ABI.abi,
+                    const connectedContract2 = new ethers.Contract(
+                        this.contractAddress2,
+                        CONTRACT2_ABI.abi,
                         signer
                     );
 
@@ -559,7 +555,86 @@ class DappInterface {
                         /*`${this.txnCost}`*/ `0`
                         ),
                     };
-                    let balOf = await connectedContract4.calculateTime(
+                    let secs = await connectedContract2.calculateTime(
+                        String(this.currentAccount),
+                        options
+                    );
+
+                    console.log('Awaiting function results...');
+                    await secs;
+                    
+                    console.log("Analzying results...");
+                    await this.formatStakingTimeProgressBar(secs);
+
+                } catch (error) {
+                    console.log(error);
+                    console.log(`Error catch: User is not staked`);
+                    this.JSfunctionButton5.innerText = 'not staked';
+                    this.JSfunctionButton5.disabled = false;
+                }
+            } else {
+                console.log("Ethereum object doesn't exist!");
+                this.JSfunctionButton5.innerText = 'error: metamask missing';
+            }
+        } catch (error) {
+            console.log("Ethereum object doesn't exist!");
+            this.JSfunctionButton5.innerText = 'error: metamask missing';
+        }
+    }
+
+    async formatStakingTimeProgressBar(secs){
+        if (secs >= 1){        
+            let convertedTime = await this.timeConverter(secs);
+            console.log(`Time passed: ${convertedTime}`)
+
+            var progressBar = document.getElementById("HTML_custom_div_1b");
+            var progress = document.getElementById("HTML_custom_div_1c");
+            
+            var percentage;
+            if (secs < stakingTimeGoal){
+                var percentage = (secs/stakingTimeGoal)*100;
+                this.JSfunctionButton5.innerText = await this.timeConverter(secs);
+            } else {
+                var percentage = 99;
+                this.JSfunctionButton5.innerText = `100%`;
+            }
+
+            percentage += 1;
+            progressBar.style.width = percentage + "%";
+            progress.style.width = percentage + "%";
+
+            this.JSfunctionButton5.disabled = false;
+        } else {
+            console.log(`no staked tokens`);
+            this.JSfunctionButton5.disabled = false;
+            this.JSfunctionButton5.innerText = 'no staked tokens';
+        }
+    }
+
+    async CheckToken1StkdReward(){
+        try { const { ethereum } = window;
+            if (ethereum) {
+                const provider = new ethers.providers.Web3Provider(ethereum);
+                const signer = provider.getSigner();
+                try{
+                    // Contract 2 function
+                    this.JSfunctionButton6.disabled = true;
+                    this.JSfunctionButton6.innerText = '*please wait*';
+                    
+                    console.log(`Connecting contract2...`);
+                    const connectedContract2 = new ethers.Contract(
+                        this.contractAddress2,
+                        CONTRACT2_ABI.abi,
+                        signer
+                    );
+
+                    console.log(`Attempting calculateRewards() call..`);
+                    const options = {
+                        value: ethers.utils.parseEther(
+                        /*`${this.txnCost}`*/ `0`
+                        ),
+                    };
+                    let balOf = await connectedContract2.calculateRewards(
                         String(this.currentAccount),
                         options
                     );
@@ -568,12 +643,65 @@ class DappInterface {
                     await balOf;
                     
                     console.log("Analzying results...");
-                    await this.formatBANKStakingTimeProgressBar(balOf);
+                    if (balOf >= 1){
+                        console.log(`Possible rewards: ${balOf}`)
+                        this.JSfunctionButton6.disabled = false;
+                        this.JSfunctionButton6.innerText = `${
+                            ethers.utils.commify(Math.trunc(parseInt(ethers.utils.formatEther(String(balOf)))))
+                        }`;
+                    ;
+                    } else {
+                        console.log(`User is not staked.`);
+                        this.JSfunctionButton6.disabled = false;
+                        this.JSfunctionButton6.innerText = 'not staked';
+                    }
 
                 } catch (error) {
                     console.log(error);
                     console.log(`Error catch: User is not staked`);
-                    this.JSfunctionButton7.innerText = '[not staked';
+                    this.JSfunctionButton6.innerText = 'not staked';
+                    this.JSfunctionButton6.disabled = false;
+                }
+            } else {
+                console.log("Ethereum object doesn't exist!");
+                this.JSfunctionButton6.innerText = 'error: metamask missing';
+            }
+        } catch (error) {
+            console.log("Ethereum object doesn't exist!");
+            this.JSfunctionButton6.innerText = 'error: metamask missing';
+        }
+    }
+
+    async ClaimToken1StkdReward(){
+        try { const { ethereum } = window;
+            if (ethereum) {
+                const provider = new ethers.providers.Web3Provider(ethereum);
+                const signer = provider.getSigner();
+                
+                try{
+                    // Contract 4 function
+                    this.JSfunctionButton7.disabled = true;
+                    this.JSfunctionButton7.innerText = '*please wait*';
+                    
+                    console.log(`Connecting contract2...`);
+                    const connectedContract2 = new ethers.Contract(
+                        this.contractAddress2,
+                        CONTRACT2_ABI.abi,
+                        signer
+                    );
+
+                    console.log(`Attempting withdrawRewards() call..`);
+                    let functionResult = await connectedContract2.withdrawRewards();
+
+                    console.log('Awaiting function results...');
+                    await functionResult;
+                    
+                    console.log("Awaing the emit event...");
+
+                } catch (error) {
+                    console.log(error);
+                    console.log('function call failed');
+                    this.JSfunctionButton7.innerText = 'check timer - must be 100%';
                     this.JSfunctionButton7.disabled = false;
                 }
             } else {
@@ -586,206 +714,24 @@ class DappInterface {
         }
     }
 
-    async formatBANKStakingTimeProgressBar(secs){
-        if (secs >= 1){        
-            let convertedTime = await this.timeConverter(secs);
-            console.log(`Time passed: ${convertedTime}`)
-
-            var progressBar = document.getElementById("HTML_custom_div_1b");
-            var progress = document.getElementById("HTML_custom_div_1c");
-            
-            var percentage;
-            if (secs < 604800){
-                var percentage = (secs/604800)*100;
-                this.JSfunctionButton7.innerText = await this.timeConverter(secs);
-            } else {
-                var percentage = 99;
-                this.JSfunctionButton7.innerText = `100%`;
-            }
-
-            percentage += 1;
-            progressBar.style.width = percentage + "%";
-            progress.style.width = percentage + "%";
-
-            this.JSfunctionButton7.disabled = false;
-        } else {
-            console.log(`no staked tokens`);
-            this.JSfunctionButton7.disabled = false;
-            this.JSfunctionButton7.innerText = 'no staked tokens';
-        }
-    }
-
-    async checkBANKstakingReward(){
-        try { const { ethereum } = window;
-            if (ethereum) {
-                const provider = new ethers.providers.Web3Provider(ethereum);
-                const signer = provider.getSigner();
-                try{
-                    // Contract 2 function
-                    this.JSfunctionButton8.disabled = true;
-                    this.JSfunctionButton8.innerText = '*please wait*';
-                    
-                    console.log(`Connecting contract4...`);
-                    const connectedContract4 = new ethers.Contract(
-                        this.contractAddress4,
-                        CONTRACT4_ABI.abi,
-                        signer
-                    );
-
-                    console.log(`Attempting calculateRewards() call..`);
-                    const options = {
-                        value: ethers.utils.parseEther(
-                        /*`${this.txnCost}`*/ `0`
-                        ),
-                    };
-                    let balOf = await connectedContract4.calculateRewards(
-                        String(this.currentAccount),
-                        options
-                    );
-
-                    console.log('Awaiting function results...');
-                    await balOf;
-                    
-                    console.log("Analzying results...");
-                    if (balOf >= 1){
-                        console.log(`Possible rewards: ${balOf}`)
-                        this.JSfunctionButton8.disabled = false;
-                        this.JSfunctionButton8.innerText = `${
-                            ethers.utils.commify(Math.trunc(parseInt(ethers.utils.formatEther(String(balOf)))))
-                        }`;
-                    ;
-                    } else {
-                        console.log(`User is not staked.`);
-                        this.JSfunctionButton8.disabled = false;
-                        this.JSfunctionButton8.innerText = 'not staked';
-                    }
-
-                } catch (error) {
-                    console.log(error);
-                    console.log(`Error catch: User is not staked`);
-                    this.JSfunctionButton8.innerText = 'not staked';
-                    this.JSfunctionButton8.disabled = false;
-                }
-            } else {
-                console.log("Ethereum object doesn't exist!");
-                this.JSfunctionButton8.innerText = 'error: metamask missing';
-            }
-        } catch (error) {
-            console.log("Ethereum object doesn't exist!");
-            this.JSfunctionButton8.innerText = 'error: metamask missing';
-        }
-    }
-
-
-
-
-
-    async claimStakingRewards(){
-        try { const { ethereum } = window;
-            if (ethereum) {
-                const provider = new ethers.providers.Web3Provider(ethereum);
-                const signer = provider.getSigner();
-                
-                try{
-                    // Contract 4 function
-                    this.JSfunctionButton10.disabled = true;
-                    this.JSfunctionButton10.innerText = '*please wait*';
-                    
-                    console.log(`Connecting contract4...`);
-                    const connectedContract4 = new ethers.Contract(
-                        this.contractAddress4,
-                        CONTRACT4_ABI.abi,
-                        signer
-                    );
-
-                    console.log(`Attempting withdrawRewards() call..`);
-                    let functionResult = await connectedContract4.withdrawRewards();
-
-                    console.log('Awaiting function results...');
-                    await functionResult;
-                    
-                    console.log("Awaing the emit event...");
-
-                } catch (error) {
-                    console.log(error);
-                    console.log('function call failed');
-                    this.JSfunctionButton10.innerText = 'check timer - must be 100%';
-                    this.JSfunctionButton10.disabled = false;
-                }
-            } else {
-                console.log("Ethereum object doesn't exist!");
-                this.JSfunctionButton10.innerText = 'error: metamask missing';
-            }
-        } catch (error) {
-            console.log("Ethereum object doesn't exist!");
-            this.JSfunctionButton10.innerText = 'error: metamask missing';
-        }
-    }
-
-
-
-
-
-
+    
+    // _____________________________________________________________
     // ________________ SETUP PROCESSES SECTION (B) ________________
+    // _____________________________________________________________
 
     // (2) This will run after dappInitializeProcess() and boot up custom funcs
-    // --- these will all have to be updated on mainnet launch
     async customConstructorFunctions(){
 
-        if (document.URL.includes("exchange")) {
-            this.dappChain = '0x13881'; //Ethereum=='0x1', Polygon=='0x89', Binance=='0x38', Modulus=='0x666', Mumbai=='0x13881'
-            
-            // universals
-            try{await this.checkBONbalance();} catch (error) {console.log(error);}
-            try{await this.checkBANKbalance();} catch (error) {console.log(error);}
-
-            // customs
-
-        }
-
-        if (document.URL.includes("stake")) {
-            this.dappChain = '0x13881'; //Ethereum=='0x1', Polygon=='0x89', Binance=='0x38', Modulus=='0x666', Mumbai=='0x13881'
+        if ( 1==1 /*document.URL.includes("chad")*/) {
+            this.dappChain = '0x1'; //Ethereum=='0x1', Polygon=='0x89', Binance=='0x38', Modulus=='0x666', Mumbai=='0x13881'
 
             // universals
-            try{await this.checkBONbalance();} catch (error) {console.log(error);}
-            try{await this.checkBANKbalance();} catch (error) {console.log(error);}
-            // customs
-            try{await this.checkBANKstakingBal();} catch (error) {console.log(error);}
-            try{await this.checkBANKstakingTime();} catch (error) {console.log(error);}
-            try{await this.checkBANKstakingReward();} catch (error) {console.log(error);}
-        }
-
-        if (document.URL.includes("whitepaper")) {
-            this.dappChain = '0x13881'; //Ethereum=='0x1', Polygon=='0x89', Binance=='0x38', Modulus=='0x666', Mumbai=='0x13881'
-            // universals
+            try{await this.checkBalToken1();} catch (error) {console.log(error);}
 
             // customs
-            
-        }
-
-        if (document.URL.includes("bon2bank")) {
-            this.dappChain = '0x13881'; //Ethereum=='0x1', Polygon=='0x89', Binance=='0x38', Modulus=='0x666', Mumbai=='0x13881'
-
-            // universals
-            try{await this.checkBONbalance();} catch (error) {console.log(error);}
-            try{await this.checkBANKbalance();} catch (error) {console.log(error);}
-
-            // customs
-            try{await this.checkExchangeBANKBalance();} catch (error) {console.log(error);}
-            
-        }
-
-        if (document.URL.includes("bank2bon")) {
-            this.dappChain = '0x13881'; //Ethereum=='0x1', Polygon=='0x89', Binance=='0x38', Modulus=='0x666', Mumbai=='0x13881'
-
-            // universals
-            try{await this.checkBONbalance();} catch (error) {console.log(error);} // these wont work on Polygon
-            try{await this.checkBANKbalance();} catch (error) {console.log(error);}
-
-            // customs
-            // need one of these but to check wbank try{await this.checkExchangeBANKBalance();} catch (error) {console.log(error);}
-            
+            try{await this.CheckStkdToken1Amount();} catch (error) {console.log(error);}
+            try{await this.CheckToken1StkdTime();} catch (error) {console.log(error);}
+            try{await this.CheckToken1StkdReward();} catch (error) {console.log(error);}
         }
     }
     
@@ -803,48 +749,98 @@ class DappInterface {
                     this.dappChain == "0x13881"
                     ){
                     if(this.dappChain == "0x89"){
-                        this.JSconnectButton1.innerText = '[POLYGON-ONLY]';
-                        this.JSfunctionButton1.innerText = '[POLYGON-ONLY]';
-                        this.JSfunctionButton2.innerText = '[POLYGON-ONLY]';
+                        this.JSconnectButton1.innerText = 'POLYGON MAINNET ONLY';
+                        this.JSfunctionButton1.innerText = '...';
+                        this.JSfunctionButton2.innerText = '...';
+                        this.JSfunctionButton3.innerText = '...';
+                        this.JSfunctionButton4.innerText = '...';
+                        this.JSfunctionButton5.innerText = '...';
+                        this.JSfunctionButton6.innerText = '...';
+                        this.JSfunctionButton7.innerText = '...';
                         this.JSconnectButton1.disabled = true;
                         this.JSfunctionButton1.disabled = true;
                         this.JSfunctionButton2.disabled = true;
+                        this.JSfunctionButton3.disabled = true;
+                        this.JSfunctionButton4.disabled = true;
+                        this.JSfunctionButton5.disabled = true;
+                        this.JSfunctionButton6.disabled = true;
+                        this.JSfunctionButton7.disabled = true;
                         alert('Please use POLYGON MAINNET and REFRESH browser -- Other networks will NOT WORK!');
                     }
                     if(this.dappChain == "0x1"){
-                        this.JSconnectButton1.innerText = '[ETHEREUM-ONLY]';
-                        this.JSfunctionButton1.innerText = '[ETHERUM-ONLY]';
-                        this.JSfunctionButton2.innerText = '[ETHERUM-ONLY]';
+                        this.JSconnectButton1.innerText = 'ETHEREUM MAINNET ONLY';
+                        this.JSfunctionButton1.innerText = '...';
+                        this.JSfunctionButton2.innerText = '...';
+                        this.JSfunctionButton3.innerText = '...';
+                        this.JSfunctionButton4.innerText = '...';
+                        this.JSfunctionButton5.innerText = '...';
+                        this.JSfunctionButton6.innerText = '...';
+                        this.JSfunctionButton7.innerText = '...';
                         this.JSconnectButton1.disabled = true;
                         this.JSfunctionButton1.disabled = true;
                         this.JSfunctionButton2.disabled = true;
+                        this.JSfunctionButton3.disabled = true;
+                        this.JSfunctionButton4.disabled = true;
+                        this.JSfunctionButton5.disabled = true;
+                        this.JSfunctionButton6.disabled = true;
+                        this.JSfunctionButton7.disabled = true;
                         alert('Please use ETHEREUM MAINNET and REFRESH browser -- Other networks will NOT WORK!');
                     }
                     if(this.dappChain == "0x38"){
-                        this.JSconnectButton1.innerText = '[BINANCE-ONLY]';
-                        this.JSfunctionButton1.innerText = '[BINANCE-ONLY]';
-                        this.JSfunctionButton2.innerText = '[BINANCE-ONLY]';
+                        this.JSconnectButton1.innerText = 'BINANCE MAINNET ONLY';
+                        this.JSfunctionButton1.innerText = '...';
+                        this.JSfunctionButton2.innerText = '...';
+                        this.JSfunctionButton3.innerText = '...';
+                        this.JSfunctionButton4.innerText = '...';
+                        this.JSfunctionButton5.innerText = '...';
+                        this.JSfunctionButton6.innerText = '...';
+                        this.JSfunctionButton7.innerText = '...';
                         this.JSconnectButton1.disabled = true;
                         this.JSfunctionButton1.disabled = true;
                         this.JSfunctionButton2.disabled = true;
+                        this.JSfunctionButton3.disabled = true;
+                        this.JSfunctionButton4.disabled = true;
+                        this.JSfunctionButton5.disabled = true;
+                        this.JSfunctionButton6.disabled = true;
+                        this.JSfunctionButton7.disabled = true;
                         alert('Please use BINANCE MAINNET and REFRESH browser -- Other networks will NOT WORK!');
                     }
                     if(this.dappChain == "0x666"){
-                        this.JSconnectButton1.innerText = '[MODULUS-ONLY]';
-                        this.JSfunctionButton1.innerText = '[MODULUS-ONLY]';
-                        this.JSfunctionButton2.innerText = '[MODULUS-ONLY]';
+                        this.JSconnectButton1.innerText = 'MODULUS MAINNET ONLY';
+                        this.JSfunctionButton1.innerText = '...';
+                        this.JSfunctionButton2.innerText = '...';
+                        this.JSfunctionButton3.innerText = '...';
+                        this.JSfunctionButton4.innerText = '...';
+                        this.JSfunctionButton5.innerText = '...';
+                        this.JSfunctionButton6.innerText = '...';
+                        this.JSfunctionButton7.innerText = '...';
                         this.JSconnectButton1.disabled = true;
                         this.JSfunctionButton1.disabled = true;
                         this.JSfunctionButton2.disabled = true;
+                        this.JSfunctionButton3.disabled = true;
+                        this.JSfunctionButton4.disabled = true;
+                        this.JSfunctionButton5.disabled = true;
+                        this.JSfunctionButton6.disabled = true;
+                        this.JSfunctionButton7.disabled = true;
                         alert('Please use MODULUS MAINNET and REFRESH browser -- Other networks will NOT WORK!');
                     }
                     if(this.dappChain == "0x13881"){
-                        this.JSconnectButton1.innerText = '[MUMBAI-ONLY]';
-                        this.JSfunctionButton1.innerText = '[MUMBAI-ONLY]';
-                        this.JSfunctionButton2.innerText = '[MUMBAI-ONLY]';
+                        this.JSconnectButton1.innerText = 'POLYGON MUMBAI ONLY';
+                        this.JSfunctionButton1.innerText = '...';
+                        this.JSfunctionButton2.innerText = '...';
+                        this.JSfunctionButton3.innerText = '...';
+                        this.JSfunctionButton4.innerText = '...';
+                        this.JSfunctionButton5.innerText = '...';
+                        this.JSfunctionButton6.innerText = '...';
+                        this.JSfunctionButton7.innerText = '...';
                         this.JSconnectButton1.disabled = true;
                         this.JSfunctionButton1.disabled = true;
                         this.JSfunctionButton2.disabled = true;
+                        this.JSfunctionButton3.disabled = true;
+                        this.JSfunctionButton4.disabled = true;
+                        this.JSfunctionButton5.disabled = true;
+                        this.JSfunctionButton6.disabled = true;
+                        this.JSfunctionButton7.disabled = true;
                         alert('Please use MUMBAI TESTNET and REFRESH browser -- Other networks will NOT WORK!');
                     }
                 } else {
