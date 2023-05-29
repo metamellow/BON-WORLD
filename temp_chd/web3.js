@@ -390,6 +390,89 @@ class DappInterface {
         }
     }
 
+    async onSelectInput1() {
+        this.selectedInput1 = this.JSquantityInput1.value;
+        console.log(`New input: ${this.selectedInput1}`);
+    }
+
+    async StakeToken1(){
+        if(this.selectedInput1 > 0){
+            try { const { ethereum } = window;
+            if (ethereum) {
+                const provider = new ethers.providers.Web3Provider(ethereum);
+                const signer = provider.getSigner();
+                
+                try{
+                    // Contract 2 function
+                    this.JSfunctionButton3.disabled = true;
+                    this.JSfunctionButton3.innerText = '*please wait*';
+                    
+                    console.log(`Connecting contract2...`);
+                    const connectedContract2 = new ethers.Contract(
+                        this.contractAddress2,
+                        CONTRACT2_ABI.abi,
+                        signer
+                    );
+
+                    console.log(`Attempting depositToStaking() call..`);
+                    const options = {
+                        value: ethers.utils.parseEther(
+                        /*`${this.txnCost}`*/ `0`
+                        ),
+                    };
+                    let functionResult = await connectedContract2.depositToStaking(
+                        ethers.utils.parseEther(String(this.selectedInput1)),
+                        options
+                    );
+
+                    console.log('Awaiting function results...');
+                    await functionResult;
+                    
+                    console.log("Awaing the emit event...");
+
+                } catch (error) {
+                    console.log(error);
+                    console.log('function call failed');
+                    this.JSfunctionButton3.innerText = '-try again-';
+                    this.JSfunctionButton3.disabled = false;
+                }
+            } else {
+                console.log("Ethereum object doesn't exist!");
+                this.JSfunctionButton3.innerText = 'error: metamask missing';
+            }
+        } catch (error) {
+            console.log("Ethereum object doesn't exist!");
+            this.JSfunctionButton3.innerText = 'error: metamask missing';
+        }
+        } else {
+            alert("Staking amount must be > 0")
+        }
+        
+    }
+
+    async StakeToken1_Loader(){
+        console.log("Loader starting ApprovalCheck");
+        this.JSfunctionButton3.innerText = '*waiting for approval*';
+        let approvalCheck = await this.contract1AllowanceCheck();
+
+        console.log('Loader ApprovalCheck results...');
+        await approvalCheck;
+
+        if (approvalCheck == true){ 
+            console.log('Approval check -- TRUE');
+            if(this.selectedInput1 >= 1){
+                this.JSfunctionButton3.innerText = '*approval successful!*';
+                this.StakeToken1(); 
+            } else {
+                alert(`Please input amount.`);
+                this.JSfunctionButton3.innerText = '-try again-';
+            }
+
+        } else {
+            console.log('Approval check -- FALSE');
+            this.JSfunctionButton3.innerText = '-try again-'
+        }
+    }
 
 
 
@@ -406,7 +489,7 @@ class DappInterface {
 
 
 
-    
+
 
 
 
@@ -550,55 +633,9 @@ class DappInterface {
         }
     }
 
-    async stakeBankTokens(){
-        try { const { ethereum } = window;
-            if (ethereum) {
-                const provider = new ethers.providers.Web3Provider(ethereum);
-                const signer = provider.getSigner();
-                
-                try{
-                    // Contract 4 function
-                    this.JSfunctionButton9.disabled = true;
-                    this.JSfunctionButton9.innerText = '*please wait*';
-                    
-                    console.log(`Connecting contract4...`);
-                    const connectedContract4 = new ethers.Contract(
-                        this.contractAddress4,
-                        CONTRACT4_ABI.abi,
-                        signer
-                    );
 
-                    console.log(`Attempting depositToStaking() call..`);
-                    const options = {
-                        value: ethers.utils.parseEther(
-                        /*`${this.txnCost}`*/ `0`
-                        ),
-                    };
-                    let functionResult = await connectedContract4.depositToStaking(
-                        ethers.utils.parseEther(String(this.selectedInput3)),
-                        options
-                    );
 
-                    console.log('Awaiting function results...');
-                    await functionResult;
-                    
-                    console.log("Awaing the emit event...");
 
-                } catch (error) {
-                    console.log(error);
-                    console.log('function call failed');
-                    this.JSfunctionButton9.innerText = '-try again-';
-                    this.JSfunctionButton9.disabled = false;
-                }
-            } else {
-                console.log("Ethereum object doesn't exist!");
-                this.JSfunctionButton9.innerText = 'error: metamask missing';
-            }
-        } catch (error) {
-            console.log("Ethereum object doesn't exist!");
-            this.JSfunctionButton9.innerText = 'error: metamask missing';
-        }
-    }
 
     async claimStakingRewards(){
         try { const { ethereum } = window;
@@ -685,34 +722,9 @@ class DappInterface {
         }
     }
 
-    async stakeBankTokens_Loader(){
-        console.log("Loader starting ApprovalCheck");
-        this.JSfunctionButton9.innerText = '*waiting for approval*';
-        let approvalCheck = await this.contract2AllowanceCheck();
 
-        console.log('Loader ApprovalCheck results...');
-        await approvalCheck;
 
-        if (approvalCheck == true){ 
-            console.log('Approval check -- TRUE');
-            if(this.selectedInput3 >= 1){
-                this.JSfunctionButton9.innerText = '*approval successful!*';
-                this.stakeBankTokens(); 
-            } else {
-                alert(`Please input amount.`);
-                this.JSfunctionButton9.innerText = '-try again-';
-            }
 
-        } else {
-            console.log('Approval check -- FALSE');
-            this.JSfunctionButton9.innerText = '-try again-'
-        }
-    }
-
-    async onSelectInput1() {
-        this.selectedInput1 = this.JSquantityInput1.value;
-        console.log(`New input: ${this.selectedInput1}`);
-    }
 
     // ________________ SECOND SETUP PROCESSES SECTION ________________
 

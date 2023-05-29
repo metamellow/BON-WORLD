@@ -901,8 +901,11 @@ class DappInterface {
         }
     }
 
+
+    /////////////////// new check the new checker if else
     async stakeBankTokens(){
-        try { const { ethereum } = window;
+        if(this.selectedInput3 > 0){
+            try { const { ethereum } = window;
             if (ethereum) {
                 const provider = new ethers.providers.Web3Provider(ethereum);
                 const signer = provider.getSigner();
@@ -949,6 +952,10 @@ class DappInterface {
             console.log("Ethereum object doesn't exist!");
             this.JSfunctionButton9.innerText = 'error: metamask missing';
         }
+        } else{
+            alert("Staking amount must be > 0")
+        }
+        
     }
 
     async claimStakingRewards(){
