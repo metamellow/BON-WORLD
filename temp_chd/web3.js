@@ -585,8 +585,8 @@ class DappInterface {
             var progress = document.getElementById("HTML_custom_div_1c");
             
             var percentage;
-            if (secs < stakingTimeGoal){
-                var percentage = (secs/stakingTimeGoal)*100;
+            if (secs < this.stakingTimeGoal){
+                var percentage = (secs/this.stakingTimeGoal)*100;
                 this.JSfunctionButton5.innerText = await this.timeConverter(secs);
             } else {
                 var percentage = 99;
