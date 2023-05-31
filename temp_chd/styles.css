@@ -12,6 +12,8 @@ body {
     
   }
 
+ 
+
   /* Barra de navegação */
   .navbar {
     display: flex;
@@ -343,4 +345,10 @@ p {
   float: left;
   margin-right: 1px;
   border-radius: 5px;
+}
+
+button {
+color: #000;
+background-color: #000;
+
 }

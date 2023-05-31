@@ -27,6 +27,7 @@
         <a href="#howtobuy">How to buy</a>
         <a href="#Tokennomics">Tokenomics</a>
         <a href="#Roadmap">Roadmap</a>
+        <a href="#alpha">Alpha Staking</a>
       </nav>
     </header>
 
@@ -144,54 +145,50 @@
     </div>
     
     <!-- ______________________________ STAKING ______________________________ -->
-    <br/><hr/>
-        <div class="title4"> ALPHA STAKING</div>
-      
-        <br/>
     
-        <div class="user">
+        <div class="title4" id="alpha"> Alpha Staking</div>
+      
+        
+   
+    <div class="user">
                 
-            <div class="buttonuser">
-                <label for="connectWallet">USER</label><br>
-                <button
+            
+    <label for="connectWallet">USER</label> 
+        <button
                     name="connectWallet"
                     id="HTML_connect_button" 
                     onclick="DappInterface_.connectWallet();"
                     >
                     -connect-
-                </button>
-            </div>
-
-            <div class="buttonuser">
-                <label for="checkBalToken1">CHADGPT</label><br>
-                <button
+        </button>
+            
+            
+            
+        <label for="checkBalToken1">CHADGPT</label>
+         <button
                     name="checkBalToken1"
                     id="HTML_function_button_1"
                     onclick="DappInterface_.checkBalToken1();"
                     >
                     -check-
-                </button>
-            </div>
-        </div>
-
-        <br/>
-
-        <div id="dapp">
+          </button>
+            
+      
         
-            <label for="CheckStkdToken1Amount">STAKED-AMOUNT<br></label>
-            <button
+       <label for="CheckStkdToken1Amount">STAKED-AMOUNT</label>
+        <button
                 name="CheckStkdToken1Amount"
                 id="HTML_function_button_2"
                 onclick="DappInterface_.CheckStkdToken1Amount();"
                 >
                 -check-
-            </button>
-
-            <br/>
-            <br/>
-            
-            <form><label for="onSelectInput1" class="amount">STAKE-MORE<br></label>
-                <input 
+         </button>
+        
+        
+            <form>
+            <label for="onSelectInput1" class="amount">STAKE-MORE</label>
+                
+              <input 
                     type="number"
                     name="onSelectInput1"
                     id="HTML_quantity_input_1"
@@ -201,34 +198,35 @@
                     required
                 >
             </form>
-            <label for="StakeToken1_Loader"></label>
+
+           
+            <label for="StakeToken1_Loader"></label> 
                 <button
+                    class="buttonstake"
                     name="StakeToken1_Loader"
                     id="HTML_function_button_3"
                     onclick="DappInterface_.StakeToken1_Loader();"
                     >
                     -stake-
                 </button>
+            
 
-            <br/>
-            <br/>
-
-            <label for="WithdrawToken1">WITHDRAW-ALL<br></label>
+            
+            <label for="WithdrawToken1"> WITHDRAW-ALL </label> 
                 <button
-                    name="WithdrawToken1"
+                class="buttonstake"
+                name="WithdrawToken1"
                     id="HTML_function_button_4"
                     onclick="DappInterface_.WithdrawToken1();"
                     >
                     -withdraw-
-                </button>
+            </button>
 
-            <br/>
-            <br/>
+<br>
+            <label for="CheckToken1StkdTime">69-HOUR-TIMER</label> 
+               
             
-            <hr><br/>
-
-            <label for="CheckToken1StkdTime">69-HOUR-TIMER<br></label>
-                <div id="HTML_custom_div_1a" class="progress-bar-holder">
+            <div id="HTML_custom_div_1a" class="progress-bar-holder">
                     <div id="HTML_custom_div_1b" class="progress-bar">
                         <button
                         name="CheckToken1StkdTime"
@@ -238,12 +236,10 @@
                             -check-
                         </button>
                         <div id="HTML_custom_div_1c" class="progress"></div>
-                    </div>
-                </div>
+                    
+                
 
-            <br/>
-
-            <label for="CheckToken1StkdReward">YOUR-REWARDS<br></label>
+            <label for="CheckToken1StkdReward">YOUR-REWARDS</label> <br>
                 <button
                     name="CheckToken1StkdReward"
                     id="HTML_function_button_6"
@@ -251,8 +247,6 @@
                     >
                     -check-
                 </button>
-
-                <br/>
 
                 <button
                     name="ClaimToken1StkdReward"
@@ -262,12 +256,13 @@
                 -claim-
             </button>
 
-            <br/>
-            <br/>
+           
+    </div>
+    
+  
+    </div>
+    
 
-        </div>
-
-    <hr/><br/>
     <!-- ______________________________ STAKING ______________________________ -->
   
     
