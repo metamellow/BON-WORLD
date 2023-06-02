@@ -312,17 +312,13 @@ p {
 
 /* --- Dapp  --- */
 
-user {
-
-font-family: 'Poppins', sans-serif;
-font-weight: 500;
-display:inline-block;
-flex-direction: row;
-padding: 0px;
-gap: 20px;
-flex-wrap: wrap;
 
 
+.user {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Espaçamento entre os botões */
+  flex-wrap: wrap;
 }
 
 .user label {
@@ -330,7 +326,6 @@ flex-wrap: wrap;
 font: size 5rem;;
 font-family: 'Poppins', sans-serif;
 font-weight: 500;
-display: inline-block;
 
 }
 
@@ -349,41 +344,9 @@ display: inline-block;
  
 }
 
-.user buttonstake {
-
-  width: 100%;
-  height: 68px;
-  left: 96px;
-  top: 3600px;
-  color: aliceblue;
-  background: #000000;
-  border-radius: 8px;
-  margin-bottom: 30px;
-  display: inline-block;
-  font-size: 18px;
- 
-}
-
-
-.user buttonstaked {
-
-  width: 100%;
-  height: 68px;
-  left: 96px;
-  top: 3600px;
-  color: aliceblue;
-  background: #a51010;
-  border-radius: 8px;
-  margin-bottom: 30px;
-  display: inline-block;
-  font-size: 18px;
- 
-}
-
-
 .user input {
 
-  width: 100%;
+  width: 800px;
   height: 68px;
   left: 96px;
   top: 3600px;
@@ -397,46 +360,34 @@ display: inline-block;
 }
 
 
-
 /* --- Progress Bar --- */ 
 .progress-bar-holder {
   border: solid;
-  border-color: #eacfa2;
   background-color: rgba(84, 255, 101, 0.15);
-  width: 560px;
-  height: 70px;
-  left: 744px;
-  top: 382px;
-  padding-top: 1px;
-  padding-right: 2px;
-  padding-bottom: 2px;
+  width: 403px;
+  height: 50px;
   border-radius: 10px;
 }
 
 .progress-bar {
-  width: 100%;
+  width: 403px;
   height: 70px;
-  background-color: #e8be75;
-  border: 1px solid #000;
-  overflow: hidden;
-  box-shadow: 0 0 10px 0 #e8be75;
-  border-radius: 5px;
+  background-color: #c9c9c9;
+  
+  border-radius: 8px;
+  
 }
 
 .progress-bar button{
-  width: 100%;
-  height: 70px;
-  background-color:transparent;
-  border: 1px solid #000;
-  overflow: hidden;
-  border-radius: 5px;
+  width: 403px; /* Largura da barra de progresso */
+  height: 20px; /* Altura da barra de progresso */
+  background-color: #bd1414; /* Cor de fundo da barra de progresso */
 }
-
+  
 .progress {
   width: 0%;
   height: 100%;
   background-color: transparent;
-  float: left;
   margin-right: 1px;
   border-radius: 5px;
 }
@@ -455,10 +406,3 @@ display: inline-block;
   font-size: 18px;
  
 }
-
-
-
-
-
-
-
