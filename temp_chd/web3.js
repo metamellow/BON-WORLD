@@ -32,7 +32,7 @@ class DappInterface {
         // --- Universal web3 Variables
         this.dappChain = '0x1'; //Ethereum=='0x1', Polygon=='0x89', Binance=='0x38', Modulus=='0x666', Mumbai=='0x13881'
         this.contractAddress1 = '0x6632d8c49234a6783b45cdc5fc9355a47124e187'; // ChadGPT
-        this.contractAddress2 = '0x0cd2baf993a739dd63494b8dbc9cd46dd88fa77a'; // alphaStaking
+        this.contractAddress2 = '0x147bc7be2fc6b4b7ea387999ee22b219948436cf'; // alphaStaking
         this.currentAccount = ''; // loaded on connectWallet
 
         // --- Universal HTML Elements --- 
