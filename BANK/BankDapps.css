@@ -13,8 +13,8 @@ body {
 
 button {
   background-color: #54ff65;
-  width: 570px;
-  height: 70px;
+  width: 400px;
+  height: 60px;
   left: 744px;
   top: 382px;
   align-items: start;
@@ -26,7 +26,7 @@ button {
 
   color: black;
   font-family: 'Orbitron', sans-serif;
-  text-shadow: 1.2px 1.2px 2.8px rgba(0, 0, 0, 0.3);
+
 }
 
 button:hover {
@@ -51,8 +51,8 @@ input {
   border: solid;
   border-color: #54ff65;
   background-color: transparent;
-  width: 550px;
-  height: 70px;
+  width: 400px;
+  height: 60px;
   left: 744px;
   top: 382px;
   font-size: 30px;
@@ -61,24 +61,22 @@ input {
 
   color: #54ff65;
   font-family: 'Orbitron', sans-serif;
-  text-shadow: 1.2px 1.2px 2.8px rgba(0, 255, 60, 0.5);
+  
 }
 
 select {
   border: solid;
   border-color: #54ff65;
   background-color: #54ff65;
-  width: 568px;
-  height: 70px;
-  left: 744px;
-  top: 382px;
+  width: 400px;
+  height: 60px;
   font-size: 30px;
   align-content: center;
   text-align: center;
 
   color: black;
   font-family: 'Orbitron', sans-serif;
-  text-shadow: 1.2px 1.2px 2.8px rgba(0, 255, 60, 0.5);
+ 
 }
 
 select option {
@@ -90,8 +88,8 @@ select option {
   border: solid;
   border-color: #54ff65;
   background-color: rgba(84, 255, 101, 0.15);
-  width: 560px;
-  height: 70px;
+  width: 400px;
+  height: 60px;
   left: 744px;
   top: 382px;
   padding-top: 1px;
@@ -133,7 +131,11 @@ div .principal {
 .title2 {
   color: #54ff65;
   font-style: normal;
-  font-size: 50px;
+  font-size: 25px;
+}
+
+.title2 img {
+  width: 50px;
 }
 
 .title3 {
@@ -255,6 +257,11 @@ a:hover {
   margin: 70px 0;
 }
 
+.submenu a {
+
+  font-size: 16px;
+}
+
 @media screen and (max-width: 767px) {
   .submenu {
     display: flex;
@@ -361,4 +368,9 @@ a:hover {
   .whitepaperimg {
     width: 100%;
   }
+}
+
+
+.alinhamento2 {
+  display: flex;
 }
