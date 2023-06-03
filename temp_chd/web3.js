@@ -1,3 +1,12 @@
+/*
+- add alerts to listener tell the user 'Deposit successful!' and 'Rewards claimed!'
+- combine estimated reward with current Chad to make (+xx%) next to estimated token reward
+
+
+
+
+
+
 
 // _____________________________________________________________
 // _____________ ESTABLISH ALL SMART CONTRACT ABIs _____________
