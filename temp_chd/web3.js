@@ -321,6 +321,7 @@ class DappInterface {
 
     // nifty seconds to time converter; returns string
     async timeConverter(secs) {
+        /* // --- including days hrs mins secs --- //
         let seconds = Number(secs);
         var d = Math.floor(seconds / (3600*24));
         var h = Math.floor(seconds % (3600*24) / 3600);
@@ -329,9 +330,20 @@ class DappInterface {
         
         var dDisplay = d > 0 ? d + (d == 1 ? "d, " : "d, ") : "";
         var hDisplay = h > 0 ? h + (h == 1 ? "h, " : "h, ") : "";
-        var mDisplay = m > 0 ? m + (m == 1 ? "m" : "m" /*"m, " : "m, "*/) : "";
+        var mDisplay = m > 0 ? m + (m == 1 ? "m" : "m") : "";
         var sDisplay = s > 0 ? s + (s == 1 ? "s" : "s") : "";
-        return dDisplay + hDisplay + mDisplay /* + sDisplay*/;
+        return dDisplay + hDisplay + mDisplay;
+        */
+
+        /* // --- including hrs min secs --- */
+        // Calculate the number of hours
+        let hours = Math.floor(secs / 3600);
+
+        // Calculate the number of minutes
+        let minutes = Math.floor((secs % 3600) / 60);
+
+        // Return a string that shows the total numbers of hours and mins
+        return `${hours}h, ${minutes}m`;
     }
 
 
