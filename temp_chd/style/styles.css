@@ -4,6 +4,7 @@ body {
   padding: 0;
   width: 100%;
   font-family: 'Poppins', sans-serif;
+  background-color: #ECECEC;
 }
 .container {
   max-width: 1500px;
@@ -109,6 +110,7 @@ a:hover {
 @media screen and (max-width: 768px) {
   .content {
     display: inline-block;
+    flex-wrap: wrap-reverse;
   }
 }
 
@@ -121,11 +123,13 @@ a:hover {
 }
 
 .content .image img {
-  max-width: 100%;
+  max-width: 90%;
   height: auto;
   display: flex;
   align-items: center;
 }
+
+
 .content .text {
   flex: 1;
   margin-right: 20px;
@@ -207,7 +211,7 @@ a:hover {
   font-size: 100px;
   font-weight: bolder;
   margin-bottom: 20px;
-  margin-top: 50px;
+  margin-top: 20px;
   text-align: center;
 }
 
@@ -413,3 +417,5 @@ button {
   display: inline-block;
   font-size: 18px;
 }
+
+
