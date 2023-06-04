@@ -149,31 +149,33 @@ class DappInterface {
                     
                     // Event listener 2A
                     connectedContract2.on('DepositEmit', (user, amountDeposited, userBalance) => {
-                        console.log(user, amountDeposited, userBalance);
-                        alert(`Staking successful!`);
-                        this.JSfunctionButton4.innerText = '-stake more-';
-                        this.JSfunctionButton4.disabled = false;
-                        window.location.reload();
+                        if(user == this.currentAccount){
+                            console.log(user, amountDeposited, userBalance);
+                            alert(`Staking successful!`);
+                            window.location.reload();
+                        }
                         }
                     );
                     console.log('Contract 2A listener success');
                     
                     // Event listener 2B
                     connectedContract2.on('WithdrawEmit', (user, userBalance) => {
-                        console.log(user, userBalance);
-                        alert(`Withdraw all tokens successful!`);
-                        this.JSfunctionButton4.innerText = 'success';
-                        window.location.reload();
+                        if(user == this.currentAccount){
+                            console.log(user, userBalance);
+                            alert(`Withdraw all tokens successful!`);
+                            window.location.reload();
+                        }
                         }
                     );
                     console.log('Contract 2B listener success');
 
                     // Event listener 2C
                     connectedContract2.on('RewardsEmit', (user, userBalance, userReward) => {
-                        console.log(user, userBalance, userReward);
-                        alert(`Claim rewards successful!`);
-                        this.JSfunctionButton7.innerText = 'success';
-                        window.location.reload();
+                        if(user == this.currentAccount){
+                            console.log(user, userBalance, userReward);
+                            alert(`Claim rewards successful!`);
+                            window.location.reload();
+                        }
                         }
                     );
                     console.log('Contract 2C listener success');
@@ -458,9 +460,10 @@ class DappInterface {
                     );
 
                     console.log('Awaiting function results...');
+                    /* This is deleted because it could be causing the catch to trigger, since await doesnt do shit here
                     await functionResult;
-                    
                     console.log("Awaing the emit event...");
+                    */
 
                 } catch (error) {
                     console.log(error);
