@@ -456,7 +456,7 @@ class DappInterface {
                     };
                     
                     let functionResult = await connectedContract2.depositToStaking(
-                        String(ethers.utils.parseEther(String(this.selectedInput1))),
+                        ethers.utils.parseUnits(String(this.selectedInput1), 18),
                         options
                     );
 
