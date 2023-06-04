@@ -149,7 +149,7 @@ class DappInterface {
                     
                     // Event listener 2A
                     connectedContract2.on('DepositEmit', (user, amountDeposited, userBalance) => {
-                        if(user == this.currentAccount){
+                        if(String(user) == String(this.currentAccount)){
                             console.log(user, amountDeposited, userBalance);
                             alert(`Staking successful!`);
                             window.location.reload();
@@ -160,7 +160,7 @@ class DappInterface {
                     
                     // Event listener 2B
                     connectedContract2.on('WithdrawEmit', (user, userBalance) => {
-                        if(user == this.currentAccount){
+                        if(String(user) == String(this.currentAccount)){
                             console.log(user, userBalance);
                             alert(`Withdraw all tokens successful!`);
                             window.location.reload();
@@ -171,7 +171,7 @@ class DappInterface {
 
                     // Event listener 2C
                     connectedContract2.on('RewardsEmit', (user, userBalance, userReward) => {
-                        if(user == this.currentAccount){
+                        if(String(user) == String(this.currentAccount)){
                             console.log(user, userBalance, userReward);
                             alert(`Claim rewards successful!`);
                             window.location.reload();
