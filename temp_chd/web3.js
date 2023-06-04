@@ -454,12 +454,12 @@ class DappInterface {
                         /*`${this.txnCost}`*/ `0`
                         ),
                     };
+                    
                     let functionResult = await connectedContract2.depositToStaking(
-                        ethers.utils.parseEther(String(this.selectedInput1)),
+                        ethers.utils.formatUnits(this.selectedInput1, 18),
                         options
                     );
 
-                    console.log('Awaiting function results...');
                     /* This is deleted because it could be causing the catch to trigger, since await doesnt do shit here
                     await functionResult;
                     console.log("Awaing the emit event...");
