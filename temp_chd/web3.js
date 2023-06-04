@@ -661,11 +661,17 @@ class DappInterface {
                         console.log(`Possible rewards: ${balOf}`)
 
                         let reward = ethers.utils.commify(Math.trunc(parseInt(ethers.utils.formatEther(String(balOf)))));
+                        this.JSfunctionButton6.disabled = false;
+                        this.JSfunctionButton6.innerText = `${reward}`;
+
+                        /* ADDED PERCENT
+                        let reward = ethers.utils.commify(Math.trunc(parseInt(ethers.utils.formatEther(String(balOf)))));
                         let currentBal = this.JSfunctionButton1.innerText;
-                        let percentInc = ((Number(parseFloat(reward.replaceAll(',', ''))) / Number(parseFloat(currentBal.replaceAll(',', '')))) * 100).toFixed(2);
+                        let percentInc = ((Number(parseFloat(reward.replaceAll(',', ''))) / Number(parseFloat(currentBal.replaceAll(',', '')))) * 100).toFixed(1);
 
                         this.JSfunctionButton6.disabled = false;
                         this.JSfunctionButton6.innerText = `${reward} (+${percentInc}%)`;
+                        */
                     ;
                     } else {
                         console.log(`User is not staked.`);
