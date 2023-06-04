@@ -38,6 +38,7 @@ class DappInterface {
         this.contractAddress1 = '0x6632d8c49234a6783b45cdc5fc9355a47124e187'; // ChadGPT
         this.contractAddress2 = '0x147bc7be2fc6b4b7ea387999ee22b219948436cf'; // alphaStaking
         this.currentAccount = ''; // loaded on connectWallet
+        this.waitingForListener = false;
 
         // --- Universal HTML Elements --- 
         this.JSconnectButton1 = document.getElementById('HTML_connect_button'); // connectWallet()
@@ -149,7 +150,7 @@ class DappInterface {
                     
                     // Event listener 2A
                     connectedContract2.on('DepositEmit', (user, amountDeposited, userBalance) => {
-                        if(String(user) == String(this.currentAccount)){
+                        if(this.waitingForListener == true){
                             console.log(user, amountDeposited, userBalance);
                             alert(`Staking successful!`);
                             window.location.reload();
@@ -160,7 +161,7 @@ class DappInterface {
                     
                     // Event listener 2B
                     connectedContract2.on('WithdrawEmit', (user, userBalance) => {
-                        if(String(user) == String(this.currentAccount)){
+                        if(this.waitingForListener == true){
                             console.log(user, userBalance);
                             alert(`Withdraw all tokens successful!`);
                             window.location.reload();
@@ -171,7 +172,7 @@ class DappInterface {
 
                     // Event listener 2C
                     connectedContract2.on('RewardsEmit', (user, userBalance, userReward) => {
-                        if(String(user) == String(this.currentAccount)){
+                        if(this.waitingForListener == true){
                             console.log(user, userBalance, userReward);
                             alert(`Claim rewards successful!`);
                             window.location.reload();
@@ -466,10 +467,7 @@ class DappInterface {
                         options
                     );
 
-                    /* This is deleted because it could be causing the catch to trigger, since await doesnt do shit here
-                    await functionResult;
-                    console.log("Awaing the emit event...");
-                    */
+                    this.waitingForListener = true;
 
                 } catch (error) {
                     console.log(error);
@@ -536,6 +534,7 @@ class DappInterface {
 
                     console.log(`Attempting withdrawAll() call..`);
                     let functionResult = await connectedContract2.withdrawAll();
+                    this.waitingForListener = true;
 
                     console.log('Awaiting function results...');
                     await functionResult;
@@ -727,6 +726,7 @@ class DappInterface {
 
                     console.log(`Attempting withdrawRewards() call..`);
                     let functionResult = await connectedContract2.withdrawRewards();
+                    this.waitingForListener = true;
 
                     console.log('Awaiting function results...');
                     await functionResult;
