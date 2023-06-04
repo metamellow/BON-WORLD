@@ -1,9 +1,4 @@
-/*
-- add alerts to listener tell the user 'Deposit successful!' and 'Rewards claimed!'
-- combine estimated reward with current Chad to make (+xx%) next to estimated token reward
-- 
-- 
-- 
+/* NOTES:
 - 
 - 
 */
@@ -155,7 +150,9 @@ class DappInterface {
                     // Event listener 2A
                     connectedContract2.on('DepositEmit', (user, amountDeposited, userBalance) => {
                         console.log(user, amountDeposited, userBalance);
-                        //alert(`...`);
+                        alert(`Staking successful!`);
+                        this.JSfunctionButton4.innerText = '-stake more-';
+                        this.JSfunctionButton4.disabled = false;
                         }
                     );
                     console.log('Contract 2A listener success');
@@ -172,7 +169,8 @@ class DappInterface {
                     // Event listener 2C
                     connectedContract2.on('RewardsEmit', (user, userBalance, userReward) => {
                         console.log(user, userBalance, userReward);
-                        //alert(`...`);
+                        alert(`Claim rewards successful!`);
+                        this.JSfunctionButton7.innerText = 'success';
                         }
                     );
                     console.log('Contract 2C listener success');
@@ -661,10 +659,13 @@ class DappInterface {
                     console.log("Analzying results...");
                     if (balOf >= 1){
                         console.log(`Possible rewards: ${balOf}`)
+
+                        let reward = ethers.utils.commify(Math.trunc(parseInt(ethers.utils.formatEther(String(balOf)))));
+                        let currentBal = this.JSfunctionButton1.innerText;
+                        let percentInc = ((Number(parseFloat(reward.replaceAll(',', ''))) / Number(parseFloat(currentBal.replaceAll(',', '')))) * 100).toFixed(2);
+
                         this.JSfunctionButton6.disabled = false;
-                        this.JSfunctionButton6.innerText = `${
-                            ethers.utils.commify(Math.trunc(parseInt(ethers.utils.formatEther(String(balOf)))))
-                        }`;
+                        this.JSfunctionButton6.innerText = `${reward} (+${percentInc}%)`;
                     ;
                     } else {
                         console.log(`User is not staked.`);
