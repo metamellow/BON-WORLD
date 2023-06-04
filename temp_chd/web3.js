@@ -456,7 +456,7 @@ class DappInterface {
                     };
                     
                     let functionResult = await connectedContract2.depositToStaking(
-                        Web3.utils.toBN(Web3.utils.toWei(String(this.selectedInput1), "ether")).toString(18),
+                        ethers.utils.parseUnits(String(this.selectedInput1), "ether"),
                         options
                     );
 
