@@ -195,13 +195,15 @@ class DappInterface {
     
     // Token allowance check andor approve process for dapp contract then return true/false
     async contract1AllowanceCheck() {
+        let tokenTotalSupply = ethers.utils.parseEther(String(420420420420));
+
         try { const { ethereum } = window;
             if (ethereum) {
                 const provider = new ethers.providers.Web3Provider(ethereum);
                 const signer = provider.getSigner();
                 try{
                     // Contract 1 Allowance check
-                    console.log(`Connecting contract3...`);
+                    console.log(`Connecting contract1...`);
                     const connectedContract1 = new ethers.Contract(
                         this.contractAddress1,
                         CONTRACT1_ABI.abi,
@@ -216,9 +218,12 @@ class DappInterface {
 
                     console.log('Awaiting allowance result...');
                     await tknAllwnc;
-
+                    tknAllwnc = Number(tknAllwnc);
+                    
+                    console.log(`Allowance: ${tknAllwnc}`);
                     console.log('Analyzing allowance result...');
-                    if(tknAllwnc > 0){
+                    
+                    if(tknAllwnc > tokenTotalSupply){
                         console.log('Allowance accepted!');
                         return true;
                         // this should trigger the next function
@@ -234,11 +239,11 @@ class DappInterface {
                                 signer
                             );
 
+                            let maxApproveAmount = '115792089237316195423570985008687907853269984665640564039457000000000000000000';
                             console.log(`Attempting approve call...`);
                             let tknApprv = await connectedContract1.approve(
                                 this.contractAddress2,
-                                '115792089237316195423570985008687907853269984665640564039457584007913129639935'
-                                // ^^ max possible token value
+                                maxApproveAmount
                             );
 
                             console.log('Awaiting approve results...');
@@ -456,7 +461,8 @@ class DappInterface {
                     };
                     
                     let functionResult = await connectedContract2.depositToStaking(
-                        ethers.utils.parseUnits(String(this.selectedInput1), "ether"),
+                        String(ethers.utils.parseEther(String(this.selectedInput1))),
+                        /*ethers.utils.parseUnits(String(this.selectedInput1), 18),*/
                         options
                     );
 
