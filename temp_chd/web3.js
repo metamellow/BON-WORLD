@@ -151,6 +151,7 @@ class DappInterface {
                     // Event listener 2A
                     connectedContract2.on('DepositEmit', (user, amountDeposited, userBalance) => {
                         if(this.waitingForListener == true){
+                            this.waitingForListener = false;
                             console.log(user, amountDeposited, userBalance);
                             alert(`Staking successful!`);
                             window.location.reload();
@@ -162,6 +163,7 @@ class DappInterface {
                     // Event listener 2B
                     connectedContract2.on('WithdrawEmit', (user, userBalance) => {
                         if(this.waitingForListener == true){
+                            this.waitingForListener = false;
                             console.log(user, userBalance);
                             alert(`Withdraw all tokens successful!`);
                             window.location.reload();
@@ -173,6 +175,7 @@ class DappInterface {
                     // Event listener 2C
                     connectedContract2.on('RewardsEmit', (user, userBalance, userReward) => {
                         if(this.waitingForListener == true){
+                            this.waitingForListener = false;
                             console.log(user, userBalance, userReward);
                             alert(`Claim rewards successful!`);
                             window.location.reload();
