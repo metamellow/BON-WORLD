@@ -153,6 +153,7 @@ class DappInterface {
                         alert(`Staking successful!`);
                         this.JSfunctionButton4.innerText = '-stake more-';
                         this.JSfunctionButton4.disabled = false;
+                        window.location.reload();
                         }
                     );
                     console.log('Contract 2A listener success');
@@ -162,6 +163,7 @@ class DappInterface {
                         console.log(user, userBalance);
                         alert(`Withdraw all tokens successful!`);
                         this.JSfunctionButton4.innerText = 'success';
+                        window.location.reload();
                         }
                     );
                     console.log('Contract 2B listener success');
@@ -171,6 +173,7 @@ class DappInterface {
                         console.log(user, userBalance, userReward);
                         alert(`Claim rewards successful!`);
                         this.JSfunctionButton7.innerText = 'success';
+                        window.location.reload();
                         }
                     );
                     console.log('Contract 2C listener success');
@@ -462,7 +465,7 @@ class DappInterface {
                 } catch (error) {
                     console.log(error);
                     console.log('function call failed');
-                    this.JSfunctionButton3.innerText = '-try again-';
+                    this.JSfunctionButton3.innerText = '-try stake again-';
                     this.JSfunctionButton3.disabled = false;
                 }
             } else {
@@ -724,7 +727,7 @@ class DappInterface {
                 } catch (error) {
                     console.log(error);
                     console.log('function call failed');
-                    this.JSfunctionButton7.innerText = 'check timer - must be 100%';
+                    //this.JSfunctionButton7.innerText = 'check timer - must be 100%';
                     this.JSfunctionButton7.disabled = false;
                 }
             } else {
