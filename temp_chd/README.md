@@ -1,2 +1,0 @@
-# ChadGPT
-memecoin
