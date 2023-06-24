@@ -1,13 +1,13 @@
 /* Estilos básicos */
 body {
-  margin: 0;
-  padding: 0;
+  margin: 0px;
+  padding: 0px;
   width: 100%;
   font-family: 'Poppins', sans-serif;
-  background-color: #ECECEC;
+  background-color: #f9ffe0;
 }
 .container {
-  max-width: 1500px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 10px;
 }
@@ -40,15 +40,21 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: ECECEC;
+  background: rgba(217, 217, 217, 0.20);
+backdrop-filter: blur(22px);
   padding: 10px;
   color: #fff;
   width: 100%;
+  border-radius: 16px;
+  
+  border-color: #000000;
+  position: fixed;
+  max-width: 1200px;
 }
 
 @media screen and (max-width: 768px) {
   .navbar {
-    max-width: 1500px;
+    max-width: 1200px;
     margin: 5px;
     padding: 10px;
     display: flex;
@@ -66,7 +72,7 @@ body {
 a {
   color: black;
   font-weight: bolder;
-  font-size: 28px;
+  font-size: 18px;
   margin-left: 10px;
   text-decoration: none;
 }
@@ -74,7 +80,7 @@ a {
 a .image {
   color: black;
   font-weight: bolder;
-  font-size: 28px;
+  font-size: 18px;
   margin-left: 10px;
   text-decoration: none;
 }
@@ -82,7 +88,7 @@ a .image {
 a:hover {
   color: #565252;
   font-weight: bolder;
-  font-size: 28px;
+  font-size: 18px;
   margin-left: 10px;
   text-decoration: none;
 }
@@ -105,6 +111,7 @@ a:hover {
 .content {
   display: flex;
   flex-wrap: wrap;
+  margin-top: 150px;
 }
 
 @media screen and (max-width: 768px) {
@@ -160,8 +167,8 @@ a:hover {
   font-family: 'Poppins';
   font-style: normal;
   font-weight: bolder;
-  font-size: 150px;
-  line-height: 150px;
+  font-size: 90px;
+  line-height: 90px;
   margin-bottom: 50px;
   margin-top: 100px;
   text-align: justify;
@@ -181,7 +188,7 @@ a:hover {
 }
 
 .title2 {
-  font-size: 50px;
+  font-size: 25px;
   font-weight: bolder;
   margin-bottom: 50px;
   line-height: 55px;
@@ -254,7 +261,7 @@ p {
   justify-content: left;
   align-items: center;
   padding: 0px;
-  gap: 15px;
+  gap: 15px;;
 }
 
 @media screen and (max-width: 768px) {
