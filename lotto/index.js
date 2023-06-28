@@ -10,7 +10,7 @@ class DappInterface {
             console.log(this.selectedDropdown1);
 
             if(this.selectedDropdown1 == "MATIC"){
-            window.location.href = "./MATIC.html";
+            window.location.href = "./MaticLotto.html";
             }
             /*
             if(this.selectedDropdown1 == "BANK2BON"){

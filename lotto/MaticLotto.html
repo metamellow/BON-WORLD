@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+
+  <body>
+    <div class="container">
+
+      <div class="title1" id="MaticLotto">
+        <p>
+          Polygon MATIC Lotto
+        </p>
+      </div>
+
+      <div>
+        <p>
+          (1) Make you bet as either Player 1 or Player 2<br/>
+          (2) After both players have bet, check the results<br/>
+          (3) The winner can claim +80% over their original bet
+        </p>
+      </div>
+
+      <!-- ________________________________________________________________________ -->
+      <!-- ____________________________  LOTTO START  _____________________________ -->
+      <!-- ________________________________________________________________________ -->
+
+      <div class="wrapper">
+        <div class="item" id="currentLotto">
+
+          <!-- SHOW CURRENT BET COST -->
+
+          <!-- SHOW CURRENT REWARD VALUE --> 
+
+          <!-- SHOW PLAYER 1 WALLET ADDRESS -->
+
+          <!-- SHOW PLAYER 2 WALLET ADDRESS -->
+
+          <div class="user">
+            <div>
+              <label for="Bet_Loader"></label>
+              <button
+                name="Bet_Loader"
+                id="HTML_function_button_1"
+                onclick="DappInterface_.Bet_Loader();"
+              >
+                -bet-
+              </button>
+            </div>
+          </div>
+      </div>
+
+      <div class="item" id="pastLotto">
+
+        <!-- SHOW PAST BET COST -->
+
+        <!-- SHOW PAST REWARD VALUE --> 
+
+        <!-- SHOW PAST 1 WALLET ADDRESS -->
+
+        <!-- SHOW PAST 2 WALLET ADDRESS -->
+
+        <!-- SHOW CLAIM BUTTON FOR P1 -->
+      </div>
+
+      <!-- ________________________________________________________________________ -->
+      <!-- ______________________________  LOTTO END  _____________________________ -->
+      <!-- ________________________________________________________________________ -->
+
+     
+
+      <footer class="footer">
+        <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
+        <script src="MaticLotto.js" type="application/javascript"></script>
+      </footer>
+
+    </div>
+  </body>
+</html>
