@@ -440,6 +440,3 @@ class DappInterface {
 
 const DappInterface_ = new DappInterface();
 DappInterface_.dappInitializeProcess();
-
-
-
