@@ -47,6 +47,7 @@ class DappInterface {
     // ________________ SETUP PROCESSES SECTION (A) ________________
     // _____________________________________________________________
 
+    // -------------------------- @DEV_TODO think of a better way to handle added buttons
     // Generic web3 wallet connect process
     async connectWallet() {
         try {
@@ -85,6 +86,7 @@ class DappInterface {
         }
     }
 
+    // -------------------------- @DEV_TODO add the contract listeners
     // Listeners that pick up emit events from onchain functions
     async setupEventListener() {
         try {
@@ -127,7 +129,7 @@ class DappInterface {
     // ___________ UNIVERSAL CONTRACT FUNCTIONS SECTION ____________
     // _____________________________________________________________
 
-    // -------------------------- turn this into a past lotto bet check function
+    // -------------------------- @DEV_TODO turn this into a past lotto bet check function
     async CheckPastLotto() {
         try { const { ethereum } = window;
             if (ethereum) {
@@ -189,7 +191,7 @@ class DappInterface {
         }
     }
 
-    // -------------------------- turn this into a current lotto bet check function
+    // -------------------------- @DEV_TODO turn this into a current lotto bet check function
     async CheckCurrentLotto() {
         try { const { ethereum } = window;
             if (ethereum) {
@@ -255,7 +257,7 @@ class DappInterface {
     // ______________________ BETTING SECTION ______________________
     // _____________________________________________________________
 
-    // -------------------------- turn this into the lotto bet submit function
+    // -------------------------- @DEV_TODO turn this into the lotto bet submit function
     async StakeToken1(){
         if(this.selectedInput1 > 0){
             try { const { ethereum } = window;
