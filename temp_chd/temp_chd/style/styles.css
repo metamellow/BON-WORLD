@@ -54,6 +54,7 @@ header {
   border-color: #000000;
   position: fixed;
   max-width: calc(100% - 300px);
+  z-index: 9999;
 }
 
 .navbar img {
