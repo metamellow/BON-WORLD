@@ -76,6 +76,17 @@ nav {
  color:#54FF65;
 }
 
+hr {
+  border-color: #54FF65;
+
+}
+
+.topoborder {
+  text-align: center;
+  color: #54FF65;
+  font-size: 20px;
+}
+
 input {
   border: solid;
   border-color: #54ff65;
