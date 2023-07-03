@@ -48,6 +48,15 @@ button:hover {
   }
 }
 
+header {
+padding: 20px;
+text-align: center;
+display: flex;
+align-items: center;
+}
+
+
+
 input {
   border: solid;
   border-color: #54ff65;
