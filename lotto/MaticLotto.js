@@ -26,16 +26,20 @@ class DappInterface {
 
     constructor() {
         // --- Universal web3 Variables
-        this.dappChain = '0x89'; //Ethereum=='0x1', Polygon=='0x89', Binance=='0x38', Modulus=='0x666', Mumbai=='0x13881'
+        this.dappChain = '0x13881'; //Ethereum=='0x1', Polygon=='0x89', Binance=='0x38', Modulus=='0x666', Mumbai=='0x13881'
         this.contractAddress1 = '0x1dc47d2ec5fad3e9d744d437ee5eb2f2a8a0f498'; // LottoV2
         this.currentAccount = ''; // loaded on connectWallet
         this.waitingForListener = false;
+        this.txnCost = ''; // loaded on checkBetPrice();
 
         // --- Universal HTML Elements --- 
         this.JSconnectButton = document.getElementById('HTML_connect_button'); // connectWallet()
 
         // --- Button HTML Elements --- 
-        this.JSButton1 = document.getElementById('HTML_button_1'); // xxx()
+        this.JSButton1 = document.getElementById('HTML_button_1'); // bet()
+        this.JSButton2 = document.getElementById('HTML_button_2'); // counter()
+        this.JSButton3 = document.getElementById('HTML_button_3'); // player1W()
+        this.JSButton4 = document.getElementById('HTML_button_4'); // player2W()
 
         // --- Input HTML Elements --- 
         this.selectedInput1 = 0; // 
@@ -57,9 +61,9 @@ class DappInterface {
                 console.log("NO ETHEREUM OBJECT");
 
                 this.JSconnectButton.innerText = 'Install Metamask';
-                this.JSButton1.innerText = '...';
-
                 this.JSconnectButton.disabled = true;
+
+                this.JSButton1.innerText = '...';
                 this.JSButton1.disabled = true;
 
                 return;
@@ -79,10 +83,10 @@ class DappInterface {
                 console.log("NO ETHEREUM OBJECT");
 
                 this.JSconnectButton.innerText = 'Install Metamask';
-                this.JSButton1.innerText = '...';
-
                 this.JSconnectButton.disabled = true;
-                this.JSButton1.disabled = true;      
+
+                this.JSButton1.innerText = '...';
+                this.JSButton1.disabled = true;
         }
     }
 
@@ -198,10 +202,7 @@ class DappInterface {
                 const provider = new ethers.providers.Web3Provider(ethereum);
                 const signer = provider.getSigner();
                 try{
-                    // Contract 3 function
-                    this.JSfunctionButton1.disabled = true;
-                    this.JSfunctionButton1.innerText = '*loading*';
-                    
+                    // Contract 1 functions
                     console.log(`Connecting contract1...`);
                     const connectedContract1 = new ethers.Contract(
                         this.contractAddress1,
@@ -209,47 +210,93 @@ class DappInterface {
                         signer
                     );
 
-                    console.log(`Attempting balanceOf() call..`);
-                    const options = {
-                        value: ethers.utils.parseEther(
-                        /*`${this.txnCost}`*/ `0`
-                        ),
-                    };
-                    let balOf = await connectedContract1.balanceOf(
-                        String(this.currentAccount),
-                        options
-                    );
-
-                    console.log('Awaiting function results...');
-                    await balOf;
+                    // Function 2
+                    this.JSButton2.disabled = true;
+                    this.JSButton2.innerText = '*loading*';
                     
+                    console.log(`Attempting function 2 call..`);
+                    const options2 = {value: ethers.utils.parseEther(`0`),};
+                    let Function2Results = await connectedContract1.counter(options2);
+                    console.log('Awaiting function results...');
+                    await Function2Results;
                     console.log("Analzying results...");
-                    if (balOf >= 1){
-                        console.log(`Current account holds: ${ethers.utils.formatEther(balOf)}`)
-                        this.JSfunctionButton1.disabled = false;
-                        this.JSfunctionButton1.innerText = `${
-                            ethers.utils.commify(Math.trunc(parseInt(ethers.utils.formatEther(String(balOf)))))
-                        }`;
+                    if ((Function2Results != 0) || (Function2Results != "")){
+                        console.log(`Function call result: ${Function2Results}`)
+                        this.JSButton2.disabled = false;
+                        this.JSButton2.innerText = `${Function2Results}`;
                     ;
                     } else {
-                        console.log(`Current account holds: 0`);
-                        this.JSfunctionButton1.disabled = false;
-                        this.JSfunctionButton1.innerText = '0 (so sad)';
+                        console.log(`Error: (FunctionResults == 0 || "")`);
+                        this.JSButton2.disabled = false;
+                        this.JSButton2.innerText = 'error';
+                    }
+
+                    // Function 3
+                    this.JSButton3.disabled = true;
+                    this.JSButton3.innerText = '*loading*';
+                    
+                    console.log(`Attempting function 3 call..`);
+                    const options3 = {value: ethers.utils.parseEther(`0`),};
+                    let Function3Results = await connectedContract1.player1W(options3);
+                    console.log('Awaiting function results...');
+                    await Function3Results;
+                    console.log("Analzying results...");
+                    if ((Function3Results != 0) || (Function3Results != "")){
+                        console.log(`Function call result: ${Function3Results}`)
+                        this.JSButton3.disabled = false;
+                        this.JSButton3.innerText = `${Function3Results}`;
+                    ;
+                    } else {
+                        console.log(`Error: (FunctionResults == 0 || "")`);
+                        this.JSButton3.disabled = false;
+                        this.JSButton3.innerText = 'error';
+                    }
+
+                    // Function 4
+                    this.JSButton4.disabled = true;
+                    this.JSButton4.innerText = '*loading*';
+                    
+                    console.log(`Attempting function 4 call..`);
+                    const options4 = {value: ethers.utils.parseEther(`0`),};
+                    let Function4Results = await connectedContract1.player2W(options4);
+                    console.log('Awaiting function results...');
+                    await Function4Results;
+                    console.log("Analzying results...");
+                    if ((Function4Results != 0) || (Function4Results != "")){
+                        console.log(`Function call result: ${Function4Results}`)
+                        this.JSButton4.disabled = false;
+                        this.JSButton4.innerText = `${Function4Results}`;
+                    ;
+                    } else {
+                        console.log(`Error: (FunctionResults == 0 || "")`);
+                        this.JSButton4.disabled = false;
+                        this.JSButton4.innerText = 'error';
                     }
 
                 } catch (error) {
                     console.log(error);
                     console.log('function call failed');
-                    this.JSfunctionButton1.innerText = '-try again-';
-                    this.JSfunctionButton1.disabled = false;
+
+                    this.JSButton2.innerText = '-try again-';
+                    this.JSButton2.disabled = false;
+
+                    this.JSButton3.innerText = '-try again-';
+                    this.JSButton3.disabled = false;
+                    
+                    this.JSButton4.innerText = '-try again-';
+                    this.JSButton4.disabled = false;
                 }
             } else {
                 console.log("Ethereum object doesn't exist!");
-                this.JSfunctionButton1.innerText = 'error: metamask missing';
+                this.JSButton2.innerText = 'error: metamask missing';
+                this.JSButton3.innerText = 'error: metamask missing';
+                this.JSButton4.innerText = 'error: metamask missing';
             }
         } catch (error) {
             console.log("Ethereum object doesn't exist!");
-            this.JSfunctionButton1.innerText = 'error: metamask missing';
+            this.JSButton2.innerText = 'error: metamask missing';
+            this.JSButton3.innerText = 'error: metamask missing';
+            this.JSButton4.innerText = 'error: metamask missing';
         }
     }
 
@@ -258,34 +305,38 @@ class DappInterface {
     // _____________________________________________________________
 
     // -------------------------- @DEV_TODO turn this into the lotto bet submit function
-    async StakeToken1(){
+    async Bet(){
+        /* This is a placeholder for any functions that require user inputs *//*
         if(this.selectedInput1 > 0){
+        */
             try { const { ethereum } = window;
             if (ethereum) {
                 const provider = new ethers.providers.Web3Provider(ethereum);
                 const signer = provider.getSigner();
                 
                 try{
-                    // Contract 2 function
-                    this.JSfunctionButton3.disabled = true;
-                    this.JSfunctionButton3.innerText = '*please wait*';
+                    // Contract 1 function
+                    this.JSButton3.disabled = true;
+                    this.JSButton3.innerText = '*please wait*';
                     
-                    console.log(`Connecting contract2...`);
-                    const connectedContract2 = new ethers.Contract(
-                        this.contractAddress2,
-                        CONTRACT2_ABI.abi,
+                    console.log(`Connecting contract1...`);
+                    const connectedContract1 = new ethers.Contract(
+                        this.contractAddress1,
+                        CONTRACT1_ABI.abi,
                         signer
                     );
 
-                    console.log(`Attempting depositToStaking() call..`);
+                    console.log(`Attempting function call (
+                        ${ethers.utils.parseEther(`${this.txnCost}` /*`0`*/)} 
+                        msg.value)..`);
                     const options = {
                         value: ethers.utils.parseEther(
-                        /*`${this.txnCost}`*/ `0`
+                        `${this.txnCost}` /*`0`*/
                         ),
                     };
                     
-                    let functionResult = await connectedContract2.depositToStaking(
-                        String(ethers.utils.parseEther(String(this.selectedInput1))),
+                    let functionResult = await connectedContract1.bet(
+                        /*String(ethers.utils.parseEther(String(this.selectedInput1))),*/
                         /*ethers.utils.parseUnits(String(this.selectedInput1), 18),*/
                         options
                     );
@@ -295,24 +346,29 @@ class DappInterface {
                 } catch (error) {
                     console.log(error);
                     console.log('function call failed');
-                    this.JSfunctionButton3.innerText = '-try stake again-';
-                    this.JSfunctionButton3.disabled = false;
+                    this.JSButton1.innerText = '-try bet again-';
+                    this.JSButton1.disabled = false;
                 }
             } else {
                 console.log("Ethereum object doesn't exist!");
-                this.JSfunctionButton3.innerText = 'error: metamask missing';
+                this.JSButton1.innerText = 'error: metamask missing';
             }
         } catch (error) {
             console.log("Ethereum object doesn't exist!");
-            this.JSfunctionButton3.innerText = 'error: metamask missing';
+            this.JSButton1.innerText = 'error: metamask missing';
         }
+        
+        /* This is a placeholder for any functions that require user inputs *//*
         } else {
             alert("Staking amount must be > 0")
         }
+        */
         
     }
 
-    async StakeToken1_Loader(){
+    // -------------------------- @DEV_TODO for now this is empty, but it will be used to approve check on ERC20's
+    async Bet_Loader(){
+        /*
         console.log("Loader starting ApprovalCheck");
         this.JSfunctionButton3.innerText = '*waiting for approval*';
         let approvalCheck = await this.contract1AllowanceCheck();
@@ -334,6 +390,8 @@ class DappInterface {
             console.log('Approval check -- FALSE');
             this.JSfunctionButton3.innerText = '-try again-'
         }
+        */
+        this.Bet(); 
     }
     
     // _____________________________________________________________
@@ -346,11 +404,12 @@ class DappInterface {
         if ( 1==1 /*document.URL.includes("keyword")*/) {
 
             // Custom Per Page Auto Run Functions
-            try{await this.CheckPastLotto();} catch (error) {console.log(error);}
+            /*try{await this.CheckPastLotto();} catch (error) {console.log(error);}*/
             try{await this.CheckCurrentLotto();} catch (error) {console.log(error);}
         }
     }
     
+    // -------------------------- @DEV_TODO need to edit the way the button system works
     // (1) This will check and set the correct web3 chain
     async dappInitializeProcess() {
         try{

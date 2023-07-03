@@ -45,8 +45,13 @@
     <a href="index.html"> Home </a>
     <a href="index.html"> about lotto </a>
     <a href="index.html"> Home </a>
-    
-    
+    <button
+      name="connectWallet"
+      id="HTML_connect_button"
+      onclick="DappInterface_.connectWallet();"
+      >
+      -connect-
+    </button>
     </nav>
 
 </header>
@@ -67,7 +72,7 @@
           (1) Make your bet as either Player 1 or Player 2<br/>
           (2) After both players have bet, check the results<br/>
           (3) The winner gets to claim both players betting funds*</br>
-*-10% devfee
+          *-10% fee
         </p>
       </div>
 
@@ -78,26 +83,67 @@
       <div class="wrapper">
         <div class="item" id="currentLotto">
 
+          <!-- SHOW PLAYER 1 WALLET ADDRESS -->
+          <div class="user">
+            <div>
+              <label for="CheckCurrentLotto_player1W"></label>
+              <button
+                name="CheckCurrentLotto_player1W"
+                id="HTML_button_3"
+                onclick="DappInterface_.CheckCurrentLotto();"
+              >
+                -load-
+              </button>
+            </div>
+          </div> <br/>
+
+          <!-- SHOW PLAYER 2 WALLET ADDRESS -->
+          <div class="user">
+            <div>
+              <label for="CheckCurrentLotto_player2W"></label>
+              <button
+                name="CheckCurrentLotto_player2W"
+                id="HTML_button_4"
+                onclick="DappInterface_.CheckCurrentLotto();"
+              >
+                -load-
+              </button>
+            </div>
+          </div> <br/>
+          
           <!-- SHOW CURRENT BET COST -->
+          <div class="user">
+            <div>
+              <label for="CheckCurrentLotto_counter"></label>
+              <button
+                name="CheckCurrentLotto_counter"
+                id="HTML_button_2"
+                onclick="DappInterface_.CheckCurrentLotto();"
+              >
+                -load-
+              </button>
+            </div>
+          </div> <br/>
 
           <!-- SHOW CURRENT REWARD VALUE --> 
 
-          <!-- SHOW PLAYER 1 WALLET ADDRESS -->
 
-          <!-- SHOW PLAYER 2 WALLET ADDRESS -->
+
+
 
           <div class="user">
             <div>
               <label for="Bet_Loader"></label>
               <button
                 name="Bet_Loader"
-                id="HTML_function_button_1"
+                id="HTML_button_1"
                 onclick="DappInterface_.Bet_Loader();"
               >
                 -bet-
               </button>
             </div>
-          </div>
+          </div> <br/>
+
       </div>
 
       <div class="item" id="pastLotto">
