@@ -40,6 +40,7 @@ class DappInterface {
         this.JSButton2 = document.getElementById('HTML_button_2'); // counter()
         this.JSButton3 = document.getElementById('HTML_button_3'); // player1W()
         this.JSButton4 = document.getElementById('HTML_button_4'); // player2W()
+        this.JSButton5 = document.getElementById('HTML_button_5'); // betPrice()
 
         // --- Input HTML Elements --- 
         this.selectedInput1 = 0; // 
@@ -109,16 +110,16 @@ class DappInterface {
                     console.log('Contract 1 connected to listener');
 
                     // Event Listener 1A
-                    connectedContract2.on('DepositEmit', (user, amountDeposited, userBalance) => {
+                    connectedContract1.on('BetDetails', (playersCounter, counterReward) => {
                         if(this.waitingForListener == true){
                             this.waitingForListener = false;
-                            console.log(user, amountDeposited, userBalance);
-                            alert(`Staking successful!`);
+                            console.log(playersCounter, counterReward);
+                            alert(`Bet successful!`);
                             window.location.reload();
                         }
                         }
                     );
-                    console.log('Contract 2A listener success');
+                    console.log('Contract 1A listener success');
 
             } else {
                 console.log("Ethereum object doesn't exist!");
@@ -210,68 +211,100 @@ class DappInterface {
                         signer
                     );
 
-                    // Function 2
-                    this.JSButton2.disabled = true;
-                    this.JSButton2.innerText = '*loading*';
-                    
-                    console.log(`Attempting function 2 call..`);
-                    const options2 = {value: ethers.utils.parseEther(`0`),};
-                    let Function2Results = await connectedContract1.counter(options2);
-                    console.log('Awaiting function results...');
-                    await Function2Results;
-                    console.log("Analzying results...");
-                    if ((Function2Results != 0) || (Function2Results != "")){
-                        console.log(`Function call result: ${Function2Results}`)
-                        this.JSButton2.disabled = false;
-                        this.JSButton2.innerText = `${Function2Results}`;
-                    ;
-                    } else {
-                        console.log(`Error: (FunctionResults == 0 || "")`);
-                        this.JSButton2.disabled = false;
-                        this.JSButton2.innerText = 'error';
-                    }
+                        // Function 2 - counter
+                        this.JSButton2.disabled = true;
+                        this.JSButton2.innerText = '*loading*';
+                        
+                        console.log(`Attempting function 2 call..`);
+                        const options2 = {value: ethers.utils.parseEther(`0`),};
+                        let Function2Results = await connectedContract1.counter(options2);
+                        console.log('Awaiting function results...');
+                        await Function2Results;
+                        console.log("Analzying results...");
+                        if ((Function2Results != 0) || (Function2Results != "")){
+                            console.log(`Function call result: ${Function2Results}`)
+                            this.JSButton2.disabled = false;
+                            this.JSButton2.innerText = `${Function2Results}`;
+                        ;
+                        } else {
+                            console.log(`Error: (FunctionResults == 0 || "")`);
+                            this.JSButton2.disabled = false;
+                            this.JSButton2.innerText = 'error';
+                        }
 
-                    // Function 3
-                    this.JSButton3.disabled = true;
-                    this.JSButton3.innerText = '*loading*';
-                    
-                    console.log(`Attempting function 3 call..`);
-                    const options3 = {value: ethers.utils.parseEther(`0`),};
-                    let Function3Results = await connectedContract1.player1W(options3);
-                    console.log('Awaiting function results...');
-                    await Function3Results;
-                    console.log("Analzying results...");
-                    if ((Function3Results != 0) || (Function3Results != "")){
-                        console.log(`Function call result: ${Function3Results}`)
-                        this.JSButton3.disabled = false;
-                        this.JSButton3.innerText = `${Function3Results}`;
-                    ;
-                    } else {
-                        console.log(`Error: (FunctionResults == 0 || "")`);
-                        this.JSButton3.disabled = false;
-                        this.JSButton3.innerText = 'error';
-                    }
+                        // Function 3 - player1W
+                        this.JSButton3.disabled = true;
+                        this.JSButton3.innerText = '*loading*';
+                        
+                        console.log(`Attempting function 3 call..`);
+                        const options3 = {value: ethers.utils.parseEther(`0`),};
+                        let Function3Results = await connectedContract1.player1W(options3);
+                        console.log('Awaiting function results...');
+                        await Function3Results;
+                        console.log("Analzying results...");
+                        if ((Function3Results != 0) || (Function3Results != "")){
+                            console.log(`Function call result: ${Function3Results}`)
+                            this.JSButton3.disabled = false;
+                            Function3Results = `${Function3Results}`;
+                            if(Function3Results != '0x0000000000000000000000000000000000000000'){
+                                this.JSButton3.innerText = `${
+                                Function3Results.substring(0, 6)}...${
+                                Function3Results.substring((Function3Results.length-4), Function3Results.length)}`;
+                            } else {this.JSButton3.innerText = `...`;}
+                        ;
+                        } else {
+                            console.log(`Error: (FunctionResults == 0 || "")`);
+                            this.JSButton3.disabled = false;
+                            this.JSButton3.innerText = 'error';
+                        }
 
-                    // Function 4
-                    this.JSButton4.disabled = true;
-                    this.JSButton4.innerText = '*loading*';
-                    
-                    console.log(`Attempting function 4 call..`);
-                    const options4 = {value: ethers.utils.parseEther(`0`),};
-                    let Function4Results = await connectedContract1.player2W(options4);
-                    console.log('Awaiting function results...');
-                    await Function4Results;
-                    console.log("Analzying results...");
-                    if ((Function4Results != 0) || (Function4Results != "")){
-                        console.log(`Function call result: ${Function4Results}`)
-                        this.JSButton4.disabled = false;
-                        this.JSButton4.innerText = `${Function4Results}`;
-                    ;
-                    } else {
-                        console.log(`Error: (FunctionResults == 0 || "")`);
-                        this.JSButton4.disabled = false;
-                        this.JSButton4.innerText = 'error';
-                    }
+                        // Function 4 - player2W
+                        this.JSButton4.disabled = true;
+                        this.JSButton4.innerText = '*loading*';
+                        
+                        console.log(`Attempting function 4 call..`);
+                        const options4 = {value: ethers.utils.parseEther(`0`),};
+                        let Function4Results = await connectedContract1.player2W(options4);
+                        console.log('Awaiting function results...');
+                        await Function4Results;
+                        console.log("Analzying results...");
+                        if ((Function4Results != 0) || (Function4Results != "")){
+                            console.log(`Function call result: ${Function4Results}`)
+                            this.JSButton4.disabled = false;
+                            Function4Results = `${Function4Results}`;
+                            if(Function4Results != '0x0000000000000000000000000000000000000000'){
+                                this.JSButton4.innerText = `${
+                                Function4Results.substring(0, 6)}...${
+                                Function4Results.substring((Function4Results.length-4), Function4Results.length)}`;
+                            } else {this.JSButton4.innerText = `...`;}
+                        } else {
+                            console.log(`Error: (FunctionResults == 0 || "")`);
+                            this.JSButton4.disabled = false;
+                            this.JSButton4.innerText = 'error';
+                        }
+
+                        // Function 5 - betPrice
+                        this.JSButton5.disabled = true;
+                        this.JSButton5.innerText = '*loading*';
+                        
+                        console.log(`Attempting function 5 call..`);
+                        const options5 = {value: ethers.utils.parseEther(`0`),};
+                        let Function5Results = await connectedContract1.betPrice(options5);
+                        console.log('Awaiting function results...');
+                        await Function5Results;
+                        console.log("Analzying results...");
+                        if ((Function5Results != 0) || (Function5Results != "")){
+                            console.log(`Function call result: ${Function5Results}`)
+                            this.JSButton5.disabled = false;
+                            Function5Results = `${Function5Results}`;
+                            this.txnCost = ethers.utils.formatEther(Function5Results);
+                            this.JSButton5.innerText = `${ethers.utils.formatEther(Function5Results)}`;
+                        ;
+                        } else {
+                            console.log(`Error: (FunctionResults == 0 || "")`);
+                            this.JSButton5.disabled = false;
+                            this.JSButton5.innerText = 'error';
+                        }
 
                 } catch (error) {
                     console.log(error);
@@ -285,18 +318,23 @@ class DappInterface {
                     
                     this.JSButton4.innerText = '-try again-';
                     this.JSButton4.disabled = false;
+
+                    this.JSButton5.innerText = '-try again-';
+                    this.JSButton5.disabled = false;
                 }
             } else {
                 console.log("Ethereum object doesn't exist!");
                 this.JSButton2.innerText = 'error: metamask missing';
                 this.JSButton3.innerText = 'error: metamask missing';
                 this.JSButton4.innerText = 'error: metamask missing';
+                this.JSButton5.innerText = 'error: metamask missing';
             }
         } catch (error) {
             console.log("Ethereum object doesn't exist!");
             this.JSButton2.innerText = 'error: metamask missing';
             this.JSButton3.innerText = 'error: metamask missing';
             this.JSButton4.innerText = 'error: metamask missing';
+            this.JSButton5.innerText = 'error: metamask missing';
         }
     }
 
@@ -306,18 +344,15 @@ class DappInterface {
 
     // -------------------------- @DEV_TODO turn this into the lotto bet submit function
     async Bet(){
-        /* This is a placeholder for any functions that require user inputs *//*
-        if(this.selectedInput1 > 0){
-        */
-            try { const { ethereum } = window;
+        try { const { ethereum } = window;
             if (ethereum) {
                 const provider = new ethers.providers.Web3Provider(ethereum);
                 const signer = provider.getSigner();
                 
                 try{
                     // Contract 1 function
-                    this.JSButton3.disabled = true;
-                    this.JSButton3.innerText = '*please wait*';
+                    this.JSButton1.disabled = true;
+                    this.JSButton1.innerText = '*please wait*';
                     
                     console.log(`Connecting contract1...`);
                     const connectedContract1 = new ethers.Contract(
@@ -326,22 +361,15 @@ class DappInterface {
                         signer
                     );
 
-                    console.log(`Attempting function call (
-                        ${ethers.utils.parseEther(`${this.txnCost}` /*`0`*/)} 
-                        msg.value)..`);
+                    console.log(`Attempting function call (${this.txnCost} msg.value)...`);
                     const options = {
-                        value: ethers.utils.parseEther(
-                        `${this.txnCost}` /*`0`*/
-                        ),
+                        value: ethers.utils.parseEther(`${this.txnCost}` /*`0`*/),
                     };
-                    
-                    let functionResult = await connectedContract1.bet(
-                        /*String(ethers.utils.parseEther(String(this.selectedInput1))),*/
-                        /*ethers.utils.parseUnits(String(this.selectedInput1), 18),*/
-                        options
-                    );
+
+                    let functionResult = await connectedContract1.bet(options);
 
                     this.waitingForListener = true;
+                    this.JSButton1.innerText = '*waiting for metamask*';
 
                 } catch (error) {
                     console.log(error);
@@ -357,16 +385,9 @@ class DappInterface {
             console.log("Ethereum object doesn't exist!");
             this.JSButton1.innerText = 'error: metamask missing';
         }
-        
-        /* This is a placeholder for any functions that require user inputs *//*
-        } else {
-            alert("Staking amount must be > 0")
-        }
-        */
-        
     }
 
-    // -------------------------- @DEV_TODO for now this is empty, but it will be used to approve check on ERC20's
+    // -------------------------- @DEV_TODO now empty, but it will be used to approve check on ERC20's
     async Bet_Loader(){
         /*
         console.log("Loader starting ApprovalCheck");
