@@ -334,7 +334,7 @@ a:hover {
 }
 
 .wrapper {
-  max-height: 100px;
+  /*max-height: 100px; ---turned off because it was hiding the buttons--- */
   overflow: hidden;
   transition: max-height 0.3s ease;
 }

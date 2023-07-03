@@ -90,8 +90,10 @@
 
       <div class="wrapper">
         <div class="item" id="currentLotto">
+          
           <!-- SHOW PLAYER 1 WALLET ADDRESS -->
           <div class="user">
+            <div>PLAYER 1</div>
             <div>
               <label for="CheckCurrentLotto_player1W"></label>
               <button
@@ -102,10 +104,11 @@
                 -load-
               </button>
             </div>
-          </div> <br/>
+          </div>
 
           <!-- SHOW PLAYER 2 WALLET ADDRESS -->
           <div class="user">
+            <div>PLAYER 2</div>
             <div>
               <label for="CheckCurrentLotto_player2W"></label>
               <button
@@ -116,10 +119,26 @@
                 -load-
               </button>
             </div>
-          </div> <br/>
+          </div>
           
           <!-- SHOW CURRENT BET COST -->
           <div class="user">
+            <div>BET PRICE</div>
+            <div>
+              <label for="CheckCurrentLotto_betPrice"></label>
+              <button
+                name="CheckCurrentLotto_betPrice"
+                id="HTML_button_5"
+                onclick="DappInterface_.CheckCurrentLotto();"
+              >
+                -load-
+              </button>
+            </div>
+          </div>
+
+          <!-- SHOW CURRENT COUNTER VALUE -->
+          <div class="user">
+            <div>CURRENT ROUND</div>
             <div>
               <label for="CheckCurrentLotto_counter"></label>
               <button
@@ -130,8 +149,8 @@
                 -load-
               </button>
             </div>
-          </div> <br/>
-
+          </div>
+          
           <!-- SHOW CURRENT REWARD VALUE --> 
 
 
@@ -139,6 +158,7 @@
 
 
           <div class="user">
+            <div>SUBMIT BET</div>
             <div>
               <label for="Bet_Loader"></label>
               <button
@@ -149,7 +169,7 @@
                 -bet-
               </button>
             </div>
-          </div> <br/>
+          </div>
 
       </div>
 
