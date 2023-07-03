@@ -13,27 +13,22 @@ body {
 }
 
 button {
-  background-color: #54ff65;
-  width: 400px;
-  height: 60px;
-  left: 744px;
-  top: 382px;
-  align-items: start;
-  font-size: 30px;
-  border: none;
-  align-items: center;
-  border-radius: 0px;
-  animation: gradient 2.5s ease infinite;
-
-  color: black;
-  font-family: 'Orbitron', sans-serif;
+  border: 1px solid #54FF65;
+  background: transparent;
+  color: #54ff65;
+  width: 124px;
+  height: 42px;
+  flex-shrink: 0;
 
 }
+
+
 
 button:hover {
   background-image: linear-gradient(to right, #54ff65, #00bcd4);
   background-size: 200% auto;
   animation: gradient 0.5s ease infinite;
+  color: #000;
 }
 
 @keyframes gradient {
@@ -49,13 +44,37 @@ button:hover {
 }
 
 header {
-padding: 20px;
-text-align: center;
-display: flex;
-align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 30px;
+  align-items: center;
+}
+.logo-container {
+  flex: 1;
 }
 
+nav {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.button-container {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.logo {
+  max-width: 100%;
+}
+
+.navbutton {
+ width: 150px;
+ color:#54FF65;
+}
 
 input {
   border: solid;
@@ -73,6 +92,12 @@ input {
   font-family: 'Orbitron', sans-serif;
   
 }
+
+nav {
+display: flex;
+padding: 0%;
+}
+
 
 select {
   border: solid;
@@ -249,7 +274,7 @@ footer {
 }
 
 a {
-  font-size: 30px;
+  font-size: 16px;
   color: #54ff65;
   margin: -6px 50px;
   text-decoration: none;
