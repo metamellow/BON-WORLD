@@ -1,15 +1,15 @@
 body {
   color: antiquewhite;
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 24px;
   align-content: center;
-  background-image: src= 'background2.png';
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
   width: auto; /* Defina a largura desejada */
   margin: 0 50px;
   background-color: #000;
+  background-image: url(images/background2.png);
 }
 
 button {
@@ -22,7 +22,10 @@ button {
 
 }
 
-
+.lottoicon {
+  padding-right: 30px;
+  align-items: center;
+}
 
 button:hover {
   background-image: linear-gradient(to right, #54ff65, #00bcd4);
@@ -82,9 +85,10 @@ hr {
 }
 
 .topoborder {
-  text-align: center;
+  text-align: left;
   color: #54FF65;
-  font-size: 20px;
+  font-size: 28px;
+  font-weight: 500;
 }
 
 input {
@@ -271,6 +275,16 @@ footer {
   }
 }
 
+.lotto {
+  display: flex;
+}
+
+.lottocharts {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+}
+
 .user {
   display: flex;
   align-items: center;
@@ -332,6 +346,11 @@ a:hover {
 .topowhitepaper {
   flex: 100%;
 }
+
+.round {
+  display: flex;
+}
+
 
 .wrapper {
   /*max-height: 100px; ---turned off because it was hiding the buttons--- */

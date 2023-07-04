@@ -14,8 +14,8 @@
         <link rel="icon" href="images/favcon.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap';" rel="stylesheet">
+        <link href="font-family: 'Poppins', sans-serif;" rel="stylesheet">
 
         <title>Bank Of Nowhere $BON</title>
             <meta name="title" content="Bank Of Nowhere $BON" />
@@ -44,9 +44,9 @@
         <img class="logo" src="images/bonlogo.png"></img>
       </div>
       <nav>
-        <a href="index.html">Home</a>
-        <a href="index.html">About Lotto</a>
-        <a href="index.html">Contact</a>
+        <a href="index.html">home</a>
+        <a href="index.html">about lotto</a>
+        <a href="index.html">contact</a>
         <div class="button-container">
           <button class="navbutton" 
                   name="connectWallet"
@@ -63,8 +63,8 @@
 <div class="topoborder">
     
     <hr> 
-    <p> Lotto </p>
-    <hr> 
+    <div class="topoborder"> <img src="images/lottoicon.svg" alt="lottoicon" class="lottoicon">LOTTO</div>
+    <hr>
 
 </div>
     <div>
@@ -78,9 +78,9 @@
       <div>
         <p>
           <ol>
-            <li>Make your bet as either <b>Player 1</b> or <b>Player 2</b></li>
-            <li>After both players have bet, <b>check</b> the results</li>
-            <li>The winner gets to claims the <b>reward value</b></li>
+            <li>Make your bet as either <strong>Player 1</strong> or <strong>Player 2</strong></li>
+            <li>After both players have bet, <strong>check</strong> the results</li>
+            <li>The winner gets to claims the <strong>reward value</strong></li>
         </p>
       </div>
 
@@ -88,13 +88,14 @@
       <!-- ____________________________  LOTTO START  _____________________________ -->
       <!-- ________________________________________________________________________ -->
 
-      <div class="wrapper">
+      <div class="lotto">
+
         <div class="item" id="currentLotto">
           
           <!-- SHOW CURRENT COUNTER VALUE -->
-          <div class="user">
-            <div>CURRENT ROUND</div>
-            <div>
+         
+            <div class="lottocharts">  
+            <p>CURRENT ROUND</p>
               <label for="CheckCurrentLotto_counter"></label>
               <button
                 name="CheckCurrentLotto_counter"
@@ -107,9 +108,10 @@
           </div>
 
           <!-- SHOW CURRENT BET COST -->
-          <div class="user">
-            <div>BET PRICE</div>
-            <div>
+          <div>
+            
+            <div class="lottocharts">
+              <p>BET PRICE</p>
               <label for="CheckCurrentLotto_betPrice"></label>
               <button
                 name="CheckCurrentLotto_betPrice"
@@ -122,9 +124,10 @@
           </div>
           
           <!-- SHOW CURRENT REWARD VALUE -->
-          <div class="user">
-            <div>REWARD VALUE</div>
-            <div>
+          <div>
+         
+            <div class="lottocharts">
+              <p>REWARD VALUE</p>
               <label for="CheckCurrentLotto_REWARDVALUE"></label>
               <button
                 name="CheckCurrentLotto_REWARDVALUE"
@@ -134,10 +137,11 @@
                 -load-
               </button>
             </div>
+  </div>
           </div>
 
           <!-- SHOW PLAYER 1 WALLET ADDRESS -->
-          <div class="user">
+          <div>
             <div>PLAYER 1</div>
             <div>
               <label for="CheckCurrentLotto_player1W"></label>
@@ -152,7 +156,8 @@
           </div>
 
           <!-- SHOW PLAYER 2 WALLET ADDRESS -->
-          <div class="user">
+    <div>
+          <div>
             <div>PLAYER 2</div>
             <div>
               <label for="CheckCurrentLotto_player2W"></label>
@@ -165,10 +170,9 @@
               </button>
             </div>
           </div>
-
-          <p><br/><hr><br/></p>
-
-          <div class="user">
+    </div>
+    <div></div>
+          <div>
             <div>SUBMIT BET</div>
             <div>
               <label for="Bet_Loader"></label>
@@ -183,7 +187,7 @@
           </div>
 
       </div>
-
+      </div>
       <div class="item" id="pastLotto">
 
         <!-- SHOW PAST BET COST -->
@@ -204,6 +208,7 @@
      
   
 
+      <hr>
       
       <footer class="footer">
 
@@ -216,7 +221,7 @@
         <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
         <script src="MaticLotto.js" type="application/javascript"></script>
       </footer>
-
+   
     </div>
   </body>
 </html>
