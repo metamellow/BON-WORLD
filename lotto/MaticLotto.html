@@ -60,13 +60,16 @@
 
 
   <body>
-<div class="topoborder">
-    
-    <hr> 
-    <div class="topoborder"> <img src="images/lottoicon.svg" alt="lottoicon" class="lottoicon">LOTTO</div>
+
+    <hr>
+    <div class="topoborder">  
+    <div> <img src="images/lottoicon.svg" alt="lottoicon" class="lottoicon"></div>
+    <div>LOTTO</div>
+  
+    </div>
     <hr>
 
-</div>
+
     <div>
 
       <div class="title1" id="MaticLotto">
@@ -88,9 +91,9 @@
       <!-- ____________________________  LOTTO START  _____________________________ -->
       <!-- ________________________________________________________________________ -->
 
-      <div class="lotto">
+      <div class="lottodisplay">
 
-        <div class="item" id="currentLotto">
+        <div id="currentLotto">
           
           <!-- SHOW CURRENT COUNTER VALUE -->
          
@@ -137,13 +140,16 @@
                 -load-
               </button>
             </div>
-  </div>
+
           </div>
+    </div>
 
           <!-- SHOW PLAYER 1 WALLET ADDRESS -->
-          <div>
-            <div>PLAYER 1</div>
-            <div>
+          
+          <div class="lotto"> <!--players-->
+            
+            <div class="lottocharts">
+              <p>PLAYER 1</p>
               <label for="CheckCurrentLotto_player1W"></label>
               <button
                 name="CheckCurrentLotto_player1W"
@@ -153,13 +159,14 @@
                 -load-
               </button>
             </div>
-          </div>
 
+
+            
           <!-- SHOW PLAYER 2 WALLET ADDRESS -->
     <div>
-          <div>
-            <div>PLAYER 2</div>
-            <div>
+          <div class="lottocharts">
+            <p>PLAYER 2</p>
+            
               <label for="CheckCurrentLotto_player2W"></label>
               <button
                 name="CheckCurrentLotto_player2W"
@@ -168,13 +175,14 @@
               >
                 -load-
               </button>
-            </div>
           </div>
     </div>
-    <div></div>
-          <div>
-            <div>SUBMIT BET</div>
-            <div>
+  </div>
+    
+    
+          <div> <!--submit bet-->
+            <div class="lottocharts">
+              <p>SUBMIT BET</p> 
               <label for="Bet_Loader"></label>
               <button
                 name="Bet_Loader"
@@ -186,8 +194,8 @@
             </div>
           </div>
 
-      </div>
-      </div>
+     
+      
       <div class="item" id="pastLotto">
 
         <!-- SHOW PAST BET COST -->
@@ -213,9 +221,9 @@
       <footer class="footer">
 
         <div id="first-row">
-          <div><a href="https://twitter.com/BankOfNowhere"><img src="images\banklogosmall.svg" style="height: 60px" alt="Logo" /></a></div>
+          <div><a target="_blank" href="https://twitter.com/BankOfNowhere"><img src="images\banklogosmall.svg" style="height: 60px" alt="Logo" /></a></div>
           <p>Copyright © Bank of Nowhere</p>
-          <div><a href="https://twitter.com/ModulusZK"><img src="images\moduluslogogreen.svg" /></a></div>
+          <div><a target="_blank" href="https://twitter.com/ModulusZK"><img src="images\moduluslogogreen.svg" /></a></div>
         </div>
 
         <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>

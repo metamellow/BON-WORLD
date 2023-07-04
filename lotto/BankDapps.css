@@ -23,7 +23,6 @@ button {
 }
 
 .lottoicon {
-  padding-right: 30px;
   align-items: center;
 }
 
@@ -85,10 +84,13 @@ hr {
 }
 
 .topoborder {
-  text-align: left;
   color: #54FF65;
   font-size: 28px;
   font-weight: 500;
+  gap:16px;
+  display: flex;
+  align-items: center;
+
 }
 
 input {
@@ -277,12 +279,24 @@ footer {
 
 .lotto {
   display: flex;
+  justify-content: center;
 }
+
+.lottodisplay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
 
 .lottocharts {
   display: flex;
   align-items: center;
   margin: 10px;
+  justify-items:center;
+  gap: 10px;
+  justify-content: center;
 }
 
 .user {
