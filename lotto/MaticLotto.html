@@ -77,10 +77,10 @@
 
       <div>
         <p>
-          (1) Make your bet as either Player 1 or Player 2<br/>
-          (2) After both players have bet, check the results<br/>
-          (3) The winner gets to claim both players betting funds*</br>
-          *-10% fee
+          <ol>
+            <li>Make your bet as either <b>Player 1</b> or <b>Player 2</b></li>
+            <li>After both players have bet, <b>check</b> the results</li>
+            <li>The winner gets to claims the <b>reward value</b></li>
         </p>
       </div>
 
@@ -91,6 +91,51 @@
       <div class="wrapper">
         <div class="item" id="currentLotto">
           
+          <!-- SHOW CURRENT COUNTER VALUE -->
+          <div class="user">
+            <div>CURRENT ROUND</div>
+            <div>
+              <label for="CheckCurrentLotto_counter"></label>
+              <button
+                name="CheckCurrentLotto_counter"
+                id="HTML_button_2"
+                onclick="DappInterface_.CheckCurrentLotto();"
+              >
+                -load-
+              </button>
+            </div>
+          </div>
+
+          <!-- SHOW CURRENT BET COST -->
+          <div class="user">
+            <div>BET PRICE</div>
+            <div>
+              <label for="CheckCurrentLotto_betPrice"></label>
+              <button
+                name="CheckCurrentLotto_betPrice"
+                id="HTML_button_5"
+                onclick="DappInterface_.CheckCurrentLotto();"
+              >
+                -load-
+              </button>
+            </div>
+          </div>
+          
+          <!-- SHOW CURRENT REWARD VALUE -->
+          <div class="user">
+            <div>REWARD VALUE</div>
+            <div>
+              <label for="CheckCurrentLotto_REWARDVALUE"></label>
+              <button
+                name="CheckCurrentLotto_REWARDVALUE"
+                id="HTML_button_6"
+                onclick="DappInterface_.CheckCurrentLotto();"
+              >
+                -load-
+              </button>
+            </div>
+          </div>
+
           <!-- SHOW PLAYER 1 WALLET ADDRESS -->
           <div class="user">
             <div>PLAYER 1</div>
@@ -120,42 +165,8 @@
               </button>
             </div>
           </div>
-          
-          <!-- SHOW CURRENT BET COST -->
-          <div class="user">
-            <div>BET PRICE</div>
-            <div>
-              <label for="CheckCurrentLotto_betPrice"></label>
-              <button
-                name="CheckCurrentLotto_betPrice"
-                id="HTML_button_5"
-                onclick="DappInterface_.CheckCurrentLotto();"
-              >
-                -load-
-              </button>
-            </div>
-          </div>
 
-          <!-- SHOW CURRENT COUNTER VALUE -->
-          <div class="user">
-            <div>CURRENT ROUND</div>
-            <div>
-              <label for="CheckCurrentLotto_counter"></label>
-              <button
-                name="CheckCurrentLotto_counter"
-                id="HTML_button_2"
-                onclick="DappInterface_.CheckCurrentLotto();"
-              >
-                -load-
-              </button>
-            </div>
-          </div>
-          
-          <!-- SHOW CURRENT REWARD VALUE --> 
-
-
-
-
+          <p><br/><hr><br/></p>
 
           <div class="user">
             <div>SUBMIT BET</div>

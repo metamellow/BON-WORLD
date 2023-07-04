@@ -41,6 +41,7 @@ class DappInterface {
         this.JSButton3 = document.getElementById('HTML_button_3'); // player1W()
         this.JSButton4 = document.getElementById('HTML_button_4'); // player2W()
         this.JSButton5 = document.getElementById('HTML_button_5'); // betPrice()
+        this.JSButton6 = document.getElementById('HTML_button_6'); // betPrice()
 
         // --- Input HTML Elements --- 
         this.selectedInput1 = 0; // 
@@ -211,27 +212,6 @@ class DappInterface {
                         signer
                     );
 
-                        // Function 2 - counter
-                        this.JSButton2.disabled = true;
-                        this.JSButton2.innerText = '*loading*';
-                        
-                        console.log(`Attempting function 2 call..`);
-                        const options2 = {value: ethers.utils.parseEther(`0`),};
-                        let Function2Results = await connectedContract1.counter(options2);
-                        console.log('Awaiting function results...');
-                        await Function2Results;
-                        console.log("Analzying results...");
-                        if ((Function2Results != 0) || (Function2Results != "")){
-                            console.log(`Function call result: ${Function2Results}`)
-                            this.JSButton2.disabled = false;
-                            this.JSButton2.innerText = `${Function2Results}`;
-                        ;
-                        } else {
-                            console.log(`Error: (FunctionResults == 0 || "")`);
-                            this.JSButton2.disabled = false;
-                            this.JSButton2.innerText = 'error';
-                        }
-
                         // Function 3 - player1W
                         this.JSButton3.disabled = true;
                         this.JSButton3.innerText = '*loading*';
@@ -283,6 +263,36 @@ class DappInterface {
                             this.JSButton4.innerText = 'error';
                         }
 
+                        // Function 2 - counter
+                        this.JSButton2.disabled = true;
+                        this.JSButton2.innerText = '*loading*';
+                        
+                        console.log(`Attempting function 2 call..`);
+                        const options2 = {value: ethers.utils.parseEther(`0`),};
+                        let Function2Results = await connectedContract1.counter(options2);
+                        console.log('Awaiting function results...');
+                        await Function2Results;
+                        console.log("Analzying results...");
+                        if ((Function2Results != 0) || (Function2Results != "")){
+                            if(Function3Results == '0x0000000000000000000000000000000000000000'){
+                                console.log(`Function call result: ${Number(Function2Results) + 1}`)
+                                this.JSButton2.disabled = false;
+                                this.JSButton2.innerText = `${Number(Function2Results) + 1}`;
+                            } else if (Function3Results != '0x0000000000000000000000000000000000000000'){
+                                console.log(`Function call result: ${Function2Results}`)
+                                this.JSButton2.disabled = false;
+                                this.JSButton2.innerText = `${Number(Function2Results)}`;
+                            } else {
+                                console.log(`Error: player1W info`);
+                                this.JSButton2.disabled = false;
+                                this.JSButton2.innerText = 'error';
+                            }
+                        } else {
+                            console.log(`Error: (FunctionResults == 0 || "")`);
+                            this.JSButton2.disabled = false;
+                            this.JSButton2.innerText = 'error';
+                        }
+
                         // Function 5 - betPrice
                         this.JSButton5.disabled = true;
                         this.JSButton5.innerText = '*loading*';
@@ -306,6 +316,14 @@ class DappInterface {
                             this.JSButton5.innerText = 'error';
                         }
 
+                        // Function 6 - REWARDVALUE
+                        this.JSButton6.disabled = true;
+                        this.JSButton6.innerText = '*loading*';
+                        let Function6Results = this.txnCost* 2 * 0.9;
+                        Function6Results = Function6Results.toFixed(4);
+                        console.log(`Function call result: ${Function6Results}`)
+                        this.JSButton6.innerText = `${Function6Results}`;
+
                 } catch (error) {
                     console.log(error);
                     console.log('function call failed');
@@ -321,6 +339,9 @@ class DappInterface {
 
                     this.JSButton5.innerText = '-try again-';
                     this.JSButton5.disabled = false;
+
+                    this.JSButton6.innerText = '-try again-';
+                    this.JSButton6.disabled = false;
                 }
             } else {
                 console.log("Ethereum object doesn't exist!");
@@ -328,6 +349,7 @@ class DappInterface {
                 this.JSButton3.innerText = 'error: metamask missing';
                 this.JSButton4.innerText = 'error: metamask missing';
                 this.JSButton5.innerText = 'error: metamask missing';
+                this.JSButton6.innerText = 'error: metamask missing';
             }
         } catch (error) {
             console.log("Ethereum object doesn't exist!");
@@ -335,6 +357,7 @@ class DappInterface {
             this.JSButton3.innerText = 'error: metamask missing';
             this.JSButton4.innerText = 'error: metamask missing';
             this.JSButton5.innerText = 'error: metamask missing';
+            this.JSButton6.innerText = 'error: metamask missing';
         }
     }
 
