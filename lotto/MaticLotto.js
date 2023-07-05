@@ -42,10 +42,14 @@ class DappInterface {
         this.JSButton4 = document.getElementById('HTML_button_4'); // player2W()
         this.JSButton5 = document.getElementById('HTML_button_5'); // betPrice()
         this.JSButton6 = document.getElementById('HTML_button_6'); // betPrice()
+        this.JSButton7 = document.getElementById('HTML_button_7'); // checkPastWinnerWallet
+        this.JSButton8 = document.getElementById('HTML_button_8'); // checkPastWinnerValue
+        this.JSButton9 = document.getElementById('HTML_button_9'); // checkPastWinnerClaimed
+        this.JSButton10 = document.getElementById('HTML_button_10'); // claimPastButton
 
         // --- Input HTML Elements --- 
-        this.selectedInput1 = 0; // 
-        this.JSInput1 = document.getElementById('HTML_input_1'); // xxx()
+        this.selectedInput1 = 1; // 
+        this.JSInput1 = document.getElementById('HTML_input_1'); // pastRounds
     }
 
 
@@ -142,10 +146,7 @@ class DappInterface {
                 const provider = new ethers.providers.Web3Provider(ethereum);
                 const signer = provider.getSigner();
                 try{
-                    // Contract 3 function
-                    this.JSfunctionButton1.disabled = true;
-                    this.JSfunctionButton1.innerText = '*loading*';
-                    
+                    // Contract 1 functions
                     console.log(`Connecting contract1...`);
                     const connectedContract1 = new ethers.Contract(
                         this.contractAddress1,
@@ -153,47 +154,72 @@ class DappInterface {
                         signer
                     );
 
-                    console.log(`Attempting balanceOf() call..`);
-                    const options = {
-                        value: ethers.utils.parseEther(
-                        /*`${this.txnCost}`*/ `0`
-                        ),
-                    };
-                    let balOf = await connectedContract1.balanceOf(
-                        String(this.currentAccount),
-                        options
-                    );
+                        // Function 7 - checkResults
+                        this.JSButton7.disabled = true;
+                        this.JSButton7.innerText = '*loading*';
+                        
+                        console.log(`Attempting function 7 call..`);
+                        let Function7Results = await connectedContract1.checkLotto(`${this.selectedInput1}`);
+                        console.log('Awaiting function results...');
+                        await Function7Results;
+                        console.log("Analzying results...");
+                        if ((Function7Results != 0) || (Function7Results != "")){
+                            Function7Results = `${Function7Results}`;
+                            const [check_winner, check_rewards, check_claimed] = Function7Results.split(',');
+                            console.log(`Function call result: ${check_winner} // ${check_rewards} // ${check_claimed}`)
 
-                    console.log('Awaiting function results...');
-                    await balOf;
-                    
-                    console.log("Analzying results...");
-                    if (balOf >= 1){
-                        console.log(`Current account holds: ${ethers.utils.formatEther(balOf)}`)
-                        this.JSfunctionButton1.disabled = false;
-                        this.JSfunctionButton1.innerText = `${
-                            ethers.utils.commify(Math.trunc(parseInt(ethers.utils.formatEther(String(balOf)))))
-                        }`;
-                    ;
-                    } else {
-                        console.log(`Current account holds: 0`);
-                        this.JSfunctionButton1.disabled = false;
-                        this.JSfunctionButton1.innerText = '0 (so sad)';
-                    }
 
+                            if(check_winner != '0x0000000000000000000000000000000000000000'){
+                                this.JSButton7.innerText = `
+                                    WALLET: ${
+                                        check_winner.substring(0, 6)
+                                    }...${
+                                        check_winner.substring((check_winner.length-4), check_winner.length)
+                                    }
+                                `;
+                            } else {this.JSButton7.innerText = `no winner yet`;}
+
+                            if(check_rewards != '...'){
+                                let reward_ = ethers.utils.formatEther(check_rewards);
+                                /*reward_ = parseInt(reward_).toFixed(4);*/
+                                this.JSButton8.innerText = `REWARD: ${reward_}`;
+                            } else {this.JSButton8.innerText = `...`;}
+
+                            if(check_claimed != '...'){
+                                this.JSButton9.innerText = `CLAIMED: ${check_claimed}`;
+                            } else {this.JSButton9.innerText = `...`;}
+
+                            this.JSButton7.disabled = false;
+                            this.JSButton8.disabled = false;
+                            this.JSButton9.disabled = false;
+
+
+                        } else {
+                            console.log(`Error: (FunctionResults == 0 || "")`);
+                            this.JSButton3.disabled = false;
+                            this.JSButton3.innerText = 'error';
+                        }
+
+                        
                 } catch (error) {
                     console.log(error);
                     console.log('function call failed');
-                    this.JSfunctionButton1.innerText = '-try again-';
-                    this.JSfunctionButton1.disabled = false;
+
+                    this.JSButton7.innerText = '-try again-';
+                    this.JSButton7.disabled = false;
+
+                    this.JSButton7.innerText = '-try again-';
+                    this.JSButton7.disabled = false;
                 }
             } else {
                 console.log("Ethereum object doesn't exist!");
-                this.JSfunctionButton1.innerText = 'error: metamask missing';
+                this.JSButton7.innerText = 'error: metamask missing';
+                this.JSButton8.innerText = 'error: metamask missing';
             }
         } catch (error) {
             console.log("Ethereum object doesn't exist!");
-            this.JSfunctionButton1.innerText = 'error: metamask missing';
+            this.JSButton7.innerText = 'error: metamask missing';
+            this.JSButton8.innerText = 'error: metamask missing';
         }
     }
 
@@ -361,10 +387,6 @@ class DappInterface {
         }
     }
 
-    // _____________________________________________________________
-    // ______________________ BETTING SECTION ______________________
-    // _____________________________________________________________
-
     // -------------------------- @DEV_TODO turn this into the lotto bet submit function
     async Bet(){
         try { const { ethereum } = window;
@@ -436,6 +458,13 @@ class DappInterface {
         }
         */
         this.Bet(); 
+    }
+
+    async onAnySelectInputs() {
+        if(this.selectedInput1 != this.JSInput1.value){
+            this.selectedInput1 = this.JSInput1.value;
+            console.log(`New input: ${this.selectedInput1}`);
+        }
     }
     
     // _____________________________________________________________

@@ -94,7 +94,14 @@
 
       <div class="lottodisplay">
 
+      <!-- ___________________________  CURRENT LOTTO  ____________________________ -->
+        
         <div id="currentLotto">
+          <div class="title1" id="MaticLotto">
+            <p>
+              --- CURRENT LOTTO ---
+            </p>
+          </div>
           
           <!-- SHOW CURRENT COUNTER VALUE -->
          
@@ -194,19 +201,90 @@
             </div>
           </div>
 
-     
+
+      <!-- ____________________________  PAST LOTTO  _____________________________ -->
+
       
       <div class="item" id="pastLotto">
+        <div class="title1" id="MaticLotto">
+          <p>
+            --- PAST LOTTOS ---
+          </p>
+        </div>
 
-        <!-- SHOW PAST BET COST -->
+        
+        <div> <!-- ENTER NUMBER -->
+          <div class="lottocharts">
+            <form>
+              <p>CHECK PAST ROUNDS</p>
+              <label for="CheckPastLotto" class="amount"></label>
+              <input
+                type="number"
+                name="CheckPastLotto_numberInput"
+                id="HTML_input_1"
+                min="1"
+                value="1"
+                onchange="DappInterface_.onAnySelectInputs()"
+                required
+              />
+            </form>
+          </div>
+        </div>
 
-        <!-- SHOW PAST REWARD VALUE --> 
+        <div> <!-- CHECK WINNER WALLET -->
+          <div class="lottocharts">
+            <label for="CheckPastLotto"></label>
+            <button
+              name="CheckPastLotto_submitCheck"
+              id="HTML_button_7"
+              onclick="DappInterface_.CheckPastLotto();"
+            >
+              -check wallet-
+            </button>
+          </div>
+        </div>
 
-        <!-- SHOW PAST 1 WALLET ADDRESS -->
+        <div> <!-- CHECK WINNER AMOUNT -->
+          <div class="lottocharts">
+            <label for="CheckPastLotto"></label>
+            <button
+              name="CheckPastLotto_submitCheck"
+              id="HTML_button_8"
+              onclick="DappInterface_.CheckPastLotto();"
+            >
+              -check value-
+            </button>
+          </div>
+        </div>
 
-        <!-- SHOW PAST 2 WALLET ADDRESS -->
+        <div> <!-- CHECK WINNER CLAIMED -->
+          <div class="lottocharts">
+            <label for="CheckPastLotto"></label>
+            <button
+              name="CheckPastLotto_submitCheck"
+              id="HTML_button_9"
+              onclick="DappInterface_.CheckPastLotto();"
+            >
+              -check claimed-
+            </button>
+          </div>
+        </div>
 
-        <!-- SHOW WINNER AND CLAIM BUTTON -->
+        <div> <!-- CLAIM NUMBER -->
+          <div class="lottocharts">
+            <label for="ClaimPastLotto"></label>
+            <button
+              name="CheckPastLotto_submitCheck"
+              id="HTML_button_10"
+              onclick="DappInterface_.ClaimPastLotto();"
+            >
+              -claim-
+            </button>
+          </div>
+        </div>
+
+        <!-- ENTER NUMBER and CLAIM REWARD --> 
+
       </div>
 
       <!-- ________________________________________________________________________ -->
