@@ -41,7 +41,7 @@ class DappInterface {
         this.JSButton3 = document.getElementById('HTML_button_3'); // player1W()
         this.JSButton4 = document.getElementById('HTML_button_4'); // player2W()
         this.JSButton5 = document.getElementById('HTML_button_5'); // betPrice()
-        this.JSButton6 = document.getElementById('HTML_button_6'); // betPrice()
+        this.JSButton6 = document.getElementById('HTML_button_6'); // rewardValue()
         this.JSButton7 = document.getElementById('HTML_button_7'); // checkPastWinnerWallet
         this.JSButton8 = document.getElementById('HTML_button_8'); // checkPastWinnerValue
         this.JSButton9 = document.getElementById('HTML_button_9'); // checkPastWinnerClaimed
@@ -139,7 +139,7 @@ class DappInterface {
     // ___________ UNIVERSAL CONTRACT FUNCTIONS SECTION ____________
     // _____________________________________________________________
 
-    // -------------------------- @DEV_TODO turn this into a past lotto bet check function
+    // --- @DEV this is called anytime the inputValue is changed (ie on checkCurrent, changed input manually, etc)
     async CheckPastLotto() {
         try { const { ethereum } = window;
             if (ethereum) {
@@ -154,10 +154,17 @@ class DappInterface {
                         signer
                     );
 
-                        // Function 7 - checkResults
+                        // Reset all changed vars
                         this.JSButton7.disabled = true;
                         this.JSButton7.innerText = '*loading*';
-                        
+                        this.JSButton8.disabled = true;
+                        this.JSButton8.innerText = '*loading*';
+                        this.JSButton9.disabled = true;
+                        this.JSButton9.innerText = '*loading*';
+                        this.JSButton10.disabled = true;
+                        this.JSButton10.innertext = '*loading*';
+                    
+                        // Function 7 - checkResults
                         console.log(`Attempting function 7 call..`);
                         let Function7Results = await connectedContract1.checkLotto(`${this.selectedInput1}`);
                         console.log('Awaiting function results...');
@@ -168,10 +175,8 @@ class DappInterface {
                             const [check_winner, check_rewards, check_claimed] = Function7Results.split(',');
                             console.log(`Function call result: ${check_winner} // ${check_rewards} // ${check_claimed}`)
 
-
                             if(check_winner != '0x0000000000000000000000000000000000000000'){
-                                this.JSButton7.innerText = `
-                                    WALLET: ${
+                                this.JSButton7.innerText = `${
                                         check_winner.substring(0, 6)
                                     }...${
                                         check_winner.substring((check_winner.length-4), check_winner.length)
@@ -182,22 +187,30 @@ class DappInterface {
                             if(check_rewards != '...'){
                                 let reward_ = ethers.utils.formatEther(check_rewards);
                                 /*reward_ = parseInt(reward_).toFixed(4);*/
-                                this.JSButton8.innerText = `REWARD: ${reward_}`;
+                                this.JSButton8.innerText = `${reward_}`;
                             } else {this.JSButton8.innerText = `...`;}
 
                             if(check_claimed != '...'){
-                                this.JSButton9.innerText = `CLAIMED: ${check_claimed}`;
+                                this.JSButton9.innerText = `${check_claimed}`;
                             } else {this.JSButton9.innerText = `...`;}
 
                             this.JSButton7.disabled = false;
                             this.JSButton8.disabled = false;
                             this.JSButton9.disabled = false;
-
+                            this.JSButton10.disabled = false;
+                            this.JSButton10.innertext = '(- CLAIM -)';
 
                         } else {
                             console.log(`Error: (FunctionResults == 0 || "")`);
-                            this.JSButton3.disabled = false;
-                            this.JSButton3.innerText = 'error';
+
+                            this.JSButton7.disabled = false;
+                            this.JSButton7.innerText = '-try again-';
+                            this.JSButton8.disabled = false;
+                            this.JSButton8.innerText = '-try again-';
+                            this.JSButton9.disabled = false;
+                            this.JSButton9.innerText = '-try again-';
+                            this.JSButton10.disabled = false;
+                            this.JSButton10.innertext = 'error';
                         }
 
                         
@@ -205,21 +218,37 @@ class DappInterface {
                     console.log(error);
                     console.log('function call failed');
 
-                    this.JSButton7.innerText = '-try again-';
                     this.JSButton7.disabled = false;
-
                     this.JSButton7.innerText = '-try again-';
-                    this.JSButton7.disabled = false;
+                    this.JSButton8.disabled = false;
+                    this.JSButton8.innerText = '-try again-';
+                    this.JSButton9.disabled = false;
+                    this.JSButton9.innerText = '-try again-';
+                    this.JSButton10.disabled = false;
+                    this.JSButton10.innertext = 'error';
                 }
             } else {
                 console.log("Ethereum object doesn't exist!");
+                this.JSButton7.disabled = true;
                 this.JSButton7.innerText = 'error: metamask missing';
+                this.JSButton8.disabled = true;
                 this.JSButton8.innerText = 'error: metamask missing';
+                this.JSButton9.disabled = true;
+                this.JSButton9.innerText = 'error: metamask missing';
+                this.JSButton10.disabled = true;
+                this.JSButton10.innertext = 'error: metamask missing';
+
             }
         } catch (error) {
             console.log("Ethereum object doesn't exist!");
+            this.JSButton7.disabled = true;
             this.JSButton7.innerText = 'error: metamask missing';
+            this.JSButton8.disabled = true;
             this.JSButton8.innerText = 'error: metamask missing';
+            this.JSButton9.disabled = true;
+            this.JSButton9.innerText = 'error: metamask missing';
+            this.JSButton10.disabled = true;
+            this.JSButton10.innertext = 'error: metamask missing';
         }
     }
 
@@ -237,11 +266,19 @@ class DappInterface {
                         CONTRACT1_ABI.abi,
                         signer
                     );
-
-                        // Function 3 - player1W
-                        this.JSButton3.disabled = true;
+                        // reset all changed vars
+                        this.JSButton2.innerText = '*loading*';
+                        this.JSButton2.disabled = false;
                         this.JSButton3.innerText = '*loading*';
-                        
+                        this.JSButton3.disabled = false;
+                        this.JSButton4.innerText = '*loading*';
+                        this.JSButton4.disabled = false;
+                        this.JSButton5.innerText = '*loading*';
+                        this.JSButton5.disabled = false;
+                        this.JSButton6.innerText = '*loading*';
+                        this.JSButton6.disabled = false;
+
+                        // Function 3 - player1W    
                         console.log(`Attempting function 3 call..`);
                         const options3 = {value: ethers.utils.parseEther(`0`),};
                         let Function3Results = await connectedContract1.player1W(options3);
@@ -265,9 +302,6 @@ class DappInterface {
                         }
 
                         // Function 4 - player2W
-                        this.JSButton4.disabled = true;
-                        this.JSButton4.innerText = '*loading*';
-                        
                         console.log(`Attempting function 4 call..`);
                         const options4 = {value: ethers.utils.parseEther(`0`),};
                         let Function4Results = await connectedContract1.player2W(options4);
@@ -290,9 +324,6 @@ class DappInterface {
                         }
 
                         // Function 2 - counter
-                        this.JSButton2.disabled = true;
-                        this.JSButton2.innerText = '*loading*';
-                        
                         console.log(`Attempting function 2 call..`);
                         const options2 = {value: ethers.utils.parseEther(`0`),};
                         let Function2Results = await connectedContract1.counter(options2);
@@ -304,10 +335,24 @@ class DappInterface {
                                 console.log(`Function call result: ${Number(Function2Results) + 1}`)
                                 this.JSButton2.disabled = false;
                                 this.JSButton2.innerText = `${Number(Function2Results) + 1}`;
+                                if(this.selectedInput1 != `${(Number(Function2Results) + 1)-1}`){
+                                    try {
+                                    this.selectedInput1 = `${(Number(Function2Results) + 1)-1}`;
+                                    this.JSInput1.value = this.selectedInput1;
+                                    this.CheckPastLotto();
+                                    } catch (error) {};
+                                }
                             } else if (Function3Results != '0x0000000000000000000000000000000000000000'){
                                 console.log(`Function call result: ${Function2Results}`)
                                 this.JSButton2.disabled = false;
                                 this.JSButton2.innerText = `${Number(Function2Results)}`;
+                                if(this.selectedInput1 != `${(Number(Function2Results))-1}`){
+                                    try {
+                                        this.selectedInput1 = `${(Number(Function2Results))-1}`;
+                                        this.JSInput1.value = this.selectedInput1;
+                                        this.CheckPastLotto();
+                                    } catch (error) {};
+                                }
                             } else {
                                 console.log(`Error: player1W info`);
                                 this.JSButton2.disabled = false;
@@ -320,9 +365,6 @@ class DappInterface {
                         }
 
                         // Function 5 - betPrice
-                        this.JSButton5.disabled = true;
-                        this.JSButton5.innerText = '*loading*';
-                        
                         console.log(`Attempting function 5 call..`);
                         const options5 = {value: ethers.utils.parseEther(`0`),};
                         let Function5Results = await connectedContract1.betPrice(options5);
@@ -343,12 +385,11 @@ class DappInterface {
                         }
 
                         // Function 6 - REWARDVALUE
-                        this.JSButton6.disabled = true;
-                        this.JSButton6.innerText = '*loading*';
                         let Function6Results = this.txnCost* 2 * 0.9;
                         Function6Results = Function6Results.toFixed(4);
                         console.log(`Function call result: ${Function6Results}`)
                         this.JSButton6.innerText = `${Function6Results}`;
+                        this.JSButton6.disabled = false;
 
                 } catch (error) {
                     console.log(error);
@@ -356,16 +397,12 @@ class DappInterface {
 
                     this.JSButton2.innerText = '-try again-';
                     this.JSButton2.disabled = false;
-
                     this.JSButton3.innerText = '-try again-';
                     this.JSButton3.disabled = false;
-                    
                     this.JSButton4.innerText = '-try again-';
                     this.JSButton4.disabled = false;
-
                     this.JSButton5.innerText = '-try again-';
                     this.JSButton5.disabled = false;
-
                     this.JSButton6.innerText = '-try again-';
                     this.JSButton6.disabled = false;
                 }
@@ -458,6 +495,65 @@ class DappInterface {
         }
         */
         this.Bet(); 
+    }
+
+    // -------------------------- @DEV_TODO now empty, but it will be used to approve check on ERC20's
+    async Claim_Loader(){
+        this.Claim(); 
+        /*
+        if(`${this.userWallet}` == `${this.JSButton7.innerText}`){
+            this.Claim();  
+        } else {
+            alert(`Must be owner of wallet '${this.JSButton7.innerText}' to claim reward`);
+        }
+        */
+    }
+
+    async Claim(){
+        try { const { ethereum } = window;
+        if (ethereum) {
+            const provider = new ethers.providers.Web3Provider(ethereum);
+            const signer = provider.getSigner();
+            
+            try{
+                // Contract 10 function
+                this.JSButton10.disabled = true;
+                this.JSButton10.innerText = '*please wait*';
+                
+                console.log(`Connecting contract1...`);
+                const connectedContract1 = new ethers.Contract(
+                    this.contractAddress1,
+                    CONTRACT1_ABI.abi,
+                    signer
+                );
+
+                let selectedInput1_ = `${this.selectedInput1}`;
+                console.log(`Attempting function call (${selectedInput1_} lotto round)...`);
+                let function10Results = await connectedContract1.claimLotto(selectedInput1_);
+
+                if((function10Results != 0) || (function10Results != "")){   
+                    this.JSButton10.innerText = 'Rewards claimed!';
+                    let function10Results_ = `${function10Results}`;
+                    function10Results_ = ethers.utils.formatEther(function10Results_);
+                    function10Results_ = Number(function10Results_);
+                    function10Results_ = function10Results_.toFixed(4);
+                    alert(`Claim successful! '${function10Results_}' added to wallet`);
+                    window.location.reload();
+                } else {error}
+            } catch (error) {
+                console.log(error);
+                console.log('function call failed');
+                this.JSButton10.innerText = `ERROR: Wallet must = '${this.JSButton7.innerText}' and Rewards must = 'Unclaimed`;
+                this.JSButton10.disabled = false;
+            }
+        } else {
+            console.log("Ethereum object doesn't exist!");
+            this.JSButton10.innerText = 'error: metamask missing';
+        }
+        } catch (error) {
+            console.log("Ethereum object doesn't exist!");
+            this.JSButton10.innerText = 'error: metamask missing';
+        }
     }
 
     async onAnySelectInputs() {

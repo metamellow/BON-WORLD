@@ -148,7 +148,6 @@
                 -load-
               </button>
             </div>
-
           </div>
     </div>
 
@@ -189,14 +188,14 @@
     
           <div> <!--submit bet-->
             <div class="lottocharts">
-              <p>SUBMIT BET</p> 
+              <p>((BET))</p> 
               <label for="Bet_Loader"></label>
               <button
                 name="Bet_Loader"
                 id="HTML_button_1"
                 onclick="DappInterface_.Bet_Loader();"
               >
-                -bet-
+                BET
               </button>
             </div>
           </div>
@@ -216,7 +215,7 @@
         <div> <!-- ENTER NUMBER -->
           <div class="lottocharts">
             <form>
-              <p>CHECK PAST ROUNDS</p>
+              <p>ROUND NUMBER</p>
               <label for="CheckPastLotto" class="amount"></label>
               <input
                 type="number"
@@ -224,7 +223,7 @@
                 id="HTML_input_1"
                 min="1"
                 value="1"
-                onchange="DappInterface_.onAnySelectInputs()"
+                onchange="DappInterface_.onAnySelectInputs(); DappInterface_.CheckPastLotto();"
                 required
               />
             </form>
@@ -233,6 +232,7 @@
 
         <div> <!-- CHECK WINNER WALLET -->
           <div class="lottocharts">
+            <p>WINNER WALLET</p>
             <label for="CheckPastLotto"></label>
             <button
               name="CheckPastLotto_submitCheck"
@@ -246,19 +246,21 @@
 
         <div> <!-- CHECK WINNER AMOUNT -->
           <div class="lottocharts">
+            <p>REWARD VALUE</p>
             <label for="CheckPastLotto"></label>
             <button
               name="CheckPastLotto_submitCheck"
               id="HTML_button_8"
               onclick="DappInterface_.CheckPastLotto();"
             >
-              -check value-
+              -check reward-
             </button>
           </div>
         </div>
 
         <div> <!-- CHECK WINNER CLAIMED -->
           <div class="lottocharts">
+            <p>CLAIMED STATUS</p>
             <label for="CheckPastLotto"></label>
             <button
               name="CheckPastLotto_submitCheck"
@@ -272,13 +274,14 @@
 
         <div> <!-- CLAIM NUMBER -->
           <div class="lottocharts">
+            <p>((CLAIM))</p> 
             <label for="ClaimPastLotto"></label>
             <button
               name="CheckPastLotto_submitCheck"
               id="HTML_button_10"
-              onclick="DappInterface_.ClaimPastLotto();"
+              onclick="DappInterface_.Claim_Loader();"
             >
-              -claim-
+              CLAIM
             </button>
           </div>
         </div>
