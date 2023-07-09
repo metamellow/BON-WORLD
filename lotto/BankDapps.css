@@ -467,3 +467,20 @@ a:hover {
 .alinhamento2 {
   display: flex;
 }
+
+form {
+  color: antiquewhite;
+}
+
+form input {
+  color: aliceblue;
+}
+
+.titlepastcurrent {
+  text-align: center;
+}
+
+.number {
+  width: 60px;
+
+}

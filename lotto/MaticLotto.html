@@ -91,16 +91,14 @@
       <!-- ________________________________________________________________________ -->
       <!-- ____________________________  LOTTO START  _____________________________ -->
       <!-- ________________________________________________________________________ -->
-
+  
       <div class="lottodisplay">
 
       <!-- ___________________________  CURRENT LOTTO  ____________________________ -->
         
         <div id="currentLotto">
-          <div class="title1" id="MaticLotto">
-            <p>
-              --- CURRENT LOTTO ---
-            </p>
+          <div id="MaticLotto">
+          --- CURRENT LOTTO ---
           </div>
           
           <!-- SHOW CURRENT COUNTER VALUE -->
@@ -203,21 +201,25 @@
 
       <!-- ____________________________  PAST LOTTO  _____________________________ -->
 
-      
-      <div class="item" id="pastLotto">
-        <div class="title1" id="MaticLotto">
-          <p>
+      <div class="titlepastcurrent" id="pastLotto">
+        <div id="MaticLotto">
+        <p>
             --- PAST LOTTOS ---
-          </p>
+        </p>
         </div>
+      
+      <div class="lottodisplay">
+      </div>
+      </div>  
+         <!-- ENTER NUMBER -->
+      
 
-        
-        <div> <!-- ENTER NUMBER -->
-          <div class="lottocharts">
+          <div >
             <form>
               <p>ROUND NUMBER</p>
               <label for="CheckPastLotto" class="amount"></label>
               <input
+                class="number"
                 type="number"
                 name="CheckPastLotto_numberInput"
                 id="HTML_input_1"
@@ -228,10 +230,15 @@
               />
             </form>
           </div>
-        </div>
+       
 
-        <div> <!-- CHECK WINNER WALLET -->
-          <div class="lottocharts">
+         
+         <!-- CHECK WINNER WALLET -->
+
+          <div class="lottodisplay">   
+ 
+ 
+            <div class="lottocharts">
             <p>WINNER WALLET</p>
             <label for="CheckPastLotto"></label>
             <button
@@ -241,10 +248,9 @@
             >
               -check wallet-
             </button>
-          </div>
-        </div>
+            </div>       
 
-        <div> <!-- CHECK WINNER AMOUNT -->
+         <!-- CHECK WINNER AMOUNT -->
           <div class="lottocharts">
             <p>REWARD VALUE</p>
             <label for="CheckPastLotto"></label>
@@ -258,7 +264,7 @@
           </div>
         </div>
 
-        <div> <!-- CHECK WINNER CLAIMED -->
+        <div class="lottodisplay"> <!-- CHECK WINNER CLAIMED -->
           <div class="lottocharts">
             <p>CLAIMED STATUS</p>
             <label for="CheckPastLotto"></label>
@@ -270,9 +276,7 @@
               -check claimed-
             </button>
           </div>
-        </div>
-
-        <div> <!-- CLAIM NUMBER -->
+         <!-- CLAIM NUMBER -->
           <div class="lottocharts">
             <p>((CLAIM))</p> 
             <label for="ClaimPastLotto"></label>
@@ -284,11 +288,12 @@
               CLAIM
             </button>
           </div>
+        
+
+        
         </div>
-
+    </div>
         <!-- ENTER NUMBER and CLAIM REWARD --> 
-
-      </div>
 
       <!-- ________________________________________________________________________ -->
       <!-- ______________________________  LOTTO END  _____________________________ -->
