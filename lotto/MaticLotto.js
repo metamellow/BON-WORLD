@@ -1,8 +1,3 @@
-/* NOTES:
-- 
-- 
-*/
-
 // _____________________________________________________________
 // _____________ ESTABLISH ALL SMART CONTRACT ABIs _____________
 // _____________________________________________________________
@@ -23,7 +18,8 @@ class DappInterface {
     // _____________________________________________________________
     // _______________ VARIABLES AND OBJECTS SECTION _______________
     // _____________________________________________________________
-
+    
+    // --- @DEV Sets up all the vars and objects used
     constructor() {
         // --- Universal web3 Variables
         this.dappChain = '0x13881'; //Ethereum=='0x1', Polygon=='0x89', Binance=='0x38', Modulus=='0x666', Mumbai=='0x13881'
@@ -35,7 +31,8 @@ class DappInterface {
         // --- Universal HTML Elements --- 
         this.JSconnectButton = document.getElementById('HTML_connect_button'); // connectWallet()
 
-        // --- Button HTML Elements --- 
+        // --- Button HTML Elements ---
+        this.JSButton0 = "0"; //emptyplaceholder
         this.JSButton1 = document.getElementById('HTML_button_1'); // bet()
         this.JSButton2 = document.getElementById('HTML_button_2'); // counter()
         this.JSButton3 = document.getElementById('HTML_button_3'); // player1W()
@@ -45,20 +42,32 @@ class DappInterface {
         this.JSButton7 = document.getElementById('HTML_button_7'); // checkPastWinnerWallet
         this.JSButton8 = document.getElementById('HTML_button_8'); // checkPastWinnerValue
         this.JSButton9 = document.getElementById('HTML_button_9'); // checkPastWinnerClaimed
-        this.JSButton10 = document.getElementById('HTML_button_10'); // claimPastButton
+        this.JSButton10 = document.getElementById('HTML_button_10'); // claim()
+
+        this.buttonsArray = [
+            this.JSButton0,
+            this.JSButton1,
+            this.JSButton2,
+            this.JSButton3,
+            this.JSButton4,
+            this.JSButton5,
+            this.JSButton6,
+            this.JSButton7,
+            this.JSButton8,
+            this.JSButton9,
+            this.JSButton10
+        ] // this is for loops and easy access
 
         // --- Input HTML Elements --- 
         this.selectedInput1 = 1; // 
         this.JSInput1 = document.getElementById('HTML_input_1'); // pastRounds
     }
 
-
     // _____________________________________________________________
     // ________________ SETUP PROCESSES SECTION (A) ________________
     // _____________________________________________________________
 
-    // -------------------------- @DEV_TODO think of a better way to handle added buttons
-    // Generic web3 wallet connect process
+    // --- @DEV Generic web3 wallet connect process
     async connectWallet() {
         try {
             const { ethereum } = window;
@@ -69,8 +78,8 @@ class DappInterface {
                 this.JSconnectButton.innerText = 'Install Metamask';
                 this.JSconnectButton.disabled = true;
 
-                this.JSButton1.innerText = '...';
-                this.JSButton1.disabled = true;
+                this.buttonsArray[1].innerText = '...';
+                this.buttonsArray[1].disabled = true;
 
                 return;
             }
@@ -91,13 +100,12 @@ class DappInterface {
                 this.JSconnectButton.innerText = 'Install Metamask';
                 this.JSconnectButton.disabled = true;
 
-                this.JSButton1.innerText = '...';
-                this.JSButton1.disabled = true;
+                this.buttonsArray[1].innerText = '...';
+                this.buttonsArray[1].disabled = true;
         }
     }
 
-    // -------------------------- @DEV_TODO add the contract listeners
-    // Listeners that pick up emit events from onchain functions
+    // --- @DEV Listeners that pick up emit events from onchain functions
     async setupEventListener() {
         try {
             const { ethereum } = window;
@@ -134,7 +142,6 @@ class DappInterface {
         }
     }
 
-
     // _____________________________________________________________
     // ___________ UNIVERSAL CONTRACT FUNCTIONS SECTION ____________
     // _____________________________________________________________
@@ -155,14 +162,15 @@ class DappInterface {
                     );
 
                         // Reset all changed vars
-                        this.JSButton7.disabled = true;
-                        this.JSButton7.innerText = '*loading*';
-                        this.JSButton8.disabled = true;
-                        this.JSButton8.innerText = '*loading*';
-                        this.JSButton9.disabled = true;
-                        this.JSButton9.innerText = '*loading*';
-                        this.JSButton10.disabled = true;
-                        this.JSButton10.innertext = '*loading*';
+                        this.buttonsArray[10].disabled = true;
+                        this.buttonsArray[10].innertext = '*loading*';
+
+                        this.buttonsArray[7].disabled = true;
+                        this.buttonsArray[7].innerText = '*loading*';
+                        this.buttonsArray[8].disabled = true;
+                        this.buttonsArray[8].innerText = '*loading*';
+                        this.buttonsArray[9].disabled = true;
+                        this.buttonsArray[9].innerText = '*loading*';
                     
                         // Function 7 - checkResults
                         console.log(`Attempting function 7 call..`);
@@ -176,83 +184,87 @@ class DappInterface {
                             console.log(`Function call result: ${check_winner} // ${check_rewards} // ${check_claimed}`)
 
                             if(check_winner != '0x0000000000000000000000000000000000000000'){
-                                this.JSButton7.innerText = `${
+                                this.buttonsArray[7].innerText = `${
                                         check_winner.substring(0, 6)
                                     }...${
                                         check_winner.substring((check_winner.length-4), check_winner.length)
                                     }
                                 `;
-                            } else {this.JSButton7.innerText = `no winner yet`;}
+                            } else {this.buttonsArray[7].innerText = `no winner yet`;}
 
                             if(check_rewards != '...'){
                                 let reward_ = ethers.utils.formatEther(check_rewards);
                                 /*reward_ = parseInt(reward_).toFixed(4);*/
-                                this.JSButton8.innerText = `${reward_}`;
-                            } else {this.JSButton8.innerText = `...`;}
+                                this.buttonsArray[8].innerText = `${reward_}`;
+                            } else {this.buttonsArray[8].innerText = `...`;}
 
                             if(check_claimed != '...'){
-                                this.JSButton9.innerText = `${check_claimed}`;
-                            } else {this.JSButton9.innerText = `...`;}
+                                this.buttonsArray[9].innerText = `${check_claimed}`;
+                            } else {this.buttonsArray[9].innerText = `...`;}
 
-                            this.JSButton7.disabled = false;
-                            this.JSButton8.disabled = false;
-                            this.JSButton9.disabled = false;
-                            this.JSButton10.disabled = false;
-                            this.JSButton10.innertext = '(- CLAIM -)';
+                            this.buttonsArray[7].disabled = false;
+                            this.buttonsArray[8].disabled = false;
+                            this.buttonsArray[9].disabled = false;
+
+                            // Button Ready
+                            console.log('CLAIM button ready');
+                            this.buttonsArray[10].disabled = false;
+                            this.buttonsArray[10].innerText = '-CLAIM-';
 
                         } else {
                             console.log(`Error: (FunctionResults == 0 || "")`);
+                            this.buttonsArray[10].innerText = 'error';
+                            this.buttonsArray[10].disabled = true;
 
-                            this.JSButton7.disabled = false;
-                            this.JSButton7.innerText = '-try again-';
-                            this.JSButton8.disabled = false;
-                            this.JSButton8.innerText = '-try again-';
-                            this.JSButton9.disabled = false;
-                            this.JSButton9.innerText = '-try again-';
-                            this.JSButton10.disabled = false;
-                            this.JSButton10.innertext = 'error';
+                            this.buttonsArray[7].disabled = false;
+                            this.buttonsArray[7].innerText = '-try again-';
+                            this.buttonsArray[8].disabled = false;
+                            this.buttonsArray[8].innerText = '-try again-';
+                            this.buttonsArray[9].disabled = false;
+                            this.buttonsArray[9].innerText = '-try again-';
                         }
 
                         
                 } catch (error) {
                     console.log(error);
                     console.log('function call failed');
+                    this.buttonsArray[10].innerText = 'error';
+                    this.buttonsArray[10].disabled = true;
 
-                    this.JSButton7.disabled = false;
-                    this.JSButton7.innerText = '-try again-';
-                    this.JSButton8.disabled = false;
-                    this.JSButton8.innerText = '-try again-';
-                    this.JSButton9.disabled = false;
-                    this.JSButton9.innerText = '-try again-';
-                    this.JSButton10.disabled = false;
-                    this.JSButton10.innertext = 'error';
+                    this.buttonsArray[7].disabled = false;
+                    this.buttonsArray[7].innerText = '-try again-';
+                    this.buttonsArray[8].disabled = false;
+                    this.buttonsArray[8].innerText = '-try again-';
+                    this.buttonsArray[9].disabled = false;
+                    this.buttonsArray[9].innerText = '-try again-';
                 }
             } else {
                 console.log("Ethereum object doesn't exist!");
-                this.JSButton7.disabled = true;
-                this.JSButton7.innerText = 'error: metamask missing';
-                this.JSButton8.disabled = true;
-                this.JSButton8.innerText = 'error: metamask missing';
-                this.JSButton9.disabled = true;
-                this.JSButton9.innerText = 'error: metamask missing';
-                this.JSButton10.disabled = true;
-                this.JSButton10.innertext = 'error: metamask missing';
+                this.buttonsArray[10].innerText = 'error';
+                this.buttonsArray[10].disabled = true;
 
+                this.buttonsArray[7].disabled = true;
+                this.buttonsArray[7].innerText = 'error: metamask missing';
+                this.buttonsArray[8].disabled = true;
+                this.buttonsArray[8].innerText = 'error: metamask missing';
+                this.buttonsArray[9].disabled = true;
+                this.buttonsArray[9].innerText = 'error: metamask missing';
             }
         } catch (error) {
             console.log("Ethereum object doesn't exist!");
-            this.JSButton7.disabled = true;
-            this.JSButton7.innerText = 'error: metamask missing';
-            this.JSButton8.disabled = true;
-            this.JSButton8.innerText = 'error: metamask missing';
-            this.JSButton9.disabled = true;
-            this.JSButton9.innerText = 'error: metamask missing';
-            this.JSButton10.disabled = true;
-            this.JSButton10.innertext = 'error: metamask missing';
+            this.buttonsArray[10].innerText = 'error';
+            this.buttonsArray[10].disabled = true;
+
+            this.buttonsArray[7].disabled = true;
+            this.buttonsArray[7].innerText = 'error: metamask missing';
+            this.buttonsArray[8].disabled = true;
+            this.buttonsArray[8].innerText = 'error: metamask missing';
+            this.buttonsArray[9].disabled = true;
+            this.buttonsArray[9].innerText = 'error: metamask missing';
         }
     }
 
-    // -------------------------- @DEV_TODO turn this into a current lotto bet check function
+    // --- @DEV this pulls all the CURRENT lotto info
     async CheckCurrentLotto() {
         try { const { ethereum } = window;
             if (ethereum) {
@@ -267,16 +279,19 @@ class DappInterface {
                         signer
                     );
                         // reset all changed vars
-                        this.JSButton2.innerText = '*loading*';
-                        this.JSButton2.disabled = false;
-                        this.JSButton3.innerText = '*loading*';
-                        this.JSButton3.disabled = false;
-                        this.JSButton4.innerText = '*loading*';
-                        this.JSButton4.disabled = false;
-                        this.JSButton5.innerText = '*loading*';
-                        this.JSButton5.disabled = false;
-                        this.JSButton6.innerText = '*loading*';
-                        this.JSButton6.disabled = false;
+                        this.buttonsArray[10].innerText = '*loading*';
+                        this.buttonsArray[10].disabled = true;
+
+                        this.buttonsArray[2].innerText = '*loading*';
+                        this.buttonsArray[2].disabled = true;
+                        this.buttonsArray[3].innerText = '*loading*';
+                        this.buttonsArray[3].disabled = true;
+                        this.buttonsArray[4].innerText = '*loading*';
+                        this.buttonsArray[4].disabled = true;
+                        this.buttonsArray[5].innerText = '*loading*';
+                        this.buttonsArray[5].disabled = true;
+                        this.buttonsArray[6].innerText = '*loading*';
+                        this.buttonsArray[6].disabled = true;
 
                         // Function 3 - player1W    
                         console.log(`Attempting function 3 call..`);
@@ -287,18 +302,18 @@ class DappInterface {
                         console.log("Analzying results...");
                         if ((Function3Results != 0) || (Function3Results != "")){
                             console.log(`Function call result: ${Function3Results}`)
-                            this.JSButton3.disabled = false;
+                            this.buttonsArray[3].disabled = false;
                             Function3Results = `${Function3Results}`;
                             if(Function3Results != '0x0000000000000000000000000000000000000000'){
-                                this.JSButton3.innerText = `${
+                                this.buttonsArray[3].innerText = `${
                                 Function3Results.substring(0, 6)}...${
                                 Function3Results.substring((Function3Results.length-4), Function3Results.length)}`;
-                            } else {this.JSButton3.innerText = `...`;}
+                            } else {this.buttonsArray[3].innerText = `...`;}
                         ;
                         } else {
                             console.log(`Error: (FunctionResults == 0 || "")`);
-                            this.JSButton3.disabled = false;
-                            this.JSButton3.innerText = 'error';
+                            this.buttonsArray[3].disabled = false;
+                            this.buttonsArray[3].innerText = 'error';
                         }
 
                         // Function 4 - player2W
@@ -310,17 +325,17 @@ class DappInterface {
                         console.log("Analzying results...");
                         if ((Function4Results != 0) || (Function4Results != "")){
                             console.log(`Function call result: ${Function4Results}`)
-                            this.JSButton4.disabled = false;
+                            this.buttonsArray[4].disabled = false;
                             Function4Results = `${Function4Results}`;
                             if(Function4Results != '0x0000000000000000000000000000000000000000'){
-                                this.JSButton4.innerText = `${
+                                this.buttonsArray[4].innerText = `${
                                 Function4Results.substring(0, 6)}...${
                                 Function4Results.substring((Function4Results.length-4), Function4Results.length)}`;
-                            } else {this.JSButton4.innerText = `...`;}
+                            } else {this.buttonsArray[4].innerText = `...`;}
                         } else {
                             console.log(`Error: (FunctionResults == 0 || "")`);
-                            this.JSButton4.disabled = false;
-                            this.JSButton4.innerText = 'error';
+                            this.buttonsArray[4].disabled = false;
+                            this.buttonsArray[4].innerText = 'error';
                         }
 
                         // Function 2 - counter
@@ -333,8 +348,8 @@ class DappInterface {
                         if ((Function2Results != 0) || (Function2Results != "")){
                             if(Function3Results == '0x0000000000000000000000000000000000000000'){
                                 console.log(`Function call result: ${Number(Function2Results) + 1}`)
-                                this.JSButton2.disabled = false;
-                                this.JSButton2.innerText = `${Number(Function2Results) + 1}`;
+                                this.buttonsArray[2].disabled = false;
+                                this.buttonsArray[2].innerText = `${Number(Function2Results) + 1}`;
                                 if(this.selectedInput1 != `${(Number(Function2Results) + 1)-1}`){
                                     try {
                                     this.selectedInput1 = `${(Number(Function2Results) + 1)-1}`;
@@ -344,8 +359,8 @@ class DappInterface {
                                 }
                             } else if (Function3Results != '0x0000000000000000000000000000000000000000'){
                                 console.log(`Function call result: ${Function2Results}`)
-                                this.JSButton2.disabled = false;
-                                this.JSButton2.innerText = `${Number(Function2Results)}`;
+                                this.buttonsArray[2].disabled = false;
+                                this.buttonsArray[2].innerText = `${Number(Function2Results)}`;
                                 if(this.selectedInput1 != `${(Number(Function2Results))-1}`){
                                     try {
                                         this.selectedInput1 = `${(Number(Function2Results))-1}`;
@@ -355,13 +370,13 @@ class DappInterface {
                                 }
                             } else {
                                 console.log(`Error: player1W info`);
-                                this.JSButton2.disabled = false;
-                                this.JSButton2.innerText = 'error';
+                                this.buttonsArray[2].disabled = false;
+                                this.buttonsArray[2].innerText = 'error';
                             }
                         } else {
                             console.log(`Error: (FunctionResults == 0 || "")`);
-                            this.JSButton2.disabled = false;
-                            this.JSButton2.innerText = 'error';
+                            this.buttonsArray[2].disabled = false;
+                            this.buttonsArray[2].innerText = 'error';
                         }
 
                         // Function 5 - betPrice
@@ -373,58 +388,72 @@ class DappInterface {
                         console.log("Analzying results...");
                         if ((Function5Results != 0) || (Function5Results != "")){
                             console.log(`Function call result: ${Function5Results}`)
-                            this.JSButton5.disabled = false;
+                            this.buttonsArray[5].disabled = false;
                             Function5Results = `${Function5Results}`;
                             this.txnCost = ethers.utils.formatEther(Function5Results);
-                            this.JSButton5.innerText = `${ethers.utils.formatEther(Function5Results)}`;
+                            this.buttonsArray[5].innerText = `${ethers.utils.formatEther(Function5Results)}`;
                         ;
                         } else {
                             console.log(`Error: (FunctionResults == 0 || "")`);
-                            this.JSButton5.disabled = false;
-                            this.JSButton5.innerText = 'error';
+                            this.buttonsArray[5].disabled = false;
+                            this.buttonsArray[5].innerText = 'error';
                         }
 
                         // Function 6 - REWARDVALUE
                         let Function6Results = this.txnCost* 2 * 0.9;
                         Function6Results = Function6Results.toFixed(4);
                         console.log(`Function call result: ${Function6Results}`)
-                        this.JSButton6.innerText = `${Function6Results}`;
-                        this.JSButton6.disabled = false;
+                        this.buttonsArray[6].innerText = `${Function6Results}`;
+                        this.buttonsArray[6].disabled = false;
+
+                        // Button ready
+                        console.log("BET button ready");
+                        this.buttonsArray[1].innerText = "-BET-";
+                        this.buttonsArray[1].disabled = false;
 
                 } catch (error) {
                     console.log(error);
                     console.log('function call failed');
 
-                    this.JSButton2.innerText = '-try again-';
-                    this.JSButton2.disabled = false;
-                    this.JSButton3.innerText = '-try again-';
-                    this.JSButton3.disabled = false;
-                    this.JSButton4.innerText = '-try again-';
-                    this.JSButton4.disabled = false;
-                    this.JSButton5.innerText = '-try again-';
-                    this.JSButton5.disabled = false;
-                    this.JSButton6.innerText = '-try again-';
-                    this.JSButton6.disabled = false;
+                    this.buttonsArray[1].innerText = 'error';
+                    this.buttonsArray[1].disabled = true;
+                    
+                    this.buttonsArray[2].innerText = '-try again-';
+                    this.buttonsArray[2].disabled = false;
+                    this.buttonsArray[3].innerText = '-try again-';
+                    this.buttonsArray[3].disabled = false;
+                    this.buttonsArray[4].innerText = '-try again-';
+                    this.buttonsArray[4].disabled = false;
+                    this.buttonsArray[5].innerText = '-try again-';
+                    this.buttonsArray[5].disabled = false;
+                    this.buttonsArray[6].innerText = '-try again-';
+                    this.buttonsArray[6].disabled = false;
                 }
             } else {
                 console.log("Ethereum object doesn't exist!");
-                this.JSButton2.innerText = 'error: metamask missing';
-                this.JSButton3.innerText = 'error: metamask missing';
-                this.JSButton4.innerText = 'error: metamask missing';
-                this.JSButton5.innerText = 'error: metamask missing';
-                this.JSButton6.innerText = 'error: metamask missing';
+                this.buttonsArray[1].innerText = 'error';
+                this.buttonsArray[1].disabled = true;
+
+                this.buttonsArray[2].innerText = 'error: metamask missing';
+                this.buttonsArray[3].innerText = 'error: metamask missing';
+                this.buttonsArray[4].innerText = 'error: metamask missing';
+                this.buttonsArray[5].innerText = 'error: metamask missing';
+                this.buttonsArray[6].innerText = 'error: metamask missing';
             }
         } catch (error) {
             console.log("Ethereum object doesn't exist!");
-            this.JSButton2.innerText = 'error: metamask missing';
-            this.JSButton3.innerText = 'error: metamask missing';
-            this.JSButton4.innerText = 'error: metamask missing';
-            this.JSButton5.innerText = 'error: metamask missing';
-            this.JSButton6.innerText = 'error: metamask missing';
+            this.buttonsArray[1].innerText = 'error';
+            this.buttonsArray[1].disabled = true;
+
+            this.buttonsArray[2].innerText = 'error: metamask missing';
+            this.buttonsArray[3].innerText = 'error: metamask missing';
+            this.buttonsArray[4].innerText = 'error: metamask missing';
+            this.buttonsArray[5].innerText = 'error: metamask missing';
+            this.buttonsArray[6].innerText = 'error: metamask missing';
         }
     }
 
-    // -------------------------- @DEV_TODO turn this into the lotto bet submit function
+    // --- @DEV this submits the bet
     async Bet(){
         try { const { ethereum } = window;
             if (ethereum) {
@@ -433,8 +462,8 @@ class DappInterface {
                 
                 try{
                     // Contract 1 function
-                    this.JSButton1.disabled = true;
-                    this.JSButton1.innerText = '*please wait*';
+                    this.buttonsArray[1].disabled = true;
+                    this.buttonsArray[1].innerText = '*please wait*';
                     
                     console.log(`Connecting contract1...`);
                     const connectedContract1 = new ethers.Contract(
@@ -451,64 +480,35 @@ class DappInterface {
                     let functionResult = await connectedContract1.bet(options);
 
                     this.waitingForListener = true;
-                    this.JSButton1.innerText = '*waiting for metamask*';
+                    this.buttonsArray[1].innerText = '*waiting for metamask*';
 
                 } catch (error) {
                     console.log(error);
                     console.log('function call failed');
-                    this.JSButton1.innerText = '-try bet again-';
-                    this.JSButton1.disabled = false;
+                    this.buttonsArray[1].innerText = '-try bet again-';
+                    this.buttonsArray[1].disabled = false;
                 }
             } else {
                 console.log("Ethereum object doesn't exist!");
-                this.JSButton1.innerText = 'error: metamask missing';
+                this.buttonsArray[1].innerText = 'error: metamask missing';
             }
         } catch (error) {
             console.log("Ethereum object doesn't exist!");
-            this.JSButton1.innerText = 'error: metamask missing';
+            this.buttonsArray[1].innerText = 'error: metamask missing';
         }
     }
 
-    // -------------------------- @DEV_TODO now empty, but it will be used to approve check on ERC20's
+    // --- @DEV for now empty, but it will be used to approve check on ERC20's
     async Bet_Loader(){
-        /*
-        console.log("Loader starting ApprovalCheck");
-        this.JSfunctionButton3.innerText = '*waiting for approval*';
-        let approvalCheck = await this.contract1AllowanceCheck();
-
-        console.log('Loader ApprovalCheck results...');
-        await approvalCheck;
-
-        if (approvalCheck == true){ 
-            console.log('Approval check -- TRUE');
-            if(this.selectedInput1 >= 1){
-                this.JSfunctionButton3.innerText = '*approval successful!*';
-                this.StakeToken1(); 
-            } else {
-                alert(`Please input amount.`);
-                this.JSfunctionButton3.innerText = '-try again-';
-            }
-
-        } else {
-            console.log('Approval check -- FALSE');
-            this.JSfunctionButton3.innerText = '-try again-'
-        }
-        */
         this.Bet(); 
     }
 
-    // -------------------------- @DEV_TODO now empty, but it will be used to approve check on ERC20's
+    // --- @DEV for now empty, but it will be used to approve check on ERC20's
     async Claim_Loader(){
         this.Claim(); 
-        /*
-        if(`${this.userWallet}` == `${this.JSButton7.innerText}`){
-            this.Claim();  
-        } else {
-            alert(`Must be owner of wallet '${this.JSButton7.innerText}' to claim reward`);
-        }
-        */
     }
-
+    
+    // --- @DEV this submits the claim
     async Claim(){
         try { const { ethereum } = window;
         if (ethereum) {
@@ -517,8 +517,8 @@ class DappInterface {
             
             try{
                 // Contract 10 function
-                this.JSButton10.disabled = true;
-                this.JSButton10.innerText = '*please wait*';
+                this.buttonsArray[10].disabled = true;
+                this.buttonsArray[10].innerText = '*please wait*';
                 
                 console.log(`Connecting contract1...`);
                 const connectedContract1 = new ethers.Contract(
@@ -532,7 +532,7 @@ class DappInterface {
                 let function10Results = await connectedContract1.claimLotto(selectedInput1_);
 
                 if((function10Results != 0) || (function10Results != "")){   
-                    this.JSButton10.innerText = 'Rewards claimed!';
+                    this.buttonsArray[10].innerText = 'Rewards claimed!';
                     let function10Results_ = `${function10Results}`;
                     function10Results_ = ethers.utils.formatEther(function10Results_);
                     function10Results_ = Number(function10Results_);
@@ -543,23 +543,32 @@ class DappInterface {
             } catch (error) {
                 console.log(error);
                 console.log('function call failed');
-                this.JSButton10.innerText = `ERROR: Wallet must = '${this.JSButton7.innerText}' and Rewards must = 'Unclaimed`;
-                this.JSButton10.disabled = false;
+                this.buttonsArray[10].innerText = `ERROR: Wallet must = '${this.buttonsArray[7].innerText}' and Claimed must  = 'false`;
+                this.buttonsArray[10].disabled = false;
             }
         } else {
             console.log("Ethereum object doesn't exist!");
-            this.JSButton10.innerText = 'error: metamask missing';
+            this.buttonsArray[10].innerText = 'error: metamask missing';
         }
         } catch (error) {
             console.log("Ethereum object doesn't exist!");
-            this.JSButton10.innerText = 'error: metamask missing';
+            this.buttonsArray[10].innerText = 'error: metamask missing';
         }
     }
-
+    
+    // --- @DEV this changed the vars based on user inputs
     async onAnySelectInputs() {
         if(this.selectedInput1 != this.JSInput1.value){
             this.selectedInput1 = this.JSInput1.value;
             console.log(`New input: ${this.selectedInput1}`);
+        }
+    }
+
+    // --- @DEV this swaps the button text to 'loading' on bootup
+    async onStartupButtonText(){
+        for (let i = 1; i < this.buttonsArray.length; i++) {
+            this.buttonsArray[i].innerText = '*loading*';
+            console.log(`button ${i}`);
         }
     }
     
@@ -567,19 +576,18 @@ class DappInterface {
     // ________________ SETUP PROCESSES SECTION (B) ________________
     // _____________________________________________________________
 
-    // (2) This will run after dappInitializeProcess() and boot up custom funcs
+    // --- @DEV (2) This will run after dappInitializeProcess() and boot up custom funcs
     async customConstructorFunctions(){
 
         if ( 1==1 /*document.URL.includes("keyword")*/) {
 
             // Custom Per Page Auto Run Functions
-            /*try{await this.CheckPastLotto();} catch (error) {console.log(error);}*/
+            try{await this.onStartupButtonText();} catch (error) {console.log(error);}
             try{await this.CheckCurrentLotto();} catch (error) {console.log(error);}
         }
     }
     
-    // -------------------------- @DEV_TODO need to edit the way the button system works
-    // (1) This will check and set the correct web3 chain
+    // --- @DEV (1) This will check and set the correct web3 chain
     async dappInitializeProcess() {
         try{
             await this.connectWallet();
@@ -593,48 +601,53 @@ class DappInterface {
                     this.dappChain == "0x13881"
                     ){
                     if(this.dappChain == "0x89"){
-                        this.JSconnectButton.innerText = 'POLYGON MAINNET ONLY';
-                        this.JSButton1.innerText = '...';
-
                         this.JSconnectButton.disabled = true;
-                        this.JSButton1.disabled = true;
-
+                        this.JSconnectButton.innerText = 'POLYGON MAINNET ONLY';
+                        for (let i = 1; i < this.buttonsArray.length; i++) {
+                            this.buttonsArray[i].innerText = '...';
+                            this.buttonsArray[i].disabled = true;
+                            console.log(`button ${i}`);
+                        }
                         alert('Please use POLYGON MAINNET and REFRESH browser -- Other networks will NOT WORK!');
                     }
                     if(this.dappChain == "0x1"){
-                        this.JSconnectButton.innerText = 'ETHEREUM MAINNET ONLY';
-                        this.JSButton1.innerText = '...';
-
                         this.JSconnectButton.disabled = true;
-                        this.JSButton1.disabled = true;
-
+                        this.JSconnectButton.innerText = 'ETHEREUM MAINNET ONLY';
+                        for (let i = 1; i < this.buttonsArray.length; i++) {
+                            this.buttonsArray[i].innerText = '...';
+                            this.buttonsArray[i].disabled = true;
+                            console.log(`button ${i}`);
+                        }
                         alert('Please use ETHEREUM MAINNET and REFRESH browser -- Other networks will NOT WORK!');
                     }
                     if(this.dappChain == "0x38"){
-                        this.JSconnectButton.innerText = 'BINANCE MAINNET ONLY';
-                        this.JSButton1.innerText = '...';
-
                         this.JSconnectButton.disabled = true;
-                        this.JSButton1.disabled = true;
-
+                        this.JSconnectButton.innerText = 'BINANCE MAINNET ONLY';
+                        for (let i = 1; i < this.buttonsArray.length; i++) {
+                            this.buttonsArray[i].innerText = '...';
+                            this.buttonsArray[i].disabled = true;
+                            console.log(`button ${i}`);
+                        }
                         alert('Please use BINANCE MAINNET and REFRESH browser -- Other networks will NOT WORK!');
                     }
                     if(this.dappChain == "0x666"){
-                        this.JSconnectButton.innerText = 'MODULUS MAINNET ONLY';
-                        this.JSButton1.innerText = '...';
-
                         this.JSconnectButton.disabled = true;
-                        this.JSButton1.disabled = true;
-
+                        this.JSconnectButton.innerText = 'MODULUS MAINNET ONLY';
+                        for (let i = 1; i < this.buttonsArray.length; i++) {
+                            this.buttonsArray[i].innerText = '...';
+                            this.buttonsArray[i].disabled = true;
+                            console.log(`button ${i}`);
+                        }
                         alert('Please use MODULUS MAINNET and REFRESH browser -- Other networks will NOT WORK!');
                     }
                     if(this.dappChain == "0x13881"){
-                        this.JSconnectButton.innerText = 'POLYGON MUMBAI ONLY';
-                        this.JSButton1.innerText = '...';
-
                         this.JSconnectButton.disabled = true;
-                        this.JSButton1.disabled = true;
-
+                        this.JSconnectButton.innerText = 'POLYGON MUMBAI ONLY';
+                        for (let i = 1; i < this.buttonsArray.length; i++) {
+                            this.buttonsArray[i].innerText = '...';
+                            this.buttonsArray[i].disabled = true;
+                            console.log(`button ${i}`);
+                        }
                         alert('Please use POLYGON MUMBAI and REFRESH browser -- Other networks will NOT WORK!');
                     }
                 } else {
@@ -656,12 +669,14 @@ class DappInterface {
                 if(chainId == "0x13881"){
                     console.log('Connected to MUMBAI TESTNET (' + chainId + ')');
                 }
+
+                try{
+                    await this.customConstructorFunctions();
+                } catch (error) {
+                    console.log(error); 
+                }
+
             }
-        } catch (error) {
-            console.log(error); 
-        }
-        try{
-            await this.customConstructorFunctions();
         } catch (error) {
             console.log(error); 
         }
