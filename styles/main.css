@@ -629,8 +629,28 @@ a {
 .whitepapertittle {
 font-weight: 600;
 color: #54ff65;
-text-align: center;
-font-size: 80px;
+font-size: 70px;
+text-align: left;
 text-transform: uppercase;
 
 }
+
+.wpcontent{
+  display: flex;
+  align-items: center;
+  
+  }
+
+  .wpimagetoken {
+    width: 80%;
+    margin-top: 0px;
+  }
+  
+  .wpsubtitle {
+    color: #54ff65;
+  }
+
+  .wpsub {
+display: flex;
+
+  }
