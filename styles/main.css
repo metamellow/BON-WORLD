@@ -630,8 +630,9 @@ a {
 font-weight: 600;
 color: #54ff65;
 font-size: 70px;
-text-align: left;
+text-align: center;
 text-transform: uppercase;
+align-items: center;
 
 }
 
