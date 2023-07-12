@@ -1,41 +1,42 @@
 @font-face {
-  font-family: biosRegular;
-  src: url(../fonts/BiosRegular.otf);
+  font-family: 'Poppins', sans-serif;
 }
 
-@font-face {
-  font-family: biosBold;
-  src: url(../fonts/BiosBold.otf);
-}
 
 body {
-  margin: 0;
+  margin: 30px;
   padding: 0;
   font-family: Arial, sans-serif;
-  background-image: url(https://raw.githubusercontent.com/s0crates-eth/BON-WORLD/main/images/background.png);
+ 
   background-attachment: fixed;
-  font-family: 'biosBold', sans-serif;
+  font-family: 'Poppins', sans-serif;
   color: whitesmoke;
   background-size: cover;
+  background-color: black;
 }
+
+
+
 
 header {
   display: flex;
-  justify-content: center;
-  padding: 1em;
-  background-color: #221e2e;
-  box-shadow: 0 0px 15px rgba(0, 255, 221, 0.4);
+  justify-content: space-between;
+  
 }
 
-.logo-container {
-  height: 50px;
-  margin-right: 35px;
+nav a {
+  color:#54ff65;
+  text-decoration: none;
+  padding: 10px;
 }
 
-.logo-grande {
-  display: block;
-  height: 100%;
+nav a:hover {
+  color:aliceblue;
+  text-decoration: none;
+  padding: 10px;
 }
+
+
 
 .logo-pequeno {
   display: none;
@@ -130,8 +131,7 @@ header {
 .titulo-carousel {
   font-size: 70px;
   margin-top: 0;
-  color: #37bfa7;
-  text-shadow: rgba(0, 255, 221, 0.4) 0 0 30px;
+  color: #54ff65;
 }
 
 .carousel {
@@ -162,8 +162,7 @@ header {
   color: white;
   cursor: pointer;
   background-color: transparent;
-  color: #37bfa7;
-  text-shadow: rgba(0, 255, 221, 0.4) 0 0 30px;
+  color: #54ff65;
   padding: 16px;
   border-radius: 50%;
 }
@@ -202,20 +201,18 @@ header {
   padding: 10px 20px;
   border-radius: 5px;
   border: solid;
-  border-color: #37bfa7;
+  border-color: #54ff65;
   background-color: transparent;
-  color: #ff6347;
+  color: #54ff65;
   cursor: pointer;
   border-radius: 16px 0px 16px 0px;
-  font-family: 'biosBold', sans-serif;
   font-size: 14px;
 }
 
 .button69:hover {
-  background-color: #37bfa7;
+  background-color: #54ff67;
   border-radius: 16px 0px 16px 0px;
   transition: all 0.3s ease-in;
-  box-shadow: 0 0px 15px rgba(0, 255, 221, 0.4);
   color: #fff;
 }
 
@@ -223,35 +220,33 @@ button {
   padding: 10px 20px;
   border-radius: 5px;
   border: solid;
-  border-color: #37bfa7;
+  border-color: #54ff65;
   background-color: transparent;
   color: #fff;
   cursor: pointer;
-  border-radius: 16px 0px 16px 0px;
+  border-radius: 8px;
   font-family: 'biosBold', sans-serif;
   font-size: 14px;
 }
 
 button:hover {
-  background-color: #37bfa7;
-  border-radius: 16px 0px 16px 0px;
+  background-color: #54ff65;
+  border-radius: 8px;
   transition: all 0.3s ease-in;
-  box-shadow: 0 0px 15px rgba(0, 255, 221, 0.4);
 }
 
 .button2 {
   padding: 10px 20px;
   background-color: transparent;
-  color: #fff;
+  color: #54ff65;
   cursor: pointer;
-  border-radius: 16px 0px 16px 0px;
+  border-radius: 8px;
 }
 
 .button2:hover {
-  background-color: #37bfa7;
+  background-color: #54ff65;
   border-radius: 16px 0px 16px 0px;
   transition: all 0.3s ease-in;
-  box-shadow: 0 0px 15px rgba(0, 255, 221, 0.4);
 }
 
 footer {
@@ -303,13 +298,12 @@ footer {
 }
 
 select {
-  font-family: 'bios';
-  color: #37bfa7;
+  color: #54ff65;
   font-size: small;
   width: 300px;
   height: 42px;
-  border: 4px solid #37bfa7;
-  border-color: #37bfa7;
+  border: 4px solid #54ff65;
+  border-color: #54ff65;
   border-radius: 0px 16px 0px 16px;
   font-size: 16px;
   background: transparent;
@@ -318,22 +312,21 @@ select {
 
 select:hover {
   color: whitesmoke;
-  background-color: #37bfa7;
-  border-radius: 0px 16px 0px 16px;
-  box-shadow: 0 0px 16px rgba(0, 255, 221, 0.4);
+  background-color: ##54ff65;
+  border-radius: 8px;
   height: 42px;
 }
 
 select:focus {
   color: whitesmoke;
-  background-color: #37bfa7;
-  border-radius: 0px 16px 0px 16px;
+  background-color: #54ff65;
+  border-radius: 8px;
   height: 42px;
 }
 
 input[type='number'] {
   font-family: 'bios';
-  color: #37bfa7;
+  color: #54ff65;
   width: 30%;
   height: 30px;
   padding: 5px;
@@ -341,16 +334,16 @@ input[type='number'] {
   border-radius: 16px;
   border: 0px solid transparent;
   background-color: transparent;
-  border-radius: 16px 0px 16px 0px;
-  border: 2px solid #37bfa7;
+  border-radius: 8px;
+  border: 2px solid #54ff65;
 }
 input[type='number']:hover {
   background-color: transparent;
-  border-color: #37bfa7;
+  border-color: #54ff65;
   box-shadow: 0 8px 16px 0 #37BFA7(0, 0, 2, 0.2);
   cursor: pointer;
   box-shadow: 0 5px 15px rgba(0, 255, 221, 0.4);
-  border-radius: 16px 0px 16px 0px;
+  border-radius: 8px;
   border: 2px solid #37bfa7;
 }
 
@@ -373,10 +366,9 @@ input[type='number']:hover {
 }
 
 .button3:hover {
-  background-color: #37bfa7;
-  border-radius: 16px 0px 16px 0px;
+  background-color: #54ff65;
+  border-radius: 8px;
   transition: all 0.3s ease-in;
-  box-shadow: 0 0px 15px rgba(0, 255, 221, 0.4);
 }
 
 .container-row {
