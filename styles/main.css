@@ -180,15 +180,14 @@ nav a:hover {
 
 button {
   padding: 10px 20px;
-  border-radius: 5px;
   border: solid;
   border-color: #54ff65;
   background-color: transparent;
-  color: #fff;
+  color: #54ff65;
   cursor: pointer;
   border-radius: 8px;
-  font-family: 'biosBold', sans-serif;
   font-size: 14px;
+  stroke: 1px;
 }
 
 button:hover {
@@ -264,9 +263,9 @@ select {
   font-size: small;
   width: 300px;
   height: 42px;
-  border: 4px solid #54ff65;
+  border: 1px solid #54ff65;
   border-color: #54ff65;
-  border-radius: 0px 16px 0px 16px;
+  border-radius: 8px;
   font-size: 16px;
   background: transparent;
   text-align: center;
@@ -280,20 +279,21 @@ select:hover {
 }
 
 select:focus {
-  color: whitesmoke;
+  color: black;
   background-color: #54ff65;
   border-radius: 8px;
   height: 42px;
+  font-weight: 600;
 }
 
 input[type='number'] {
-  font-family: 'bios';
+ 
   color: #54ff65;
   width: 30%;
   height: 30px;
   padding: 5px;
   font-size: 16px;
-  border-radius: 16px;
+  border-radius: 8px;
   border: 0px solid transparent;
   background-color: transparent;
   border-radius: 8px;
@@ -626,6 +626,35 @@ a {
   background-color: #54ff65;
 }
 
+.cftitle {
+  color: #54ff65;
+ 
+  }
+.cftop {
+  display: flex;
+  align-items: center;
+  gap:16px;
+  font-weight: 600;
+  font-size: 40px;
+  justify-content: space-between;
+} 
+
+.cftop a {
+  font-size: 16px;
+  font-weight: 100;
+  margin: 8px;
+} 
+
+
+.cftitleadjust {
+  display: flex;
+  align-items: center;
+} 
+.cftitleadjust img{
+  width: 100%;
+  height: 100%;
+} 
+
 .whitepapertittle {
 font-weight: 600;
 color: #54ff65;
@@ -677,3 +706,9 @@ align-items: center;
 margin: 0px;
 
   }
+
+  .cfmenu {
+    justify-content: space-between;
+  align-items: center;
+  
+}
