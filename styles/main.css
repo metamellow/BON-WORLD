@@ -672,3 +672,8 @@ align-items: center;
   .wproadinternal{
     width: 50%;
   }
+
+  .wpcontent p {
+margin: 0px;
+
+  }
