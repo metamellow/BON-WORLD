@@ -129,14 +129,14 @@ nav a:hover {
 }
 
 .titulo-carousel {
-  font-size: 70px;
+  font-size: 50px;
   margin-top: 0;
   color: #54ff65;
 }
 
 .carousel {
   display: flex;
-  overflow: hidden;
+
 }
 
 .slide {
@@ -251,9 +251,9 @@ button:hover {
 
 footer {
   display: flex;
-  flex-direction: column;
-  width: 90%;
-  padding: 0 5%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 #first-row {
