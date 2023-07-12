@@ -638,12 +638,20 @@ text-transform: uppercase;
 .wpcontent{
   display: flex;
   align-items: center;
+  gap: 10px;
+  padding-right: 10px;
   
   }
 
   .wpimagetoken {
-    width: 80%;
+    width: 100%;
     margin-top: 0px;
+    gap:10px;
+    margin-bottom: 60px;
+  }
+
+  .wpcontent p {
+    padding: 30px;
   }
   
   .wpsubtitle {
@@ -651,6 +659,15 @@ text-transform: uppercase;
   }
 
   .wpsub {
-display: flex;
+  display: flex;
+  gap:10px;
+  }
 
+  .wproad {
+    display: flex;
+    width: 100%;
+
+  }
+  .wproadinternal{
+    width: 50%;
   }
