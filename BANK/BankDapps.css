@@ -291,6 +291,7 @@ a:hover {
   max-height: 100px;
   overflow: hidden;
   transition: max-height 0.3s ease;
+  /* make a gradient from light to dark top to bottom (turned 90*) on the clapsible bow to show some differentiation between boxes, moving the color from the contairer to this wrapper*/
 }
 
 .container {
