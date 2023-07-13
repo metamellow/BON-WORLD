@@ -147,6 +147,7 @@ class DappInterface {
     // _____________________________________________________________
 
     // --- @DEV this is called anytime the inputValue is changed (ie on checkCurrent, changed input manually, etc)
+    // ------------------------------------------------- fold up this info to make it cleaner, copy the fold from the BANK staking (HOW TO PLAY) could also be a fold up
     async CheckPastLotto() {
         try { const { ethereum } = window;
             if (ethereum) {
@@ -265,6 +266,7 @@ class DappInterface {
     }
 
     // --- @DEV this pulls all the CURRENT lotto info
+    // ---------------------------------------- move the current round data into the header
     async CheckCurrentLotto() {
         try { const { ethereum } = window;
             if (ethereum) {
@@ -545,6 +547,7 @@ class DappInterface {
                 console.log('function call failed');
                 this.buttonsArray[10].innerText = `ERROR: Wallet must = '${this.buttonsArray[7].innerText}' and Claimed must  = 'false`;
                 this.buttonsArray[10].disabled = false;
+                // -------------------------------------------------------------------------- move this to be a broswer alert
             }
         } else {
             console.log("Ethereum object doesn't exist!");
