@@ -280,7 +280,6 @@ select {
   border-radius: 0px;
 }
 
-
 select:hover {
   color: whitesmoke;
   background-color:##54ff65;
@@ -671,6 +670,7 @@ font-size: 70px;
 text-align: center;
 text-transform: uppercase;
 align-items: center;
+margin: 0px;
 
 }
 
@@ -686,7 +686,15 @@ align-items: center;
     width: 100%;
     margin-top: 0px;
     gap:10px;
+    margin-top: 60px;
     margin-bottom: 60px;
+  }
+
+  .wptoketext {
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    margin-top: 60px;
   }
 
   .wpcontent p {
