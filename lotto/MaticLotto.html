@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <title>Bank of Nowhere</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" type="text/css" href="BankDapps.css" />
+        <link rel="stylesheet" type="text/css" href="../styles/main.css" />
         <link
         rel="stylesheet"
         href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
@@ -37,9 +37,6 @@
     </head>
 
 
-
-  
-
   <body>
 
     
@@ -51,38 +48,44 @@
         <a href="index.html">home</a>
         <a href="index.html">about lotto</a>
         <a href="index.html">contact</a>
-        <div class="button-container">
+        
           <button class="navbutton" 
                   name="connectWallet"  
                   id="HTML_connect_button"
                   onclick="DappInterface_.connectWallet();">
             Connect
           </button>
-        </div>
+       
       </nav>
     </header>
 
 
     <hr>
-    <div class="topoborder">  
-    <div> <img src="images/lottoicon.svg" alt="lottoicon" class="lottoicon"></div>
-    <div>MATIC LOTTO</div>
-  
+
+    <div class="cftop">
+      <div class="cftitleadjust">
+      <img class="imgadjust" src="images/lottoicon.svg">
+      <p class="cftitle ">LOTTO</p></div>
+      <div class="wpsubtitle"> // MATIC // </div>
+     
     </div>
     <hr>
 
 
     <div>
 
-      <div class="title1" id="MaticLotto">
-        <p>
-          <strong>HOW TO PLAY:</strong>
-          <ol>
+      <div  class="cftrouble" id="MaticLotto">
+      
+      
+          <div><strong class="cftitle">HOW TO PLAY:</strong></div>
+          <div>
+          <p><ol>
             <li>Make your bet (as either <strong>Player 1</strong> or <strong>Player 2</strong>)</li>
             <li>After both players have bet, <strong>check</strong> the results</li>
             <li>The winner gets to claims the <strong>reward value</strong></li>
           </ol>
         </p>
+      </div>
       </div>
 
       <!-- ________________________________________________________________________ -->
@@ -95,12 +98,14 @@
         
         <div id="currentLotto">
           <div id="MaticLotto">
-          <hr>CURRENT LOTTO<hr>
+          <hr>
+          <p class="cftitle">CURRENT LOTTO</p>
+          <hr>
           </div>
           
           <!-- SHOW CURRENT COUNTER VALUE -->
          
-            <div class="lottocharts">  
+            <div class="lotto">  
             <p>CURRENT ROUND</p>
               <label for="CheckCurrentLotto_counter"></label>
               <button
@@ -116,7 +121,7 @@
           <!-- SHOW CURRENT BET COST -->
           <div>
             
-            <div class="lottocharts">
+            <div class="lotto">
               <p>BET PRICE</p>
               <label for="CheckCurrentLotto_betPrice"></label>
               <button
@@ -150,7 +155,7 @@
           
           <div class="lotto"> <!--players-->
             
-            <div class="lottocharts">
+            <div>
               <p>PLAYER 1</p>
               <label for="CheckCurrentLotto_player1W"></label>
               <button
@@ -165,7 +170,7 @@
             
           <!-- SHOW PLAYER 2 WALLET ADDRESS -->
     <div>
-          <div class="lottocharts">
+          <div >
             <p>PLAYER 2</p>
             
               <label for="CheckCurrentLotto_player2W"></label>
@@ -182,7 +187,7 @@
     
     
           <div> <!--submit bet-->
-            <div class="lottocharts">
+            <div>
               <p>((BET))</p> 
               <label for="Bet_Loader"></label>
               <button
@@ -198,20 +203,20 @@
 
       <!-- ____________________________  PAST LOTTO  _____________________________ -->
 
-      <div class="titlepastcurrent" id="pastLotto">
+      <div class="cftitle" id="pastLotto">
         <div id="MaticLotto">
         <p>
-            --- PAST LOTTOS ---
+          <hr>  --- PAST LOTTOS --- <hr>
         </p>
         </div>
       
-      <div class="lottodisplay">
+      <div class="lotto">
       </div>
       </div>  
          <!-- ENTER NUMBER -->
       
 
-          <div >
+          <div>
             <form>
               <p>PAST ROUND</p>
               <label for="CheckPastLotto" class="amount"></label>
@@ -305,13 +310,12 @@
 
   </body>
 
-  <footer class="footer">
+  <footer>
 
-    <div id="first-row">
-      <div><a target="_blank" href="https://twitter.com/BankOfNowhere"><img src="images\banklogosmall.svg" style="height: 60px" alt="Logo" /></a></div>
-      <p>Copyright © Bank of Nowhere</p>
-      <div><a target="_blank" href="https://twitter.com/ModulusZK"><img src="images\moduluslogogreen.svg" /></a></div>
-    </div>
+    <div>
+    <img src="../images/fav.png"></div>
+   <div class="copyright"> <p>Copyright © Bank of Nowhere</p> </div>
+   <div> <img src="images/moduluslogogreen.svg"></div>
 
     <div id="page-scripts">
       <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>

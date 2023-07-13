@@ -18,6 +18,8 @@ body {
 hr {
   border-color: #54ff65;
   margin: 0px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 
@@ -635,6 +637,8 @@ a {
   color: #54ff65;
  
   }
+
+
 .cftop {
   display: flex;
   align-items: center;
@@ -948,4 +952,11 @@ visibility: visible;
   }
 
 
-  
+  .imgadjust {
+    padding: 10px;
+  }
+
+  .lotto {
+    display: flex;
+    justify-content: space-around;
+  }
