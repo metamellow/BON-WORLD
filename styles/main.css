@@ -964,10 +964,56 @@ visibility: visible;
   }
 
   .lottobutton {
-  width: 350px;
+  width: 280px;
+  gap: 10px;
+  margin: 10px;
+  display: block;
+  justify-content: space-between;
+  
+ 
 
   }
 
+  .lottobuttonplayers {
+    width: 280px;
+    gap: 10px;
+    margin: 10px;
+    display: block;
+    justify-content: space-between;
+    border: none;
+    font-size: 24px;
+  
+  
+    }
+
+  .lottobuttonbet {
+    width: 100%;
+    gap: 10px;
+    margin: 10px;
+    display: block;
+    justify-content: space-between;
+   
+  
+    }
+
   .lottocharts {
     display: flex;
+  }
+
+  .lottoplayertitle {
+    color: #54ff65;
+    font-weight: 600;
+    text-align: center;
+    font-size: 24px;
+  }
+
+  .lottoplayerchoice {
+    align-items: center;
+  }
+
+  .lottotitle {
+    font-weight: 600;
+    font-size: 36px;
+    color: #54ff65;
+    text-align: center;
   }
