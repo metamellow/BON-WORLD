@@ -11,7 +11,7 @@
         integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
         crossorigin="anonymous"
         />
-        <link rel="icon" href="images/favcon.png" />
+        <link rel="icon" href="../images/fav.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap';" rel="stylesheet">
@@ -36,10 +36,10 @@
             <meta property="twitter:image" content="https://raw.githubusercontent.com/s0crates-eth/gm/main/images/1500x500.jpg" />
     </head>
 
-
+    <body>
     <header>
         <div class="logo-container">
-          <img class="logo" src="images/bonlogo.png"></img>
+        <img class="logo" src="images/bonlogo.png"></img>
         </div>
         
         <nav class="dapp-menu">
@@ -59,15 +59,16 @@
         </nav>
       </header>
 
-<body>
+  <hr>
+
+    <div class="cftop">
+      <div class="cftitleadjust">
+      <img class="imgadjust" src="images/lottoicon.svg">
+      <p class="cftitle ">LOTTO</p></div>
+      <div class="wpsubtitle"> WELCOME </div>
+
+      <div id="selection-dropdown">
   
-  <hr>
-  <div class="topoborder"> <img src="images/lottoicon.svg" alt="lottoicon" class="lottoicon">LOTTO</div>
-  <hr>
-  <div> Welcome to the Bank of Nowhere Lotto!</div>
-    <div id="selection-dropdown">
-        <div class="title">CHOOSE LOTTO</div>
-        <br/>
         <select
             id="HTML_dropdown_input_1"
             onchange="DappInterface_.chooseWhichLotto()"
@@ -78,23 +79,31 @@
             <option value="MATIC">BON*</option>
         </select>
     </div>
+     
+    </div>
+    <hr>
+
+  <div> Welcome to the Bank of Nowhere Lotto!</div>
+    
     <p>
       * Lotto is currently in <strong>beta</strong> and only available in <strong>MATIC</strong>
     </p>
     
-    <br/><hr><br/>
-</body>
+    <hr>
+
+</div> 
 
 
-
-<footer>
-    <div id="first-row">
-      <div><a href="https://twitter.com/BankOfNowhere"><img src="images\banklogosmall.svg" style="height: 60px" alt="Logo" /></a></div>
-      <p>Copyright © Bank of Nowhere</p>
-      <div><a href="https://twitter.com/ModulusZK"><img src="images\moduluslogogreen.svg" /></a></div>
-    </div>
+  <footer>
+  <img src="../images/fav.png"></div>
+  <div class="copyright"> <p>Copyright © Bank of Nowhere</p> </div>
+  <div> <img src="images/moduluslogogreen.svg"></div>
+    
     <div id="page-scripts">
       <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
       <script src="index.js" type="application/javascript"></script>
     </div>
-</footer>
+  </footer>
+
+  </body>
+</html>

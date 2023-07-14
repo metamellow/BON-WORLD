@@ -38,24 +38,25 @@
 
 
   <body>
-
-    
     <header>
       <div class="logo-container">
-        <img class="logo" src="images/bonlogo.png"></img>
+      <img class="logo" src="images/bonlogo.png"></img>
       </div>
-      <nav>
-        <a href="index.html">home</a>
-        <a href="index.html">about lotto</a>
-        <a href="index.html">contact</a>
+      
+      <nav class="dapp-menu">
+        <a href="../index.html">Home</a>
+        <a href="../whitepaper.html">whitepaper</a>
+        <a href="../lotto/index.html">lotto</a>
+        <a href="../dapp.html"> crowdfunding</a>
         
-          <button class="navbutton" 
-                  name="connectWallet"  
+        <button
+                  name="connectWallet"
                   id="HTML_connect_button"
                   onclick="DappInterface_.connectWallet();">
-            Connect
+                  Connect
           </button>
-       
+        
+        </div>
       </nav>
     </header>
 
@@ -68,6 +69,18 @@
       <p class="cftitle ">LOTTO</p></div>
       <div class="wpsubtitle"> // MATIC // </div>
      
+
+      <div id="selection-dropdown">
+        <select
+            id="HTML_dropdown_input_1"
+            onchange="DappInterface_.chooseWhichLotto()"
+        >
+            <option value="" selected>Please choose...</option>
+            <option value="MATIC">MATIC</option>
+            <option value="MATIC">ETH*</option>
+            <option value="MATIC">BON*</option>
+        </select>
+    </div>
     </div>
     <hr>
 
@@ -92,7 +105,7 @@
       <!-- ____________________________  LOTTO START  _____________________________ -->
       <!-- ________________________________________________________________________ -->
   
-      <div class="lottodisplay">
+      
 
       <!-- ___________________________  CURRENT LOTTO  ____________________________ -->
         
@@ -119,12 +132,13 @@
           </div>
 
           <!-- SHOW CURRENT BET COST -->
-          <div>
+          <div class="lotto">
             
-            <div class="lotto">
+            <div class="lottocharts">
               <p>BET PRICE</p>
               <label for="CheckCurrentLotto_betPrice"></label>
               <button
+              class="lottobutton"
                 name="CheckCurrentLotto_betPrice"
                 id="HTML_button_5"
                 onclick="DappInterface_.CheckCurrentLotto();"
@@ -306,9 +320,7 @@
    
     </div>
 
-    <br/><hr><br/>
-
-  </body>
+    <hr>
 
   <footer>
 
@@ -323,4 +335,5 @@
     </div>
     
   </footer>
+  </body>
 </html>
