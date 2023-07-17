@@ -951,19 +951,19 @@ visibility: visible;
 
   .lotto {
     display: flex;
-    justify-content: space-around;
+    align-items: center;
     gap: 0px;
+    justify-content: space-between;
     
-   
   }
+
 
   .lotto2 {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    gap: -20px;
-    
    
+  
   }
 
   .lotto3 {
