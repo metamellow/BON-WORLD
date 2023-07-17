@@ -950,10 +950,22 @@ visibility: visible;
   }
 
   .lotto {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 0px;
     justify-content: space-between;
+    text-align: center;
+    
+    
+  }
+
+  
+  .lottodisplay {
+    display: inline-flex;
+    align-items: center;
+    gap: 0px;
+   
+    
     
   }
 
