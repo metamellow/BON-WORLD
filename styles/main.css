@@ -301,7 +301,7 @@ select:focus {
 input[type='number'] {
  
   color: #54ff65;
-  width: 30%;
+  width: 350px;
   height: 30px;
   padding: 5px;
   font-size: 16px;
@@ -986,7 +986,7 @@ align-items: center;
 
 
   .lottobutton {
-  width: 280px;
+  width: 350px;
   gap: 10px;
   margin: 10px;
   display: block;
@@ -1008,7 +1008,11 @@ align-items: center;
     }
 
   .lottocharts {
-    display: flex;
+    display: block;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+    
   }
 
   .lottoplayertitle {
