@@ -165,19 +165,18 @@ nav a:hover {
 
 .button69 {
   padding: 10px 20px;
-  border-radius: 5px;
+  border-radius: 0px;
   border: solid;
   border-color: #54ff65;
   background-color: transparent;
   color: #54ff65;
   cursor: pointer;
-  border-radius: 16px 0px 16px 0px;
   font-size: 14px;
 }
 
 .button69:hover {
   background-color: #54ff67;
-  border-radius: 16px 0px 16px 0px;
+  border-radius: 0px;
   transition: all 0.3s ease-in;
   color: #fff;
 }
@@ -188,7 +187,7 @@ button {
   background-color: transparent;
   color: #54ff65;
   cursor: pointer;
-  border-radius: 8px;
+  border-radius: 0px;
   font-size: 14px;
   stroke: 0px;
   margin: 0px;
@@ -196,7 +195,7 @@ button {
 
 button:hover {
   background-color: #54ff65;
-  border-radius: 8px;
+  border-radius: 0px;
   color: black;
   transition: all 0.3s ease-in;
 }
@@ -206,12 +205,12 @@ button:hover {
   background-color: transparent;
   color: #54ff65;
   cursor: pointer;
-  border-radius: 8px;
+  border-radius: 0px;
 }
 
 .button2:hover {
   background-color: #54ff65;
-  border-radius: 16px 0px 16px 0px;
+  border-radius: 0px;
   transition: all 0.3s ease-in;
 }
 
@@ -270,7 +269,7 @@ select {
   height: 42px;
   border: 1px solid #54ff65;
   border-color: #54ff65;
-  border-radius: 8px;
+  border-radius: 0px;
   font-size: 16px;
   background: transparent;
   text-align: center;
@@ -287,14 +286,14 @@ select {
 select:hover {
   color: whitesmoke;
   background-color:##54ff65;
-  border-radius: 8px;
+  border-radius: 0px;
   height:42px;
 }
 
 select:focus {
   color: black;
   background-color: #54ff65;
-  border-radius: 8px;
+  border-radius: 0px;
   height: 42px;
   font-weight: 600;
 }
@@ -306,19 +305,16 @@ input[type='number'] {
   height: 30px;
   padding: 5px;
   font-size: 16px;
-  border-radius: 8px;
-  border: 0px solid transparent;
+  border-radius: 0px;
   background-color: transparent;
-  border-radius: 8px;
   border: 2px solid #54ff65;
+ 
 }
 input[type='number']:hover {
   background-color: transparent;
   border-color: #54ff65;
-
   cursor: pointer;
-  
-  border-radius: 8px;
+  border-radius: 0px;
   border: 1px solid #54ff65;
 }
 
@@ -342,7 +338,7 @@ input[type='number']:hover {
 
 .button3:hover {
   background-color: #54ff65;
-  border-radius: 8px;
+  border-radius: 0px;
   transition: all 0.3s ease-in;
 }
 
@@ -424,10 +420,9 @@ input[type='text'] {
   height: 30px;
   padding: 5px;
   font-size: 16px;
-  border-radius: 16px;
   border: 0px solid transparent;
   background-color: transparent;
-  border-radius:8px;
+  border-radius:0px;
   border: 2px solid #54ff65;
 }
 
@@ -438,22 +433,20 @@ input[type='description'] {
   height: 400px;
   padding: 5px;
   font-size: 16px;
-  border-radius: 16px;
+  border-radius: 0px;
   border: 0px solid transparent;
   background-color: transparent;
-  border-radius: 8px;
   border: 2px solid #54ff65;
 }
 
 input[type='submit'] {
   padding: 10px 20px;
-  border-radius: 5px;
   border: solid;
   border-color: #54ff65;
   background-color: transparent;
   color: #fff;
   cursor: pointer;
-  border-radius: 8px;
+  border-radius: 0px;
   font-size: 150%;
   width: 400px;
   height: 50px;
@@ -461,7 +454,7 @@ input[type='submit'] {
 
 input:hover[type='submit'] {
   background-color: #54ff65;
-  border-radius: 16px 0px 16px 0px;
+  border-radius:0px;
   transition: all 0.3s ease-in;
   
 }
@@ -563,16 +556,14 @@ input[type='checkbox']:checked + label:before {
 textarea {
   width: 100%;
   background-color: transparent;
-  
   color: #54ff65;
   width: 100%;
   height: 400px;
   padding: 15px;
   font-size: 16px;
-  border-radius: 16px;
+  border-radius: 0px;
   border: 0px solid transparent;
   background-color: transparent;
-  border-radius: 8px;
   border: 2px solid #54ff65;
 }
 
@@ -582,7 +573,7 @@ textarea::-webkit-scrollbar {
 }
 
 textarea::-webkit-scrollbar-thumb {
-  border-radius: 10px;
+  border-radius: 0px;
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: #54ff65;
 }
@@ -596,7 +587,7 @@ textarea::-webkit-scrollbar-thumb {
   width: (100% - 25px);
   padding: 25px;
   border-collapse: collapse;
-  border-radius: 20px;
+  border-radius: 0px;
   overflow: hidden;
 }
 
@@ -755,7 +746,7 @@ margin: 0px;
   align-items: center;
   margin-bottom: 20px;
   border: solid;
-  border-radius: 8px;
+  border-radius: 0px;
   border-color: #54ff65;
   padding: 10px;
 }
@@ -974,6 +965,15 @@ visibility: visible;
     
    
   }
+
+  .lotto3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    
+   
+  }
   
 
 
@@ -1066,6 +1066,7 @@ visibility: visible;
     flex-shrink: 0;
     background-color: #54FF65;
     color: black;
+    border-radius: 0px;
   
   }
 
@@ -1073,6 +1074,17 @@ visibility: visible;
     justify-content: center;
     align-content: center;
     align-items: center;
+  }
+
+  ::-webkit-scrollbar {
+    background-color: transparent;
+  }
+
+  .lottomainindex {
+
+  font-size: 80px;
+  font-weight: 600;
+  line-height: 80px;
   }
 
   
