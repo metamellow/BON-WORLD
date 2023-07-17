@@ -961,6 +961,16 @@ visibility: visible;
   .lotto {
     display: flex;
     justify-content: space-around;
+    
+   
+  }
+
+  .lotto2 {
+    display: inline-flex;
+justify-content: center;
+align-items: center;
+    
+   
   }
 
   .lottobutton {
@@ -1009,6 +1019,9 @@ visibility: visible;
 
   .lottoplayerchoice {
     align-items: center;
+    justify-content: center;
+    text-align: center;
+   
   }
 
   .lottotitle {
@@ -1016,4 +1029,38 @@ visibility: visible;
     font-size: 36px;
     color: #54ff65;
     text-align: center;
+    
+
   }
+
+  .lottotitle2 {
+   
+    color: #54ff65;
+    text-align: center;
+    border: 1px solid #54FF65;
+    background: #41FF54;
+    color: black;
+    width: 124px;
+    height: 42px;
+    color: #000;
+    align-content: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+  
+    
+
+  }
+
+  .buttonplayer {
+    width: 124px;
+    height: 42px;
+    flex-shrink: 0;
+    background-color: #54FF65;
+    color: black;
+  
+  }
+
+  

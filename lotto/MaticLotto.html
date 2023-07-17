@@ -169,16 +169,23 @@
               </button>
             </div>
           </div>
-    </div>
-<hr>
+          </div>
+          <hr>
           <!-- SHOW PLAYER 1 WALLET ADDRESS -->
+         
+         
           <div class="lotto"> <!--players -->
-          <div class="lottoplayerchoice"> <!--players 1 -->
-              <p class="lottoplayertitle">PLAYER 1</p>
-              <img src="../images/coin.png">
+           
+          <div class=""> <!--players 1 -->
+            <div class="lotto2">
+            <img src="../images/coin.png"></div>
+           
+            <div class="lotto">
+              <p class="lottotitle2">PLAYER 1</p>
+              
               <label for="CheckCurrentLotto_player1W"></label>
               <button
-                class="lottobuttonplayers"
+                class=""
                 name="CheckCurrentLotto_player1W"
                 id="HTML_button_3"
                 onclick="DappInterface_.CheckCurrentLotto();"
@@ -187,15 +194,20 @@
               </button>
             </div>
 
+            </div>
+
+            <div> X </div>
             
           <!-- SHOW PLAYER 2 WALLET ADDRESS -->
     
-          <div > <!--players 2 -->
-            <p>PLAYER 2</p>
-            
+          <div> <!--players 2 -->
+            <img src="../images/coin.png">
+            <div class="lotto"> <!--player2button-->
+            <p class="lottotitle2">PLAYER 2</p>
+          
               <label for="CheckCurrentLotto_player2W"></label>
               <button
-                class="lottobuttonplayers"
+                class=""
                 name="CheckCurrentLotto_player2W"
                 id="HTML_button_4"
                 onclick="DappInterface_.CheckCurrentLotto();"
@@ -204,7 +216,7 @@
               </button>
           </div>
     </div>
-    
+          </div>
     
           <div> <!--submit bet-->
             <div>
@@ -221,24 +233,25 @@
           </div>
 
 
-      <!-- ____________________________  PAST LOTTO  _____________________________ -->
+    </div>
 
+
+
+      <!-- ____________________________  PAST LOTTO  _____________________________ -->
+      
       <div class="lottotitle" id="pastLotto">
         <div id="MaticLotto">
         <p>
           <hr>  --- PAST LOTTOS --- <hr>
         </p>
         </div>
-      
+      </div>
 
-
+       
       
-     
-      </div>  
          <!-- ENTER NUMBER -->
-      
-
-          <div>
+    
+           <!--round-->
             <form>
               <p>PAST ROUND</p>
               <label for="CheckPastLotto" class="amount"></label>
@@ -253,15 +266,11 @@
                 required
               />
             </form>
-          </div>
+          
        
-
-         
          <!-- CHECK WINNER WALLET -->
-
-          <div class="lottodisplay">   
- 
- 
+        <div class="lotto">
+        
             <div class="lottocharts">
             <p>WINNER WALLET</p>
             <label for="CheckPastLotto"></label>
@@ -287,12 +296,10 @@
             >
               -check reward-
             </button>
-          </div>
-        </div>
-
-
+            </div>
+     
          <!-- CHECK WINNER CLAIMED -->
-        <div class="lottodisplay">
+           <div class="lottodisplay">
           <div class="lottocharts">
             <p>CLAIMED STATUS</p>
             <label for="CheckPastLotto"></label>
@@ -306,47 +313,46 @@
             </button>
           </div>
          <!-- CLAIM NUMBER -->
-          
-         <div class="lottocharts">
-            <p>((CLAIM))</p> 
-            <label for="ClaimPastLotto"></label>
-            <button
-              class="lottobutton"
-              name="CheckPastLotto_submitCheck"
-              id="HTML_button_10"
-              onclick="DappInterface_.Claim_Loader();"
-            >
-              CLAIM
-            </button>
-          </div>
-        
+           </div>
+    
+           
+           </div>
+           </div>
 
-        
+
+        <div class="lottocharts"> <!--clain-->
+             <label for="ClaimPastLotto"></label>
+             <button
+               class="lottobuttonbet"
+               name="CheckPastLotto_submitCheck"
+               id="HTML_button_10"
+               onclick="DappInterface_.Claim_Loader();"
+             >
+               CLAIM
+             </button>
         </div>
-    </div>
+      
         <!-- ENTER NUMBER and CLAIM REWARD --> 
 
       <!-- ________________________________________________________________________ -->
       <!-- ______________________________  LOTTO END  _____________________________ -->
       <!-- ________________________________________________________________________ -->
 
-   
-    
-
     <hr>
-
-  <footer>
+       </div>
+    <footer>
 
     <div>
     <img src="../images/fav.png"></div>
-   <div class="copyright"> <p>Copyright © Bank of Nowhere</p> </div>
-   <div> <img src="images/moduluslogogreen.svg"></div>
+    <div class="copyright"> <p>Copyright © Bank of Nowhere</p> </div>
+    <div> <img src="images/moduluslogogreen.svg"></div>
 
     <div id="page-scripts">
       <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
       <script src="MaticLotto.js" type="application/javascript"></script>
     </div>
     
-  </footer>
+    </footer>
+
   </body>
 </html>
