@@ -966,6 +966,14 @@ visibility: visible;
   
   }
 
+  .lotto4 {
+    
+display: inline-flex;
+justify-content: center;
+align-items: center;
+  
+  }
+
   .lotto3 {
     display: flex;
     justify-content: center;
@@ -1079,12 +1087,13 @@ visibility: visible;
   ::-webkit-scrollbar {
     background-color: transparent;
   }
+  
 
   .lottomainindex {
 
-  font-size: 80px;
+  font-size: 60px;
   font-weight: 600;
-  line-height: 80px;
+  line-height: 60px;
   }
 
   
