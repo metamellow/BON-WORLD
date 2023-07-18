@@ -156,7 +156,9 @@ class DappInterface {
 
     // --- @DEV this is called anytime the inputValue is changed (ie on checkCurrent, changed input manually, etc)
     // ------------------------------------------------- fold up this info to make it cleaner, copy the fold from the BANK staking (HOW TO PLAY) could also be a fold up
-    async CheckPastLotto() {
+ // both lotto functions could use restricted size mini loops to allow for future growth
+  
+async CheckPastLotto() {
         try { const { ethereum } = window;
             if (ethereum) {
                 const provider = new ethers.providers.Web3Provider(ethereum);
