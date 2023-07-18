@@ -20,22 +20,21 @@ function showSlides(n) {
   slides[slideIndex - 1].style.display = 'flex';
 }
 
-
-var slides = document.getElementsByClassName("slide");
-var dots = document.getElementsByClassName("dot");
+var slides = document.getElementsByClassName('slide');
+var dots = document.getElementsByClassName('dot');
 var currentSlide = 0;
 
 showSlide(currentSlide);
 
 function showSlide(n) {
   for (var i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
+    slides[i].style.display = 'none';
   }
   for (var i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
+    dots[i].className = dots[i].className.replace(' active', '');
   }
-  slides[n].style.display = "block";
-  dots[n].className += " active";
+  slides[n].style.display = 'block';
+  dots[n].className += ' active';
   currentSlide = n;
 }
 
@@ -60,4 +59,3 @@ function jumpToSlide(n) {
 }
 
 setInterval(nextSlide, 5000); // Change slide every 3 seconds
-

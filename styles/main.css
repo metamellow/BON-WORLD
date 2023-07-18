@@ -1,13 +1,8 @@
-@font-face {
-  font-family: 'Poppins', sans-serif;
-}
-
-
 body {
   margin: 30px;
   padding: 0;
   font-family: Arial, sans-serif;
- background-image: url(../images/background.png);
+  background-image: url(../images/background.png);
   background-attachment: fixed;
   font-family: 'Poppins', sans-serif;
   color: whitesmoke;
@@ -22,28 +17,23 @@ hr {
   margin-bottom: 10px;
 }
 
-
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
- 
-  
 }
 
 nav a {
-  color:#54ff65;
+  color: #54ff65;
   text-decoration: none;
   padding: 10px;
 }
 
 nav a:hover {
-  color:aliceblue;
+  color: aliceblue;
   text-decoration: none;
   padding: 10px;
 }
-
-
 
 .logo-pequeno {
   display: none;
@@ -54,7 +44,8 @@ nav a:hover {
   font-size: 1.5em;
   cursor: pointer;
   display: none;
-  margin-right: 1em;
+  margin: 1rem;
+  color: #54ff65;
 }
 
 .nav-links {
@@ -66,7 +57,6 @@ nav a:hover {
 
 .nav-links a {
   display: block;
-  padding: 1em;
   text-decoration: none;
 }
 
@@ -80,26 +70,31 @@ nav a:hover {
   .menu-toggle {
     display: flex;
     align-items: center;
-    margin-left: 15px;
+    position: absolute;
+    right: 25px;
   }
 
   .nav-links {
     position: absolute;
-
+    background-color: black;
     width: 100%;
     height: max-content;
-    top: 60px;
-    left: -100%;
+    top: 120px;
+    left: -101%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     transition: all 0.3s ease-out;
-   
   }
 
   .nav-active {
     left: 0;
+  }
+
+  nav li {
+    border: 1px solid #54ff65;
+    width: 100%;
   }
 
   .logo-grande {
@@ -115,7 +110,6 @@ nav a:hover {
     flex-direction: column;
     height: max-content !important;
   }
-
 
   .conteudo-carousel {
     height: max-content;
@@ -144,13 +138,11 @@ nav a:hover {
 
 .carousel {
   display: flex;
-
 }
 
 .slide {
   width: 100%;
   margin-left: 0%;
-
 }
 
 .conteudo-carousel {
@@ -244,7 +236,7 @@ footer {
 .copyright {
   display: flex;
   justify-content: center;
- 
+
   color: #54ff65;
 }
 
@@ -275,19 +267,19 @@ select {
   text-align: center;
 }
 .selecttop {
-  width:100%;
+  width: 100%;
   border-radius: 0px;
 }
 .selecttop:hover {
-  width:100%;
+  width: 100%;
   border-radius: 0px;
 }
 
 select:hover {
   color: whitesmoke;
-  background-color:##54ff65;
+  background-color: #54ff65;
   border-radius: 0px;
-  height:42px;
+  height: 42px;
 }
 
 select:focus {
@@ -299,7 +291,6 @@ select:focus {
 }
 
 input[type='number'] {
- 
   color: #54ff65;
   width: 350px;
   height: 30px;
@@ -308,7 +299,6 @@ input[type='number'] {
   border-radius: 0px;
   background-color: transparent;
   border: 2px solid #54ff65;
- 
 }
 input[type='number']:hover {
   background-color: transparent;
@@ -422,12 +412,11 @@ input[type='text'] {
   font-size: 16px;
   border: 0px solid transparent;
   background-color: transparent;
-  border-radius:0px;
+  border-radius: 0px;
   border: 2px solid #54ff65;
 }
 
 input[type='description'] {
-  
   color: #54ff65;
   width: 100%;
   height: 400px;
@@ -454,9 +443,8 @@ input[type='submit'] {
 
 input:hover[type='submit'] {
   background-color: #54ff65;
-  border-radius:0px;
+  border-radius: 0px;
   transition: all 0.3s ease-in;
-  
 }
 
 input[type='checkbox'] {
@@ -498,7 +486,6 @@ input[type='checkbox']:checked + label:before {
   gap: 15px;
   flex-direction: row !important;
 }
-
 
 .dapp-menu div {
   margin: 0 10px;
@@ -595,12 +582,10 @@ a {
   color: #54ff65;
 }
 
-
 .slide-container {
   display: flex;
   width: 100%;
   height: 100%;
-  
 }
 
 .slide img {
@@ -628,104 +613,96 @@ a {
 
 .cftitle {
   color: #54ff65;
- 
-  }
-
+}
 
 .cftop {
   display: flex;
   align-items: center;
-  gap:16px;
+  gap: 16px;
   font-weight: 600;
   font-size: 40px;
   justify-content: space-between;
-} 
+}
 
 .cftop a {
   font-size: 16px;
   font-weight: 100;
   margin: 8px;
   text-decoration: none;
-} 
+}
 .cftop a:hover {
   color: aliceblue;
 }
 
-
 .cftitleadjust {
   display: flex;
   align-items: center;
-} 
-.cftitleadjust img{
+}
+.cftitleadjust img {
   width: 100%;
   height: 100%;
-} 
-
-.whitepapertittle {
-font-weight: 600;
-color: #54ff65;
-font-size: 70px;
-text-align: center;
-text-transform: uppercase;
-align-items: center;
-margin: 0px;
-
 }
 
-.wpcontent{
+.whitepapertittle {
+  font-weight: 600;
+  color: #54ff65;
+  font-size: 70px;
+  text-align: center;
+  text-transform: uppercase;
+  align-items: center;
+  margin: 0px;
+}
+
+.wpcontent {
   display: flex;
   align-items: center;
   gap: 10px;
   padding-right: 10px;
-  
-  }
+}
 
-  .wpimagetoken {
-    width: 100%;
-    margin-top: 0px;
-    gap:10px;
-    margin-top: 60px;
-    margin-bottom: 60px;
-  }
+.wpimagetoken {
+  width: 100%;
+  margin-top: 0px;
+  gap: 10px;
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
 
-  .wptoketext {
-    justify-content: center;
-    align-items: center;
-    text-align: left;
-    margin-top: 60px;
-  }
+.wptoketext {
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+  margin-top: 60px;
+}
 
-  .wpcontent p {
-    padding: 30px;
-  }
-  
-  .wpsubtitle {
-    color: #54ff65;
-  }
+.wpcontent p {
+  padding: 30px;
+}
 
-  .wpsub {
+.wpsubtitle {
+  color: #54ff65;
+}
+
+.wpsub {
   display: flex;
-  gap:10px;
-  }
+  gap: 10px;
+}
 
-  .wproad {
-    display: flex;
-    width: 100%;
+.wproad {
+  display: flex;
+  width: 100%;
+}
+.wproadinternal {
+  width: 50%;
+}
 
-  }
-  .wproadinternal{
-    width: 50%;
-  }
+.wpcontent p {
+  margin: 0px;
+}
 
-  .wpcontent p {
-margin: 0px;
-
-  }
-
-  .cfmenu {
+.cfmenu {
   justify-content: space-between;
   align-items: center;
-  
 }
 
 .cfmid {
@@ -751,7 +728,6 @@ margin: 0px;
   padding: 10px;
 }
 
-
 .cftrouble {
   display: flex;
   justify-content: center;
@@ -764,7 +740,7 @@ margin: 0px;
   font-size: 30px;
   text-transform: uppercase;
   text-align: left;
-} 
+}
 
 .cfcoast {
   display: flex;
@@ -783,82 +759,72 @@ margin: 0px;
 
 @media screen and (max-width: 767px) {
   footer {
-   visibility: hidden;
-  
-   
+    visibility: hidden;
   }
- 
 }
 
 @media screen and (max-width: 767px) {
   .slide-container {
-   display: inline-block;
-  
+    display: inline-block;
   }
 
   .slide {
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
   }
- 
 }
 
-
 @media screen and (max-width: 767px) {
-  .wpcontent{
+  .wpcontent {
     display: block;
-   flex-direction: row;
-   align-items: center;
-   text-align: center;
-    }
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+  }
 }
 
 @media screen and (max-width: 767px) {
   body {
-    
     margin: 18px;
     font-size: 28px;
     background-image: none;
-    }
+  }
 }
 
 @media screen and (max-width: 767px) {
   .whitepapertittle {
     font-size: 48px;
-    }
+  }
 }
 
 @media screen and (max-width: 767px) {
   hr {
     stroke: 0px;
     border: 0px;
- margin: 20px;
-    }
+    margin: 20px;
+  }
 }
 
 @media screen and (max-width: 767px) {
   .wpimagetoken {
     width: 100%;
     size-adjust: 1000px;
-    }
+  }
 }
 
 @media screen and (max-width: 767px) {
-.cftrouble {
-  display: block;
- 
+  .cftrouble {
+    display: block;
+  }
 }
-}
-
 
 @media screen and (max-width: 767px) {
-.dapp-menu-mint {
-  display: flex !important;
-  text-align: justify;
-  gap: 15px;
-  flex-direction: column !important;
-}
-
+  .dapp-menu-mint {
+    display: flex !important;
+    text-align: justify;
+    gap: 15px;
+    flex-direction: column !important;
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -868,248 +834,195 @@ margin: 0px;
   }
 
   .cftitleadjust {
-  font-size: 80px;
-
+    font-size: 80px;
   }
   .cftop a {
     font-size: 30px;
-  
-    }
+  }
 
-    .cfmid {
-      display: block;
-    }
+  .cfmid {
+    display: block;
+  }
 
-    .cfmid {
-      width: 100%;
-    }
+  .cfmid {
+    width: 100%;
+  }
 
-    .cfsub {
-      font-size: 30px;
-    }
-
+  .cfsub {
+    font-size: 30px;
+  }
 }
-
 
 @media screen and (max-width: 767px) {
   .logo-grande {
     visibility: none;
   }
-  }
+}
 
-  @media screen and (max-width: 767px) {
+@media screen and (max-width: 767px) {
   select {
     width: 100%;
- 
   }
 }
 
 @media screen and (max-width: 767px) {
   button {
     width: 100%;
- 
   }
 }
-
 
 @media screen and (max-width: 767px) {
   nav {
     font-size: 16px;
-    
   }
 }
 
 .slide_image_web {
-visibility: visible;
-
+  visibility: visible;
 }
 
 @media screen and (max-width: 767px) {
   .slide_image_web {
-    display:none;
- 
+    display: none;
   }
 }
 
 .slide_image_cel {
-  display:none;
-  
+  display: none;
+}
+
+@media screen and (max-width: 767px) {
+  .slide_image_cel {
+    display: visible;
   }
-  
-  @media screen and (max-width: 767px) {
-    .slide_image_cel {
-      display: visible;
-      
-   
-    }
-  }
+}
 
+.imgadjust {
+  padding: 10px;
+}
 
-  .imgadjust {
-    padding: 10px;
-  }
+.lotto {
+  display: inline-flex;
+  align-items: center;
+  gap: 0px;
+  justify-content: space-between;
+  text-align: center;
+}
 
-  .lotto {
-    display: inline-flex;
-    align-items: center;
-    gap: 0px;
-    justify-content: space-between;
-    text-align: center;
-    
-    
-  }
+.lottodisplay {
+  display: inline-flex;
+  align-items: center;
+  gap: 0px;
+}
 
-  
-  .lottodisplay {
-    display: inline-flex;
-    align-items: center;
-    gap: 0px;
-   
-    
-    
-  }
+.lotto2 {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.lotto4 {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
 
-  .lotto2 {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-   
-  
-  }
+.lotto3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
 
-  .lotto4 {
-    
-display: inline-flex;
-justify-content: center;
-align-items: center;
-  
-  }
-
-  .lotto3 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 50px;
-    
-   
-  }
-  
-
-
-  .lottobutton {
+.lottobutton {
   width: 350px;
   gap: 10px;
   margin: 10px;
   display: block;
   justify-content: space-between;
-  
- 
+}
 
-  }
+.lottobuttonbet {
+  width: 100%;
+  gap: 10px;
+  margin: 10px;
+  display: block;
+  justify-content: space-between;
+}
 
+.lottocharts {
+  display: block;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between;
+}
 
-  .lottobuttonbet {
-    width: 100%;
-    gap: 10px;
-    margin: 10px;
-    display: block;
-    justify-content: space-between;
-   
-  
-    }
+.lottoplayertitle {
+  color: #54ff65;
+  font-weight: 600;
+  text-align: center;
+  font-size: 24px;
+}
 
-  .lottocharts {
-    display: block;
-    align-items: center;
-    text-align: center;
-    justify-content: space-between;
-    
-  }
+.lottoplayerchoice {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
 
-  .lottoplayertitle {
-    color: #54ff65;
-    font-weight: 600;
-    text-align: center;
-    font-size: 24px;
-  }
+.lottotitle {
+  font-weight: 600;
+  font-size: 36px;
+  color: #54ff65;
+  text-align: center;
+}
 
-  .lottoplayerchoice {
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-   
-  }
+.lottotitle2 {
+  width: 280px;
+  margin: 10px;
+  text-align: center;
+  justify-content: space-between;
+  border: none;
+  border-radius: 0px;
+  background-color: #54ff65;
+  color: black;
+  gap: 0px;
+  font-weight: 600;
+  font-size: 24px;
+  align-items: center;
+}
 
-  .lottotitle {
-    font-weight: 600;
-    font-size: 36px;
-    color: #54ff65;
-    text-align: center;
-    
+.lottobuttonplayers {
+  width: 280px;
+  margin: 10px;
+  display: block;
+  border: solid;
+  border-radius: 0px;
+  align-items: center;
+  justify-content: center;
+}
 
-  }
+.buttonplayer {
+  width: 124px;
+  height: 42px;
+  flex-shrink: 0;
+  background-color: #54ff65;
+  color: black;
+  border-radius: 0px;
+}
 
-  .lottotitle2 {
-   
-    width: 280px;
-    margin: 10px;
-    text-align: center;
-    justify-content: space-between;
-    border: none;
-    border-radius: 0px;
-    background-color: #54FF65;
-    color: black;
-    gap: 0px;
-    font-weight: 600;
-    font-size: 24px;
-    align-items: center;
-    
-    
-  
-  }
+.lottovs {
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
 
-  .lottobuttonplayers {
-    width: 280px;
-    margin: 10px;
-    display: block;
-    border: solid;
-    border-radius: 0px;
-    align-items: center;
-    justify-content: center;
-    
-  
-  }
-  
+::-webkit-scrollbar {
+  background-color: transparent;
+}
 
-
-
-  .buttonplayer {
-    width: 124px;
-    height: 42px;
-    flex-shrink: 0;
-    background-color: #54FF65;
-    color: black;
-    border-radius: 0px;
-  
-  }
-
-  .lottovs {
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-  }
-
-  ::-webkit-scrollbar {
-    background-color: transparent;
-  }
-  
-
-  .lottomainindex {
-
+.lottomainindex {
   font-size: 60px;
   font-weight: 600;
   line-height: 60px;
-  }
-
-  
+}
