@@ -1,13 +1,14 @@
 /*
 - add sound effects to buttons 
+- test the new stuff on contract on Mumbai first
 - 
 */
 
 
 
-// _____________________________________________________________
-// _____________ ESTABLISH ALL SMART CONTRACT ABIs _____________
-// _____________________________________________________________
+// _______________________________________________________
+// __________ ESTABLISH ALL SMART CONTRACT ABIs __________
+// _______________________________________________________
 
 // "LottoV2"
 const CONTRACT1_ABI = (
