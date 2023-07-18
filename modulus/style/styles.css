@@ -10,6 +10,10 @@ strong {
   color:firebrick;
 }
 
+nav {
+  margin: 0px;
+}
+
 
 .navbar {
     background-color:#D7112C;
@@ -397,4 +401,15 @@ margin-left: 100px;
   border: aliceblue solid 2px;
   padding: 10px;
   margin-left: 20px;
+}
+
+.comics {
+  margin-top: 0px;
+}
+
+.comics img {
+  width: 100%;
+  margin: -5px;
+  margin-top: 0px;
+  margin-bottom: -3px;
 }
