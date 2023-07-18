@@ -23,3 +23,12 @@ closeButton.addEventListener('click', function() {
   // Hide the modal
   modal.style.display = 'none';
 });
+
+
+
+
+
+
+document.getElementById("imagem").addEventListener("contextmenu", function(e) {
+  e.preventDefault();
+});
