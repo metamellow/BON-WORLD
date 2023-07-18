@@ -387,3 +387,14 @@ font-weight: 700;
 margin-left: 100px;
 
 }
+
+
+.connect {
+  font-size: 8px;
+  width: 150px;
+  height: 30px;
+  color:aliceblue;
+  border: aliceblue solid 2px;
+  padding: 10px;
+  margin-left: 20px;
+}
