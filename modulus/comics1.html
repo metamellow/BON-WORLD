@@ -11,6 +11,8 @@
 
 </head>
 <body>
+  <header>
+    <nav>
   <div class="navbar">
     <div class="logo">
       <img src="images/mvlogo.svg">
@@ -24,8 +26,15 @@
       <a href="comics.html" >comics</a>
       <a href="nfts.html" >nfts</a>
       <a href="https://cultdao.io/" target="_blank">cult.dao</a>
-      <button> connect</button>
-    
+     
+      <button
+      class="connect"    
+      id="connectButtonHTML"
+      onclick="BONNFT1minter_.connectWallet();"
+    >
+      CONNECT WALLET
+    </button>
+  </nav>
     </div>
     
     <div class="menu-toggle" id="menuToggle">
@@ -34,10 +43,20 @@
         <span></span>
       </div>
   </div>
+</header>
 
   <div> 
-<img src="images/cult3d.png"> 
-<p>First comics</p>
+  <p> better </p>
+  </div>
+
+  <div class="comics"> 
+  
+    <img src="../modulus/comics1/pg1.png"> 
+    <img src="../modulus/comics1/pg2.png"> 
+    <img src="../modulus/comics1/pg3.png">
+    <img src="../modulus/comics1/pg4.png">
+    <img src="../modulus/comics1/pg5.png">
+    <img src="../modulus/comics1/pg6.png">
 
   </div>
 
@@ -60,6 +79,6 @@
     </div>
     <script src="script.js"></script>
   </footer>
-  <script src="script.js"></script>
+
 </body>
 </html>
