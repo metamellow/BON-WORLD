@@ -1,5 +1,5 @@
 /*
-- add sound effects to buttons 
+- add sound effects to buttons; hopefully load it in via html andor css
 - test the new stuff on contract on Mumbai first
 - 
 */
