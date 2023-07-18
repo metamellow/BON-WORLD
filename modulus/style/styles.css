@@ -6,21 +6,23 @@ body {
     align-items: center;
 }
 
-
+strong {
+  color:firebrick;
+}
 
 
 .navbar {
     background-color:#D7112C;
     display: flex;
     align-items: center;
-    color: aliceblue;
-    padding: 30px;
+    padding: 15px;
     margin: 0px;
     position:fixed;
     width: 100%;
     
   }
   
+
   .logo {
     flex: 0 0 auto;
     
@@ -28,18 +30,19 @@ body {
   
   .logo img {
     height: 40px;
+    width: 200px;
   }
   
   .links {
     flex: 1 0 auto;
     text-align: right;
-    font-size: 24px;
+    font-size: 18px;
     margin-right: 90px;
   }
   
   .links a {
     text-decoration: none;
-    margin: 0 20px;
+    margin: 0 8px;
     color: white;
     font-weight: 500;
     
@@ -47,7 +50,7 @@ body {
   
   .links a:hover {
     text-decoration: none;
-    margin: 0 20px;
+    margin: 0 8px;
     color: black;
     
   }
@@ -164,14 +167,25 @@ button:hover {
   color: #D7112C;
 }
   
-.footer {
-    background-color: transparent;
-    padding: 20px;
+footer {
+    
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #D7112C;
+    background-color: transparent;
+    border: #D7112C solid 0.1px;
+    margin-left: 10px;
+    margin-right: 10px;
     margin-top: 0px;
+    border-radius: 8px;
+    
+  }
+
+  footer img  {
+    width: 100px;
   }
   
   .logo-center {
@@ -196,8 +210,7 @@ button:hover {
   }
   
   .social-media img {
-    width: 100%;
-    height: 100%;
+    width: 30px;
   }
 
   @media screen and (max-width: 768px) {
