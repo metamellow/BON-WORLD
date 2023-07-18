@@ -276,7 +276,7 @@ select {
 }
 
 select:hover {
-  color: whitesmoke;
+  color: black;
   background-color: #54ff65;
   border-radius: 0px;
   height: 42px;
@@ -487,6 +487,12 @@ input[type='checkbox']:checked + label:before {
   flex-direction: row !important;
 }
 
+.dapp-menu-mint button {
+  height: 45px;
+  width: 300px;
+  text-align: center;
+}
+
 .dapp-menu div {
   margin: 0 10px;
 }
@@ -688,10 +694,42 @@ a {
   gap: 10px;
 }
 
+.tokeniomics {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.roadmap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.roadmap > div p {
+  text-align: justify;
+}
+
+.aprendix {
+  display: flex;
+  flex-direction: row;
+}
+
+.aprendix .initial-item {
+  display: flex;
+  align-items: center;
+}
+
+.aprendix-item {
+  display: flex;
+  flex-direction: column;
+}
+
 .wproad {
   display: flex;
   width: 100%;
 }
+
 .wproadinternal {
   width: 50%;
 }
@@ -758,12 +796,22 @@ a {
 }
 
 @media screen and (max-width: 767px) {
+  .tokeniomics {
+    flex-direction: column;
+  }
+
+  .roadmap {
+    grid-template-columns: 1fr;
+  }
+
+  .aprendix {
+    flex-direction: column;
+  }
+
   footer {
     visibility: hidden;
   }
-}
 
-@media screen and (max-width: 767px) {
   .slide-container {
     display: inline-block;
   }
@@ -772,72 +820,68 @@ a {
     width: 100%;
     height: 100%;
   }
-}
 
-@media screen and (max-width: 767px) {
   .wpcontent {
     display: block;
     flex-direction: row;
     align-items: center;
     text-align: center;
   }
-}
 
-@media screen and (max-width: 767px) {
   body {
     margin: 18px;
     font-size: 28px;
     background-image: none;
   }
-}
 
-@media screen and (max-width: 767px) {
   .whitepapertittle {
     font-size: 48px;
   }
-}
 
-@media screen and (max-width: 767px) {
   hr {
     stroke: 0px;
     border: 0px;
     margin: 20px;
   }
-}
 
-@media screen and (max-width: 767px) {
   .wpimagetoken {
     width: 100%;
     size-adjust: 1000px;
   }
-}
 
-@media screen and (max-width: 767px) {
   .cftrouble {
     display: block;
   }
-}
 
-@media screen and (max-width: 767px) {
   .dapp-menu-mint {
     display: flex !important;
     text-align: justify;
     gap: 15px;
     flex-direction: column !important;
   }
-}
 
-@media screen and (max-width: 767px) {
   .cftop {
     display: flex !important;
     flex-direction: column !important;
+  }
+
+  .cftitle {
+    font-size: 36px;
+  }
+
+  .cfmid50 {
+    width: 100%;
   }
 
   .cftitleadjust {
     font-size: 80px;
   }
   .cftop a {
-    font-size: 30px;
+    font-size: 18px;
+  }
+
+  .dapp-menu-mint button {
+    width: 100%;
   }
 
   .cfmid {
@@ -851,29 +895,33 @@ a {
   .cfsub {
     font-size: 30px;
   }
-}
 
-@media screen and (max-width: 767px) {
   .logo-grande {
     visibility: none;
   }
-}
 
-@media screen and (max-width: 767px) {
   select {
     width: 100%;
   }
-}
 
-@media screen and (max-width: 767px) {
   button {
     width: 100%;
   }
-}
 
-@media screen and (max-width: 767px) {
   nav {
     font-size: 16px;
+  }
+
+  .slide_image_web {
+    display: none;
+  }
+
+  .slide_image_cel {
+    display: visible;
+  }
+
+  .lotto3 {
+    flex-direction: column;
   }
 }
 
@@ -881,20 +929,8 @@ a {
   visibility: visible;
 }
 
-@media screen and (max-width: 767px) {
-  .slide_image_web {
-    display: none;
-  }
-}
-
 .slide_image_cel {
   display: none;
-}
-
-@media screen and (max-width: 767px) {
-  .slide_image_cel {
-    display: visible;
-  }
 }
 
 .imgadjust {
@@ -932,6 +968,10 @@ a {
   justify-content: center;
   align-items: center;
   gap: 50px;
+}
+
+.lotto3 img {
+  width: 100%;
 }
 
 .lottobutton {
@@ -1025,4 +1065,22 @@ a {
   font-size: 60px;
   font-weight: 600;
   line-height: 60px;
+}
+
+.hide-mobile {
+  display: block;
+}
+
+.show-mobile {
+  display: none;
+}
+
+@media screen and (max-width: 767px) {
+  .hide-mobile {
+    display: none;
+  }
+
+  .show-mobile {
+    display: block;
+  }
 }

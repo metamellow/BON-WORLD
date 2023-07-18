@@ -3,23 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <title>Bank Of Nowhere $BON</title>
-        <meta name="title" content="Bank Of Nowhere $BON" />
-        <meta name="description" content="// DONT TRUST THE BANKERS -- TRUST THE TECHNOLOGY //" />
+    <meta name="title" content="Bank Of Nowhere $BON" />
+    <meta
+      name="description"
+      content="// DONT TRUST THE BANKERS -- TRUST THE TECHNOLOGY //"
+    />
 
-        <!-- Facebook -->
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://bankofnowhere.world" />
-        <meta property="og:title" content="Bank Of Nowhere $BON" />
-        <meta property="og:description" content="// DONT TRUST THE BANKERS -- TRUST THE TECHNOLOGY //" />
-        <meta property="og:image" content="images/bonlib.png" />
+    <!-- Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://bankofnowhere.world" />
+    <meta property="og:title" content="Bank Of Nowhere $BON" />
+    <meta
+      property="og:description"
+      content="// DONT TRUST THE BANKERS -- TRUST THE TECHNOLOGY //"
+    />
+    <meta property="og:image" content="images/bonlib.png" />
 
-        <!-- Twitter -->
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="https://bankofnowhere.world" />
-        <meta property="twitter:title" content="Bank Of Nowhere $BON" />
-        <meta property="twitter:description" content="// DONT TRUST THE BANKERS -- TRUST THE TECHNOLOGY //" />
-        <meta property="twitter:image" content="https://raw.githubusercontent.com/s0crates-eth/gm/main/images/1500x500.jpg" />
-        
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://bankofnowhere.world" />
+    <meta property="twitter:title" content="Bank Of Nowhere $BON" />
+    <meta
+      property="twitter:description"
+      content="// DONT TRUST THE BANKERS -- TRUST THE TECHNOLOGY //"
+    />
+    <meta
+      property="twitter:image"
+      content="https://raw.githubusercontent.com/s0crates-eth/gm/main/images/1500x500.jpg"
+    />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="../styles/main.css" />
     <link
@@ -31,182 +43,209 @@
     <link rel="icon" href="../images/fav.png" />
   </head>
 
-
   <body>
     <!-- NAVBAR -->
     <header>
-
-      <div>
-        <img class="logo-grande" src="../images/bonlogo.png" alt="Logo"/>
+      <div class="logo-container">
+        <img src="../images/bonlogo.png" alt="Logo" class="logo-grande" />
         <img src="../images/fav.png" alt="Logo" class="logo-pequeno" />
-        
       </div>
-      
       <div class="menu-toggle">
         <i class="fas fa-bars"></i>
       </div>
-
-        <div>
-        <nav>
-        
-        <a href="/index.html">home</a>
-        <a href="/whitepaper.html">whitepaper</a>
-        <a href="/lotto/index.html">lotto</a>
-        <a href="/dapp.html"> crowdfunding</a>
-        </div>
-      
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">home</a></li>
+          <li><a href="whitepaper.html">whitepaper</a></li>
+          <li><a href="lotto/index.html">lotto</a></li>
+          <li><a href="nftcollection/BONNFT1.html"> crowdfunding</a></li>
+        </ul>
       </nav>
-    </div>
     </header>
     <!-- NAVBAR -->
 
-    <hr>
+    <hr />
     <!-- END NAVBAR -->
-    
+
     <div class="cftop">
       <div class="cftitleadjust">
-      <img src="../images/cficon.png">
-      <p class="cftitle ">crowdfunding</p></div>
-      <div class="wpsubtitle"> moduluverse </div>
+        <img src="../images/cficon.png" />
+        <p class="cftitle">crowdfunding</p>
+      </div>
+      <div class="wpsubtitle">moduluverse</div>
       <div>
         <a href="../crowdfunding/rules.html"> crowdfunding guide </a>
         <a href="../crowdfunding/forms.html">send your project</a>
       </div>
     </div>
-    <hr>
 
-  <!-- DAPP MENU START -->
+    <hr />
 
-  <!-- DAPP-MENU -->
-  <div class="dapp-menu-mint" style>
-    <select
-    class="selecttop"
-    id="nftCollectionDropdownHTML"
-    onchange="BONNFT1minter_.onSelectNFTCollection()"
-    >
-      <option selected>SELECT THE PROJECT</option>
-      <option value="BONNFT1" >BON NFT Collection #1</option>
-      <option value="BONxRVLT">Modulusverse</option>
-      <option value="BONxLIB" >Liberty Uncensored</option>
-    </select>
-    
-  </div>
-</div>
+    <!-- DAPP MENU START -->
+
+    <!-- DAPP-MENU -->
+    <div class="dapp-menu-mint">
+      <select
+        class="selecttop"
+        id="nftCollectionDropdownHTML"
+        onchange="BONNFT1minter_.onSelectNFTCollection()"
+      >
+        <option selected>SELECT THE PROJECT</option>
+        <option value="BONNFT1">BON NFT Collection #1</option>
+        <option value="BONxRVLT">Modulusverse</option>
+        <option value="BONxLIB">Liberty Uncensored</option>
+      </select>
+    </div>
 
     <div id="dapp-div-image">
-      <img src="https://raw.githubusercontent.com/s0crates-eth/BON-WORLD/main/nftcollection/BONxRVLT.png"/><!-- !!!!!!!!!!! -->
+      <img
+        src="https://raw.githubusercontent.com/s0crates-eth/BON-WORLD/main/nftcollection/BONxRVLT.png"
+      /><!-- !!!!!!!!!!! -->
 
-      <div> <!--description-->
-    <h4 class="word-wrap">
-PROJECT NAME:  Modulusverse<br>
-PROJECT TYPE: Virtual<br>
-PROJECT WALLET: 0xEaCFaBA8dF608f88ae96bcCE1dA4554F66eBf0Cb<br>
-    </h4><!-- !!!!!!!!!!! -->
-<h2 class="cfsub">PROJECT DESCRIPTION:</h2>
- 
-<p>Modulusverse is an innovative project that seeks to provide a unique experience to its audience. 
-  By combining the worlds of comics, animation, and blockchain, Modulusverse creates a new form of storytelling that engages the imagination of viewers and investors.
-  The project is not only designed to entertain but also to inform the community about the latest developments in the Modulus ecosystem.<br><br>
+      <div>
+        <!--description-->
+        <h4 class="word-wrap">
+          PROJECT NAME: Modulusverse<br />
+          PROJECT TYPE: Virtual<br />
+          PROJECT WALLET: 0xEaCFaBA8dF608f88ae96bcCE1dA4554F66eBf0Cb<br />
+        </h4>
+        <!-- !!!!!!!!!!! -->
+        <h2 class="cfsub">PROJECT DESCRIPTION:</h2>
 
-  The creation of a universe of characters, each representing a different project, is a brilliant strategy to showcase the diversity of the Modulus ecosystem. The team behind the project is composed of experienced artists, programmers, and storytellers who are committed to bringing this universe to life. The NFTs, being offered for sale, represent not only a unique piece of digital art but also a ticket 
-  to access the first three comic books and be part of the Modulusverse community.<br><br>
-  
-  Modulusverse is an excellent example of the creative potential of blockchain technology. By leveraging the advantages of NFTs, the project allows investors to have a direct stake in the development of the Modulus ecosystem. The Modulusverse team has a long-term vision for the project, and with the support of the community, they aim to create a universe that will continue to grow and evolve for years to come.<br><br>
-  
-  Overall, Modulusverse is a fascinating project that combines blockchain technology with storytelling to create a new type of entertainment. It represents an excellent opportunity for investors who are looking to participate in the growth of the Modulus ecosystem while enjoying an immersive experience through comic books and animations.<br><br>
-  <br><br>
-  TWITTER LINK: <a href="https://twitter.com/modulusverse" target="_blank"> Modulusverse</a>
-</p>
-      </div>        
-<hr>
-        <div align="center">
-          <h2 class="cfcoast"><span id="nftMintCost"></span>COST: 186,900,000 RVLT (~$10 USD)</h2>
-        </div><!-- !!!!!!!!!!! -->
+        <p>
+          Modulusverse is an innovative project that seeks to provide a unique
+          experience to its audience. By combining the worlds of comics,
+          animation, and blockchain, Modulusverse creates a new form of
+          storytelling that engages the imagination of viewers and investors.
+          The project is not only designed to entertain but also to inform the
+          community about the latest developments in the Modulus ecosystem.<br /><br />
 
-        
-        <div class="dapp-menu-mint">
-          <button
+          The creation of a universe of characters, each representing a
+          different project, is a brilliant strategy to showcase the diversity
+          of the Modulus ecosystem. The team behind the project is composed of
+          experienced artists, programmers, and storytellers who are committed
+          to bringing this universe to life. The NFTs, being offered for sale,
+          represent not only a unique piece of digital art but also a ticket to
+          access the first three comic books and be part of the Modulusverse
+          community.<br /><br />
+
+          Modulusverse is an excellent example of the creative potential of
+          blockchain technology. By leveraging the advantages of NFTs, the
+          project allows investors to have a direct stake in the development of
+          the Modulus ecosystem. The Modulusverse team has a long-term vision
+          for the project, and with the support of the community, they aim to
+          create a universe that will continue to grow and evolve for years to
+          come.<br /><br />
+
+          Overall, Modulusverse is a fascinating project that combines
+          blockchain technology with storytelling to create a new type of
+          entertainment. It represents an excellent opportunity for investors
+          who are looking to participate in the growth of the Modulus ecosystem
+          while enjoying an immersive experience through comic books and
+          animations.<br /><br />
+          <br /><br />
+          TWITTER LINK:
+          <a href="https://twitter.com/modulusverse" target="_blank">
+            Modulusverse</a
+          >
+        </p>
+      </div>
+
+      <hr />
+
+      <div align="center">
+        <h2 class="cfcoast">
+          <span id="nftMintCost"></span>
+          COST: 186,900,000 RVLT (~$10 USD)
+        </h2>
+      </div>
+      <!-- !!!!!!!!!!! -->
+
+      <div class="dapp-menu-mint">
+        <button
           id="connectButtonHTML"
           class="custom-button"
-          style="height: 45px; width: 300px; text-align: center"
           onclick="NFTminter_.connectWallet();"
-          >
-            CONNECT WALLET
-          </button>
-          
-          <select
-            id="mintQuantityDropdownHTML"
-            onchange="NFTminter_.onSelectMintQuantity()"
-            required
-          >
-            <option value="" selected>Quantity..</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
-            <option value="13">13</option>
-            <option value="14">14</option>
-            <option value="15">15</option>
-            <option value="16">16</option>
-            <option value="17">17</option>
-            <option value="18">18</option>
-            <option value="19">19</option>
-            <option value="20">20</option>
-          </select>
+        >
+          CONNECT WALLET
+        </button>
+
+        <select
+          id="mintQuantityDropdownHTML"
+          onchange="NFTminter_.onSelectMintQuantity()"
+          required
+        >
+          <option value="" selected>Quantity..</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+          <option value="11">11</option>
+          <option value="12">12</option>
+          <option value="13">13</option>
+          <option value="14">14</option>
+          <option value="15">15</option>
+          <option value="16">16</option>
+          <option value="17">17</option>
+          <option value="18">18</option>
+          <option value="19">19</option>
+          <option value="20">20</option>
+        </select>
 
         <button
           id="mintButtonHTML"
           class="custom-button"
-          style="height: 45px; width: 300px; text-align: center"
           onclick="NFTminter_.askContractToMintNft();"
         >
           MINT
         </button>
-        </div>
-        <br />
+      </div>
 
+      <br />
+    </div>
+
+    <hr />
+
+    <div class="cftrouble">
+      <!--trouble-->
+
+      <div class="cftroubletitle">
+        <p>Troubleshooting:</p>
+      </div>
+
+      <div>
+        <p>
+          - Is the correct wallet address connected?<br />
+          - Do you have at least 30 MATIC in that wallet?<br />
+          - Are you connected to the Polygon network?<br />
+          - Are you already at the 5 max wallet limit?<br />
+        </p>
       </div>
     </div>
 
-        
-<hr>
-    <div class="cftrouble"> <!--trouble-->
-      
-      <div class="cftroubletitle">
-      <p>Troubleshooting:</p>
-    </div>
-<div>
-      <p>
-      - Is the correct wallet address connected?<br>
-      - Do you have at least 30 MATIC in that wallet?<br> 
-      - Are you connected to the Polygon network?<br>
-      - Are you already at the 5 max wallet limit?<br> </p>
-    </div>
-    
-  </div>
-      
-
-    </div>
-<hr>
+    <hr />
     <!--footer-->
     <footer>
       <div>
-        <img src="../images/fav.png"></div>
-       <div class="copyright"> <p>Copyright © Bank of Nowhere</p> </div>
-       <div> <img src="../images/moduluslogogreen.svg"></div>
-
+        <img src="../images/fav.png" />
+      </div>
+      <div class="copyright"><p>Copyright © Bank of Nowhere</p></div>
+      <div><img src="../images/moduluslogogreen.svg" /></div>
 
       <script src="../scripts/menu.js"></script>
-      <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
-      <script src="../nftcollection/BONxRVLT.js"></script><!-- !!!!!!!!!!! -->
+      <script
+        src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"
+        type="application/javascript"
+      ></script>
+      <script src="../nftcollection/BONxRVLT.js"></script>
+      <script src="BONNFT1.js"></script>
+      <!-- !!!!!!!!!!! -->
     </footer>
   </body>
 </html>

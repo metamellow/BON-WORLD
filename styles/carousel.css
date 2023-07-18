@@ -43,21 +43,3 @@
 .carousel-dot.active {
   background-color: #54ff65;
 }
-
-.hide-mobile {
-  display: block;
-}
-
-.show-mobile {
-  display: none;
-}
-
-@media screen and (max-width: 767px) {
-  .hide-mobile {
-    display: none;
-  }
-
-  .show-mobile {
-    display: block;
-  }
-}
