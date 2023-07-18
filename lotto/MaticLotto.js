@@ -1,13 +1,14 @@
 /*
-- add sound effects to buttons 
+- add sound effects to buttons; hopefully load it in via html andor css
+- test the new stuff on contract on Mumbai first
 - 
 */
 
 
 
-// _____________________________________________________________
-// _____________ ESTABLISH ALL SMART CONTRACT ABIs _____________
-// _____________________________________________________________
+// _______________________________________________________
+// __________ ESTABLISH ALL SMART CONTRACT ABIs __________
+// _______________________________________________________
 
 // "LottoV2"
 const CONTRACT1_ABI = (
@@ -155,7 +156,9 @@ class DappInterface {
 
     // --- @DEV this is called anytime the inputValue is changed (ie on checkCurrent, changed input manually, etc)
     // ------------------------------------------------- fold up this info to make it cleaner, copy the fold from the BANK staking (HOW TO PLAY) could also be a fold up
-    async CheckPastLotto() {
+ // both lotto functions could use restricted size mini loops to allow for future growth
+  
+async CheckPastLotto() {
         try { const { ethereum } = window;
             if (ethereum) {
                 const provider = new ethers.providers.Web3Provider(ethereum);
@@ -597,6 +600,7 @@ class DappInterface {
         }
     }
     
+    // -------------------------------------------------------------------------- can I use SWITCHES to make this smoother? yes in the successful connection area; also can move the disable connectbutton to a general areas; also use a var for chain strings
     // --- @DEV (1) This will check and set the correct web3 chain
     async dappInitializeProcess() {
         try{
