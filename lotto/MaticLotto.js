@@ -597,7 +597,7 @@ class DappInterface {
         }
     }
     
-    // -------------------------------------------------------------------------- can I use SWITCHES to make this smoother?
+    // -------------------------------------------------------------------------- can I use SWITCHES to make this smoother? yes in the successful connection area; also can move the disable connectbutton to a general areas; also use a var for chain strings
     // --- @DEV (1) This will check and set the correct web3 chain
     async dappInitializeProcess() {
         try{
