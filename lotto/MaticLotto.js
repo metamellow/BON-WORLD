@@ -597,6 +597,7 @@ class DappInterface {
         }
     }
     
+    // -------------------------------------------------------------------------- can I use SWITCHES to make this smoother?
     // --- @DEV (1) This will check and set the correct web3 chain
     async dappInitializeProcess() {
         try{
