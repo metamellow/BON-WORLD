@@ -27,6 +27,7 @@ nav a {
   color: #54ff65;
   text-decoration: none;
   padding: 10px;
+  z-index: 9999;
 }
 
 nav a:hover {
@@ -72,6 +73,7 @@ nav a:hover {
     align-items: center;
     position: absolute;
     right: 25px;
+    z-index: 9999;
   }
 
   .nav-links {
@@ -86,6 +88,7 @@ nav a:hover {
     justify-content: flex-start;
     align-items: center;
     transition: all 0.3s ease-out;
+    z-index: 9999;
   }
 
   .nav-active {
