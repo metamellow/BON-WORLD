@@ -619,6 +619,7 @@ a {
 
 .cftitle {
   color: #54ff65;
+  font-size: 36px;
 }
 
 .cftop {
@@ -769,7 +770,20 @@ a {
 .cftrouble {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 30px;
+}
+
+.lottotrouble {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.lottotrouble ol {
+  font-size: 28px;
 }
 
 .cftroubletitle {
@@ -851,6 +865,23 @@ a {
 
   .cftrouble {
     display: block;
+  }
+
+  .lottotrouble {
+    flex-direction: column;
+  }
+
+  .lottodisplay {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .lottodisplay p {
+    margin-bottom: 0;
+  }
+
+  .lottotrouble ol {
+    font-size: 18px;
   }
 
   .dapp-menu-mint {
@@ -945,10 +976,56 @@ a {
   text-align: center;
 }
 
-.lottodisplay {
-  display: inline-flex;
+.lottowrapper {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 0px;
+}
+
+.lottocontainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.lottoitem {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.lottodisplay {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 25px;
+}
+
+.lottodisplay form {
+  width: 100%;
+}
+
+.lottodisplay form p {
+  text-align: center;
+}
+
+.lottodisplay form input[type='number'] {
+  color: #54ff65;
+  width: 100%;
+  height: 36px;
+  padding: 0px;
+  font-size: 16px;
+  border-radius: 0px;
+  background-color: transparent;
+  border: 2px solid #54ff65;
+  text-align: center;
+}
+
+.lottodisplay form input[type='number']::-webkit-inner-spin-button,
+.lottodisplay form input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .lotto2 {
@@ -975,7 +1052,7 @@ a {
 }
 
 .lottobutton {
-  width: 350px;
+  width: 100%;
   gap: 10px;
   margin: 10px;
   display: block;
@@ -985,16 +1062,17 @@ a {
 .lottobuttonbet {
   width: 100%;
   gap: 10px;
-  margin: 10px;
+  margin: 40px 0;
   display: block;
   justify-content: space-between;
 }
 
 .lottocharts {
-  display: block;
+  display: flex;
+  flex-direction: column;
   align-items: center;
   text-align: center;
-  justify-content: space-between;
+  width: 100%;
 }
 
 .lottoplayertitle {
@@ -1019,7 +1097,7 @@ a {
 
 .lottotitle2 {
   width: 280px;
-  margin: 10px;
+  margin: 10px 0 10px 10px;
   text-align: center;
   justify-content: space-between;
   border: none;
@@ -1030,11 +1108,12 @@ a {
   font-weight: 600;
   font-size: 24px;
   align-items: center;
+  height: 42px;
 }
 
 .lottobuttonplayers {
   width: 280px;
-  margin: 10px;
+  margin: 10px 10px 10px 0;
   display: block;
   border: solid;
   border-radius: 0px;
@@ -1055,6 +1134,7 @@ a {
   justify-content: center;
   align-content: center;
   align-items: center;
+  margin: 15px 0;
 }
 
 ::-webkit-scrollbar {
@@ -1083,4 +1163,30 @@ a {
   .show-mobile {
     display: block;
   }
+
+  #selection-dropdown {
+    width: 100% !important;
+  }
+
+  .lottotitle2 {
+    width: 100%;
+    margin: 0;
+  }
+
+  .lottobuttonplayers {
+    width: 100%;
+    margin: 0;
+  }
+
+  .lottowrapper {
+    flex-direction: column;
+  }
+
+  .lottoitem {
+    flex-direction: column;
+  }
+}
+
+#selection-dropdown {
+  width: max-content;
 }
