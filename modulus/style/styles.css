@@ -13,6 +13,10 @@ body {
 nav {
   width: 100%;
   justify-content: space-between;
+
+}
+
+header {
 }
 
 .container {
@@ -23,6 +27,7 @@ nav {
 
 .navbar {
   width: 100%;
+ 
 }
 
 .nav-container {
@@ -85,6 +90,7 @@ nav {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
 }
 
 .nav-container .hamburger-lines .line {
@@ -269,6 +275,13 @@ hr {
 
 
 iframe { 
-  margin: 10px;
   margin-right: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+ .content .partnerslogo {
+width: 150px;
+margin: 10px;
+padding: 10px;
 }
