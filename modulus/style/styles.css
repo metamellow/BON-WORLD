@@ -10,12 +10,15 @@ body {
   background-color: black;
 }
 
+nav {
+  width: 100%;
+  justify-content: space-between;
+}
+
 .container {
   max-width: 100%;
   width: 90%;
   margin: auto;
-  justify-content: center;
-  align-items: center;
 }
 
 .navbar {
@@ -24,26 +27,19 @@ body {
 
 .nav-container {
   display: flex;
-  flex-direction: row-reverse;
   justify-content: space-between;
   align-items: center;
   height: 62px;
-  
+  width: 100%;
 }
 
 .navbar .menu-items {
   display: flex;
-  border: red solid;
-  border-radius: 16px;
-}
-
-.navbar .menu-items img {
-  width: 10%;
-  text-align: center;
 }
 
 .navbar .nav-container li {
   list-style: none;
+  
 }
 
 .navbar .nav-container a {
@@ -52,6 +48,7 @@ body {
   font-weight: 500;
   font-size: 1.2rem;
   padding: 0.7rem;
+ 
 }
 
 .navbar .nav-container a:hover{
@@ -62,6 +59,7 @@ body {
   display: block;
   position: relative;
   height: 60px;
+  
 }
 
 .nav-container .checkbox {
@@ -112,9 +110,10 @@ body {
 }
 
 .navbar .menu-items {
+
   padding-top: 120px;
   background-color: black;
-  height: 100vh;
+  height: 60vh;
   width: 100%;
   transform: translate(-150%);
   display: flex;
@@ -123,21 +122,23 @@ body {
   padding-left: 50px;
   transition: transform 0.5s ease-in-out;
   text-align: center;
+  
+  border: solid red;
+  border-radius: 16px;
 }
 
 .navbar .menu-items li {
   margin-bottom: 1.2rem;
   font-size: 1.5rem;
   font-weight: 500;
-  justify-content: center;
-  align-items: center;
 }
 
 .logo {
-  display: flex;
   position: absolute;
   top: 5px;
   right: 15px;
+  font-size: 1.2rem;
+  color: aliceblue;
 }
 
 .nav-container input[type="checkbox"]:checked ~ .menu-items {
@@ -160,15 +161,74 @@ body {
   display: none;
 }
 
-.logonav {
-  width: 10%;
-  justify-content: center;
-  text-align: center;
-  align-items: center;
-}
-
 footer {
   display: flex;
   justify-content: space-between;
   padding: 20px;
 }
+
+
+button {
+  color: aliceblue;
+  border: solid 1px;
+  border-radius: 0px;
+  background-color: transparent;
+  padding: 50px;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  font-size: 24px;
+}
+
+button:hover {
+  color: red;
+  border: solid 1px;
+  border-radius: 0px;
+  background-color: transparent;
+}
+
+.content {
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: space-between;
+margin-top: 0px;
+width: 100%;
+margin-bottom: 10px;
+
+}
+
+.content .tittle {
+font-size: 100px;  
+text-transform: uppercase;
+color: red;
+font-weight: 800;
+line-height: 100px;
+margin-bottom: 10px;
+  }
+
+  .content img {
+    width: 100%;
+    justify-content:end;
+      }
+
+.content .tittle2 {
+    font-size: 50px;  
+    text-transform: uppercase;
+    color: red;
+    font-weight: 800;
+    line-height: 100px;
+    margin-top: 0px;
+
+  }
+
+.display_essential {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+
+  }
+
+
+
