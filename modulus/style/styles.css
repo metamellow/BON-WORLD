@@ -16,8 +16,7 @@ nav {
 
 }
 
-header {
-}
+
 
 .container {
   max-width: 100%;
@@ -129,7 +128,7 @@ header {
   transition: transform 0.5s ease-in-out;
   text-align: center;
   
-  border: solid red;
+  border: solid #D7112C;
   border-radius: 16px;
 }
 
@@ -189,7 +188,7 @@ button {
 }
 
 button:hover {
-  color: red;
+  color:#D7112C;
   border: solid 1px;
   border-radius: 0px;
   background-color: transparent;
@@ -209,7 +208,7 @@ margin-bottom: 10px;
 .content .tittle {
 font-size: 100px;  
 text-transform: uppercase;
-color: red;
+color:#D7112C;
 font-weight: 800;
 line-height: 100px;
 margin-bottom: 10px;
@@ -229,7 +228,7 @@ margin-bottom: 10px;
 .content .tittle2 {
     font-size: 50px;  
     text-transform: uppercase;
-    color: red;
+    color:#D7112C;
     font-weight: 800;
     line-height: 100px;
     margin-top: 0px;
@@ -257,9 +256,9 @@ margin-bottom: 10px;
   }
 
   .display_essential button:hover{
-    background-color: red;
+    background-color:#D7112C;
     color: black;
-    border-color: red;
+    border-color:#D7112C;
     
 
   }
@@ -270,7 +269,7 @@ margin-bottom: 10px;
   }
 
 hr {
-  border:solid 0.1rem red;
+  border:solid 0.1rem #D7112C;
 }
 
 
