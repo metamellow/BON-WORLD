@@ -49,6 +49,14 @@ nav a:hover {
   color: #54ff65;
 }
 
+.menu-toggle span {
+  width: 30px;
+  height: 3px;
+  background-color: #fff;
+  margin: 5px 0;
+}
+
+
 .nav-links {
   display: flex;
   list-style: none;
