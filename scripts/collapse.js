@@ -9,6 +9,7 @@ window.addEventListener('load', () => {
       var childComputedStyle = window.getComputedStyle(childEl);
       var totalChildElHeight =
         100 +
+        80 +
         childEl.offsetHeight +
         parseFloat(childComputedStyle.paddingTop) +
         parseFloat(childComputedStyle.paddingBottom);
