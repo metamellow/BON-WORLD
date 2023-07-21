@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bank of Nowhere</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="../styles/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+      integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
+      crossorigin="anonymous"
+    />
+    <link rel="icon" href="../images/fav.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap';"
+      rel="stylesheet"
+    />
+    <link href="font-family: 'Poppins', sans-serif;" rel="stylesheet" />
+
+    <title>Bank Of Nowhere $BON</title>
+    <meta name="title" content="Bank Of Nowhere $BON" />
+    <meta
+      name="description"
+      content="// DONT TRUST THE BANKERS -- TRUST THE TECHNOLOGY //"
+    />
+
+    <!-- Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://bankofnowhere.world" />
+    <meta property="og:title" content="Bank Of Nowhere $BON" />
+    <meta
+      property="og:description"
+      content="// DONT TRUST THE BANKERS -- TRUST THE TECHNOLOGY //"
+    />
+    <meta
+      property="og:image"
+      content="https://raw.githubusercontent.com/s0crates-eth/gm/main/images/1500x500.jpg"
+    />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://bankofnowhere.world" />
+    <meta property="twitter:title" content="Bank Of Nowhere $BON" />
+    <meta
+      property="twitter:description"
+      content="// DONT TRUST THE BANKERS -- TRUST THE TECHNOLOGY //"
+    />
+    <meta
+      property="twitter:image"
+      content="https://raw.githubusercontent.com/s0crates-eth/gm/main/images/1500x500.jpg"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="logo-container">
+        <img src="../images/bonlogo.png" alt="Logo" class="logo-grande" />
+        <img src="../images/fav.png" alt="Logo" class="logo-pequeno" />
+      </div>
+      <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <nav class="dapp-menu">
+        <ul class="nav-links">
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../whitepaper.html">whitepaper</a></li>
+          <li><a href="../lotto/index.html">lotto</a></li>
+          <li><a href="../dapp.html"> crowdfunding</a></li>
+          <li>
+            <button
+              name="connectWallet"
+              id="HTML_connect_button"
+              onclick="DappInterface_.connectWallet();"
+            >
+              Connect
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- ---------- DELETE AFTER SWITCHING TO MAINNET ---------- -->
+    <div style="text-align: center; color: red">
+      <br/><br/><strong>
+        NOTE: TESTING (MUMBAI)<br>
+        ---- MAINNET SOON ----
+      </strong><br/><br/>
+    </div>
+    <!-- ---------- DELETE AFTER SWITCHING TO MAINNET ---------- -->
+
+    <hr />
+
+    <div class="cftop">
+      <div class="cftitleadjust">
+        <img class="imgadjust" src="images/lottoicon.svg" />
+        <p class="cftitle">LOTTO</p>
+      </div>
+      <div class="wpsubtitle">// ETH //</div>
+      <div id="selection-dropdown">
+        <select
+          id="HTML_dropdown_input_1"
+          onchange="DappInterface_.chooseWhichLotto()"
+        >
+          <option value="" selected>Please choose...</option>
+          <option value="MATIC">MATIC</option>
+          <option value="ETH">ETH</option>
+          <option value="MATIC">BON*</option>
+        </select>
+      </div>
+    </div>
+
+    <hr />
+
+    <div>
+      <div class="lottotrouble" id="EthLotto">
+        <div><strong class="cftitle">HOW TO PLAY:</strong></div>
+        <div>
+          <ol>
+            <li>
+              Make your bet (as either <strong>Player 1</strong> or
+              <strong>Player 2</strong>)
+            </li>
+            <li>
+              After both players have bet, <strong>check</strong> the results
+            </li>
+            <li>The winner gets to claims the <strong>reward value</strong></li>
+          </ol>
+        </div>
+      </div>
+
+        </div>
+    <br />
+
+    <div class="wrapper_accordion"> <!--lotto-->
+      <!--bet-->
+      <div class="container_accordion collapsibleItem">
+        <img class="arrow2" src="images/arrow2.svg" />
+        <strong>Current Lotto</strong>
+      </div>
+      <div>
+        <div id="currentLotto">
+          <div id="EthLotto">
+         
+          </div>
+          <!-- SHOW CURRENT COUNTER VALUE -->
+        </div>
+
+        <div class="lottodisplay">
+          <div class="lottocharts">
+            <p>CURRENT ROUND</p>
+            <label for="CheckCurrentLotto_counter"></label>
+            <button
+              class="lottobutton"
+              name="CheckCurrentLotto_counter"
+              id="HTML_button_2"
+              onclick="DappInterface_.CheckCurrentLotto();"
+            >
+              -load-
+            </button>
+          </div>
+
+          <!-- SHOW CURRENT BET COST -->
+          <div class="lottocharts">
+            <p>BET PRICE</p>
+            <label for="CheckCurrentLotto_betPrice"></label>
+            <button
+              class="lottobutton"
+              name="CheckCurrentLotto_betPrice"
+              id="HTML_button_5"
+              onclick="DappInterface_.CheckCurrentLotto();"
+            >
+              -load-
+            </button>
+          </div>
+
+          <!-- SHOW CURRENT REWARD VALUE -->
+          <div class="lottocharts">
+            <p>REWARD VALUE</p>
+            <label for="CheckCurrentLotto_REWARDVALUE"></label>
+            <button
+              class="lottobutton"
+              name="CheckCurrentLotto_REWARDVALUE"
+              id="HTML_button_6"
+              onclick="DappInterface_.CheckCurrentLotto();"
+            >
+              -load-
+            </button>
+          </div>
+        </div>
+
+        <hr />
+        <!-- SHOW PLAYER 1 WALLET ADDRESS -->
+
+        <div class="lottowrapper">
+          <!--players -->
+          <div class="lottocontainer">
+            <!--players 1 -->
+            <img src="../images/coingold.png" class="hide-mobile" />
+
+            <div class="lottoitem">
+              <p class="lottotitle2">PLAYER 1</p>
+              <label for="CheckCurrentLotto_player1W"></label>
+              <button
+                class="lottobuttonplayers"
+                name="CheckCurrentLotto_player1W"
+                id="HTML_button_3"
+                onclick="DappInterface_.CheckCurrentLotto();"
+              >
+                -load-
+              </button>
+            </div>
+          </div>
+
+          <div>
+            <img class="lottovs" src="../images/vs.png" class="hide-mobile" />
+          </div>
+
+          <div class="lottocontainer">
+            <img src="../images/coingreen2.png" class="hide-mobile" />
+
+            <div class="lottoitem">
+              <!--player2button-->
+              <p class="lottotitle2">PLAYER 2</p>
+              <label for="CheckCurrentLotto_player2W"></label>
+              <button
+                class="lottobuttonplayers"
+                name="CheckCurrentLotto_player2W"
+                id="HTML_button_4"
+                onclick="DappInterface_.CheckCurrentLotto();"
+              >
+                -load-
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <!--submit bet-->
+          <div>
+            <label for="Bet_Loader"></label>
+            <button
+              class="lottobuttonbet"
+              name="Bet_Loader"
+              id="HTML_button_1"
+              onclick="DappInterface_.Bet_Loader();"
+            >
+              BET
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr />
+
+    <div class="wrapper_accordion"> <!--past-->
+      <!--bet-->
+      <div class="container_accordion collapsibleItem">
+        <img class="arrow2" src="images/arrow2.svg" />
+        <strong>Past Lotto</strong>
+      </div>
+      <div>
+        <div class="lottotitle" id="pastLotto">
+          <div id="EthLotto">
+          
+          </div>
+        </div>
+
+        <!-- ENTER NUMBER -->
+
+        <!--round-->
+        <div class="lottodisplay">
+          <form>
+            <p>PAST ROUND</p>
+            <label for="CheckPastLotto" class="amount"></label>
+            <input
+              class="number"
+              type="number"
+              name="CheckPastLotto_numberInput"
+              id="HTML_input_1"
+              min="1"
+              value="1"
+              onchange="DappInterface_.onAnySelectInputs(); DappInterface_.CheckPastLotto();"
+              required
+            />
+          </form>
+
+          <!-- CHECK WINNER WALLET -->
+
+          <div class="lottocharts">
+            <p>WINNER WALLET</p>
+            <label for="CheckPastLotto"></label>
+            <button
+              class="lottobutton"
+              name="CheckPastLotto_submitCheck"
+              id="HTML_button_7"
+              onclick="DappInterface_.CheckPastLotto();"
+            >
+              -check wallet-
+            </button>
+          </div>
+
+          <!-- CHECK WINNER AMOUNT -->
+          <div class="lottocharts">
+            <p>REWARD VALUE</p>
+            <label for="CheckPastLotto"></label>
+            <button
+              class="lottobutton"
+              name="CheckPastLotto_submitCheck"
+              id="HTML_button_8"
+              onclick="DappInterface_.CheckPastLotto();"
+            >
+              -check reward-
+            </button>
+          </div>
+
+          <!-- CHECK WINNER CLAIMED -->
+          <div class="lottocharts">
+            <div class="lottocharts">
+              <p>CLAIMED STATUS</p>
+              <label for="CheckPastLotto"></label>
+              <button
+                class="lottobutton"
+                name="CheckPastLotto_submitCheck"
+                id="HTML_button_9"
+                onclick="DappInterface_.CheckPastLotto();"
+              >
+                -check claimed-
+              </button>
+            </div>
+            <!-- CLAIM NUMBER -->
+          </div>
+        </div>
+
+        <div class="lottocharts">
+          <!--clain-->
+          <label for="ClaimPastLotto"></label>
+          <button
+            class="lottobuttonbet"
+            name="CheckPastLotto_submitCheck"
+            id="HTML_button_10"
+            onclick="DappInterface_.Claim_Loader();"
+          >
+            CLAIM
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div>
+        <img src="../images/fav.png" />
+      </div>
+      <div class="copyright">
+        <p>Copyright © Bank of Nowhere</p>
+      </div>
+      <div>
+        <img src="images/moduluslogogreen.svg" />
+      </div>
+      <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"></script>
+      <script src="EthLotto.js"></script>
+      <script src="../scripts/menu.js"></script>
+      <script src="../scripts/collapse.js"></script>
+    </footer>
+  </body>
+</html>

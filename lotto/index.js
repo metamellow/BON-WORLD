@@ -12,10 +12,9 @@ class DappInterface {
             if(this.selectedDropdown1 == "MATIC"){
             window.location.href = "./MaticLotto.html";
             }
-            /*
-            if(this.selectedDropdown1 == "BANK2BON"){
-            window.location.href = "./bank2bon.html";
-            } */
+            if(this.selectedDropdown1 == "ETH"){
+                window.location.href = "./EthLotto.html";
+            }
     }
 }
 
