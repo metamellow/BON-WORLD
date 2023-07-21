@@ -135,7 +135,7 @@ class DappInterface {
                         if(this.waitingForListener == true){
                             this.waitingForListener = false;
                             console.log(playersCounter, counterReward);
-                            alert(`Bet successful!`);
+                            alert(`Bet successful! Please wait 2 min for the TXNs to log on the blockchain.`);
                             window.location.reload();
                         }
                         }
@@ -555,7 +555,8 @@ async CheckPastLotto() {
             } catch (error) {
                 console.log(error);
                 console.log('function call failed');
-                this.buttonsArray[10].innerText = `ERROR: Wallet must = '${this.buttonsArray[7].innerText}' and Claimed must  = 'false`;
+                this.buttonsArray[10].innerText = `-CLAIM AGAIN-`;
+                /* this.buttonsArray[10].innerText = `ERROR: Wallet must = '${this.buttonsArray[7].innerText}' and Claimed must  = 'false`;*/
                 this.buttonsArray[10].disabled = false;
                 // -------------------------------------------------------------------------- move this to be a broswer alert
             }
