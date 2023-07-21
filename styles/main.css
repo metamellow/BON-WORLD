@@ -1201,3 +1201,48 @@ a {
 #selection-dropdown {
   width: max-content;
 }
+
+
+.wrapper {
+  max-height: 100px;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  /* make a gradient from light to dark top to bottom (turned 90*) on the clapsible bow to show some differentiation between boxes, moving the color from the contairer to this wrapper*/
+}
+
+
+
+
+.wrapper {
+  max-height: 100px;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  /* make a gradient from light to dark top to bottom (turned 90*) on the clapsible bow to show some differentiation between boxes, moving the color from the contairer to this wrapper*/
+}
+
+.container {
+  cursor: pointer;
+  width: 100%;
+  height: 100px;
+  background: #54ff65;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  color: black;
+  font-size: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 30px;
+  gap: 15px;
+}
+
+.align-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.rotatedArrow {
+  transform: rotate(90deg);
+  transition: transform 0.3s ease;
+}
