@@ -1204,7 +1204,7 @@ a {
 
 
 
-.wrapper {
+.wrapper_accordion {
   width: 100%;
   overflow: hidden;
   transition: max-height 0.3s ease;
@@ -1213,7 +1213,7 @@ a {
 
 .container {
   cursor: pointer;
-  width: auto;
+  width: 100%;
   height: auto;
   background:linear-gradient(270deg, #54FF65 0%, #7AD8C7 100%);
   color: black;
@@ -1287,3 +1287,8 @@ a {
     width: 100%;
   }
 }
+
+.alinhamento2 {
+  display: flex;
+}
+
