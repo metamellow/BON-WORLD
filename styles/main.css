@@ -1035,7 +1035,14 @@ a {
 .lottodisplay form input[type='number']::-webkit-inner-spin-button,
 .lottodisplay form input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
-  margin: 0;
+  border: 2px solid #54ff65;
+  background-color: #221e2e;
+  color: #54ff65;
+  border-radius: 0px;
+  width: 5px;
+  height: 20px;
+  padding: 2px;
+  margin: 2px;
 }
 
 .lotto2 {
