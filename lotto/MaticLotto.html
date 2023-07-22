@@ -86,17 +86,19 @@
     <div class="cftop">
       <div class="cftitleadjust">
         <img class="imgadjust" src="images/lottoicon.svg" />
-        <p class="cftitle">LOTTO</p>
+        <img/>
+        <p class="cftitle"><b style="text-align: center;">BON.Lotto</b></p>
+        <img/>
+        <img class="imgadjust" src="images/lottoicon.svg" />
       </div>
-      <div class="wpsubtitle">// MATIC //</div>
       <div id="selection-dropdown">
         <select
           id="HTML_dropdown_input_1"
-          onchange="DappInterface_.chooseWhichLotto()"
+          onchange="IndexInterface_.chooseWhichLotto()"
         >
-          <option value="" selected>Please choose...</option>
-          <option value="MATIC">MATIC</option>
-          <option value="MATIC">ETH*</option>
+          <option value="">Please choose...</option>
+          <option value="MATIC" selected>MATIC</option>
+          <option value="ETH">ETH</option>
           <option value="MATIC">BON*</option>
         </select>
       </div>
@@ -341,7 +343,8 @@
             CLAIM
           </button>
           <p>
-            * Only <strong>'winner wallets'</strong> with <strong>'claim status'</strong> <u>false</u> can claim rewards
+            * Only <strong>'winner wallets'</strong> with <strong>'claim status'</strong> 
+            <u>false</u> can claim rewards
           </p>
         </div>
 
@@ -361,7 +364,8 @@
         <img src="images/moduluslogogreen.svg" />
       </div>
       <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"></script>
-      <script src="MaticLotto.js"></script>
+      <script src="indexInterface.js" type="application/javascript"></script>
+      <script src="MaticLotto.js" type="application/javascript"></script>
       <script src="../scripts/menu.js"></script>
       <script src="../scripts/collapse.js"></script>
     </footer>

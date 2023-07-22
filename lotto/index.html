@@ -82,23 +82,17 @@
       </nav>
     </header>
 
-    <!-- ---------- DELETE AFTER SWITCHING TO MAINNET ---------- -->
-    <div style="text-align: center; color: red">
-      <br/><br/><strong>
-        NOTE: TESTING (MUMBAI)<br>
-        ---- MAINNET SOON ----
-      </strong><br/><br/>
-    </div>
-    <!-- ---------- DELETE AFTER SWITCHING TO MAINNET ---------- -->
-
     <hr />
 
     <div class="cftop">
       <div class="cftitleadjust">
         <img class="imgadjust" src="images/lottoicon.svg" />
-        <p class="cftitle">LOTTO</p>
+        <img/>
+        <p class="cftitle"><b style="text-align: center;">BON.Lotto</b></p>
+        <img/>
+        <img class="imgadjust" src="images/lottoicon.svg" />
       </div>
-      <div class="wpsubtitle">WELCOME</div>
+      <div class="wpsubtitle">Quantum Coin Flip</div>
     </div>
 
     <hr />
@@ -110,25 +104,29 @@
         Welcome to the<br />
         <strong style="color: #54ff65">Bank of Nowhere</strong>
         <br />
-        <strong style="color: aliceblue">Lotto! </strong>
+        <strong style="color: aliceblue">Quantum Coin Flip! </strong>
         <div id="selection-dropdown">
           <select
             id="HTML_dropdown_input_1"
-            onchange="DappInterface_.chooseWhichLotto()"
+            onchange="IndexInterface_.chooseWhichLotto()"
           >
             <option value="" selected>Please choose...</option>
             <option value="MATIC">MATIC</option>
-            <option value="MATIC">ETH*</option>
+            <option value="ETH">ETH</option>
             <option value="MATIC">BON*</option>
           </select>
         </div>
+        <p style="font-size: 30%; line-height: normal; font-weight: 300;">
+          Go head to head with challengers around the world.
+          Advanced blockchain technology secures both paries funds through encrypted custody.
+          Guarentted security from quantum randomness ensures a fair outcome everytime.
+        </p>
       </div>
     </div>
 
     <div>
-      <p align="center" style="color: aliceblue">
-        * Lotto is currently only available in
-        <strong>MATIC</strong> <!-- and <strong>ETH</strong> -->
+      <p style="color: aliceblue; font-size: smaller; text-align: justify;">
+        * Lotto is currently only available in <strong>MATIC</strong> and <strong>ETH</strong><br>
       </p>
     </div>
 
@@ -143,7 +141,7 @@
         src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"
         type="application/javascript"
       ></script>
-      <script src="index.js" type="application/javascript"></script>
+      <script src="indexInterface.js" type="application/javascript"></script>
       <script src="../scripts/menu.js"></script>
     </footer>
   </body>
