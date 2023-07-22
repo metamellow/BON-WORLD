@@ -38,7 +38,7 @@ class DappInterface {
         this.txnCost = ''; // loaded on checkBetPrice();
 
         // --- Universal HTML Elements --- 
-        this.JSconnectButton = document.getElementById('HTML_connect_button'); // connectWallet()
+        //this.JSconnectButton = document.getElementById('HTML_connect_button'); // connectWallet()
 
         // --- Button HTML Elements ---
         this.buttonsArray = [
@@ -52,7 +52,9 @@ class DappInterface {
             (this.JSButton7 = document.getElementById('HTML_button_7')), // checkPastWinnerWallet
             (this.JSButton8 = document.getElementById('HTML_button_8')), // checkPastWinnerValue
             (this.JSButton9 = document.getElementById('HTML_button_9')), // checkPastWinnerClaimed
-            (this.JSButton10 = document.getElementById('HTML_button_10')) // claim()
+            (this.JSButton10 = document.getElementById('HTML_button_10')), // claim()
+            (this.JSButton11 = document.getElementById('HTML_button_11')), // pastWinnerP1Wallet
+            (this.JSButton12 = document.getElementById('HTML_button_12')) // pastWinnerP2Wallet
         ]
 
         // --- Input HTML Elements --- 
@@ -138,7 +140,7 @@ class DappInterface {
                         );
 
                             // Reset all changed vars
-                            for (let i = 7; i < 11; i++) {
+                            for (let i = 7; i < 13; i++) {
                                 this.buttonsArray[i].disabled = true;
                                 this.buttonsArray[i].innerText = `*loading*`;
                                 console.log(`button ${i} disabled`);
@@ -177,6 +179,30 @@ class DappInterface {
                                     this.buttonsArray[9].disabled = false;
                                 } else {this.buttonsArray[9].innerText = `...`;}
 
+                                // Function 8 - Past Player 1
+                                    console.log(`Attempting function 8 call..`);
+                                    let Function8Results = await connectedContract1.pastLottoPlayer1(`${this.selectedInput1}`);
+                                    console.log('Awaiting function results...');
+                                    await Function8Results;
+                                    console.log("Analzying results...");
+                                    if(Function8Results != '0x0000000000000000000000000000000000000000'){
+                                        this.buttonsArray[11].innerText = `${
+                                        Function8Results.substring(0, 6)}...${
+                                        Function8Results.substring((Function8Results.length-4), Function8Results.length)}`;
+                                    } else {this.buttonsArray[11].innerText = `...`;}
+
+                                // Function 9 - Past Player 2
+                                console.log(`Attempting function 8 call..`);
+                                let Function9Results = await connectedContract1.pastLottoPlayer2(`${this.selectedInput1}`);
+                                console.log('Awaiting function results...');
+                                await Function9Results;
+                                console.log("Analzying results...");
+                                if(Function9Results != '0x0000000000000000000000000000000000000000'){
+                                    this.buttonsArray[12].innerText = `${
+                                    Function9Results.substring(0, 6)}...${
+                                    Function9Results.substring((Function9Results.length-4), Function9Results.length)}`;
+                                } else {this.buttonsArray[12].innerText = `...`;}
+
                                 // Button Ready
                                 console.log('CLAIM button ready');
                                 this.buttonsArray[10].disabled = false;
@@ -184,7 +210,7 @@ class DappInterface {
 
                             } else {
                                 console.log(`Error: (FunctionResults == 0 || "")`);
-                                for (let i = 7; i < 11; i++) {
+                                for (let i = 7; i < 13; i++) {
                                     this.buttonsArray[i].disabled = false;
                                     this.buttonsArray[i].innerText = `-try again-`;
                                 }

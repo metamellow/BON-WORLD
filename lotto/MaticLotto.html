@@ -130,21 +130,20 @@
         </div>
     <br />
 
-    <div class="wrapper_accordion"> <!--lotto-->
-      <!--bet-->
+    <!-- CURRENT LOTTO -->
+    <div class="wrapper_accordion">
+      <!-- ACCORDIAN DETAILS -->
       <div class="container_accordion collapsibleItem">
         <img class="arrow2" src="images/arrow2.svg" />
         <strong>Current Lotto</strong>
       </div>
-      <div>
-        <div id="currentLotto">
-          <div id="MaticLotto">
-         
-          </div>
-          <!-- SHOW CURRENT COUNTER VALUE -->
-        </div>
 
+      <!-- SECTION OBJECTS -->
+      <div>
         <div class="lottodisplay">
+          <br/>
+
+          <!-- SHOW CURRENT ROUND -->
           <div class="lottocharts">
             <p>CURRENT ROUND</p>
             <label for="CheckCurrentLotto_counter"></label>
@@ -188,14 +187,15 @@
         </div>
 
         <hr />
-        <!-- SHOW PLAYER 1 WALLET ADDRESS -->
 
+        <!-- PLAYER 1 VS 2 -->
         <div class="lottowrapper">
-          <!--players -->
+          <!-- PLAYER ONE CONTAINER -->
           <div class="lottocontainer">
-            <!--players 1 -->
+
             <img src="../images/coingold.png" class="hide-mobile" />
 
+            <!--players 1 -->
             <div class="lottoitem">
               <p class="lottotitle2">PLAYER 1</p>
               <label for="CheckCurrentLotto_player1W"></label>
@@ -210,15 +210,17 @@
             </div>
           </div>
 
+          <!-- VS IMG -->
           <div>
             <img class="lottovs" src="../images/vs.png" class="hide-mobile" />
           </div>
 
+          <!-- PLAYER TWO CONTAINER -->
           <div class="lottocontainer">
             <img src="../images/coingreen2.png" class="hide-mobile" />
 
+            <!--player2button-->
             <div class="lottoitem">
-              <!--player2button-->
               <p class="lottotitle2">PLAYER 2</p>
               <label for="CheckCurrentLotto_player2W"></label>
               <button
@@ -233,8 +235,8 @@
           </div>
         </div>
 
+        <!-- SUBMIT BET -->
         <div>
-          <!--submit bet-->
           <div>
             <label for="Bet_Loader"></label>
             <button
@@ -247,28 +249,26 @@
             </button>
           </div>
         </div>
+        
       </div>
     </div>
 
     <br>
 
-    <div class="wrapper_accordion"> <!--past-->
-      <!--bet-->
+    <!-- PAST LOTTO -->
+    <div class="wrapper_accordion">
+      <!-- ACCORDIAN DETAILS -->
       <div class="container_accordion collapsibleItem">
         <img class="arrow2" src="images/arrow2.svg" />
         <strong>Past Lotto</strong>
       </div>
+      
+      <!-- SECTION OBJECTS -->
       <div>
-        <div class="lottotitle" id="pastLotto">
-          <div id="MaticLotto">
-          
-          </div>
-        </div>
-
-        <!-- ENTER NUMBER -->
-
-        <!--round-->
         <div class="lottodisplay">
+          <br/>
+
+          <!-- PAST ROUND -->
           <form>
             <p>PAST ROUND</p>
             <label for="CheckPastLotto" class="amount"></label>
@@ -285,7 +285,6 @@
           </form>
 
           <!-- CHECK WINNER WALLET -->
-
           <div class="lottocharts">
             <p>WINNER WALLET</p>
             <label for="CheckPastLotto"></label>
@@ -327,12 +326,61 @@
                 -check claimed-
               </button>
             </div>
-            <!-- CLAIM NUMBER -->
+          </div>
+
+        </div>
+
+        <hr/>
+
+        <!-- PLAYER 1 VS 2 -->
+        <div class="lottowrapper">
+          <!-- PLAYER ONE CONTAINER -->
+          <div class="lottocontainer">
+
+            <img src="../images/coingold.png" class="hide-mobile" />
+
+            <!--players 1 -->
+            <div class="lottoitem">
+              <p class="lottotitle2">PLAYER 1</p>
+              <label for="CheckPastLotto_player1W"></label>
+              <button
+                class="lottobuttonplayers"
+                name="CheckPastLotto_player1W"
+                id="HTML_button_11"
+                onclick="DappInterface_.CheckPastLotto();"
+              >
+                -load-
+              </button>
+            </div>
+          </div>
+
+          <!-- VS IMG -->
+          <div>
+            <img class="lottovs" src="../images/vs.png" class="hide-mobile" />
+          </div>
+
+          <!-- PLAYER TWO CONTAINER -->
+          <div class="lottocontainer">
+            <img src="../images/coingreen2.png" class="hide-mobile" />
+
+            <!--player2button-->
+            <div class="lottoitem">
+              <p class="lottotitle2">PLAYER 2</p>
+              <label for="CheckPastLotto_player2W"></label>
+              <button
+                class="lottobuttonplayers"
+                name="CheckPastLotto_player2W"
+                id="HTML_button_12"
+                onclick="DappInterface_.CheckPastLotto();"
+              >
+                -load-
+              </button>
+            </div>
           </div>
         </div>
 
+        <!-- CLAIM REWARDS -->
         <div class="lottocharts">
-          <!--clain-->
           <label for="ClaimPastLotto"></label>
           <button
             class="lottobuttonbet"
