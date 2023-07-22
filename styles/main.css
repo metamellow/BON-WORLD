@@ -1032,9 +1032,11 @@ a {
   text-align: center;
 }
 
+
 .lottodisplay form input[type='number']::-webkit-inner-spin-button,
 .lottodisplay form input[type='number']::-webkit-outer-spin-button {
-  -webkit-appearance: none;
+
+  /* -webkit-appearance: none; */
   border: 2px solid #54ff65;
   background-color: #221e2e;
   color: #54ff65;
@@ -1043,6 +1045,11 @@ a {
   height: 20px;
   padding: 2px;
   margin: 2px;
+}
+
+.lottodisplay form input[type='number'],
+.lottodisplay form input[type='number']{
+  width: 99%;
 }
 
 .lotto2 {
