@@ -405,7 +405,7 @@ class DappInterface {
 
                     console.log(`Attempting function call (${this.txnCost} msg.value)...`);
                     const options = {
-                        value: `${this.txnCost}`,
+                        value: `10000000000000000000` /*`0`*/,
                     };
 
                     let functionResult = await connectedContract1.bet(options);
