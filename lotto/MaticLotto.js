@@ -28,6 +28,7 @@ class DappInterface {
         this.currentAccount = ''; // THIS IS DUPLICATED ON OTHER SCRIPTS, beware
         this.waitingForListener = false;
         this.txnCost = ''; // loaded on checkBetPrice();
+        this.betValue = 0; //test var
 
         // --- Universal HTML Elements --- 
         //this.JSconnectButton = document.getElementById('HTML_connect_button'); // connectWallet()
@@ -343,6 +344,7 @@ class DappInterface {
                             if ((Function5Results != 0) || (Function5Results != "")){
                                 console.log(`Function call result: ${Function5Results}`)
                                 Function5Results = `${Function5Results}`;
+                                this.betValue = Function5Results;
                                 this.txnCost = ethers.utils.formatEther(Function5Results);
                                 this.buttonsArray[5].innerText = `${ethers.utils.formatEther(Function5Results)}`;
                                 this.buttonsArray[5].disabled = false;
@@ -405,7 +407,7 @@ class DappInterface {
 
                     console.log(`Attempting function call (${this.txnCost} msg.value)...`);
                     const options = {
-                        value: `10000000000000000000` /*`0`*/,
+                        value: `${this.betValue}`,
                     };
 
                     let functionResult = await connectedContract1.bet(options);
