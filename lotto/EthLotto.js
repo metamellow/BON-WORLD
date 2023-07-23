@@ -1,3 +1,4 @@
+
 // _______________________________________________________
 // __________ ESTABLISH ALL SMART CONTRACT ABIs __________
 // _______________________________________________________
@@ -22,8 +23,8 @@ class DappInterface {
     // --- @DEV Sets up all the vars and objects used
     constructor() {
         // --- Universal web3 Variables
-        this.dappChain = '0x89'; //ETHEREUM-MAINNET=='0x1', POLYGON-MAINNET=='0x89', BINANCE-MAINNET=='0x38', MODULUS-MAINNET=='0x666', POLYGON-MUMABI=='0x13881'
-        this.chainName = 'POLYGON MAINNET';
+        this.dappChain = '0x1'; //ETHEREUM-MAINNET=='0x1', POLYGON-MAINNET=='0x89', BINANCE-MAINNET=='0x38', MODULUS-MAINNET=='0x666', POLYGON-MUMABI=='0x13881'
+        this.chainName = 'ETHEREUM MAINNET';
         this.contractAddress1 = '0x14b43f1b22b47c401dec863883b32e715313061e'; // LottoV2
         this.currentAccount = ''; // THIS IS DUPLICATED ON OTHER SCRIPTS, beware
         this.waitingForListener = false;

@@ -1,3 +1,11 @@
+/*
+- add sound effects to buttons; hopefully load it in via html andor css
+- test the new stuff on contract on Mumbai first
+- 
+*/
+
+
+
 // _______________________________________________________
 // __________ ESTABLISH ALL SMART CONTRACT ABIs __________
 // _______________________________________________________
@@ -22,9 +30,9 @@ class DappInterface {
     // --- @DEV Sets up all the vars and objects used
     constructor() {
         // --- Universal web3 Variables
-        this.dappChain = '0x89'; //ETHEREUM-MAINNET=='0x1', POLYGON-MAINNET=='0x89', BINANCE-MAINNET=='0x38', MODULUS-MAINNET=='0x666', POLYGON-MUMABI=='0x13881'
-        this.chainName = 'POLYGON MAINNET';
-        this.contractAddress1 = '0x14b43f1b22b47c401dec863883b32e715313061e'; // LottoV2
+        this.dappChain = '0x13881'; //ETHEREUM-MAINNET=='0x1', POLYGON-MAINNET=='0x89', BINANCE-MAINNET=='0x38', MODULUS-MAINNET=='0x666', POLYGON-MUMABI=='0x13881'
+        this.chainName = 'POLYGON MUMBAI';
+        this.contractAddress1 = '0x1dc47d2ec5fad3e9d744d437ee5eb2f2a8a0f498'; // LottoV2
         this.currentAccount = ''; // THIS IS DUPLICATED ON OTHER SCRIPTS, beware
         this.waitingForListener = false;
         this.txnCost = ''; // loaded on checkBetPrice();
