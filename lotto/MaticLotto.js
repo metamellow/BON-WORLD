@@ -406,7 +406,7 @@ class DappInterface {
                     console.log(`Attempting function call (${this.txnCost} msg.value)...`);
                     const options = {
                         value: (ethers.utils.parseEther(`${this.txnCost}`)
-                        + (ethers.utils.parseEther(`${this.txnCost}`) * 0.01)),
+                        + (ethers.utils.parseEther(`${this.txnCost}`) * 0.1)),
                     };
 
                     let functionResult = await connectedContract1.bet(options);
