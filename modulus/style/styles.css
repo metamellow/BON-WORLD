@@ -360,9 +360,37 @@ padding: 10px;
   width: 100%;
 }
 
+.comics {
+  display: flex;
+  width: 100%;
+  background-color: #D7112C;
+  border-radius: 16px;
+}
+
+.comics .content50 {
+  width: 50%;
+}
+
+.comics img{
+  width: 100%;
+}
 
 
+.comics p{
+  width: 100%;
+  color:aliceblue;
+}
 
+.comics .tittle{
+  font-size: 80px;
+  font-weight: 800;
+  line-height: 80px;
+  margin-bottom: 10px;
+}
+
+.comics button:hover{
+  color: #242424;
+}
 
 
 
