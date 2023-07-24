@@ -1,7 +1,9 @@
 /*
 - ive checked the ABIs
-- ive checked the betPrice (hardcoded and also soft coded)
-- ive checked the function code, and it looks fine
+- ive checked the 'betPrice' (hardcoded and also soft coded)
+- ive checked the function code, and it looks fine...?
+- lowered the betPrice to be the same as Mumbai
+- its able to call the read info, but doesnt seem to be able to call a write funciton
 */
 
 // _______________________________________________________
