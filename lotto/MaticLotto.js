@@ -29,6 +29,8 @@ class DappInterface {
         this.waitingForListener = false;
         this.txnCost = ''; // loaded on checkBetPrice();
 
+        this.tEMPBETHOLDER = '10000000000000000000';
+
         // --- Universal HTML Elements --- 
         //this.JSconnectButton = document.getElementById('HTML_connect_button'); // connectWallet()
 
@@ -412,7 +414,8 @@ class DappInterface {
 
                     console.log(`Attempting function call (${this.txnCost} msg.value)...`);
                     const options = {
-                        value: ethers.utils.parseEther(`${this.txnCost}` /*`0`*/),
+                        //value: ethers.utils.parseEther(`${this.txnCost}` /*`0`*/),
+                        value: `${this.tEMPBETHOLDER}`,
                     };
 
                     let functionResult = await connectedContract1.bet(options);
