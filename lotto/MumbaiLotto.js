@@ -30,9 +30,6 @@ class DappInterface {
         this.waitingForListener = false;
         this.txnCost = ''; // loaded on checkBetPrice();
 
-        // --- Universal HTML Elements --- 
-        //this.JSconnectButton = document.getElementById('HTML_connect_button'); // connectWallet()
-
         // --- Button HTML Elements ---
         this.buttonsArray = [
             (this.JSButton0 = "0"), //emptyplaceholder
@@ -59,7 +56,6 @@ class DappInterface {
     // __________________ SETUP PROCESSES SECTION __________________
     // _____________________________________________________________
 
-    // -------------------------------------------------------------------------- can I use SWITCHES to make this smoother? yes in the successful connection area; also can move the disable connectbutton to a general areas; also use a var for chain strings
     async dappInitializeProcess() {
         // --- @DEV this boots all the PRIMARY components
         try{await this.pullUsersWallet();} catch (error) {console.log(error);}
@@ -124,9 +120,6 @@ class DappInterface {
     // _____________________________________________________________
 
     // --- @DEV this is called anytime the inputValue is changed (ie on checkCurrent, changed input manually, etc)
-    // ------------------------------------------------- fold up this info to make it cleaner, copy the fold from the BANK staking (HOW TO PLAY) could also be a fold up
-    // both lotto functions could use restricted size mini loops to allow for future growth
-  
     async CheckPastLotto() {
         try { 
             const { ethereum } = window;
@@ -236,7 +229,6 @@ class DappInterface {
     }
 
     // --- @DEV this pulls all the CURRENT lotto info
-    // ---------------------------------------- move the current round data into the header
     async CheckCurrentLotto() {
         try {
             const { ethereum } = window;

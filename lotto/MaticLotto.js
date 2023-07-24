@@ -1,3 +1,9 @@
+/*
+- ive checked the ABIs
+- ive checked the betPrice (hardcoded and also soft coded)
+- ive checked the function code, and it looks fine
+*/
+
 // _______________________________________________________
 // __________ ESTABLISH ALL SMART CONTRACT ABIs __________
 // _______________________________________________________
@@ -28,11 +34,6 @@ class DappInterface {
         this.currentAccount = ''; // THIS IS DUPLICATED ON OTHER SCRIPTS, beware
         this.waitingForListener = false;
         this.txnCost = ''; // loaded on checkBetPrice();
-
-        this.tEMPBETHOLDER = '10000000000000000000';
-
-        // --- Universal HTML Elements --- 
-        //this.JSconnectButton = document.getElementById('HTML_connect_button'); // connectWallet()
 
         // --- Button HTML Elements ---
         this.buttonsArray = [
@@ -414,8 +415,7 @@ class DappInterface {
 
                     console.log(`Attempting function call (${this.txnCost} msg.value)...`);
                     const options = {
-                        //value: ethers.utils.parseEther(`${this.txnCost}` /*`0`*/),
-                        value: `${this.tEMPBETHOLDER}`,
+                        value: ethers.utils.parseEther(`${this.txnCost}` /*`0`*/),
                     };
 
                     let functionResult = await connectedContract1.bet(options);
