@@ -398,6 +398,7 @@ padding: 10px;
   display: flex;
   flex-direction: column;
   width: 100%;
+  object-fit: cover;
 }
 
 form input{
@@ -497,21 +498,34 @@ form input:focus{
     width: 100%;
     background-color: #D7112C;
     border-radius: 0px;
-    padding: 10px;
     align-items: center;
+    justify-content: center;
+    
+  }
+  .comics p {
+    width: 100%;
+    
+    
   }
   .comics .content50 {
     width: 100%;
   }
 
-  form input{
- width: 100%; 
+  form input  {
+  width: 90%; 
   }
+
   form input:hover{
-    width: 100%; 
+    width: 90%; 
      }
 
+    .comics2 {
+      width: 100%;
+      object-fit: cover;
+
+    }
+
+
    
-
-
+  
   }
