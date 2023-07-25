@@ -350,11 +350,8 @@ iframe {
   gap:0px;
 }
 
- .content .partnerslogo {
-width: 150px;
-margin: 10px;
-padding: 10px;
-}
+
+
 
 .imagedonate {
   width: 100%;
@@ -432,6 +429,37 @@ form input:focus{
 }
 
 
+.partners {
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.partners .logos {
+justify-content: center;
+align-items: center;
+display: inline;
+align-items: center;
+}
+
+.partners img {
+  margin: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.partners p {
+  color:#D7112C;
+  font-weight: 800;
+  font-size: 48px;
+  padding: 12px;
+  padding-left: 0px;  
+  }
+  
 
 @media (max-width: 768px) {
   
@@ -454,6 +482,7 @@ form input:focus{
     font-size: 35px;
   }
 
+  
   body {
     margin: 12px;
   }
