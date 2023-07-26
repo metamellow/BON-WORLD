@@ -24,7 +24,7 @@ class DappInterface {
         // --- Universal web3 Variables
         this.dappChain = '0x1'; //ETHEREUM-MAINNET=='0x1', POLYGON-MAINNET=='0x89', BINANCE-MAINNET=='0x38', MODULUS-MAINNET=='0x666', POLYGON-MUMABI=='0x13881'
         this.chainName = 'ETHEREUM MAINNET';
-        this.contractAddress1 = ''; // LottoV2
+        this.contractAddress1 = '0x14d1e21657557ac43a94f2ffbd104c8dadce1b9a'; // LottoV2
         this.currentAccount = ''; // THIS IS DUPLICATED ON OTHER SCRIPTS, beware
         this.waitingForListener = false;
         this.txnCost = ''; // loaded on checkBetPrice();
