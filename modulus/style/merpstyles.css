@@ -2,6 +2,10 @@ body {
     background-color: #FF3F61;
     font-family: 'Yeseva One', cursive;
     font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    width: 100%;
 }
 
 nav {
@@ -23,12 +27,11 @@ ul:hover {
 
 .main {
     display: flex;
-    position: relative;
     flex-direction: column;
     width: 100%;
     height: 800px;
     align-items: center;
-   justify-content: center;
+    justify-content: center;
 }
 
 .maintittle {
@@ -176,7 +179,8 @@ img {
 
 
 .textmain {
-    margin: 10px;
+    margin: 16px;
+    padding: 16px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -208,3 +212,12 @@ line-height: normal;
 text-align: justify;
 
 }
+
+::-webkit-scrollbar {
+    color: #FF3F61;
+}
+
+  ::-webkit-scrollbar-thumb {
+    background:#FFF73F;
+    border-radius: 5px;
+  }
