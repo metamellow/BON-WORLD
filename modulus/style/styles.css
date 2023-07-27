@@ -550,7 +550,11 @@ align-items: center;
 
     .comics2 {
       width: 100%;
+      height: auto;
+      display: flex;
+      flex-direction: row;
       object-fit: cover;
+      transform: rotate(90deg);
 
     }
 
