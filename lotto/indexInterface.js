@@ -1,4 +1,36 @@
 
+/*
+- Make the erc20 versions edits to the JS
+- change the error messages to something more user friendly
+- 
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 class IndexInterface {
     constructor() {
         /* --- CONNECT BUTTON --- */
