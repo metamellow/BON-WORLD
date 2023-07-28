@@ -192,6 +192,9 @@ width: 100%;
     height: auto;
     flex-shrink: 0; 
     display: flex;
+    margin-right: 150px;
+    display: flex;
+    flex-direction: column;
    
 }
 
@@ -209,6 +212,7 @@ width: 100%;
 
 .habilidades .contentstars {
     display: flex;
+    flex-direction: row;
     align-items: center;
     
 }
