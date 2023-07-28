@@ -2,7 +2,7 @@
 /*
 - Make the erc20 versions edits to the JS
 - change the error messages to something more user friendly
-- 
+- add some buttons that are part of the page that actually refresh the BON chains to correct metask info
 */
 
 
