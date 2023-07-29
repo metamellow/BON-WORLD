@@ -1346,4 +1346,11 @@ a {
   gap: 16px;
 }
 
+.stakemain {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
   
