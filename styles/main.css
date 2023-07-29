@@ -1314,6 +1314,36 @@ a {
 
 
 .stake {
-  
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap:16px;
 }
+
+.stake .tittle {
+  font-size: 50px;
+  font-weight: 800;
+  color: #54ff65;
+}
+
+.stake .button {
+   display: flex;
+   align-items: center;
+   justify-content: space-between !important;
+   
+}
+
+.stake p {
+  display: flex;
+  justify-content: center;
+  margin-right: 16px;
+  margin-right: 16px;
+}
+
+.stake input {
+  width: auto;
+  gap: 16px;
+}
+
   
