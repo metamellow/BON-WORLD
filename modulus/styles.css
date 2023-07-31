@@ -270,6 +270,12 @@ button:hover {
         flex-wrap: wrap;
         padding: 20px;
     }
+
+    
+.nft {
+  width: 100%;
+}
+
   }
 
 
@@ -383,4 +389,8 @@ padding-top: 150px;
 font-weight: 700;
 margin-left: 100px;
 
+}
+
+.nft {
+  display: flex;
 }
