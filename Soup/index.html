@@ -17,7 +17,7 @@
         <p>Connect your wallet and click the button to receive <strong>$SOUP.</strong></p>
 
         <!-- Botão para conectar a carteira -->
-        <button id="connectButtonHTML">
+        <button id="HTML_connect_button" onclick="IndexInterface_.connectWallet();">
             CONNECT WALLET
         </button>
     </div>
@@ -34,7 +34,7 @@
     </div>
 
     <div> 
-        <select name="options" id="options">
+        <select name="options" id="HTML_dropdown_input_1" onchange="IndexInterface_.chooseWhichLotto()">
             <option value="" selected disabled>Select dAPP</option>
             <option value="multisender">Multisender</option>
             <option value="nftmint">NFT Mint</option>
@@ -44,10 +44,11 @@
     <footer>
         <p> testnet</p>
         <img src="images/modulus.png"></img>
-        <p> By: Merp and s0c - BON</p>
+        <p>
+            Built by: [REBEL LABS]
+        </p>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
-    <script src="app.js"></script>
-    <script src="login.js"></script>
+    <script src="./scripts/indexInterface.js"></script>
 </body>
 </html>
