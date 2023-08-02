@@ -271,7 +271,8 @@ justify-content: center;
 
 
 .content .image {
-        width: 650px; 
+        width: 100%; 
+        height: auto;
         margin: 20px;
         justify-content: center;
         text-align: center;
@@ -311,7 +312,7 @@ justify-content: center;
     
 
   }
-  cont
+  
 
   .content p {
     width: 600px;
@@ -334,8 +335,6 @@ hr {
   border:solid 0.1rem #242424;
 }
 
-
-
 iframe { 
   margin-right: 20px;
   justify-content: center;
@@ -349,8 +348,6 @@ iframe {
   margin: 0px;
   gap:0px;
 }
-
-
 
 
 .imagedonate {
@@ -450,8 +447,6 @@ align-items: center;
   align-items: center;
 }
 
-
-
 .partners p {
   color:#D7112C;
   font-weight: 800;
@@ -463,102 +458,71 @@ align-items: center;
 
 @media (max-width: 768px) {
   
-  .content {
-    display: block;
+.container {
+  width: auto;
+  justify-content: center;
+}
+
+.container p {
+  width: 100%;
+}
+
+
+
+.content {
+    flex-direction: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
     align-items: center;
-  }
-
-  .content img {
-    width: 50%;
- 
-  }
-
-  .content .tittle {
-    font-size: 35px;
+    
     
   }
 
-  .content .tittlemain {
-    font-size: 35px;
+  .content p {
+    text-align: justify;
   }
 
-  
-  body {
-    margin: 12px;
+.containermain {
+  width: auto;
+}
+
+.containermain p {
+  justify-content: center;
+  text-align: center;
+}
+
+  .content .tittle {
+    font-size: 30px;
   }
 
-  footer {
-    display: block;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-
-  footer img {
-    padding: 10px;
-  }
-  
   .display_essential {
     display: flex;
     flex-direction: column;
   }
 
-  button {
-    width: 100%;
+  footer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
 
-  iframe {
-    width: auto;
-    height: auto;
-  }
-
-  .content2 iframe {
-    width: auto;
-    height: auto;
-    align-items: center;
-  }
-
-  .content .containermain {
-    width: 100%;
-  }
-
-  .comics {
-    display: block;
-    width: 100%;
-    background-color: #D7112C;
-    border-radius: 0px;
+  .partners {
+    display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    
-  }
-  .comics p {
-    width: 100%;
-    
-    
-  }
-  .comics .content50 {
-    width: 100%;
-  }
-
-  form input  {
-  width: 90%; 
-  }
-
-  form input:hover{
-    width: 90%; 
-     }
-
-.comics2 {
-      width: 100%;
-      height: auto;
-      display: flex;
-      flex-direction: row;
-      object-fit: cover;
-      transform: rotate(90deg);
+    text-align: center;
 
     }
 
-
-   
-  
+    .partners  img {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
   }
+
+
+
