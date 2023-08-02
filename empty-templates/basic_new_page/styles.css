@@ -1,0 +1,117 @@
+/* Estilos gerais */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: auto;
+    padding: 16px;
+    background-color: #264653;
+    color:#E9C46A ;
+    font-family: 'Poppins', sans-serif;
+    width: 360px;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    border: solid 2px;
+    border-radius: 16px;
+  }
+  
+
+  button {
+    width: 360px;
+    height: 70px;
+    justify-content: center;
+    align-items: flex-end;
+    border-radius: 16px;
+    background: #E9C46A;
+    Color:#264653 ;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    border: none;
+    margin-bottom: 8px;
+    margin-top: 8px;
+    text-align: center;
+  }
+
+  .tittlemain {
+    color: #E9C46A;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+  }
+
+footer {
+    margin-top: 100px;
+}
+
+select {
+    background-color: #E9C46A;
+    color: #264653;
+    display: flex;
+    width: 360px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    justify-content: center;
+    align-items: flex-end;
+    border-radius: 16px;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    border: none;
+    margin-bottom: 8px;
+    margin-top: 8px;
+    text-align: center;
+    /* Additional styles as needed */
+  }
+  
+  input {
+    background-color: transparent;
+    color: #E9C46A;
+    display: flex;
+    width: 360px;
+    height: 70px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 16px;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    border: solid 2px;
+    margin-bottom: 8px;
+    margin-top: 8px;
+    text-align: center;
+  }
+
+  footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap:15px;
+  }
+
+  footer img {
+    width: 105.597px;
+    height: 25px;
+    
+  }
+
+  footer p {
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration:underline ;
+  }

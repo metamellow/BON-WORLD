@@ -41,15 +41,15 @@ class IndexInterface {
     }
     
     /* --- DAPP DROPDOWN --- */
-    async chooseWhich(){
+    async chooseWhichLotto(){
             this.JSdappDDValue = this.JSdappDDInput.value;
             console.log(this.JSdappDDValue);
 
             if(this.JSdappDDValue == "multisender"){
-                window.location.href = "./dApp1.html";
+            /*window.location.href = "./MaticLotto.html"*/;
             }
             if(this.JSdappDDValue == "nftmint"){
-                window.location.href = "./dApp2.html";
+                /*window.location.href = "./EthLotto.html"*/;
             }
     }
 }
