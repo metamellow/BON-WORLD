@@ -4,73 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
     <title>SOUP Token Distribution DApp</title>
 </head>
 
 <body>
-    <div>
-        <img src="images/souplogomain.png">
-        <p class="tittlemain">
+    <header class="header">
+        <img src="images/souplogomain.png" alt="Soup Logo" class="logo">
+        <h1 class="title">
             $SOUP
-        </p>
-        <p>
+        </h1>
+        <p class="subtitle">
             Welcome to the <strong>$SOUP</strong> Kitchen!
         </p>
-    </div>
+    </header>
 
-    <div>
-        <label>Your Wallet</label>
-        <button id="HTML_connect_button" onclick="IndexInterface_.connectWallet();">
-            -connect wallet-
-        </button>
-    </div>
-    
-    <div>
-        <label>Soup Balance</label>
-        <button
-            class="textDisplayButton"
-            name="textDisplayButton_soupBalance"
-            id="HTML_button_1"
-            onclick="ClaimerDappInterface_.checkSoupBalance();"
-        >
-            -check balance-
+    <div class="action">
+        <label class="label">Your Wallet</label>
+        <button class="button" id="HTML_connect_button" onclick="IndexInterface_.connectWallet();">
+            Connect Wallet
         </button>
     </div>
 
-    <div>
-        <label>Request SOUP Tokens</label>
-        <button
-            class="textDisplayButton"
-            name="textDisplayButton_soupBalance"
-            id="HTML_button_2"
-            onclick="ClaimerDappInterface_.requestSoupTokens();"
-        >
-            -request tokens-
+    <div class="action">
+        <label class="label">Soup Balance</label>
+        <button class="button textDisplayButton" name="textDisplayButton_soupBalance" id="HTML_button_1"
+            onclick="ClaimerDappInterface_.checkSoupBalance();">
+            Check Balance
         </button>
     </div>
 
-    <div> 
-        <label>Choose a dApp</label>
-        <select name="options" id="HTML_dropdown_input_1" onchange="IndexInterface_.chooseWhich()">
+    <div class="action">
+        <label class="label">Request SOUP Tokens</label>
+        <button class="button textDisplayButton" name="textDisplayButton_soupBalance" id="HTML_button_2"
+            onclick="ClaimerDappInterface_.requestSoupTokens();">
+            Request Tokens
+        </button>
+    </div>
+
+    <div class="action">
+        <label class="label">Choose a dApp</label>
+        <select class="dropdown" name="options" id="HTML_dropdown_input_1" onchange="IndexInterface_.chooseWhich()">
             <option value="" selected disabled>Select dAPP</option>
             <option value="multisender">Multisender</option>
             <option value="nftmint">NFT Mint</option>
         </select>
     </div>
 
-    <footer>
-        <p> testnet</p>
-        <img src="images/modulus.png"></img>
-        <p>
+    <footer class="footer">
+        <p>testnet</p>
+        <img src="images/modulus.png" alt="Modulus Logo" class="modulus-logo">
+        <p class="built-by">
             Built by: [REBEL LABS]
         </p>
+        <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"></script>
+        <script src="scripts/indexInterface.js"></script>
+        <script src="scripts/ClaimerDapp.JS"></script>
     </footer>
-    <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"></script>
-    <script src="./scripts/indexInterface.js"></script>
-    <script src="./scripts/claimerDapp.JS"></script>
+
+  
 
 </body>
 </html>
