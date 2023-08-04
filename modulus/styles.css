@@ -396,3 +396,9 @@ margin-left: 100px;
   width: 30%;
   height: auto;
 }
+
+
+.content .proposta {
+  display: flex;
+  flex-direction: column;
+}
