@@ -524,5 +524,18 @@ align-items: center;
     }
   }
 
+  
+.proposta {
+  width: 100%;
+}
+
+.proposta img {
+  width: 100%;
+}
+
+h2 {
+  color: #D7112C;
+}
+
 
 
