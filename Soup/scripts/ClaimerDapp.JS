@@ -8,11 +8,313 @@ const CONTRACT1_ABI = (
         "contractName": "Claimer",
         "abi":
 
-            [{"type":"constructor","inputs":[{"type":"address","name":"_tokenAddress","internalType":"address"},{"type":"uint256","name":"_claimRate","internalType":"uint256"},{"type":"uint256","name":"_claimPace","internalType":"uint256"},{"type":"uint256","name":"_claimKey","internalType":"uint256"}]},{"type":"function","stateMutability":"nonpayable","outputs":[],"name":"claim","inputs":[{"type":"uint256","name":"_claimKey","internalType":"uint256"}]},{"type":"function","stateMutability":"view","outputs":[{"type":"uint256","name":"","internalType":"uint256"}],"name":"claimKey","inputs":[]},{"type":"function","stateMutability":"view","outputs":[{"type":"uint256","name":"","internalType":"uint256"}],"name":"claimPace","inputs":[]},{"type":"function","stateMutability":"view","outputs":[{"type":"uint256","name":"","internalType":"uint256"}],"name":"claimRate","inputs":[]},{"type":"function","stateMutability":"view","outputs":[{"type":"uint256","name":"","internalType":"uint256"}],"name":"lastClaimTime","inputs":[{"type":"address","name":"","internalType":"address"}]},{"type":"function","stateMutability":"view","outputs":[{"type":"address","name":"","internalType":"address"}],"name":"owner","inputs":[]},{"type":"function","stateMutability":"nonpayable","outputs":[],"name":"renounceOwnership","inputs":[]},{"type":"function","stateMutability":"view","outputs":[{"type":"address","name":"","internalType":"contract IERC20"}],"name":"token","inputs":[]},{"type":"function","stateMutability":"view","outputs":[{"type":"uint256","name":"","internalType":"uint256"}],"name":"totalClaimed","inputs":[{"type":"address","name":"","internalType":"address"}]},{"type":"function","stateMutability":"nonpayable","outputs":[],"name":"transferOwnership","inputs":[{"type":"address","name":"newOwner","internalType":"address"}]},{"type":"function","stateMutability":"nonpayable","outputs":[],"name":"updateClaimPace","inputs":[{"type":"uint256","name":"_claimPace","internalType":"uint256"}]},{"type":"function","stateMutability":"nonpayable","outputs":[],"name":"updateClaimRate","inputs":[{"type":"uint256","name":"_claimRate","internalType":"uint256"}]},{"type":"function","stateMutability":"nonpayable","outputs":[],"name":"updateTokenAddress","inputs":[{"type":"address","name":"_tokenAddress","internalType":"address"}]},{"type":"event","name":"ClaimDetails","inputs":[{"type":"uint256","name":"claimAmount","indexed":false}],"anonymous":false},{"type":"event","name":"OwnershipTransferred","inputs":[{"type":"address","name":"previousOwner","indexed":true},{"type":"address","name":"newOwner","indexed":true}],"anonymous":false}]    
+        [
+            {
+                "inputs": [
+                    {
+                        "internalType": "address",
+                        "name": "_tokenAddress",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "_nftAddress",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "_claimPace",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "_claimRate",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "_burnRate",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "bool",
+                        "name": "_burnOn",
+                        "type": "bool"
+                    }
+                ],
+                "stateMutability": "nonpayable",
+                "type": "constructor"
+            },
+            {
+                "anonymous": false,
+                "inputs": [
+                    {
+                        "indexed": false,
+                        "internalType": "uint256",
+                        "name": "claimAmount",
+                        "type": "uint256"
+                    }
+                ],
+                "name": "ClaimDetails",
+                "type": "event"
+            },
+            {
+                "anonymous": false,
+                "inputs": [
+                    {
+                        "indexed": true,
+                        "internalType": "address",
+                        "name": "previousOwner",
+                        "type": "address"
+                    },
+                    {
+                        "indexed": true,
+                        "internalType": "address",
+                        "name": "newOwner",
+                        "type": "address"
+                    }
+                ],
+                "name": "OwnershipTransferred",
+                "type": "event"
+            },
+            {
+                "inputs": [],
+                "name": "burnOn",
+                "outputs": [
+                    {
+                        "internalType": "bool",
+                        "name": "",
+                        "type": "bool"
+                    }
+                ],
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "inputs": [],
+                "name": "burnRate",
+                "outputs": [
+                    {
+                        "internalType": "uint256",
+                        "name": "",
+                        "type": "uint256"
+                    }
+                ],
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "inputs": [
+                    {
+                        "internalType": "uint256",
+                        "name": "_tokenID",
+                        "type": "uint256"
+                    }
+                ],
+                "name": "claim",
+                "outputs": [],
+                "stateMutability": "nonpayable",
+                "type": "function"
+            },
+            {
+                "inputs": [],
+                "name": "claimPace",
+                "outputs": [
+                    {
+                        "internalType": "uint256",
+                        "name": "",
+                        "type": "uint256"
+                    }
+                ],
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "inputs": [],
+                "name": "claimRate",
+                "outputs": [
+                    {
+                        "internalType": "uint256",
+                        "name": "",
+                        "type": "uint256"
+                    }
+                ],
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "inputs": [
+                    {
+                        "internalType": "uint256",
+                        "name": "",
+                        "type": "uint256"
+                    }
+                ],
+                "name": "lastClaimTime",
+                "outputs": [
+                    {
+                        "internalType": "uint256",
+                        "name": "",
+                        "type": "uint256"
+                    }
+                ],
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "inputs": [],
+                "name": "nfts",
+                "outputs": [
+                    {
+                        "internalType": "contract IERC721",
+                        "name": "",
+                        "type": "address"
+                    }
+                ],
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "inputs": [],
+                "name": "owner",
+                "outputs": [
+                    {
+                        "internalType": "address",
+                        "name": "",
+                        "type": "address"
+                    }
+                ],
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "inputs": [],
+                "name": "renounceOwnership",
+                "outputs": [],
+                "stateMutability": "nonpayable",
+                "type": "function"
+            },
+            {
+                "inputs": [],
+                "name": "token",
+                "outputs": [
+                    {
+                        "internalType": "contract IERC20",
+                        "name": "",
+                        "type": "address"
+                    }
+                ],
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "inputs": [
+                    {
+                        "internalType": "address",
+                        "name": "",
+                        "type": "address"
+                    }
+                ],
+                "name": "totalClaimed",
+                "outputs": [
+                    {
+                        "internalType": "uint256",
+                        "name": "",
+                        "type": "uint256"
+                    }
+                ],
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "inputs": [
+                    {
+                        "internalType": "address",
+                        "name": "newOwner",
+                        "type": "address"
+                    }
+                ],
+                "name": "transferOwnership",
+                "outputs": [],
+                "stateMutability": "nonpayable",
+                "type": "function"
+            },
+            {
+                "inputs": [
+                    {
+                        "internalType": "uint256",
+                        "name": "_burnRate",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "bool",
+                        "name": "_trueFalse",
+                        "type": "bool"
+                    }
+                ],
+                "name": "updateBurn",
+                "outputs": [],
+                "stateMutability": "nonpayable",
+                "type": "function"
+            },
+            {
+                "inputs": [
+                    {
+                        "internalType": "uint256",
+                        "name": "_claimPace",
+                        "type": "uint256"
+                    }
+                ],
+                "name": "updateClaimPace",
+                "outputs": [],
+                "stateMutability": "nonpayable",
+                "type": "function"
+            },
+            {
+                "inputs": [
+                    {
+                        "internalType": "uint256",
+                        "name": "_claimRate",
+                        "type": "uint256"
+                    }
+                ],
+                "name": "updateClaimRate",
+                "outputs": [],
+                "stateMutability": "nonpayable",
+                "type": "function"
+            },
+            {
+                "inputs": [
+                    {
+                        "internalType": "address",
+                        "name": "_tokenAddress",
+                        "type": "address"
+                    }
+                ],
+                "name": "updateTokenAddress",
+                "outputs": [],
+                "stateMutability": "nonpayable",
+                "type": "function"
+            },
+            {
+                "inputs": [
+                    {
+                        "internalType": "address",
+                        "name": "_tokenAddress",
+                        "type": "address"
+                    }
+                ],
+                "name": "withdrawTokens",
+                "outputs": [],
+                "stateMutability": "nonpayable",
+                "type": "function"
+            }
+        ]
+
     ,}
 );
 
-// "SoupToken"
+// "SOUP"
 const CONTRACT2_ABI = (
 	{
         "contractName": "SoupToken",
@@ -20,7 +322,58 @@ const CONTRACT2_ABI = (
 
         [
             {
-                "inputs": [],
+                "inputs": [
+                    {
+                        "internalType": "string",
+                        "name": "_name",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "_symbol",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "_treasury",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "_dev1",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "_dev2",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "_treasTx",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "_devsTx",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "_burn",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "_totalMade",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "address[]",
+                        "name": "_airdropAddresses",
+                        "type": "address[]"
+                    }
+                ],
                 "stateMutability": "nonpayable",
                 "type": "constructor"
             },
@@ -55,6 +408,25 @@ const CONTRACT2_ABI = (
                     {
                         "indexed": true,
                         "internalType": "address",
+                        "name": "previousOwner",
+                        "type": "address"
+                    },
+                    {
+                        "indexed": true,
+                        "internalType": "address",
+                        "name": "newOwner",
+                        "type": "address"
+                    }
+                ],
+                "name": "OwnershipTransferred",
+                "type": "event"
+            },
+            {
+                "anonymous": false,
+                "inputs": [
+                    {
+                        "indexed": true,
+                        "internalType": "address",
                         "name": "from",
                         "type": "address"
                     },
@@ -78,12 +450,12 @@ const CONTRACT2_ABI = (
                 "inputs": [
                     {
                         "internalType": "address",
-                        "name": "",
+                        "name": "owner",
                         "type": "address"
                     },
                     {
                         "internalType": "address",
-                        "name": "",
+                        "name": "spender",
                         "type": "address"
                     }
                 ],
@@ -102,12 +474,12 @@ const CONTRACT2_ABI = (
                 "inputs": [
                     {
                         "internalType": "address",
-                        "name": "_spender",
+                        "name": "spender",
                         "type": "address"
                     },
                     {
                         "internalType": "uint256",
-                        "name": "_value",
+                        "name": "amount",
                         "type": "uint256"
                     }
                 ],
@@ -115,7 +487,7 @@ const CONTRACT2_ABI = (
                 "outputs": [
                     {
                         "internalType": "bool",
-                        "name": "success",
+                        "name": "",
                         "type": "bool"
                     }
                 ],
@@ -126,7 +498,7 @@ const CONTRACT2_ABI = (
                 "inputs": [
                     {
                         "internalType": "address",
-                        "name": "",
+                        "name": "account",
                         "type": "address"
                     }
                 ],
@@ -142,8 +514,21 @@ const CONTRACT2_ABI = (
                 "type": "function"
             },
             {
+                "inputs": [
+                    {
+                        "internalType": "uint256",
+                        "name": "amount",
+                        "type": "uint256"
+                    }
+                ],
+                "name": "burn",
+                "outputs": [],
+                "stateMutability": "nonpayable",
+                "type": "function"
+            },
+            {
                 "inputs": [],
-                "name": "burnFee",
+                "name": "burn",
                 "outputs": [
                     {
                         "internalType": "uint256",
@@ -155,42 +540,21 @@ const CONTRACT2_ABI = (
                 "type": "function"
             },
             {
-                "inputs": [],
-                "name": "burnWallet",
-                "outputs": [
+                "inputs": [
                     {
                         "internalType": "address",
-                        "name": "",
+                        "name": "account",
                         "type": "address"
-                    }
-                ],
-                "stateMutability": "view",
-                "type": "function"
-            },
-            {
-                "inputs": [],
-                "name": "creatorFee",
-                "outputs": [
+                    },
                     {
                         "internalType": "uint256",
-                        "name": "",
+                        "name": "amount",
                         "type": "uint256"
                     }
                 ],
-                "stateMutability": "view",
-                "type": "function"
-            },
-            {
-                "inputs": [],
-                "name": "creatorWallet",
-                "outputs": [
-                    {
-                        "internalType": "address",
-                        "name": "",
-                        "type": "address"
-                    }
-                ],
-                "stateMutability": "view",
+                "name": "burnFrom",
+                "outputs": [],
+                "stateMutability": "nonpayable",
                 "type": "function"
             },
             {
@@ -207,6 +571,67 @@ const CONTRACT2_ABI = (
                 "type": "function"
             },
             {
+                "inputs": [
+                    {
+                        "internalType": "address",
+                        "name": "spender",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "subtractedValue",
+                        "type": "uint256"
+                    }
+                ],
+                "name": "decreaseAllowance",
+                "outputs": [
+                    {
+                        "internalType": "bool",
+                        "name": "",
+                        "type": "bool"
+                    }
+                ],
+                "stateMutability": "nonpayable",
+                "type": "function"
+            },
+            {
+                "inputs": [],
+                "name": "devsTx",
+                "outputs": [
+                    {
+                        "internalType": "uint256",
+                        "name": "",
+                        "type": "uint256"
+                    }
+                ],
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "inputs": [
+                    {
+                        "internalType": "address",
+                        "name": "spender",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "addedValue",
+                        "type": "uint256"
+                    }
+                ],
+                "name": "increaseAllowance",
+                "outputs": [
+                    {
+                        "internalType": "bool",
+                        "name": "",
+                        "type": "bool"
+                    }
+                ],
+                "stateMutability": "nonpayable",
+                "type": "function"
+            },
+            {
                 "inputs": [],
                 "name": "name",
                 "outputs": [
@@ -217,6 +642,77 @@ const CONTRACT2_ABI = (
                     }
                 ],
                 "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "inputs": [],
+                "name": "owner",
+                "outputs": [
+                    {
+                        "internalType": "address",
+                        "name": "",
+                        "type": "address"
+                    }
+                ],
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "inputs": [],
+                "name": "renounceOwnership",
+                "outputs": [],
+                "stateMutability": "nonpayable",
+                "type": "function"
+            },
+            {
+                "inputs": [
+                    {
+                        "internalType": "address",
+                        "name": "_treasury",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "_dev1",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "_dev2",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "_treasTx",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "_devsTx",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "_burn",
+                        "type": "uint256"
+                    }
+                ],
+                "name": "setVars",
+                "outputs": [],
+                "stateMutability": "nonpayable",
+                "type": "function"
+            },
+            {
+                "inputs": [
+                    {
+                        "internalType": "address",
+                        "name": "_whitelist",
+                        "type": "address"
+                    }
+                ],
+                "name": "setWhitelistAddress",
+                "outputs": [],
+                "stateMutability": "nonpayable",
                 "type": "function"
             },
             {
@@ -249,12 +745,12 @@ const CONTRACT2_ABI = (
                 "inputs": [
                     {
                         "internalType": "address",
-                        "name": "_to",
+                        "name": "to",
                         "type": "address"
                     },
                     {
                         "internalType": "uint256",
-                        "name": "_value",
+                        "name": "amount",
                         "type": "uint256"
                     }
                 ],
@@ -262,7 +758,7 @@ const CONTRACT2_ABI = (
                 "outputs": [
                     {
                         "internalType": "bool",
-                        "name": "success",
+                        "name": "",
                         "type": "bool"
                     }
                 ],
@@ -273,17 +769,17 @@ const CONTRACT2_ABI = (
                 "inputs": [
                     {
                         "internalType": "address",
-                        "name": "_from",
+                        "name": "from",
                         "type": "address"
                     },
                     {
                         "internalType": "address",
-                        "name": "_to",
+                        "name": "to",
                         "type": "address"
                     },
                     {
                         "internalType": "uint256",
-                        "name": "_value",
+                        "name": "amount",
                         "type": "uint256"
                     }
                 ],
@@ -291,7 +787,7 @@ const CONTRACT2_ABI = (
                 "outputs": [
                     {
                         "internalType": "bool",
-                        "name": "success",
+                        "name": "",
                         "type": "bool"
                     }
                 ],
@@ -299,8 +795,21 @@ const CONTRACT2_ABI = (
                 "type": "function"
             },
             {
+                "inputs": [
+                    {
+                        "internalType": "address",
+                        "name": "newOwner",
+                        "type": "address"
+                    }
+                ],
+                "name": "transferOwnership",
+                "outputs": [],
+                "stateMutability": "nonpayable",
+                "type": "function"
+            },
+            {
                 "inputs": [],
-                "name": "treasuryFee",
+                "name": "treasTx",
                 "outputs": [
                     {
                         "internalType": "uint256",
@@ -312,13 +821,19 @@ const CONTRACT2_ABI = (
                 "type": "function"
             },
             {
-                "inputs": [],
-                "name": "treasuryWallet",
-                "outputs": [
+                "inputs": [
                     {
                         "internalType": "address",
                         "name": "",
                         "type": "address"
+                    }
+                ],
+                "name": "whitelistedAddress",
+                "outputs": [
+                    {
+                        "internalType": "bool",
+                        "name": "",
+                        "type": "bool"
                     }
                 ],
                 "stateMutability": "view",
@@ -327,6 +842,497 @@ const CONTRACT2_ABI = (
         ]    
     ,}
 );
+
+// "NFT"
+const CONTRACT3_ABI = (
+	{
+        "contractName": "NFT",
+        "abi":
+        [
+            {
+                "inputs": [
+                    {
+                        "internalType": "address",
+                        "name": "_receiver",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "_reserved",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "_Name",
+                        "type": "string"
+                    },
+                    {
+                        "internalType": "string",
+                        "name": "_Symbol",
+                        "type": "string"
+                    }
+                ],
+                "stateMutability": "nonpayable",
+                "type": "constructor"
+            },
+            {
+                "anonymous": false,
+                "inputs": [
+                    {
+                        "indexed": true,
+                        "internalType": "address",
+                        "name": "owner",
+                        "type": "address"
+                    },
+                    {
+                        "indexed": true,
+                        "internalType": "address",
+                        "name": "approved",
+                        "type": "address"
+                    },
+                    {
+                        "indexed": true,
+                        "internalType": "uint256",
+                        "name": "tokenId",
+                        "type": "uint256"
+                    }
+                ],
+                "name": "Approval",
+                "type": "event"
+            },
+            {
+                "anonymous": false,
+                "inputs": [
+                    {
+                        "indexed": true,
+                        "internalType": "address",
+                        "name": "owner",
+                        "type": "address"
+                    },
+                    {
+                        "indexed": true,
+                        "internalType": "address",
+                        "name": "operator",
+                        "type": "address"
+                    },
+                    {
+                        "indexed": false,
+                        "internalType": "bool",
+                        "name": "approved",
+                        "type": "bool"
+                    }
+                ],
+                "name": "ApprovalForAll",
+                "type": "event"
+            },
+            {
+                "anonymous": false,
+                "inputs": [
+                    {
+                        "indexed": false,
+                        "internalType": "address",
+                        "name": "sender",
+                        "type": "address"
+                    },
+                    {
+                        "indexed": false,
+                        "internalType": "uint256",
+                        "name": "tokenId",
+                        "type": "uint256"
+                    }
+                ],
+                "name": "NewNFTMinted",
+                "type": "event"
+            },
+            {
+                "anonymous": false,
+                "inputs": [
+                    {
+                        "indexed": true,
+                        "internalType": "address",
+                        "name": "previousOwner",
+                        "type": "address"
+                    },
+                    {
+                        "indexed": true,
+                        "internalType": "address",
+                        "name": "newOwner",
+                        "type": "address"
+                    }
+                ],
+                "name": "OwnershipTransferred",
+                "type": "event"
+            },
+            {
+                "anonymous": false,
+                "inputs": [
+                    {
+                        "indexed": true,
+                        "internalType": "address",
+                        "name": "from",
+                        "type": "address"
+                    },
+                    {
+                        "indexed": true,
+                        "internalType": "address",
+                        "name": "to",
+                        "type": "address"
+                    },
+                    {
+                        "indexed": true,
+                        "internalType": "uint256",
+                        "name": "tokenId",
+                        "type": "uint256"
+                    }
+                ],
+                "name": "Transfer",
+                "type": "event"
+            },
+            {
+                "inputs": [
+                    {
+                        "internalType": "address",
+                        "name": "to",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "tokenId",
+                        "type": "uint256"
+                    }
+                ],
+                "name": "approve",
+                "outputs": [],
+                "stateMutability": "nonpayable",
+                "type": "function"
+            },
+            {
+                "inputs": [
+                    {
+                        "internalType": "address",
+                        "name": "owner",
+                        "type": "address"
+                    }
+                ],
+                "name": "balanceOf",
+                "outputs": [
+                    {
+                        "internalType": "uint256",
+                        "name": "",
+                        "type": "uint256"
+                    }
+                ],
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "inputs": [],
+                "name": "baseExtension",
+                "outputs": [
+                    {
+                        "internalType": "string",
+                        "name": "",
+                        "type": "string"
+                    }
+                ],
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "inputs": [],
+                "name": "baseURI",
+                "outputs": [
+                    {
+                        "internalType": "string",
+                        "name": "",
+                        "type": "string"
+                    }
+                ],
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "inputs": [
+                    {
+                        "internalType": "uint256",
+                        "name": "tokenId",
+                        "type": "uint256"
+                    }
+                ],
+                "name": "getApproved",
+                "outputs": [
+                    {
+                        "internalType": "address",
+                        "name": "",
+                        "type": "address"
+                    }
+                ],
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "inputs": [
+                    {
+                        "internalType": "address",
+                        "name": "owner",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "operator",
+                        "type": "address"
+                    }
+                ],
+                "name": "isApprovedForAll",
+                "outputs": [
+                    {
+                        "internalType": "bool",
+                        "name": "",
+                        "type": "bool"
+                    }
+                ],
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "inputs": [],
+                "name": "name",
+                "outputs": [
+                    {
+                        "internalType": "string",
+                        "name": "",
+                        "type": "string"
+                    }
+                ],
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "inputs": [],
+                "name": "owner",
+                "outputs": [
+                    {
+                        "internalType": "address",
+                        "name": "",
+                        "type": "address"
+                    }
+                ],
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "inputs": [
+                    {
+                        "internalType": "uint256",
+                        "name": "tokenId",
+                        "type": "uint256"
+                    }
+                ],
+                "name": "ownerOf",
+                "outputs": [
+                    {
+                        "internalType": "address",
+                        "name": "",
+                        "type": "address"
+                    }
+                ],
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "inputs": [],
+                "name": "renounceOwnership",
+                "outputs": [],
+                "stateMutability": "nonpayable",
+                "type": "function"
+            },
+            {
+                "inputs": [
+                    {
+                        "internalType": "address",
+                        "name": "from",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "to",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "tokenId",
+                        "type": "uint256"
+                    }
+                ],
+                "name": "safeTransferFrom",
+                "outputs": [],
+                "stateMutability": "nonpayable",
+                "type": "function"
+            },
+            {
+                "inputs": [
+                    {
+                        "internalType": "address",
+                        "name": "from",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "to",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "tokenId",
+                        "type": "uint256"
+                    },
+                    {
+                        "internalType": "bytes",
+                        "name": "data",
+                        "type": "bytes"
+                    }
+                ],
+                "name": "safeTransferFrom",
+                "outputs": [],
+                "stateMutability": "nonpayable",
+                "type": "function"
+            },
+            {
+                "inputs": [
+                    {
+                        "internalType": "address",
+                        "name": "operator",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "bool",
+                        "name": "approved",
+                        "type": "bool"
+                    }
+                ],
+                "name": "setApprovalForAll",
+                "outputs": [],
+                "stateMutability": "nonpayable",
+                "type": "function"
+            },
+            {
+                "inputs": [
+                    {
+                        "internalType": "string",
+                        "name": "_setBaseURI",
+                        "type": "string"
+                    }
+                ],
+                "name": "setBaseURI",
+                "outputs": [],
+                "stateMutability": "nonpayable",
+                "type": "function"
+            },
+            {
+                "inputs": [
+                    {
+                        "internalType": "bytes4",
+                        "name": "interfaceId",
+                        "type": "bytes4"
+                    }
+                ],
+                "name": "supportsInterface",
+                "outputs": [
+                    {
+                        "internalType": "bool",
+                        "name": "",
+                        "type": "bool"
+                    }
+                ],
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "inputs": [],
+                "name": "symbol",
+                "outputs": [
+                    {
+                        "internalType": "string",
+                        "name": "",
+                        "type": "string"
+                    }
+                ],
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "inputs": [
+                    {
+                        "internalType": "uint256",
+                        "name": "tokenId",
+                        "type": "uint256"
+                    }
+                ],
+                "name": "tokenURI",
+                "outputs": [
+                    {
+                        "internalType": "string",
+                        "name": "",
+                        "type": "string"
+                    }
+                ],
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "inputs": [],
+                "name": "totalSupply",
+                "outputs": [
+                    {
+                        "internalType": "uint256",
+                        "name": "",
+                        "type": "uint256"
+                    }
+                ],
+                "stateMutability": "view",
+                "type": "function"
+            },
+            {
+                "inputs": [
+                    {
+                        "internalType": "address",
+                        "name": "from",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "address",
+                        "name": "to",
+                        "type": "address"
+                    },
+                    {
+                        "internalType": "uint256",
+                        "name": "tokenId",
+                        "type": "uint256"
+                    }
+                ],
+                "name": "transferFrom",
+                "outputs": [],
+                "stateMutability": "nonpayable",
+                "type": "function"
+            },
+            {
+                "inputs": [
+                    {
+                        "internalType": "address",
+                        "name": "newOwner",
+                        "type": "address"
+                    }
+                ],
+                "name": "transferOwnership",
+                "outputs": [],
+                "stateMutability": "nonpayable",
+                "type": "function"
+            }
+        ]
+            
+    ,}
+);
+
 
 class ClaimerDappInterface {
     
@@ -339,8 +1345,9 @@ class ClaimerDappInterface {
         // --- Universal web3 Variables
         this.dappChain = '0x1a0a'; //ETHEREUM-MAINNET=='0x1', POLYGON-MAINNET=='0x89', BINANCE-MAINNET=='0x38', MODULUS-TESTNET=='0x1a0a', POLYGON-MUMABI=='0x13881'
         this.chainName = 'MODULUS TESTNET';
-        this.contractAddress1 = '0x26fd3e1454e6175b150341158df48ce3D5c76C4a'; // Claimer
-        this.contractAddress2 = '0x98Eb886Bbb97F2B7800B3120c24F6d0627c1d8f8'; // SoupToken
+        this.contractAddress1 = '0x68b9f2783B7e2a3fCdeE63974b23b21EB2ebA87B'; // Claimer
+        this.contractAddress2 = '0xAD6FBa0609e4D903DC04B47D10cDf5b62A8a596B'; // SOUP
+        this.contractAddress3 = '0x8477d919beC3bFC500f691285D2321E75b771960'; // NFT
         this.currentAccount = ''; // THIS IS DUPLICATED ON OTHER SCRIPTS, beware
         this.waitingForListener = false;
         this.txnCost = ''; // loaded on checkBetPrice();
@@ -349,6 +1356,7 @@ class ClaimerDappInterface {
         this.buttonsArray = [
             (this.JSButton0 = "0"), //emptyplaceholder
             (this.JSButton1 = document.getElementById('HTML_button_1')), // C2 - balanceOf()
+            (this.JSButton2 = document.getElementById('HTML_button_2')) // C1 - claimSoup()
         ]
 
         // --- Input HTML Elements --- 
@@ -369,6 +1377,8 @@ class ClaimerDappInterface {
         
         // --- SECONDARY components
         try{await this.checkSoupBalance();} catch (error) {console.log(error);}
+        this.buttonsArray[2].innerText = 'Request Tokens';
+
     }
 
     // --- @DEV Listeners that pick up emit events from onchain functions
@@ -379,7 +1389,6 @@ class ClaimerDappInterface {
                 const provider = new ethers.providers.Web3Provider(ethereum);
                 const signer = provider.getSigner();
 
-                /*
                 // --- Contract 1 ---
                     // Setup
                     const connectedContract1 = new ethers.Contract(
@@ -390,17 +1399,20 @@ class ClaimerDappInterface {
                     console.log('Contract 1 connected to listener');
 
                     // Event Listener 1A
-                    connectedContract1.on('BetDetails', (playersCounter, counterReward) => {
+                    connectedContract1.on('ClaimDetails', (claimAmount) => {
                         if(this.waitingForListener == true){
                             this.waitingForListener = false;
-                            console.log(playersCounter, counterReward);
-                            alert(`Bet successful! Please wait 2 min for the TXNs to log on the blockchain.`);
+                            let amount = ethers.utils.formatEther(String(claimAmount));
+                            amount = Number(amount);
+                            amount = amount.toFixed(3);
+                            amount = ethers.utils.commify(amount);
+                            console.log(amount);
+                            alert(`Success! Claimed: ${amount} SOUP`);
                             window.location.reload();
                         }
                         }
                     );
                     console.log('Contract 1A listener success');
-                */
 
             } else {
                 console.log("Ethereum object doesn't exist!");
@@ -414,7 +1426,7 @@ class ClaimerDappInterface {
     // ___________ UNIVERSAL CONTRACT FUNCTIONS SECTION ____________
     // _____________________________________________________________
 
-    // --- @DEV function explanation
+    // --- @DEV pulls the connected wallets SOUP balance
     async checkSoupBalance() {
         try { 
             const { ethereum } = window;
@@ -468,6 +1480,67 @@ class ClaimerDappInterface {
         } catch (error) {
             // @Dev this pulls the flagged error and gives to user
             console.log(error);
+        }
+    }
+
+    // --- @DEV calls the claim function with the tokenID currently in the entry field
+    async claimSoup() {
+        try { 
+            const { ethereum } = window;
+            if (ethereum) {
+                let chainId = await ethereum.request({ method: 'eth_chainId' });
+                console.log(`chainId: ` + chainId);
+                if((chainId == this.dappChain)){
+                    const provider = new ethers.providers.Web3Provider(ethereum);
+                    const signer = provider.getSigner();
+                    try{
+                        // Contract 1 functions
+                        console.log(`Connecting contract2...`);
+                        const connectedContract1 = new ethers.Contract(
+                            this.contractAddress1,
+                            CONTRACT1_ABI.abi,
+                            signer
+                        );
+                            // @Dev this should be the effected button range
+                            for (let i = 2; i < 3; i++) {
+                                this.buttonsArray[i].disabled = true;
+                                this.buttonsArray[i].innerText = `*loading*`;
+                                console.log(`button ${i} disabled`);
+                            }
+                        
+                            // Button 2 -  claim()
+                            console.log(`Attempting button 1 call..`);
+                            let Button2Results = await connectedContract1.claim(`${this.selectedInput1}`);
+                            console.log('Awaiting button results...');
+                            await Button2Results;
+                            console.log("Analzying results...");
+
+                            this.waitingForListener = true;
+                            this.buttonsArray[2].innerText = '*waiting for metamask*';
+
+                    }catch(error){
+                        // @Dev error related to the function process
+                        console.log(error);
+                        this.buttonsArray[2].disabled = false;
+                        this.buttonsArray[2].innerText = `Try Claim Again`;
+                    }
+                } else {
+                    // @Dev error related to network chain
+                    console.log(`dappChain incorrect`);
+                    this.buttonsArray[2].disabled = false;
+                    this.buttonsArray[2].innerText = `Try Claim Again`;
+                }
+            } else {
+                // @Dev error related to 'Metamask'
+                console.log(`Eth object not found`);
+                this.buttonsArray[2].disabled = false;
+                this.buttonsArray[2].innerText = `Try Claim Again`;
+            }
+        } catch (error) {
+            // @Dev this pulls the flagged error and gives to user
+            console.log(error);
+            this.buttonsArray[2].disabled = false;
+            this.buttonsArray[2].innerText = `Try Claim Again`;
         }
     }
 

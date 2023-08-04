@@ -36,9 +36,24 @@
     </div>
 
     <div class="action">
+        <label class="label">NFT Key Number</label>
+        <input
+            class="number"
+            type="number"
+            name="numberInputField_nftTokenId"
+            id="HTML_input_1"
+            min="1"
+            value="1"
+            width="50%"
+            onchange="ClaimerDappInterface_.onAnySelectInputs();"
+            required
+        />
+    </div>
+    
+    <div class="action">
         <label class="label">Request SOUP Tokens</label>
-        <button class="button textDisplayButton" name="textDisplayButton_soupBalance" id="HTML_button_2"
-            onclick="ClaimerDappInterface_.requestSoupTokens();">
+        <button class="button textDisplayButton" name="textDisplayButton_requestSoup" id="HTML_button_2"
+            onclick="ClaimerDappInterface_.claimSoup();">
             Request Tokens
         </button>
     </div>
