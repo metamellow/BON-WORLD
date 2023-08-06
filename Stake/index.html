@@ -69,7 +69,7 @@
           <li><a href="../whitepaper.html">whitepaper</a></li>
           <li><a href="../lotto/index.html">lotto</a></li>
           <li><a href="../dapp.html"> crowdfunding</a></li>
-          <li><a href="../Stake/index.html"> stake</a></li>
+          <li><a href="../stake/index.html"> stake</a></li>
           <li>
             <button
               name="connectWallet"
@@ -91,218 +91,52 @@
         <img/>
         <p class="cftitle"><b style="text-align: center;">BON.Stake</b></p>
         <img/>
-
+        <img class="imgadjust" src="../images/stake.png" />
       </div>
-      
-      <div class="wpsubtitle">Earn</div>
+      <div class="wpsubtitle">Infinity Staking</div>
     </div>
 
     <hr />
-   <!--intro-->
-    <div class="stakemain">
+
+    <div class="lotto3">
       <!--top-->
       <div>
         <img src="../images/stakemain.png" />
       </div>
-      
       <div class="lottomainindex">
-       
-       <strong style="color: #54ff65">Bank of Nowhere</strong>
-        <br />
-        <strong style="color: aliceblue">Stake </strong>
-        
+          Welcome to the<br />
+          <strong style="color: #54ff65">Bank of Nowhere</strong><br />
+          <strong style="color: aliceblue">Infinity Staking! </strong>
+
+        <div id="selection-dropdown">
+          <select
+            id="HTML_dropdown_input_1"
+            onchange="IndexInterface_.chooseWhichStake()"
+          >
+            <option value="" selected disabled>Please choose...</option>
+            <option value="BONNFT">BONNFT</option>
+          </select>
+        </div>
+
         <p style="font-size: 30%; line-height: normal; font-weight: 300;">
-          Go <strong>head to head</strong> with challengers around the world.
-          Advanced <strong>blockchain technology</strong> secures both parties funds through encrypted custody.
-          Guaranteed security from <strong>quantum randomness*</strong> ensures a fair outcome every time.
+          Hold tokens, <strong>claim rewards</strong>, wait, then claim again and again <strong>to infinity</strong>!
+          Token rewards are based on an <strong>exponential curve</strong>, so the more we grow <strong>the more you get</strong>!
+          BON stake is <strong>noncustodial</strong>, meaning you always maintain <strong>complete control</strong> over your assets!
         </p>
+
         <p style="font-size: 20%; line-height: normal; font-weight: 300;">
-          * Lotto is still in <strong>testing phases</strong> and currently only available in <strong>MATIC</strong> and <strong>ETH</strong><br>
-          * ETH and MATIC have a 10% tax that goes to BON development; BON and CULT are <strong>freeeeeee!</strong><br>
-          * Quantum randomness provided by ANU's Quantum Random Number Generator<br>
+          * All rewards are distributed in the one and only, the wonderful, the magnificent <strong>$BON</strong> token<br>
+          * Rewards are given <strong>once every 7 days</strong> for each NFT, so <strong>more NFTs means more rewards</strong>! Woo!<br>
         </p>
       </div>
     </div>
-<!--endintro-->
-    <hr> 
 
-
-  <!--stake start-->
-  <div class="wrapper_accordion"><!--stake-->
-    <!-- ACCORDIAN DETAILS -->
-    <div class="container_accordion collapsibleItem">
-      <img class="arrow2" src="../lotto/images/arrow2.svg" />
-      <strong>stake</strong>
-    </div>
-
-    <!-- SECTION OBJECTS -->
-    <div>
-      <div class="lottodisplay">
-        <br/>
-
-        <!-- SHOW CURRENT ROUND -->
-        <div class="lottocharts">
-          <p>your bon</p>
-          <label for="CheckCurrentLotto_counter"></label>
-          <button
-            class="lottobutton"
-            name="CheckCurrentLotto_counter"
-            id="HTML_button_2"
-            onclick="DappInterface_.CheckCurrentLotto();"
-          >
-            -load-
-          </button>
-        </div>
-
-        <!-- SHOW CURRENT BET COST -->
-        <div class="lottocharts">
-          <p>stake amount</p>
-          <label for="CheckCurrentLotto_betPrice"></label>
-          <button
-            class="lottobutton"
-            name="CheckCurrentLotto_betPrice"
-            id="HTML_button_5"
-            onclick="DappInterface_.CheckCurrentLotto();"
-          >
-            -load-
-          </button>
-        </div>
-        <div class="button"> 
-          <input type="number"> </input>
-          <div>
-          
-            </div>  
-          
-        </div>
-      </div>
-
-      <div>
-        <div>
-          <label for="Bet_Loader"></label>
-          <button
-            class="lottobuttonbet"
-            name="Bet_Loader"
-            id="HTML_button_1"
-            onclick="DappInterface_.Bet_Loader();"
-          >
-            stake
-          </button>
-        </div>
-      </div>
-      <div>
-        <div> <!--wirhdraw-->
-          <label for="Bet_Loader"></label>
-          <button
-            class="lottobuttonbet"
-            name="Bet_Loader"
-            id="HTML_button_1"
-            onclick="DappInterface_.Bet_Loader();"
-          >
-            withdraw
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-<!--stake finish-->
-  <br>
-
-
-  <!--claim start-->
-<div class="wrapper_accordion"><!--claim-->
-    <!-- ACCORDIAN DETAILS -->
-    <div class="container_accordion collapsibleItem">
-      <img class="arrow2" src="../lotto/images/arrow2.svg" />
-      <strong>claim</strong>
-    </div>
-
-    <!-- SECTION OBJECTS -->
-    <div>
-      <div class="lottodisplay">
-        <br/>
-
-   
-        <div class="button"> 
-          <input type="number"> </input>
-          <div>
-          
-            </div>  
-          
-        </div>
-
-        <!-- SHOW CURRENT REWARD VALUE -->
-        <div class="lottocharts">
-          <p>claim value</p>
-          <label for="CheckCurrentLotto_REWARDVALUE"></label>
-          <button
-            class="lottobutton"
-            name="CheckCurrentLotto_REWARDVALUE"
-            id="HTML_button_6"
-            onclick="DappInterface_.CheckCurrentLotto();"
-          >
-            -load-
-          </button>
-        </div>
-
-        
-      </div>
-
-      <hr />
-
-      <div>
-      
-      </div>
-      <div>
-        <div>
-          <label for="Bet_Loader"></label>
-          <button
-            class="lottobuttonbet"
-            name="Bet_Loader"
-            id="HTML_button_1"
-            onclick="DappInterface_.Bet_Loader();"
-          >
-            claim
-          </button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-<!--claim end-->
-  <br>
-
-
-  <!--about start-->
-  <div class="wrapper_accordion"><!--about-->
-    <!-- ACCORDIAN DETAILS -->
-    <div class="container_accordion collapsibleItem">
-      <img class="arrow2" src="../lotto/images/arrow2.svg" />
-      <strong>about</strong>
-    </div>
-
-    <!-- SECTION OBJECTS -->
-    <div>
-          <p>"At vero eos et accusamus et iusto odio dignissimos 
-            ducimus qui blanditiis praesentium voluptatum deleniti 
-            atque corrupti quos dolores et quas molestias excepturi sint occaecati 
-            cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia
-             animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita 
-             distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit 
-             quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor r
-             epellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut 
-             et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus,
-             ut aut reiciendis voluptatibus maiores alias consequatur 
-             aut perferendis doloribus asperiores repellat." </p>
-    </div>
-    
-      </div>
-<!--about end-->
     <hr />
 
     <footer>
       <img src="../images/fav.png" />
       <div class="copyright"><p>Copyright © Bank of Nowhere</p></div>
-      <div><img src="../images/moduluslogogreen.svg" /></div>
+      <div><img src="images/moduluslogogreen.svg" /></div>
 
       <script
         src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"
@@ -310,7 +144,6 @@
       ></script>
       <script src="indexInterface.js" type="application/javascript"></script>
       <script src="../scripts/menu.js"></script>
-      <script src="../scripts/collapse.js"></script>
     </footer>
   </body>
 </html>
