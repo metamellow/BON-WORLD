@@ -134,12 +134,23 @@
       <!-- SECTION OBJECTS -->
         <div class="lottodisplay">
             <br/>
-            [TEMP]
-            <!-- ---------- SHOW ALL USERS NFTS HERE + THE TIME REMAINING UNTIL CLAIM ---------- -->
+
+            <div class="action">
+              <p>[<strong>NOTE</strong>: More changes to this section coming soon!]</p>
+              <button 
+                class="button textDisplayButton" 
+                name="textDisplayButton_findUserNFTs" 
+                id="HTML_button_1"
+                onclick="ClaimerDappInterface_.findUserNFTs();"
+                >
+                -refresh-
+              </button>
+            </div>
+
 
             <div id="nftCardContainer">
-                <!-- Place cards will be dynamically added here -->
-              </div>
+              <!-- Place cards will be dynamically added here -->
+            </div>
         </div>
 
     </div>
@@ -156,9 +167,28 @@
       
         <!-- SECTION OBJECTS -->
         <div class="lottodisplay">
-          <br/>
-          [TEMP]
-            <!-- ---------- NUMBER INPUT BOX + CLAIM BUTTON ---------- -->
+          <div class="action">
+            <label class="label">NFT Key Number</label>
+            <input
+                class="number"
+                type="number"
+                name="numberInputField_nftTokenId"
+                id="HTML_input_1"
+                min="1"
+                value="1"
+                width="50%"
+                onchange="ClaimerDappInterface_.onAnySelectInputs();"
+                required
+            />
+          </div>
+        
+          <div class="action">
+            <label class="label">Request Rewards</label>
+            <button class="button textDisplayButton" name="textDisplayButton_claimRewards" id="HTML_button_2"
+                onclick="ClaimerDappInterface_.claimRewards();">
+                Request Tokens
+            </button>
+          </div>
 
         </div>
     
