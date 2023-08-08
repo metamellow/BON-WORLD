@@ -123,59 +123,49 @@
         </div>
     <br />
 
-    <!-- NFT Collection -->
-    <div class="wrapper_accordion">
-      <!-- ACCORDIAN DETAILS -->
-      <div class="container_accordion collapsibleItem">
-        <img class="arrow2" src="../../images/arrow2.svg" />
+    <hr>
+          <!--image nft-->
+
+    <div><!-- NFT Collection -->
+  
+  
+      <div class="stake"> 
+       
+        <div>
+          <img src="../../images/merp.jpg">
+          </div>
+         
+        <div class="display">
+        
         <strong>NFT Collection</strong>
-      </div>
-
+     
       <!-- SECTION OBJECTS -->
-        <div class="lottodisplay">
-            <br/>
-
-            <div class="action">
               <p>[<strong>NOTE</strong>: More changes to this section coming soon!]</p>
               <button 
-                class="button textDisplayButton" 
+                class=" " 
                 name="textDisplayButton_findUserNFTs" 
                 id="HTML_button_1"
                 onclick="ClaimerDappInterface_.findUserNFTs();"
                 >
                 -refresh-
               </button>
-            </div>
-
-
-            <div id="nftCardContainer">
-              <!-- Place cards will be dynamically added here -->
-            </div>
-        </div>
-
-    </div>
-
-    <br>
+           
 
     <!-- REWARDS CLAIM -->
-    <div class="wrapper_accordion">
-      <!-- ACCORDIAN DETAILS -->
-        <div class="container_accordion collapsibleItem">
-            <img class="arrow2" src="../../images/arrow2.svg" />
+  
             <strong>Claim Rewards</strong>
-        </div>
+      
       
         <!-- SECTION OBJECTS -->
-        <div class="action">
+     
           <label class="label">Request Rewards</label>
           <button class="button textDisplayButton" name="textDisplayButton_claimRewards" id="HTML_button_3"
               onclick="ClaimerDappInterface_.estimateRewards();">
               Request Tokens
           </button>
-        </div>
-        
-        <div class="lottodisplay">
-          <div class="action">
+      
+     
+     
             <label class="label">NFT Key Number</label>
             <input
                 class="number"
@@ -188,23 +178,24 @@
                 onchange="ClaimerDappInterface_.onAnySelectInputs();"
                 required
             />
-          </div>
         
-          <div class="action">
+        
+         
             <label class="label">Request Rewards</label>
             <button class="button textDisplayButton" name="textDisplayButton_claimRewards" id="HTML_button_2"
                 onclick="ClaimerDappInterface_.claimRewards();">
                 Request Tokens
             </button>
-          </div>
+        
 
-        </div>
-    
+      
+          </div>
     </div>
 
 
 
     <hr>
+
     <footer>
       <div>
         <img src="../../images/fav.png" />
