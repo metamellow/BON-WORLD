@@ -862,11 +862,7 @@ a {
     font-size: 48px;
   }
 
-  hr {
-    stroke: 0px;
-    border: 0px;
-    margin: 20px;
-  }
+  
 
   .wpimagetoken {
     width: 100%;
@@ -1306,28 +1302,122 @@ a {
 }
 
 
-@media screen and (max-width: 767px) {
-  .wrapper_accordion {
-    font-size: 12px;
-   }
-  
-  }
-
 
 .stake {
   display: flex;
-  
+  justify-content: center;
+  align-items:start;
+  background: rgba(84, 255, 101, 0.10);;
+  backdrop-filter: blur(14px);
+  margin: 0px;
+ 
   
 }
 
 .stake img {
   width: 100%;
   height: auto;
+  margin: 10px;
   
 }
 
 .stake .display {
   display: flex;
   flex-direction: column;
-  margin: 10px;
+  justify-content:flex-start;
+  padding: 10px;
+  margin-left: 10px;
+  height: auto;
+  border-radius: 8px;
+  
+}
+
+.stake button {
+  width: 450px;
+}
+
+.stake .title {
+  font-weight:600;
+  font-size: 32px;
+  
+}
+
+.stake input {
+  width: 436px;
+  text-align: center;
+  justify-content: center;
+}
+
+.stake input:hover {
+ 
+  border:solid 2px #54ff65;
+  border-radius: 0px;
+}
+
+
+.stake label {
+  color: #54ff65;
+}
+
+.stake p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+
+
+
+@media screen and (max-width: 767px) {
+  .stake {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    background-color: transparent;
+    
+  }
+  
+  .stake img {
+    width: 100%;
+    height: auto;
+    margin: 0px;
+    
+  }
+
+  .stake .display {
+    background-color: transparent;
+  }
+  
+  
+  .stake button {
+    width: 100%;
+  }
+  
+  .stake .title {
+    font-weight:600;
+    font-size: 32px;
+  }
+  
+  .stake input {
+    width: 95%;
+    text-align: center;
+    justify-content: center;
+  }
+  
+  .stake input:hover {
+   
+    border:solid 2px #54ff65;
+    border-radius: 0px;
+  }
+  
+  
+  .stake label {
+    color: aliceblue;
+    font-size: 16px;
+    
+  }
+  
+  .stake p {
+    margin: 0px;
+    margin-bottom: 10px;
+  }
 }
