@@ -1,5 +1,3 @@
-// https://eye.moduluszk.io/address/0x26fd3e1454e6175b150341158df48ce3D5c76C4a/contracts
-
 // _______________________________________________________
 // __________ ESTABLISH ALL SMART CONTRACT ABIs __________
 // _______________________________________________________
@@ -10,8 +8,7 @@ const CONTRACT1_ABI = (
         "contractName": "Claimer",
         "abi":
 
-            [{"inputs":[{"internalType":"address","name":"_tokenAddress","type":"address"},{"internalType":"address","name":"_nftAddress","type":"address"},{"internalType":"uint256","name":"_claimPace","type":"uint256"},{"internalType":"uint256","name":"_claimRate","type":"uint256"},{"internalType":"uint256","name":"_burnRate","type":"uint256"},{"internalType":"bool","name":"_burnOn","type":"bool"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"claimAmount","type":"uint256"}],"name":"ClaimDetails","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"inputs":[],"name":"burnOn","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"burnRate","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_tokenID","type":"uint256"}],"name":"claim","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"claimPace","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"claimRate","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"lastClaimTime","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"nfts","outputs":[{"internalType":"contract IERC721","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"token","outputs":[{"internalType":"contract IERC20","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"totalClaimed","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_burnRate","type":"uint256"},{"internalType":"bool","name":"_trueFalse","type":"bool"}],"name":"updateBurn","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_claimPace","type":"uint256"}],"name":"updateClaimPace","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_claimRate","type":"uint256"}],"name":"updateClaimRate","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_tokenAddress","type":"address"}],"name":"updateTokenAddress","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_tokenAddress","type":"address"}],"name":"withdrawTokens","outputs":[],"stateMutability":"nonpayable","type":"function"}]    
-    
+            [{"inputs":[{"internalType":"address","name":"_tokenAddress","type":"address"},{"internalType":"address","name":"_nftAddress","type":"address"},{"internalType":"uint256","name":"_claimPace","type":"uint256"},{"internalType":"uint256","name":"_claimRate","type":"uint256"},{"internalType":"uint256","name":"_burnRate","type":"uint256"},{"internalType":"bool","name":"_burnOn","type":"bool"},{"internalType":"address","name":"_burnWallet","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"claimAmount","type":"uint256"}],"name":"ClaimDetails","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"inputs":[],"name":"burnOn","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"burnRate","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"burnWallet","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"_tokenID","type":"uint256"}],"name":"claim","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"claimPace","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"claimRate","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"lastClaimTime","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"nfts","outputs":[{"internalType":"contract IERC721","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"token","outputs":[{"internalType":"contract IERC20","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"totalClaimed","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_burnRate","type":"uint256"},{"internalType":"bool","name":"_trueFalse","type":"bool"}],"name":"updateBurn","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_claimPace","type":"uint256"}],"name":"updateClaimPace","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_claimRate","type":"uint256"}],"name":"updateClaimRate","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_tokenAddress","type":"address"}],"name":"updateTokenAddress","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_tokenAddress","type":"address"}],"name":"withdrawTokens","outputs":[],"stateMutability":"nonpayable","type":"function"}]    
     
     ,}
 );
@@ -50,9 +47,12 @@ class ClaimerDappInterface {
         // --- Universal web3 Variables
         this.dappChain = '0x89'; //ETHEREUM-MAINNET=='0x1', POLYGON-MAINNET=='0x89', BINANCE-MAINNET=='0x38', MODULUS-TESTNET=='0x6666', POLYGON-MUMABI=='0x13881'
         this.chainName = 'POLYGON-MAINNET';
-        this.contractAddress1 = '0x5F14f1a238Ee3403fcBF3402F24a5BA0379d7d11'; // Claimer_BONNFT
+        this.contractAddress1 = '0x508B86b5eA84A93D586c1271084AB50D1d41D8aA'; // ClaimerV104
         this.contractAddress2 = '0x88421bc1C0734048f80639BE6EF367f634c33804'; // NFT contract
         this.contractAddress3 = '0x47E53f0Ddf71210F2C45dc832732aA188F78AA4f'; // Token contract
+        this.connectedContract1; // Needed when loading the scripts
+        this.connectedContract2; // Needed when loading the scripts
+        this.connectedContract3; // Needed when loading the scripts
         this.currentAccount = ''; // THIS IS DUPLICATED ON OTHER SCRIPTS, beware
         this.waitingForListener = false;
         this.txnCost = ''; // loaded on checkBetPrice();
@@ -75,7 +75,7 @@ class ClaimerDappInterface {
     }
 
     // _____________________________________________________________
-    // __________________ SETUP PROCESSES SECTION __________________
+    // _____________________ NEEDED FUNCTIONS ______________________
     // _____________________________________________________________
 
     // --- @DEV this boots all the PRIMARY components and SECONDARY components
@@ -83,6 +83,7 @@ class ClaimerDappInterface {
         // --- PRIMARY components
         try{await this.pullUsersWallet();} catch (error) {console.log(error);}
         try{await this.setupEventListener();} catch (error) {console.log(error);}
+        try{await this.connectAllContracts();} catch (error) {console.log(error);}
         try{await this.buttonManagerFunc();} catch (error) {console.log(error);}  
         
         // --- SECONDARY components
@@ -158,96 +159,8 @@ class ClaimerDappInterface {
         }
     }
 
-    // _____________________________________________________________
-    // ___________ UNIVERSAL CONTRACT FUNCTIONS SECTION ____________
-    // _____________________________________________________________
-
-    // --- @DEV pulls the users NFT information
-    async findUserNFTs() {
-        try { 
-            const { ethereum } = window;
-            if (ethereum) {
-                let chainId = await ethereum.request({ method: 'eth_chainId' });
-                if((chainId == this.dappChain)){
-                    const provider = new ethers.providers.Web3Provider(ethereum);
-                    const signer = provider.getSigner();
-                    try{
-                        // Contract 2 functions
-                        console.log(`Connecting contract2...`);
-                        const connectedContract2 = new ethers.Contract(
-                            this.contractAddress2,
-                            CONTRACT2_ABI.abi,
-                            signer
-                        );
-                            // @Dev this should be the effected button range
-                            for (let i = 1; i < 2; i++) {
-                                this.buttonsArray[i].disabled = true;
-                                this.buttonsArray[i].innerText = `*loading*`;
-                                console.log(`button ${i} disabled`);
-                            }
-                            
-                            // Function 1 Button - functionName
-                            console.log(`Attempting function 1 call..`);
-                            let Function1Results = await connectedContract2.balanceOf(`${this.currentAccount}`);
-                            console.log('Awaiting function results...');
-                            await Function1Results;
-                            console.log("Analzying results...");
-                            if (Function1Results != ""){
-                                console.log(`NFT Balance: ${Function1Results}`)
-                                this.buttonsArray[1].disabled = false;
-                                this.buttonsArray[1].innerText = `Your NFT Balance: ${Function1Results}`;
-                            } else {this.buttonsArray[1].innerText = `no results`;}
-
-                            /*
-                            // Function 2 Button - functionName
-                            console.log(`Attempting function 2 call..`);
-                            const filter = connectedContract2.filters.Transfer(null, this.currentAccount);
-                            const transferEvents = await connectedContract2.queryFilter(filter);
-
-                            console.log('Awaiting function results...');
-                            const ownedNFTs = [];
-                            for (const event of transferEvents) {
-                              const tokenId = event.args.tokenId.toString();
-                              ownedNFTs.push(tokenId);
-                            }
-
-                            console.log("Analzying results...");
-                            if ((ownedNFTs != 0) || (ownedNFTs != "") || ownedNFTs != null){
-                                    // Do something
-                                    for (const tokenId of ownedNFTs) {
-                                        let div = document.createElement('div');
-                                        div.textContent = `NFT ID: ${tokenId}`;
-                                        // Add any additional styling or content to the div as needed
-                                        
-                                        let divBox = createDivBox(tokenId);
-                                        this.JSUniqueDiv1.appendChild(divBox);
-                                    }
-
-                                    this.buttonsArray[1].disabled = false;
-                                    this.buttonsArray[1].innerText = `-refresh-`;
-
-                            } else {this.buttonsArray[1].innerText = `no results`;}
-                            */
-                    }catch(error){
-                        // @Dev error related to the function process
-                        console.log(error);
-                    }
-                } else {
-                    // @Dev error related to network chain
-                    console.log(`dappChain incorrect`);
-                }
-            } else {
-                // @Dev error related to 'Metamask'
-                console.log(`Eth object not found`);
-            }
-        } catch (error) {
-            // @Dev this pulls the flagged error and gives to user
-            console.log(error);
-        }
-    }
-
-    // --- @DEV calls the claim function with the tokenID currently in the entry field
-    async claimRewards() {
+    // --- @DEV this connects the JS script to all the smart contracts
+    async connectAllContracts(){
         try { 
             const { ethereum } = window;
             if (ethereum) {
@@ -257,149 +170,77 @@ class ClaimerDappInterface {
                     const provider = new ethers.providers.Web3Provider(ethereum);
                     const signer = provider.getSigner();
                     try{
-                        // Contract 1 functions
+
                         console.log(`Connecting contract1...`);
-                        const connectedContract1 = new ethers.Contract(
+                        this.connectedContract1 = new ethers.Contract(
                             this.contractAddress1,
                             CONTRACT1_ABI.abi,
                             signer
                         );
-                            // @Dev this should be the effected button range
-                            for (let i = 2; i < 3; i++) {
-                                this.buttonsArray[i].disabled = true;
-                                this.buttonsArray[i].innerText = `*loading*`;
-                                console.log(`button ${i} disabled`);
-                            }
-                        
-                            // Button 2 -  claim()
-                            console.log(`Attempting button 2 call..`);
-                            let Button2Results = await connectedContract1.claim(`${this.selectedInput1}`);
-                            console.log('Awaiting button results...');
-                            await Button2Results;
-                            console.log("Analzying results...");
 
-                            this.waitingForListener = true;
-                            this.buttonsArray[2].innerText = '*waiting for metamask*';
-
-                    }catch(error){
-                        // @Dev error related to the function process
-                        console.log(error);
-                        this.buttonsArray[2].disabled = false;
-                        this.buttonsArray[2].innerText = `Try Claim Again`;
-                    }
-                } else {
-                    // @Dev error related to network chain
-                    console.log(`dappChain incorrect`);
-                    this.buttonsArray[2].disabled = false;
-                    this.buttonsArray[2].innerText = `Try Claim Again`;
-                }
-            } else {
-                // @Dev error related to 'Metamask'
-                console.log(`Eth object not found`);
-                this.buttonsArray[2].disabled = false;
-                this.buttonsArray[2].innerText = `Try Claim Again`;
-            }
-        } catch (error) {
-            // @Dev this pulls the flagged error and gives to user
-            console.log(error);
-            this.buttonsArray[2].disabled = false;
-            this.buttonsArray[2].innerText = `Try Claim Again`;
-        }
-    }
-
-    // --- @DEV calls the claim function with the tokenID currently in the entry field
-    async estimateRewards() {
-        try { 
-            const { ethereum } = window;
-            if (ethereum) {
-                let chainId = await ethereum.request({ method: 'eth_chainId' });
-                console.log(`chainId: ` + chainId);
-                if((chainId == this.dappChain)){
-                    const provider = new ethers.providers.Web3Provider(ethereum);
-                    const signer = provider.getSigner();
-                    try{
-                        // ----------------------------------------------------------------------maybe these can be moved to an outside funciton
-                        
-                        // Contract 1 functions
-                        console.log(`Connecting contract1...`);
-                        const connectedContract1 = new ethers.Contract(
-                            this.contractAddress1,
-                            CONTRACT1_ABI.abi,
-                            signer
-                        );
                         console.log(`Connecting contract2...`);
-                        const connectedContract2 = new ethers.Contract(
+                        this.connectedContract2 = new ethers.Contract(
                             this.contractAddress2,
                             CONTRACT2_ABI.abi,
                             signer
                         );
+
                         console.log(`Connecting contract3...`);
-                        const connectedContract3 = new ethers.Contract(
+                        this.connectedContract3 = new ethers.Contract(
                             this.contractAddress3,
                             CONTRACT3_ABI.abi,
                             signer
                         );
 
-                            // @Dev this should be the effected button range
-                            for (let i = 3; i < 4; i++) {
-                                this.buttonsArray[i].disabled = true;
-                                this.buttonsArray[i].innerText = `*loading*`;
-                                console.log(`button ${i} disabled`);
-                            }
-                        
-                            // Button 4 -  estimate Rewards
-
-
-                            console.log(`Attempting button 3 call A..`);
-                            let availableTokens = await connectedContract3.balanceOf(`${this.contractAddress1}`);
-                            console.log(`Results: ${availableTokens}`);
-                            console.log(`Attempting button 3 call B..`);
-                            let claimRate = await connectedContract1.claimRate();
-                            console.log(`Results: ${claimRate}`);
-
-                            let Button3Results = availableTokens * claimRate / 1000;
-                            console.log(`Analzying results... ${Button3Results}`);
-                            if (Button3Results != ""){
-                                let amount = ethers.utils.formatEther(String(Button3Results));
-                                amount = Number(amount);
-                                amount = amount.toFixed(3);
-                                amount = ethers.utils.commify(amount);
-                                console.log(`Estimated Rewards: ${amount} BON`)
-                                this.buttonsArray[3].disabled = false;
-                                this.buttonsArray[3].innerText = `Estimated Rewards: ${amount} BON`;
-                            } else {this.buttonsArray[3].innerText = `no results`;}
-
                     }catch(error){
-                        // @Dev error related to the function process
                         console.log(error);
-                        this.buttonsArray[3].disabled = false;
-                        this.buttonsArray[3].innerText = `-try again-`;
+                        console.log(`error connecting contracts`);
                     }
                 } else {
-                    // @Dev error related to network chain
                     console.log(`dappChain incorrect`);
-                    this.buttonsArray[3].disabled = false;
-                    this.buttonsArray[3].innerText = `-try again-`;
                 }
             } else {
-                // @Dev error related to 'Metamask'
                 console.log(`Eth object not found`);
-                this.buttonsArray[3].disabled = false;
-                this.buttonsArray[3].innerText = `-try again-`;
             }
         } catch (error) {
-            // @Dev this pulls the flagged error and gives to user
-            console.log(error);
-            this.buttonsArray[3].disabled = false;
-            this.buttonsArray[3].innerText = `-try again-`;
         }
     }
 
-    // --- @Dev for now empty, but it can be used to approve check on ERC20's
-    async clickedButton1Functions_Loader(){
-        this.clickedButton1Functions(); 
+    // --- @Dev this checks the network setup and adjusts the buttons accordingly
+    async buttonManagerFunc(){
+        try { 
+            const { ethereum } = window;
+            if (ethereum) {
+                let chainId = await ethereum.request({ method: 'eth_chainId' });
+                if(chainId !== this.dappChain){
+                    for (let i = 1; i < this.buttonsArray.length; i++) {
+                        this.buttonsArray[i].disabled = true;
+                        this.buttonsArray[i].innerText = `${this.chainName} ONLY`;
+                        console.log(`button ${i} disabled`);
+                    }
+                    alert(`Please use ${this.chainName} and REFRESH browser -- Other networks will NOT WORK!`);
+                } else {
+                    /*
+                    for (let i = 1; i < this.buttonsArray.length; i++) {
+                        this.buttonsArray[i].innerText = '*loading*';
+                        console.log(`button ${i}`);
+                    }
+                    */
+                    console.log(`Connected to ${this.chainName} (${this.dappChain})`);
+                }
+            } else {
+                for (let i = 1; i < this.buttonsArray.length; i++) {
+                    this.buttonsArray[i].disabled = true;
+                    this.buttonsArray[i].innerText = `GET METAMASK`;
+                    console.log(`button ${i} disabled`);
+                }
+                alert(`Ethereum object not found!`);
+            }
+        }catch(error){
+            console.log(error);
+        }
     }
-    
+
     // --- @Dev this changed the vars based on user inputs
     async onAnySelectInputs() {
         if(this.selectedInput1 != this.JSInput1.value){
@@ -426,39 +267,102 @@ class ClaimerDappInterface {
         }
     }
 
-    // --- @Dev this checks the network setup and adjusts the buttons accordingly
-    async buttonManagerFunc(){
-        try { 
-            const { ethereum } = window;
-            if (ethereum) {
-                let chainId = await ethereum.request({ method: 'eth_chainId' });
-                if(chainId !== this.dappChain){
-                    for (let i = 1; i < this.buttonsArray.length; i++) {
-                        this.buttonsArray[i].disabled = true;
-                        this.buttonsArray[i].innerText = `${this.chainName} ONLY`;
-                        console.log(`button ${i} disabled`);
-                    }
-                    alert(`Please use ${this.chainName} and REFRESH browser -- Other networks will NOT WORK!`);
-                } else {
-                    for (let i = 1; i < this.buttonsArray.length; i++) {
-                        this.buttonsArray[i].innerText = '*loading*';
-                        console.log(`button ${i}`);
-                    }
-                    console.log(`Connected to ${this.chainName} (${this.dappChain})`);
-                }
-            } else {
-                for (let i = 1; i < this.buttonsArray.length; i++) {
-                    this.buttonsArray[i].disabled = true;
-                    this.buttonsArray[i].innerText = `GET METAMASK`;
-                    console.log(`button ${i} disabled`);
-                }
-                alert(`Ethereum object not found!`);
+    // _____________________________________________________________
+    // _____________________ CUSTOM FUNCTIONS ______________________
+    // _____________________________________________________________
+
+    // --- @DEV pulls the users NFT information [BUTTON 1]
+    async findUserNFTs() {
+        try {
+            // @Dev this should be the effected button range
+            for (let i = 1; i < 2; i++) {
+                this.buttonsArray[i].disabled = true;
+                this.buttonsArray[i].innerText = `*loading*`;
+                console.log(`button ${i} disabled`);
             }
-        }catch(error){
+            
+            // Function 1 Button - functionName
+            console.log(`Attempting function 1 call..`);
+            let Function1Results = await this.connectedContract2.balanceOf(`${this.currentAccount}`);
+            console.log('Awaiting function results...');
+            await Function1Results;
+            console.log("Analzying results...");
+            if (Function1Results != ""){
+                console.log(`NFT Balance: ${Function1Results}`)
+                this.buttonsArray[1].disabled = false;
+                this.buttonsArray[1].innerText = `Your NFT Balance: ${Function1Results}`;
+            } else {this.buttonsArray[1].innerText = `no results`;}
+        } catch (error) {
+            // @Dev this pulls the flagged error and gives to user
             console.log(error);
         }
     }
 
+    // --- @DEV calls the claim function with the tokenID currently in the entry field [BUTTON 2]
+    async claimRewards() {
+        try{
+            // @Dev this should be the effected button range
+            for (let i = 2; i < 3; i++) {
+                this.buttonsArray[i].disabled = true;
+                this.buttonsArray[i].innerText = `*loading*`;
+                console.log(`button ${i} disabled`);
+            }
+        
+            // Button 2 -  claim()
+            console.log(`Attempting button 2 call..`);
+            let Button2Results = await this.connectedContract1.claim(`${this.selectedInput1}`);
+            console.log('Awaiting button results...');
+            await Button2Results;
+            console.log("Analzying results...");
+
+            this.waitingForListener = true;
+            this.buttonsArray[2].innerText = '*waiting for metamask*';
+
+        } catch(error){
+            // @Dev error related to the function process
+            console.log(error);
+            this.buttonsArray[2].disabled = false;
+            this.buttonsArray[2].innerText = `-Try Claim Again-`;
+        }
+    }
+
+    // --- @DEV calls the claim function with the tokenID currently in the entry field [BUTTON 3]
+    async estimateRewards() {
+        try{
+            // @Dev this should be the effected button range
+            for (let i = 3; i < 4; i++) {
+                this.buttonsArray[i].disabled = true;
+                this.buttonsArray[i].innerText = `*loading*`;
+                console.log(`button ${i} disabled`);
+            }
+        
+            // Button 4 -  estimate Rewards
+            console.log(`Attempting button 3 call A..`);
+            let availableTokens = await this.connectedContract3.balanceOf(`${this.contractAddress1}`);
+            console.log(`Results: ${availableTokens}`);
+            console.log(`Attempting button 3 call B..`);
+            let claimRate = await this.connectedContract1.claimRate();
+            console.log(`Results: ${claimRate}`);
+
+            let Button3Results = availableTokens * claimRate / 1000;
+            console.log(`Analzying results... ${Button3Results}`);
+            if (Button3Results != ""){
+                let amount = ethers.utils.formatEther(String(Button3Results));
+                amount = Number(amount);
+                amount = amount.toFixed(3);
+                amount = ethers.utils.commify(amount);
+                console.log(`Estimated Rewards: ${amount} BON`)
+                this.buttonsArray[3].disabled = false;
+                this.buttonsArray[3].innerText = `Estimated Rewards: ${amount} BON`;
+            } else {this.buttonsArray[3].innerText = `no results`;}
+
+        }catch(error){
+            console.log(error);
+            this.buttonsArray[3].disabled = false;
+            this.buttonsArray[3].innerText = `-try estimate again-`;
+        }
+    }
+    
     // --- END --- //
 }
 

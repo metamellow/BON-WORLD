@@ -136,14 +136,13 @@
             <br/>
 
             <div class="action">
-              <p>[<strong>NOTE</strong>: More changes to this section coming soon!]</p>
               <button 
                 class="button textDisplayButton" 
                 name="textDisplayButton_findUserNFTs" 
                 id="HTML_button_1"
                 onclick="ClaimerDappInterface_.findUserNFTs();"
                 >
-                -refresh-
+                Load NFTs
               </button>
             </div>
 
@@ -167,10 +166,13 @@
       
         <!-- SECTION OBJECTS -->
         <div class="action">
-          <label class="label">Request Rewards</label>
-          <button class="button textDisplayButton" name="textDisplayButton_claimRewards" id="HTML_button_3"
-              onclick="ClaimerDappInterface_.estimateRewards();">
-              Request Tokens
+          <button 
+            class="button textDisplayButton" 
+            name="textDisplayButton_claimRewards" 
+            id="HTML_button_3"
+            onclick="ClaimerDappInterface_.estimateRewards();"
+          >
+            Estimate Rewards
           </button>
         </div>
         
@@ -192,9 +194,13 @@
         
           <div class="action">
             <label class="label">Request Rewards</label>
-            <button class="button textDisplayButton" name="textDisplayButton_claimRewards" id="HTML_button_2"
-                onclick="ClaimerDappInterface_.claimRewards();">
-                Request Tokens
+            <button 
+              class="button textDisplayButton" 
+              name="textDisplayButton_claimRewards" 
+              id="HTML_button_2"
+              onclick="ClaimerDappInterface_.claimRewards();"
+            >
+              Request Tokens
             </button>
           </div>
 
