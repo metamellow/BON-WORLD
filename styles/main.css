@@ -792,8 +792,23 @@ a {
   gap: 30px;
 }
 
+.lottotrouble .title {
+  width: 100%;
+  align-items: center;
+  color: #54ff65;
+  font-size: 32px;
+  font-weight: 600;
+  text-align: right;
+}
+
+.lottotrouble .instruction {
+  width: 100%;
+  justify-content: center;
+}
+
 .lottotrouble ol {
-  font-size: 28px;
+  font-size: 16px;
+  text-align: left;
 }
 
 .cftroubletitle {
@@ -1071,6 +1086,10 @@ a {
   width: 100%;
 }
 
+.lotto3 .imagem {
+  width: 100%;
+}
+
 .lottobutton {
   width: 100%;
   gap: 10px;
@@ -1166,7 +1185,9 @@ a {
   font-size: 60px;
   font-weight: 600;
   line-height: 60px;
+  width: 100%;
 }
+
 
 .hide-mobile {
   display: block;
