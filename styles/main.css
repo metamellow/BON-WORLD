@@ -1328,8 +1328,6 @@ a {
   display: flex;
   justify-content: center;
   align-items:start;
-  background: rgba(84, 255, 101, 0.10);;
-  backdrop-filter: blur(14px);
   margin: 0px;
  
   
