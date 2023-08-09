@@ -159,6 +159,24 @@ class ClaimerDappInterface {
         }
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
     // --- @DEV this connects the JS script to all the smart contracts
     async connectAllContracts(){
         try { 
