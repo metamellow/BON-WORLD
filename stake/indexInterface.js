@@ -46,7 +46,7 @@ class IndexInterface {
         console.log(this.JSInputValue1);
 
         if(this.JSInputValue1 == "BONNFT"){
-            window.location.href = "./nfts/BonnftStake.html";
+            window.location.href = "./BonnftStake.html";
         }
     }
 }
