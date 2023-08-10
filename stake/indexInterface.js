@@ -14,7 +14,7 @@ class IndexInterface {
         try {
             const { ethereum } = window;
             if (!ethereum) {
-                alert('Can not find web3 etherum. Please install Metamask!');
+                //alert('Can not find web3 etherum. Please install Metamask!');
                 console.log("NO ETHEREUM OBJECT");
 
                 this.JSconnectButton.innerText = 'Install Metamask';
@@ -32,7 +32,7 @@ class IndexInterface {
                 this.currentAccount.substring((this.currentAccount.length-4), this.currentAccount.length)
             }`;
         } catch (error) {
-            alert('Can not find web3 etherum. Please install Metamask!');
+            //alert('Can not find web3 etherum. Please install Metamask!');
                 console.log("NO ETHEREUM OBJECT");
 
                 this.JSconnectButton.innerText = 'Install Metamask';
