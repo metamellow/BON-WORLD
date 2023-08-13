@@ -57,6 +57,7 @@ class ClaimerDappInterface {
         this.currentAccount = ''; // THIS IS DUPLICATED ON OTHER SCRIPTS, beware
         this.waitingForListener = false;
         this.connectionError = false;
+        this.NFTResultsHolder;
 
         // --- Button HTML Elements ---
         this.buttonsArray = [
@@ -64,6 +65,8 @@ class ClaimerDappInterface {
             (this.JSButton1 = document.getElementById('HTML_button_1')), // findUserNFTs()
             (this.JSButton2 = document.getElementById('HTML_button_2')), // claimRewards()
             (this.JSButton3 = document.getElementById('HTML_button_3')), // estimatedReward()
+            (this.JSButton4 = document.getElementById('HTML_button_4')), // NFT API call()
+
         ]
 
         // --- Input HTML Elements --- 
@@ -90,6 +93,7 @@ class ClaimerDappInterface {
         // --- SECONDARY components
         try{await this.findUserNFTs();} catch (error) {console.log(error);}
         try{await this.estimateRewards();} catch (error) {console.log(error);}
+        //try{await this.callForNFTAPI();} catch (error) {console.log(error);}
 
     }
 
@@ -340,35 +344,44 @@ class ClaimerDappInterface {
             this.buttonsArray[3].innerText = `-try estimate again-`;
         }
     }
+
+    // --- @DEV calls the API and gets the NFTs held by the user [BUTTON 4]
+    async callForNFTAPI(){
+        
+        // @Dev this should be the effected button range
+        for (let i = 4; i < 5; i++) {
+            this.buttonsArray[i].disabled = true;
+            this.buttonsArray[i].innerText = `*loading*`;
+            console.log(`button ${i} disabled`);
+        }
+        
+        const options = {
+            method: 'GET',
+            headers: {
+              accept: 'application/json',
+              Authorization: '3521fc5d-1dfd-4a0f-8904-cb752594282e'
+            }
+        };
+          
+        fetch(`https://api.nftport.xyz/v0/accounts/${this.currentAccount}?chain=polygon&page_size=50&include=metadata&contract_address=${this.contractAddress2}`, options)
+            .then(response => response.json())
+            .then(response => console.log(response))
+            .then(response => this.displayNFTData(response))
+            .catch(err => console.error(err));
+    }
+
+    async displayNFTData(data){
+        this.JSUniqueDiv1.innerText = toString(data);;
+
+        for (let i = 4; i < 5; i++) {
+            this.buttonsArray[i].disabled = true;
+            this.buttonsArray[i].innerText = `[LOAD]`;
+            console.log(`button ${i} disabled`);
+        }
+    }
     
     // --- END --- //
 }
 
 const ClaimerDappInterface_ = new ClaimerDappInterface();
 ClaimerDappInterface_.dappInitializeProcess();
-
-
-
-
-
-
-
-
-/*
-nfts.forEach(function(nft) {
-  // Create a new div element for the nft card
-  var nftCard = document.createElement('div');
-  nftCard.classList.add('nft-card');
-
-  // Set the content of the nft card
-  nftCard.innerHTML = `
-    <img src="${nft.image}" alt="${nft.name}">
-    <h3>${nft.name}</h3>
-    <p>${nft.description}</p>
-  `;
-
-  // Append the ntf card to the container
-  var nftCardContainer = document.getElementById('nftCardContainer');
-  nftCardContainer.appendChild(nftCard);
-});
-*/
