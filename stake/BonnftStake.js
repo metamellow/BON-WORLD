@@ -57,7 +57,7 @@ class ClaimerDappInterface {
         this.currentAccount = ''; // THIS IS DUPLICATED ON OTHER SCRIPTS, beware
         this.waitingForListener = false;
         this.connectionError = false;
-        this.NFTResultsHolder;
+        this.NFTResultsHolder = {};
 
         // --- Button HTML Elements ---
         this.buttonsArray = [
@@ -346,39 +346,62 @@ class ClaimerDappInterface {
     }
 
     // --- @DEV calls the API and gets the NFTs held by the user [BUTTON 4]
-    async callForNFTAPI(){
-        
-        // @Dev this should be the effected button range
+    async callForNFTAPI() {
+        // @Dev this should be the affected button range
         for (let i = 4; i < 5; i++) {
-            this.buttonsArray[i].disabled = true;
-            this.buttonsArray[i].innerText = `*loading*`;
-            console.log(`button ${i} disabled`);
+          this.buttonsArray[i].disabled = true;
+          this.buttonsArray[i].innerText = `*loading*`;
+          console.log(`button ${i} disabled`);
         }
-        
+      
+        /* --- BLOCKSPAN --- */
         const options = {
-            method: 'GET',
-            headers: {
-              accept: 'application/json',
-              Authorization: '3521fc5d-1dfd-4a0f-8904-cb752594282e'
-            }
+          method: 'GET',
+          headers: { accept: 'application/json', 'X-API-KEY': 'lezEOBRZiEKd9xjFKR43eBXBZA50nELn' }
         };
-          
-        fetch(`https://api.nftport.xyz/v0/accounts/${this.currentAccount}?chain=polygon&page_size=50&include=metadata&contract_address=${this.contractAddress2}`, options)
-            .then(response => response.json())
-            .then(response => console.log(response))
-            .then(response => this.displayNFTData(response))
-            .catch(err => console.error(err));
-    }
-
-    async displayNFTData(data){
-        this.JSUniqueDiv1.innerText = toString(data);;
-
+      
+        fetch(`https://api.blockspan.com/v1/nfts/owner/${this.currentAccount}?chain=poly-main&contract_addresses=${this.contractAddress2}&include_nft_details=true&page_size=50`, options)
+          .then(response => response.json())
+          .then(data => {
+            console.log(data);
+            this.displayNFTData(data);
+          })
+          .catch(err => {
+            console.error(err);
+          });
+      }
+      
+      async displayNFTData(data) {
+        const resultsArray = data.results;
+      
+        const divContainer = this.JSUniqueDiv1;
+      
+        resultsArray.forEach(item => {
+          const cardDiv = document.createElement('div');
+          cardDiv.classList.add('card');
+      
+          const image = document.createElement('img');
+          image.src = item.nft_details.cached_images.tiny_100_100;
+          image.style.width = '100px';
+          image.style.height = '100px';
+      
+      
+          const idNumber = document.createElement('p');
+          idNumber.textContent = `ID: ${item.id}`;
+          idNumber.style.marginTop = '5px'; // Adjust the top margin to reduce space
+      
+          cardDiv.appendChild(image);
+          cardDiv.appendChild(idNumber);
+      
+          divContainer.appendChild(cardDiv);
+        });
+      
         for (let i = 4; i < 5; i++) {
-            this.buttonsArray[i].disabled = true;
-            this.buttonsArray[i].innerText = `[LOAD]`;
-            console.log(`button ${i} disabled`);
+          this.buttonsArray[i].disabled = true;
+          this.buttonsArray[i].innerText = `[RELOAD]`;
+          console.log(`button ${i} disabled`);
         }
-    }
+      }
     
     // --- END --- //
 }
