@@ -270,7 +270,7 @@ class ClaimerDappInterface {
             if (Function1Results != ""){
                 console.log(`NFT Balance: ${Function1Results}`)
                 this.buttonsArray[1].disabled = false;
-                this.buttonsArray[1].innerText = `Your NFT Balance: ${Function1Results}`;
+                this.buttonsArray[1].innerText = `${Function1Results}`;
             } else {this.buttonsArray[1].innerText = `no results`;}
         } catch (error) {
             // @Dev this pulls the flagged error and gives to user
@@ -282,29 +282,17 @@ class ClaimerDappInterface {
     async claimRewards() {
         if(this.connectionError == true){return;}
         try{
-            // @Dev this should be the effected button range
-            for (let i = 2; i < 3; i++) {
-                this.buttonsArray[i].disabled = true;
-                this.buttonsArray[i].innerText = `*loading*`;
-                console.log(`button ${i} disabled`);
-            }
-        
             // Button 2 -  claim()
             console.log(`Attempting button 2 call..`);
             let Button2Results = await this.connectedContract1.claim(`${this.selectedInput1}`);
-            console.log('Awaiting button results...');
-            await Button2Results;
-            console.log("Analzying results...");
-
-            this.waitingForListener = true;
-            this.buttonsArray[2].innerText = '*waiting for metamask*';
-
         } catch(error){
             // @Dev error related to the function process
             console.log(error);
-            this.buttonsArray[2].disabled = false;
-            this.buttonsArray[2].innerText = `-Try Claim Again-`;
+            alert(`claim not possible - check time/wallet/etc`);
+            return false;
         }
+        this.waitingForListener = true;
+        return true;
     }
 
     // --- @DEV calls the claim function with the tokenID currently in the entry field [BUTTON 3]
@@ -335,7 +323,7 @@ class ClaimerDappInterface {
                 amount = ethers.utils.commify(amount);
                 console.log(`Estimated Rewards: ${amount} BON`)
                 this.buttonsArray[3].disabled = false;
-                this.buttonsArray[3].innerText = `Estimated Rewards: ${amount} BON`;
+                this.buttonsArray[3].innerText = `${amount} BON`;
             } else {this.buttonsArray[3].innerText = `no results`;}
 
         }catch(error){
@@ -347,51 +335,94 @@ class ClaimerDappInterface {
 
     // --- @DEV calls the API and gets the NFTs held by the user [BUTTON 4]
     async callForNFTAPI() {
+        if(this.connectionError == true){return;}
+
         // @Dev this should be the affected button range
         for (let i = 4; i < 5; i++) {
-          this.buttonsArray[i].disabled = true;
-          this.buttonsArray[i].innerText = `*loading*`;
-          console.log(`button ${i} disabled`);
+            this.buttonsArray[i].disabled = true;
+            this.buttonsArray[i].innerText = `*loading*`;
+            console.log(`button ${i} disabled`);
         }
-      
+
         /* --- BLOCKSPAN --- */
         const options = {
-          method: 'GET',
-          headers: { accept: 'application/json', 'X-API-KEY': 'lezEOBRZiEKd9xjFKR43eBXBZA50nELn' }
+            method: 'GET',
+            headers: { accept: 'application/json', 'X-API-KEY': 'lezEOBRZiEKd9xjFKR43eBXBZA50nELn' }
         };
-      
+
         fetch(`https://api.blockspan.com/v1/nfts/owner/${this.currentAccount}?chain=poly-main&contract_addresses=${this.contractAddress2}&include_nft_details=true&page_size=50`, options)
-          .then(response => response.json())
-          .then(data => {
-            console.log(data);
-            this.displayNFTData(data);
-          })
-          .catch(err => {
-            console.error(err);
-          });
-      }
-      
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                this.displayNFTData(data);
+            })
+            .catch(err => {
+                console.error(err);
+                alert(`assisted claim not possible - use manual claim`);
+            });
+    }
+
+    // --- @DEV after a successful API call this formats the results
+    // --- @DEV calls the API and gets the NFTs held by the user [BUTTON 4]
+    async callForNFTAPI() {
+        // @Dev this should be the affected button range
+        for (let i = 4; i < 5; i++) {
+            this.buttonsArray[i].disabled = true;
+            this.buttonsArray[i].innerText = `*loading*`;
+            console.log(`button ${i} disabled`);
+        }
+
+        /* --- BLOCKSPAN --- */
+        const options = {
+            method: 'GET',
+            headers: { accept: 'application/json', 'X-API-KEY': 'lezEOBRZiEKd9xjFKR43eBXBZA50nELn' }
+        };
+
+        fetch(`https://api.blockspan.com/v1/nfts/owner/${this.currentAccount}?chain=poly-main&contract_addresses=${this.contractAddress2}&include_nft_details=true&page_size=50`, options)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                this.displayNFTData(data);
+            })
+            .catch(err => {
+                console.error(err);
+            });
+    }
+
+    // --- @DEV after a successful API call this formats the results
     async displayNFTData(data) {
         const resultsArray = data.results;
         const divContainer = document.getElementById('JSUniqueDiv1');
-        
+
         resultsArray.forEach(item => {
             const cardDiv = document.createElement('div');
             cardDiv.classList.add('card');
-        
+
             const image = document.createElement('img');
             image.src = item.nft_details.cached_images.tiny_100_100;
-        
+
             const idNumber = document.createElement('p');
             idNumber.textContent = `ID: ${item.id}`;
-        
+
+            const button = document.createElement('button');
+            button.textContent = 'Claim';
+            button.style.width = '80%';
+
+            button.addEventListener('click', async () => {
+                button.disabled = true;
+                button.innerText = '*waiting for metamask*';
+                this.selectedInput1 = item.id;
+                let success = await this.claimRewards();
+                if(!success){button.innerText = 'Error';}
+            });
+
             cardDiv.appendChild(image);
             cardDiv.appendChild(idNumber);
-        
+            cardDiv.appendChild(button);
+
             divContainer.appendChild(cardDiv);
         });
-      
-        // Add this line to apply the CSS styles to the newly generated cards
+
         const styleElement = document.createElement('style');
         styleElement.textContent = `
             .card-container {
@@ -419,6 +450,10 @@ class ClaimerDappInterface {
                 text-align: center;
             }
             
+            .card button {
+                margin-top: 5px;
+            }
+            
             @media (min-width: 768px) {
                 .card-container {
                 max-width: 800px;
@@ -427,10 +462,9 @@ class ClaimerDappInterface {
             }
         `;
         divContainer.appendChild(styleElement);
-      }
-      
-      
-      
+    }
+
+
     
     // --- END --- //
 }
