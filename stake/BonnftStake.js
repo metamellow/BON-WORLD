@@ -371,37 +371,66 @@ class ClaimerDappInterface {
           });
       }
       
-      async displayNFTData(data) {
+    async displayNFTData(data) {
         const resultsArray = data.results;
-      
-        const divContainer = this.JSUniqueDiv1;
-      
+        const divContainer = document.getElementById('JSUniqueDiv1');
+        
         resultsArray.forEach(item => {
-          const cardDiv = document.createElement('div');
-          cardDiv.classList.add('card');
-      
-          const image = document.createElement('img');
-          image.src = item.nft_details.cached_images.tiny_100_100;
-          image.style.width = '100px';
-          image.style.height = '100px';
-      
-      
-          const idNumber = document.createElement('p');
-          idNumber.textContent = `ID: ${item.id}`;
-          idNumber.style.marginTop = '5px'; // Adjust the top margin to reduce space
-      
-          cardDiv.appendChild(image);
-          cardDiv.appendChild(idNumber);
-      
-          divContainer.appendChild(cardDiv);
+            const cardDiv = document.createElement('div');
+            cardDiv.classList.add('card');
+        
+            const image = document.createElement('img');
+            image.src = item.nft_details.cached_images.tiny_100_100;
+        
+            const idNumber = document.createElement('p');
+            idNumber.textContent = `ID: ${item.id}`;
+        
+            cardDiv.appendChild(image);
+            cardDiv.appendChild(idNumber);
+        
+            divContainer.appendChild(cardDiv);
         });
       
-        for (let i = 4; i < 5; i++) {
-          this.buttonsArray[i].disabled = true;
-          this.buttonsArray[i].innerText = `[RELOAD]`;
-          console.log(`button ${i} disabled`);
-        }
+        // Add this line to apply the CSS styles to the newly generated cards
+        const styleElement = document.createElement('style');
+        styleElement.textContent = `
+            .card-container {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .card {
+                width: 150px;
+                margin: 10px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .card img {
+                width: 100px;
+                height: 100px;
+                object-fit: cover;
+            }
+            
+            .card p {
+                margin-top: 5px;
+                text-align: center;
+            }
+            
+            @media (min-width: 768px) {
+                .card-container {
+                max-width: 800px;
+                margin: 0 auto;
+                }
+            }
+        `;
+        divContainer.appendChild(styleElement);
       }
+      
+      
+      
     
     // --- END --- //
 }
