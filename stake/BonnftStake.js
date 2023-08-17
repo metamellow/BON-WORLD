@@ -284,54 +284,29 @@ class ClaimerDappInterface {
         let timeRemaining;
         try{
             // lastClaimTime() -- timeRemaining
-            let provider = new ethers.providers.JsonRpcProvider(`${this.dappChain}`);
+            console.log(`Attempting lastClaimTime() calls..`);
+
+            let provider = new ethers.providers.JsonRpcProvider(`https://polygon-mainnet.g.alchemy.com/v2/yZJgARTBAasEklX3RTd-bXHN40bIOgwi`);
             let blockNumber = await provider.getBlockNumber();
             let block = await provider.getBlock(blockNumber);
             let blockTimeStamp = block.timestamp;
+            blockTimeStamp = Number(blockTimeStamp);
             console.log(`block time: ${blockTimeStamp}`)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            
-            console.log(`Attempting lastClaimTime() calls..`);
             let currentClaimPace = await this.connectedContract1.claimPace();
+            currentClaimPace = Number(currentClaimPace);
             console.log(`claim pace: ${currentClaimPace}`)
+
             let lastClaimTime = await this.connectedContract1.lastClaimTime(`${this.selectedInput1}`);
+            lastClaimTime = Number(lastClaimTime);
             console.log(`last claim: ${lastClaimTime}`)
 
-            let timePast = lastClaimTime + currentClaimPace;
-            console.log(`time past: ${timePast}`)
-
-            if(blockTimeStamp <= timePast){
+            if(((lastClaimTime + currentClaimPace) - blockTimeStamp) <= 0){
                 timeRemaining = 0;
             } else {
-                timeRemaining = blockTimeStamp - timePast;
+                timeRemaining = ((lastClaimTime + currentClaimPace) - blockTimeStamp);
             }
-        } catch(error){
-            // @Dev error related to the function process
-            console.log(error);
-        }
+        } catch(error){console.log(error);}
         try{
             // claim()
             console.log(`Attempting button 2 call..`);
@@ -414,7 +389,6 @@ class ClaimerDappInterface {
     }
 
     // --- @DEV after a successful API call this formats the results
-    // --- @DEV calls the API and gets the NFTs held by the user [BUTTON 4]
     async callForNFTAPI() {
         // @Dev this should be the affected button range
         for (let i = 4; i < 5; i++) {
@@ -438,6 +412,12 @@ class ClaimerDappInterface {
             .catch(err => {
                 console.error(err);
             });
+
+        for (let i = 4; i < 5; i++) {
+            this.buttonsArray[i].disabled = true;
+            this.buttonsArray[i].innerText = `[Load]`;
+            console.log(`button ${i} disabled`);
+        }
     }
 
     // --- @DEV after a successful API call this formats the results
@@ -463,12 +443,12 @@ class ClaimerDappInterface {
                 button.disabled = true;
                 button.innerText = '*waiting for metamask*';
                 this.selectedInput1 = item.id;
-                let timeRemaining = await this.claimRewards();
-                if(timeRemaining == 0){console.log(`TXN approved; waiting for response`)}
-                else if(timeRemaining > 0){
-                    let days = Math.floor(timeRemaining / (24 * 60 * 60));
-                    let minutes = Math.floor((timeRemaining % (24 * 60 * 60)) / 60);
-                    button.innerText = `Wait: ${days}D, ${minutes}M`;
+                let seconds = await this.claimRewards();
+                if(seconds == 0){console.log(`TXN approved; waiting for response`)}
+                else if(seconds > 0){
+                    let days = Math.floor(seconds / (24 * 60 * 60));
+                    let hours = Math.floor((seconds % (24 * 60 * 60)) / (60 * 60));
+                    button.innerText = `${days}d, ${hours}h`;
                 }
                 else {button.innerText = 'Claim Failed';}
             });
