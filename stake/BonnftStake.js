@@ -281,18 +281,69 @@ class ClaimerDappInterface {
     // --- @DEV calls the claim function with the tokenID currently in the entry field [BUTTON 2]
     async claimRewards() {
         if(this.connectionError == true){return;}
+        let timeRemaining;
         try{
-            // Button 2 -  claim()
+            // lastClaimTime() -- timeRemaining
+            let provider = new ethers.providers.JsonRpcProvider(`${this.dappChain}`);
+            let blockNumber = await provider.getBlockNumber();
+            let block = await provider.getBlock(blockNumber);
+            let blockTimeStamp = block.timestamp;
+            console.log(`block time: ${blockTimeStamp}`)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+            console.log(`Attempting lastClaimTime() calls..`);
+            let currentClaimPace = await this.connectedContract1.claimPace();
+            console.log(`claim pace: ${currentClaimPace}`)
+            let lastClaimTime = await this.connectedContract1.lastClaimTime(`${this.selectedInput1}`);
+            console.log(`last claim: ${lastClaimTime}`)
+
+            let timePast = lastClaimTime + currentClaimPace;
+            console.log(`time past: ${timePast}`)
+
+            if(blockTimeStamp <= timePast){
+                timeRemaining = 0;
+            } else {
+                timeRemaining = blockTimeStamp - timePast;
+            }
+        } catch(error){
+            // @Dev error related to the function process
+            console.log(error);
+        }
+        try{
+            // claim()
             console.log(`Attempting button 2 call..`);
             let Button2Results = await this.connectedContract1.claim(`${this.selectedInput1}`);
         } catch(error){
             // @Dev error related to the function process
             console.log(error);
             alert(`claim not possible - check time/wallet/etc`);
-            return false;
+            return timeRemaining;
         }
         this.waitingForListener = true;
-        return true;
+        return timeRemaining;
     }
 
     // --- @DEV calls the claim function with the tokenID currently in the entry field [BUTTON 3]
@@ -412,8 +463,14 @@ class ClaimerDappInterface {
                 button.disabled = true;
                 button.innerText = '*waiting for metamask*';
                 this.selectedInput1 = item.id;
-                let success = await this.claimRewards();
-                if(!success){button.innerText = 'Error';}
+                let timeRemaining = await this.claimRewards();
+                if(timeRemaining == 0){console.log(`TXN approved; waiting for response`)}
+                else if(timeRemaining > 0){
+                    let days = Math.floor(timeRemaining / (24 * 60 * 60));
+                    let minutes = Math.floor((timeRemaining % (24 * 60 * 60)) / 60);
+                    button.innerText = `Wait: ${days}D, ${minutes}M`;
+                }
+                else {button.innerText = 'Claim Failed';}
             });
 
             cardDiv.appendChild(image);
