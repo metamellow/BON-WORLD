@@ -359,37 +359,10 @@ class ClaimerDappInterface {
         }
     }
 
-    // --- @DEV calls the API and gets the NFTs held by the user [BUTTON 4]
-    async callForNFTAPI() {
-        if(this.connectionError == true){return;}
-
-        // @Dev this should be the affected button range
-        for (let i = 4; i < 5; i++) {
-            this.buttonsArray[i].disabled = true;
-            this.buttonsArray[i].innerText = `*loading*`;
-            console.log(`button ${i} disabled`);
-        }
-
-        /* --- BLOCKSPAN --- */
-        const options = {
-            method: 'GET',
-            headers: { accept: 'application/json', 'X-API-KEY': 'lezEOBRZiEKd9xjFKR43eBXBZA50nELn' }
-        };
-
-        fetch(`https://api.blockspan.com/v1/nfts/owner/${this.currentAccount}?chain=poly-main&contract_addresses=${this.contractAddress2}&include_nft_details=true&page_size=50`, options)
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                this.displayNFTData(data);
-            })
-            .catch(err => {
-                console.error(err);
-                alert(`assisted claim not possible - use manual claim`);
-            });
-    }
-
     // --- @DEV after a successful API call this formats the results
     async callForNFTAPI() {
+        if(this.connectionError == true){return;}
+        
         // @Dev this should be the affected button range
         for (let i = 4; i < 5; i++) {
             this.buttonsArray[i].disabled = true;
@@ -415,7 +388,7 @@ class ClaimerDappInterface {
 
         for (let i = 4; i < 5; i++) {
             this.buttonsArray[i].disabled = true;
-            this.buttonsArray[i].innerText = `[Load]`;
+            this.buttonsArray[i].innerText = `[NFTs Loaded]`;
             console.log(`button ${i} disabled`);
         }
     }
@@ -448,9 +421,13 @@ class ClaimerDappInterface {
                 else if(seconds > 0){
                     let days = Math.floor(seconds / (24 * 60 * 60));
                     let hours = Math.floor((seconds % (24 * 60 * 60)) / (60 * 60));
+                    button.disabled = true;
                     button.innerText = `${days}d, ${hours}h`;
                 }
-                else {button.innerText = 'Claim Failed';}
+                else {
+                    button.disabled = true;
+                    button.innerText = 'Claim Failed';
+                }
             });
 
             cardDiv.appendChild(image);
@@ -459,46 +436,6 @@ class ClaimerDappInterface {
 
             divContainer.appendChild(cardDiv);
         });
-
-        const styleElement = document.createElement('style');
-        styleElement.textContent = `
-            .card-container {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .card {
-                width: 150px;
-                margin: 10px;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .card img {
-                width: 100px;
-                height: 100px;
-                object-fit: cover;
-            }
-            
-            .card p {
-                margin-top: 5px;
-                text-align: center;
-            }
-            
-            .card button {
-                margin-top: 5px;
-            }
-            
-            @media (min-width: 768px) {
-                .card-container {
-                max-width: 800px;
-                margin: 0 auto;
-                }
-            }
-        `;
-        divContainer.appendChild(styleElement);
     }
 
 
