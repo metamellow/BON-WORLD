@@ -1340,7 +1340,7 @@ a {
 
 .stake .title {
   font-weight:600;
-  font-size: 32px;
+  font-size: 28px;
   
 }
 
@@ -1364,6 +1364,22 @@ a {
 .stake p {
   font-size: 16px;
   margin-bottom: 10px;
+}
+
+
+.about {
+  display: flex;
+  flex-direction: column;
+}
+
+.about .title {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.about .text {
+  font-size: 16px;
+  text-align: justify;
 }
 
 
