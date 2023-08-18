@@ -27,7 +27,7 @@
     </div>
     <nav class="dapp-menu">
       <ul class="nav-links">
-        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../index.html">home</a></li>
         <li><a href="../../whitepaper.html">whitepaper</a></li>
         <li><a href="../../lotto/index.html">lotto</a></li>
         <li><a href="../../dapp.html">crowdfunding</a></li>
@@ -57,35 +57,66 @@
     </div>
   </div>
 
-  <br />
 
   <hr>
 
   <div class="stake">
    
-    <div class="display">
+
+      <div>
       <strong class="title">Assisted Rewards</strong>
+      </div>
+
+      <hr>
+
+      <div class="display">
+      
+      <div class="labeldisplay">
       <label>Estimated Rewards</label>
       <button class="button textDisplayButton" name="textDisplayButton_estimateRewards" id="HTML_button_3" onclick="ClaimerDappInterface_.estimateRewards();">
           [Estimated]
-      </button>
+      </button></div>
+
+      <div class="labeldisplay">
       <label>Your NFTs Balance</label>
       <button class="" name="textDisplayButton_findUserNFTs" id="HTML_button_1" onclick="ClaimerDappInterface_.findUserNFTs();">
         [Balance]
-      </button>
+      </button></div>
+
+      <div class="labeldisplay">
       <label>Load your NFTs</label>
       <button name="pureButton_PullNFTData" id="HTML_button_4" onclick="ClaimerDappInterface_.callForNFTAPI();">
         [Load]
       </button>
       <div class="card-container" id="JSUniqueDiv1"></div>
-      <br>
+      
+      </div>
+
+    </div>
+  </div>
+  
+      <hr> 
+      
+      <div class="stake">
+      
+      <div>
       <strong class="title">Manual Rewards</strong>
+      </div>
+      <hr>
+          
+      <div class="display">
+      
+      <div class="labeldisplay">
       <label>NFT Token Number</label>
       <input type="number" name="numberInputField_nftTokenId" id="HTML_input_1" min="1" value="1" width="50%" onchange="ClaimerDappInterface_.onAnySelectInputs();" required />
-      <label class="label">Claim Rewards</label>
+      </div>
+      
+      <div class="labeldisplay">
+      <label class="label">Claim Rewards</label> 
       <button class="button textDisplayButton" name="textDisplayButton_claimRewards" id="HTML_button_2" onclick="ClaimerDappInterface_.claimRewards();">
         [Claim Rewards]
       </button>
+    </div>
     </div>
   </div>
 

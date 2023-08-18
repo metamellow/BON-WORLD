@@ -1308,11 +1308,8 @@ a {
 
 .stake {
   display: flex;
-  justify-content: center;
-  align-items:start;
-  margin: 0px;
- 
-  
+  flex-direction: column;
+  width: 100%;
 }
 
 .stake img {
@@ -1324,17 +1321,21 @@ a {
 
 .stake .display {
   display: flex;
-  flex-direction: column;
-  justify-content:flex-start;
-  padding: 10px;
-  margin-left: 10px;
-  height: auto;
-  border-radius: 8px;
-  
+  flex-direction: row; 
+  justify-content: space-between;
+  gap: 12px;
 }
+
+.stake .labeldisplay {
+  display: flex;
+  flex-direction: column;
+}
+
+
 
 .stake button {
   width: 450px;
+  height: auto;
 }
 
 .stake .title {
