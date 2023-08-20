@@ -57,7 +57,6 @@ class ClaimerDappInterface {
         this.currentAccount = ''; // THIS IS DUPLICATED ON OTHER SCRIPTS, beware
         this.waitingForListener = false;
         this.connectionError = false;
-        this.NFTResultsHolder = {};
 
         // --- Button HTML Elements ---
         this.buttonsArray = [
