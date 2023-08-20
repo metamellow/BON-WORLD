@@ -250,8 +250,52 @@ class ClaimerDappInterface {
     // _____________________ CUSTOM FUNCTIONS ______________________
     // _____________________________________________________________
 
+    /* BETTTTTTTTTTTTTTTTTTTTTTTTTT
+    - call the bet
+    - bet txn should be either containing gas in msg.value or it should take ERC from a preapproved allowance
+    - if allowance call fails, it will return a 0 numb value; so then this return should trigger an approval
+    - it will return an error if the lotto is close, already bet, etc
+    - it will also return a 1 or 2 numb value; which should turn on the listener
+    - listener can pick up "emit BetDetails(counter, pastLottoRewards[counter])" after bet has been made
+    - if return 1, then tell people to wait for p2, if return 2 then thell people to wait and check
+    - After both people have made a bet and the API call has returned, it will do the following:
+            _mint(pastLottoPlayer2[requestIdCounter], requestIdCounter);
+            emit WinnerResults(requestIdCounter, pastLottoPlayer2[requestIdCounter]);
+    - 
+    */
+
     // --- @DEV xxxx [BUTTON 1]
     async functionXxxx() {
+        if(this.connectionError == true){return;}
+        let buttonsFrom = 1;
+        let buttonsTo = 1;
+        disableButtons(buttonsFrom, buttonsTo);
+
+        try {
+            console.log(`results 1 call..`);
+            let results1 = await this.connectedContract1.balanceOf(`${this.currentAccount}`);
+            console.log('Awaiting function results...');
+            await results1;
+            console.log("Analzying results...");
+            if (results1 != ""){
+                console.log(`NFT Balance: ${results1}`)
+                this.buttonsArray[1].disabled = false;
+                this.buttonsArray[1].innerText = `${results1}`;
+            } else {this.buttonsArray[1].innerText = `no results`;}
+        } catch (error) {
+            // @Dev this pulls the flagged error and gives to user
+            console.log(error);
+        }
+    }
+
+    /* CLAIMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+    - the listener event after successful claim is
+            emit ClaimDetails(_counter, rewards);
+    - anyone holding the claimNFT can do it
+    */
+
+    // --- @DEV xxxx [BUTTON 1]
+    async functionXxxxx() {
         if(this.connectionError == true){return;}
         let buttonsFrom = 1;
         let buttonsTo = 1;
