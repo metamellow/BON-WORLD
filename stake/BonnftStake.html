@@ -27,7 +27,7 @@
     </div>
     <nav class="dapp-menu">
       <ul class="nav-links">
-        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../index.html">home</a></li>
         <li><a href="../../whitepaper.html">whitepaper</a></li>
         <li><a href="../../lotto/index.html">lotto</a></li>
         <li><a href="../../dapp.html">crowdfunding</a></li>
@@ -48,46 +48,115 @@
       <img class="imgadjust" src="../../images/stake.png" />
       <p class="cftitle"><b style="text-align: center;">BON.Stake</b></p>
     </div>
-    <div>BONNFT</div>
+    <div class="cftitle">BONNFT</div>
     <div id="selection-dropdown">
       <select id="HTML_dropdown_input_1" onchange="IndexInterface_.chooseWhichStake()">
         <option value="" selected disabled>Please choose...</option>
-        <option value="BONNFT">BONNFT</option>
+        <option  value="BONNFT">BONNFT</option>
       </select>
     </div>
   </div>
 
-  <br />
-
   <hr>
 
   <div class="stake">
-    <div>
-      <img src="../../images/merp.jpg" style="min-width: 200px; min-height: 200px;">
-    </div>
-    <div class="display">
-      <strong class="title">Assisted Rewards</strong>
+   
+      <div>
+      <strong class="title">assisted rewards</strong>
+      </div>
+
+      <hr>
+
+      <div class="display">
+      
+      <div class="labeldisplay">
       <label>Estimated Rewards</label>
       <button class="button textDisplayButton" name="textDisplayButton_estimateRewards" id="HTML_button_3" onclick="ClaimerDappInterface_.estimateRewards();">
           [Estimated]
-      </button>
+      </button></div>
+
+      <div class="labeldisplay">
       <label>Your NFTs Balance</label>
       <button class="" name="textDisplayButton_findUserNFTs" id="HTML_button_1" onclick="ClaimerDappInterface_.findUserNFTs();">
         [Balance]
-      </button>
+      </button></div>
+
+      <div class="labeldisplay">
       <label>Load your NFTs</label>
       <button name="pureButton_PullNFTData" id="HTML_button_4" onclick="ClaimerDappInterface_.callForNFTAPI();">
         [Load]
       </button>
+      <div>
       <div class="card-container" id="JSUniqueDiv1"></div>
-      <br>
-      <strong class="title">Manual Rewards</strong>
+    </div>
+      
+      </div>
+
+    </div>
+  </div>
+
+<div>
+  <div class="stake">
+  <div class="display">
+
+ 
+    <div class="nftcontainer"> 
+    <img src="../images/lens.png">
+    <button> ... </button>
+    </div>
+  
+    <div class="nftcontainer"> 
+    <img src="../images/lens.png">
+    <button> ... </button>
+    </div>
+    
+    <div class="nftcontainer"> 
+    <img src="../images/lens.png">
+    <button> ... </button>
+    </div>
+      
+      
+    <div class="nftcontainer"> 
+    <img src="../images/lens.png">
+    <button> ... </button>
+    </div>
+        
+      
+    <div class="nftcontainer"> 
+    <img src="../images/lens.png">
+    <button> ... </button>
+    </div>
+    
+  </div>
+</div>
+  
+      <hr> 
+      
+   <div class="stake">
+      
+      <div>
+      <strong class="title">manual rewards</strong>
+      </div>
+
+      <hr>
+ 
+      <div class="display">
+      
+      <div class="labeldisplay">
       <label>NFT Token Number</label>
       <input type="number" name="numberInputField_nftTokenId" id="HTML_input_1" min="1" value="1" width="50%" onchange="ClaimerDappInterface_.onAnySelectInputs();" required />
-      <label class="label">Claim Rewards</label>
+      </div>
+      
+      <div class="labeldisplay">
+      <label class="label">Claim Rewards</label> 
       <button class="button textDisplayButton" name="textDisplayButton_claimRewards" id="HTML_button_2" onclick="ClaimerDappInterface_.claimRewards();">
         [Claim Rewards]
       </button>
+    </div>
+    <div>
+      <label> complete your collection. Max:5  </label>
+      <a href="../nftcollection/BONNFT1.html"><button> MINT </button></a>
+    </div>
     </div>
   </div>
 
@@ -104,6 +173,31 @@
         </ol>
       </div>
     </div>
+  </div>
+
+  <hr>
+  <div class="about"> 
+    <div class="title">
+    <p> about </p>
+    </div>
+    
+    <hr>
+
+    <div class="text">
+      
+      <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris maximus diam ut sapien facilisis, sed tincidunt tellus vehicula. Etiam sodales, tortor ut volutpat finibus, velit ante ullamcorper risus, quis accumsan nisl augue a leo. Mauris molestie et lacus et elementum. Sed non pellentesque tortor, vitae dignissim sapien. 
+      Duis viverra viverra velit eu egestas. Cras suscipit viverra tortor eu iaculis. Etiam fringilla placerat urna cursus tincidunt. Aenean mollis purus sed eros ullamcorper, eu cursus mauris bibendum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Maecenas et tortor libero. Nulla rutrum vel libero id volutpat. Donec mattis facilisis lorem, ac tincidunt eros venenatis vitae.
+      Sed vitae diam vitae diam facilisis bibendum. Sed malesuada tempus purus, quis 
+      porttitor urna vehicula dapibus. Nullam dapibus purus nec ipsum convallis egestas.
+       Donec sed purus vestibulum, tempor lectus ut, semper libero. Nunc sagittis bibendum 
+       sem in ullamcorper. Integer rhoncus tellus ut sollicitudin pretium. Integer fringill
+       a hendrerit purus, ac tincidunt ex. Quisque maximus vitae purus nec finibus. Nunc
+       nibh eros, condimentum pulvinar convallis eu, vestibulum et arcu. Mauris laoreet,
+       libero ut volutpat semper, libero sem malesuada est, id suscipit tellus tortor e
+       t turpis. Sed quis sagittis justo. Nunc ut risus ante. Ut luctus tellus tortor, u
+       t blandit felis eleifend vitae. Mauris placerat faucibus mauris quis gravida.</p> 
+        
+     </div>
   </div>
 
   <hr>
