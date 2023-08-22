@@ -1,222 +1,261 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8" />
-  <title>Bank of Nowhere</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" type="text/css" href="../styles/main.css" />
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous" />
-  <link rel="icon" href="../../images/fav.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet" />
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <div class="logo-container">
-      <img src="../../images/bonlogo.png" alt="Logo" class="logo-grande" />
-      <img src="../../images/fav.png" alt="Logo" class="logo-pequeno" />
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bank of Nowhere</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="../styles/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+      integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
+      crossorigin="anonymous"
+    />
+    <link rel="icon" href="../../images/fav.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="logo-container">
+        <img src="../../images/bonlogo.png" alt="Logo" class="logo-grande" />
+        <img src="../../images/fav.png" alt="Logo" class="logo-pequeno" />
+      </div>
+      <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <nav class="dapp-menu">
+        <ul class="nav-links">
+          <li><a href="../../index.html">home</a></li>
+          <li><a href="../../whitepaper.html">whitepaper</a></li>
+          <li><a href="../../lotto/index.html">lotto</a></li>
+          <li><a href="../../dapp.html">crowdfunding</a></li>
+          <li><a href="../../stake/index.html">stake</a></li>
+          <li>
+            <button
+              name="connectWallet"
+              id="HTML_connect_button"
+              onclick="DappInterface_.connectWallet();"
+            >
+              Connect
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <hr />
+
+    <div class="cftop">
+      <div class="cftitleadjust">
+        <img class="imgadjust" src="../../images/stake.png" />
+        <p class="cftitle"><b style="text-align: center">BON.Stake</b></p>
+      </div>
+      <div class="cftitle">BONNFT</div>
+      <div id="selection-dropdown">
+        <select
+          id="HTML_dropdown_input_1"
+          onchange="IndexInterface_.chooseWhichStake()"
+        >
+          <option value="" selected disabled>Please choose...</option>
+          <option value="BONNFT">BONNFT</option>
+        </select>
+      </div>
     </div>
-    <div class="menu-toggle">
-      <i class="fas fa-bars"></i>
-    </div>
-    <nav class="dapp-menu">
-      <ul class="nav-links">
-        <li><a href="../../index.html">home</a></li>
-        <li><a href="../../whitepaper.html">whitepaper</a></li>
-        <li><a href="../../lotto/index.html">lotto</a></li>
-        <li><a href="../../dapp.html">crowdfunding</a></li>
-        <li><a href="../../stake/index.html">stake</a></li>
-        <li>
-          <button name="connectWallet" id="HTML_connect_button" onclick="DappInterface_.connectWallet();">
-            Connect
+
+    <hr />
+
+    <div class="stake">
+      <div class="title">
+        <strong>assisted rewards</strong>
+      </div>
+
+      <div class="display-with-wrap">
+        <div class="labeldisplay">
+          <label>Estimated Rewards</label>
+          <button
+            class="button textDisplayButton"
+            name="textDisplayButton_estimateRewards"
+            id="HTML_button_3"
+            onclick="ClaimerDappInterface_.estimateRewards();"
+          >
+            [Estimated]
           </button>
-        </li>
-      </ul>
-    </nav>
-  </header>
+        </div>
 
-  <hr />
+        <div class="labeldisplay">
+          <label>Your NFTs Balance</label>
+          <button
+            class=""
+            name="textDisplayButton_findUserNFTs"
+            id="HTML_button_1"
+            onclick="ClaimerDappInterface_.findUserNFTs();"
+          >
+            [Balance]
+          </button>
+        </div>
 
-  <div class="cftop">
-    <div class="cftitleadjust">
-      <img class="imgadjust" src="../../images/stake.png" />
-      <p class="cftitle"><b style="text-align: center;">BON.Stake</b></p>
+        <div class="labeldisplay">
+          <label>Load your NFTs</label>
+          <button
+            name="pureButton_PullNFTData"
+            id="HTML_button_4"
+            onclick="ClaimerDappInterface_.callForNFTAPI();"
+          >
+            [Load]
+          </button>
+          <div>
+            <div class="card-container" id="JSUniqueDiv1"></div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="cftitle">BONNFT</div>
-    <div id="selection-dropdown">
-      <select id="HTML_dropdown_input_1" onchange="IndexInterface_.chooseWhichStake()">
-        <option value="" selected disabled>Please choose...</option>
-        <option  value="BONNFT">BONNFT</option>
-      </select>
-    </div>
-  </div>
 
-  <hr>
-
-  <div class="stake">
-   
-      <div>
-      <strong class="title">assisted rewards</strong>
+    <div style="margin-bottom: 70px">
+      <div class="stake">
+        <div id="nft-user-collection" class="display">
+          <div class="nftContainer">
+            <div class="nftContainerItem">
+              <img src="../images/lens.png" class="default-img" />
+              <button>...</button>
+            </div>
+          </div>
+          <div class="nftContainer">
+            <div class="nftContainerItem">
+              <img src="../images/lens.png" class="default-img" />
+              <button>...</button>
+            </div>
+          </div>
+          <div class="nftContainer">
+            <div class="nftContainerItem">
+              <img src="../images/lens.png" class="default-img" />
+              <button>...</button>
+            </div>
+          </div>
+          <div class="nftContainer">
+            <div class="nftContainerItem">
+              <img src="../images/lens.png" class="default-img" />
+              <button>...</button>
+            </div>
+          </div>
+          <div class="nftContainer">
+            <div class="nftContainerItem">
+              <img src="../images/lens.png" class="default-img" />
+              <button>...</button>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <hr>
-
-      <div class="display">
-      
-      <div class="labeldisplay">
-      <label>Estimated Rewards</label>
-      <button class="button textDisplayButton" name="textDisplayButton_estimateRewards" id="HTML_button_3" onclick="ClaimerDappInterface_.estimateRewards();">
-          [Estimated]
-      </button></div>
-
-      <div class="labeldisplay">
-      <label>Your NFTs Balance</label>
-      <button class="" name="textDisplayButton_findUserNFTs" id="HTML_button_1" onclick="ClaimerDappInterface_.findUserNFTs();">
-        [Balance]
-      </button></div>
-
-      <div class="labeldisplay">
-      <label>Load your NFTs</label>
-      <button name="pureButton_PullNFTData" id="HTML_button_4" onclick="ClaimerDappInterface_.callForNFTAPI();">
-        [Load]
-      </button>
-      <div>
-      <div class="card-container" id="JSUniqueDiv1"></div>
-    </div>
-      
+      <div class="stake">
+        <div class="title">
+          <strong>manual rewards</strong>
+        </div>
+        <div class="display">
+          <div class="labeldisplay">
+            <label>NFT Token Number</label>
+            <input
+              type="number"
+              name="numberInputField_nftTokenId"
+              id="HTML_input_1"
+              min="1"
+              value="1"
+              width="50%"
+              onchange="ClaimerDappInterface_.onAnySelectInputs();"
+              required
+            />
+          </div>
+          <div class="labeldisplay">
+            <label class="label">Claim Rewards</label>
+            <button
+              class="button textDisplayButton"
+              name="textDisplayButton_claimRewards"
+              id="HTML_button_2"
+              onclick="ClaimerDappInterface_.claimRewards();"
+            >
+              [Claim Rewards]
+            </button>
+          </div>
+        </div>
       </div>
+    </div>
 
-    </div>
-  </div>
+    <hr />
 
-<div>
-  <div class="stake">
-  <div class="display">
-
- 
-    <div class="nftcontainer"> 
-    <img src="../images/lens.png">
-    <button> ... </button>
-    </div>
-  
-    <div class="nftcontainer"> 
-    <img src="../images/lens.png">
-    <button> ... </button>
-    </div>
-    
-    <div class="nftcontainer"> 
-    <img src="../images/lens.png">
-    <button> ... </button>
-    </div>
-      
-      
-    <div class="nftcontainer"> 
-    <img src="../images/lens.png">
-    <button> ... </button>
-    </div>
-        
-      
-    <div class="nftcontainer"> 
-    <img src="../images/lens.png">
-    <button> ... </button>
-    </div>
-    
-  </div>
-</div>
-  
-      <hr> 
-      
-   <div class="stake">
-      
-      <div>
-      <strong class="title">manual rewards</strong>
-      </div>
-
-      <hr>
- 
-      <div class="display">
-      
-      <div class="labeldisplay">
-      <label>NFT Token Number</label>
-      <input type="number" name="numberInputField_nftTokenId" id="HTML_input_1" min="1" value="1" width="50%" onchange="ClaimerDappInterface_.onAnySelectInputs();" required />
-      </div>
-      
-      <div class="labeldisplay">
-      <label class="label">Claim Rewards</label> 
-      <button class="button textDisplayButton" name="textDisplayButton_claimRewards" id="HTML_button_2" onclick="ClaimerDappInterface_.claimRewards();">
-        [Claim Rewards]
-      </button>
-    </div>
     <div>
-      <label> complete your collection. Max:5  </label>
-      <a href="../nftcollection/BONNFT1.html"><button> MINT </button></a>
-    </div>
-    </div>
-  </div>
-
-  <hr>
-
-  <div>
-    <div class="lottotrouble" id="MaticLotto">
-      <div><strong class="cftitle">HOW TO STAKE:</strong></div>
-      <div>
-        <ol>
-          <li>Enter your NFT number</li>
-          <li>Claim your rewards</li>
-          <li>Wait 7 days and claim again!</li>
-        </ol>
+      <div class="lottotrouble" id="MaticLotto">
+        <div><strong class="cftitle">HOW TO STAKE:</strong></div>
+        <div>
+          <ol>
+            <li>Enter your NFT number</li>
+            <li>Claim your rewards</li>
+            <li>Wait 7 days and claim again!</li>
+          </ol>
+        </div>
       </div>
     </div>
-  </div>
 
-  <hr>
-  <div class="about"> 
-    <div class="title">
-    <p> about </p>
-    </div>
-    
-    <hr>
+    <hr />
 
-    <div class="text">
-      
-      <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris maximus diam ut sapien facilisis, sed tincidunt tellus vehicula. Etiam sodales, tortor ut volutpat finibus, velit ante ullamcorper risus, quis accumsan nisl augue a leo. Mauris molestie et lacus et elementum. Sed non pellentesque tortor, vitae dignissim sapien. 
-      Duis viverra viverra velit eu egestas. Cras suscipit viverra tortor eu iaculis. Etiam fringilla placerat urna cursus tincidunt. Aenean mollis purus sed eros ullamcorper, eu cursus mauris bibendum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Maecenas et tortor libero. Nulla rutrum vel libero id volutpat. Donec mattis facilisis lorem, ac tincidunt eros venenatis vitae.
-      Sed vitae diam vitae diam facilisis bibendum. Sed malesuada tempus purus, quis 
-      porttitor urna vehicula dapibus. Nullam dapibus purus nec ipsum convallis egestas.
-       Donec sed purus vestibulum, tempor lectus ut, semper libero. Nunc sagittis bibendum 
-       sem in ullamcorper. Integer rhoncus tellus ut sollicitudin pretium. Integer fringill
-       a hendrerit purus, ac tincidunt ex. Quisque maximus vitae purus nec finibus. Nunc
-       nibh eros, condimentum pulvinar convallis eu, vestibulum et arcu. Mauris laoreet,
-       libero ut volutpat semper, libero sem malesuada est, id suscipit tellus tortor e
-       t turpis. Sed quis sagittis justo. Nunc ut risus ante. Ut luctus tellus tortor, u
-       t blandit felis eleifend vitae. Mauris placerat faucibus mauris quis gravida.</p> 
-        
-     </div>
-  </div>
+    <div class="about">
+      <div class="title">
+        <p>about</p>
+      </div>
+      <div class="text">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
+          maximus diam ut sapien facilisis, sed tincidunt tellus vehicula. Etiam
+          sodales, tortor ut volutpat finibus, velit ante ullamcorper risus,
+          quis accumsan nisl augue a leo. Mauris molestie et lacus et elementum.
+          Sed non pellentesque tortor, vitae dignissim sapien. Duis viverra
+          viverra velit eu egestas. Cras suscipit viverra tortor eu iaculis.
+          Etiam fringilla placerat urna cursus tincidunt. Aenean mollis purus
+          sed eros ullamcorper, eu cursus mauris bibendum. Vestibulum ante ipsum
+          primis in faucibus orci luctus et ultrices posuere cubilia curae;
+          Maecenas et tortor libero. Nulla rutrum vel libero id volutpat. Donec
+          mattis facilisis lorem, ac tincidunt eros venenatis vitae. Sed vitae
+          diam vitae diam facilisis bibendum. Sed malesuada tempus purus, quis
+          porttitor urna vehicula dapibus. Nullam dapibus purus nec ipsum
+          convallis egestas. Donec sed purus vestibulum, tempor lectus ut,
+          semper libero. Nunc sagittis bibendum sem in ullamcorper. Integer
+          rhoncus tellus ut sollicitudin pretium. Integer fringill a hendrerit
+          purus, ac tincidunt ex. Quisque maximus vitae purus nec finibus. Nunc
+          nibh eros, condimentum pulvinar convallis eu, vestibulum et arcu.
+          Mauris laoreet, libero ut volutpat semper, libero sem malesuada est,
+          id suscipit tellus tortor e t turpis. Sed quis sagittis justo. Nunc ut
+          risus ante. Ut luctus tellus tortor, u t blandit felis eleifend vitae.
+          Mauris placerat faucibus mauris quis gravida.
+        </p>
+      </div>
+    </div>
 
-  <hr>
+    <hr />
 
-  <footer>
-    <div>
-      <img src="../../images/fav.png" />
-    </div>
-    <div class="copyright">
-      <p>Copyright © Bank of Nowhere</p>
-    </div>
-    <div>
-      <img src="../../images/moduluslogogreen.svg" />
-    </div>
-    <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"></script>
-    <script src="indexInterface.js" type="application/javascript"></script>
-    <script src="BonnftStake.js" type="application/javascript"></script>
-    <script src="../../scripts/menu.js"></script>
-    <script src="../../scripts/collapse.js"></script>
-  </footer>
-</body>
+    <footer>
+      <div>
+        <img src="../../images/fav.png" />
+      </div>
+      <div class="copyright">
+        <p>Copyright © Bank of Nowhere</p>
+      </div>
+      <div>
+        <img src="../../images/moduluslogogreen.svg" />
+      </div>
+      <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"></script>
+      <script src="indexInterface.js" type="application/javascript"></script>
+      <script src="BonnftStake.js" type="application/javascript"></script>
+      <script src="../../scripts/menu.js"></script>
+      <script src="../../scripts/collapse.js"></script>
+    </footer>
+  </body>
 </html>
