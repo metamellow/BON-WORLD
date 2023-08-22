@@ -1151,7 +1151,6 @@ class ClaimerDappInterface {
       });
     });
   }
-  // --- @DEV after a successful API call this formats the results
   // --- END --- //
 }
 
