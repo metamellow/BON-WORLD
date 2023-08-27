@@ -25,6 +25,7 @@ const CONTRACT2_ABI = (
     ,}
 );
 
+/*
 // Contract 3 = ""
 const CONTRACT3_ABI = (
 	{
@@ -37,8 +38,9 @@ const CONTRACT3_ABI = (
     
     ,}
 );
+*/
 
-class ClaimerDappInterface {
+class DappInterface {
     
     // _____________________________________________________________
     // _______________ VARIABLES AND OBJECTS SECTION _______________
@@ -48,7 +50,7 @@ class ClaimerDappInterface {
     constructor() {
         // --- Universal web3 Variables ---
         this.dappChain = '0x13881'; //ETHEREUM-MAINNET=='0x1', POLYGON-MAINNET=='0x89', BINANCE-MAINNET=='0x38', MODULUS-TESTNET=='0x6666', POLYGON-MUMABI=='0x13881'
-        this.chainName = 'POLYGON-MAINNET';
+        this.chainName = 'POLYGON-MUMABI';
         this.contractAddress1 = '0x2a5816582b998D517363AA83F1EBa61B1c372Ece'; // LottoV3
         this.contractAddress2 = '0xF647981f9417EEAf70cb92Ae14978fDf489a11B8'; // Token
         this.contractAddress3 = 'xx'; // xx
@@ -58,16 +60,22 @@ class ClaimerDappInterface {
         this.currentAccount = ''; // THIS IS DUPLICATED ON OTHER SCRIPTS, beware
         this.waitingForListener = false;
         this.connectionError = false;
-        this.maxTokens = '115792089237316195423570985008687907853269984665640564039457584007913129639935';
-        this.txnGas = '';
+        this.txnCost = ''; // loaded on betPrice();
 
         // --- Button HTML Elements ---
         this.buttonsArray = [
             (this.JSButton0 = "0"), //emptyplaceholder
-            (this.JSButton1 = document.getElementById('HTML_button_1')), // approve()
-            (this.JSButton1 = document.getElementById('HTML_button_2')), // bet()
-            (this.JSButton1 = document.getElementById('HTML_button_3')) // claim()
-        ]
+            (this.JSButton1 = document.getElementById('HTML_button_1')), // CurrentLotto_approve
+            (this.JSButton2 = document.getElementById('HTML_button_2')), // CurrentLotto_bet
+            (this.JSButton3 = document.getElementById('HTML_button_3')), // CurrentLotto_claim
+            (this.JSButton4 = document.getElementById('HTML_button_4')), // CurrentLotto_counter
+            (this.JSButton5 = document.getElementById('HTML_button_5')), // CurrentLotto_betPrice
+            (this.JSButton6 = document.getElementById('HTML_button_6')), // CurrentLotto_rewardValue
+            (this.JSButton7 = document.getElementById('HTML_button_7')), // CurrentLotto_playerOne
+            (this.JSButton8 = document.getElementById('HTML_button_8')), // CurrentLotto_playerTwo
+            (this.JSButton9 = document.getElementById('HTML_button_9')), // xxx()
+            (this.JSButton10 = document.getElementById('HTML_button_10')) // xxx()
+        ];
 
         // --- Input HTML Elements --- 
         this.selectedInput1 = 1; // 
@@ -88,11 +96,15 @@ class ClaimerDappInterface {
         try{await this.setupButtonsFunc();} catch (error) {console.log(error);}  
         try{await this.pullUsersWallet();} catch (error) {console.log(error);}
         try{await this.connectAllContracts();} catch (error) {console.log(error);}
-        try{await this.setupEventListener();} catch (error) {console.log(error);}
+        //try{await this.setupEventListener();} catch (error) {console.log(error);}
         
         // --- SECONDARY components
-        try{await allowanceTxn();} catch (error) {console.log(error);}
-
+        try{await this.CurrentLotto_allowance();} catch (error) {console.log(error);}
+        try{await this.CurrentLotto_counter();} catch (error) {console.log(error);}
+        try{await this.CurrentLotto_betPrice();} catch (error) {console.log(error);}
+        try{await this.CurrentLotto_rewardValue();} catch (error) {console.log(error);}
+        try{await this.CurrentLotto_playerOne();} catch (error) {console.log(error);}
+        try{await this.CurrentLotto_playerTwo();} catch (error) {console.log(error);}
     }
 
     // --- @Dev this checks the network setup and adjusts the buttons accordingly
@@ -181,12 +193,14 @@ class ClaimerDappInterface {
                             signer
                         );
 
+                        /*
                         console.log(`Connecting contract3...`);
                         this.connectedContract3 = new ethers.Contract(
                             this.contractAddress3,
                             CONTRACT3_ABI.abi,
                             signer
                         );
+                        */
 
                     }catch(error){
                         this.connectionError = true;
@@ -211,15 +225,15 @@ class ClaimerDappInterface {
         
         try { 
             // Contract 1A
-            this.connectedContract1.on('ClaimDetails', (claimAmount) => {
+            this.connectedContract1.on('ClaimDetails', (claimedCounter, claimedRewards) => {
                 if(this.waitingForListener == true){
                     this.waitingForListener = false;
-                    let amount = ethers.utils.formatEther(String(claimAmount));
+                    let amount = ethers.utils.formatEther(String(claimedRewards));
                     amount = Number(amount);
                     amount = amount.toFixed(3);
                     amount = ethers.utils.commify(amount);
                     console.log(amount);
-                    alert(`Success! Claimed: ${amount} BON`);
+                    alert(`Success! Claimed [${claimedCounter}]: ${amount} BON`);
                     window.location.reload();
                 }
                 }
@@ -253,46 +267,28 @@ class ClaimerDappInterface {
         }
     }
 
+    // -- @DEV this just cleans up the page before doing any fuction
+    async startButtonFunction(from, to){
+        if(this.connectionError == true){return;}
+        let buttonsFrom = from; let buttonsTo = to;
+        this.disableButtons(buttonsFrom, buttonsTo);
+    }
+
 
     // _____________________________________________________________
     // _____________________ CUSTOM FUNCTIONS ______________________
     // _____________________________________________________________
 
-    // -----------------------------------------------------------------------------------------------------------------asdasdasdasdasdasdasd
-    // Need two buttons, approval and bet, next to each other
-    // There should be an auto run function on page load that checks approval
-    // if pass, then disable the approve and enable the bet
-    // if fail, then enable the approve and disable the bet
+    // --- Current Lotto Write Functions ---
 
-    async allowanceTxn(){
-        if(this.connectionError == true){return;}
-        try {
-            console.log(`allowance call..`);
-            let results = await this.connectedContract2.allowance(this.currentAccount, this.contractAddress1);
-            console.log('Awaiting function results...');
-            await results;
-            console.log("Analzying results...");
-            if (results > 0){
-                console.log(`Allowance found`);
-                return results;
-            } else {
-                console.log(`Allowance not found`);
-                this.buttonsArray[1].disabled = false;
-                this.buttonsArray[1].innerText = `APPROVE`;
-                this.buttonsArray[2].disabled = true;
-                this.buttonsArray[2].innerText = `...`;
-                return results;
-            }
-        } catch (error) {
-            console.log(error);
-        }
-    }
+    // Approve -- buttons [1] & [2]
+    async CurrentLotto_approve(){
+        this.startButtonFunction(1,2);
 
-    async approveTxn(){
-        if(this.connectionError == true){return;}
         try {
             console.log(`approve call..`);
-            let results = await this.connectedContract2.approve(this.contractAddress1, this.maxTokens);
+            let results = await this.connectedContract2.approve(this.contractAddress1, 
+                `115792089237316195423570985008687907853269984665640564039457584007913129639935`);
             console.log('Awaiting function results...');
             await results;
             console.log("Analzying results...");
@@ -306,6 +302,11 @@ class ClaimerDappInterface {
                 return results;
             } else {
                 console.log(`Approval failed`);
+                this.buttonsArray[1].disabled = false;
+                this.buttonsArray[1].innerText = `APPROVE`;
+                this.buttonsArray[2].disabled = true;
+                this.buttonsArray[2].innerText = `...`;
+                alert(`You must approve tokens before betting!`);
                 return results;
             }
         } catch (error) {
@@ -313,17 +314,16 @@ class ClaimerDappInterface {
         }
     }
 
-    async betTxn() {
-        if(this.connectionError == true){return;}
-        let buttonsFrom = 2; let buttonsTo = 2;
-        disableButtons(buttonsFrom, buttonsTo);
+    // Bet -- button [2]
+    async CurrentLotto_bet() {
+        this.startButtonFunction(2,2);
 
         try {
             console.log(`results 1 call..`);
             let results1 = await this.connectedContract1.bet();
 
             /* THIS IS FOR NON ERC20 BETS */ /*
-            const options = {value: ethers.utils.parseEther(`${this.txnGas}`),};
+            const options = {value: ethers.utils.parseEther(`${this.txnCost}`),};
             let results1 = await connectedContract1.bet(options);
             */
 
@@ -354,33 +354,209 @@ class ClaimerDappInterface {
         }
     }
 
-
-    /* CLAIMMMMMMMMMMMMMMMMMMMMMMMMMMMM
-    - the listener event after successful claim is
-            emit ClaimDetails(_counter, rewards);
-    - anyone holding the claimNFT can do it
-    */
-
-    // --- @DEV xxxx [BUTTON 1]
-    async claimTxn() {
-        if(this.connectionError == true){return;}
-        let buttonsFrom = 1;
-        let buttonsTo = 1;
-        disableButtons(buttonsFrom, buttonsTo);
+    // Claim -- button [3]
+    async CurrentLotto_claim() {
+        this.startButtonFunction(3,3);
 
         try {
-            console.log(`results 1 call..`);
-            let results1 = await this.connectedContract1.balanceOf(`${this.currentAccount}`);
+            console.log(`claim call..`);
+            let results = await this.connectedContract1.claim(`1`);
             console.log('Awaiting function results...');
-            await results1;
+            await results;
             console.log("Analzying results...");
-            if (results1 != ""){
-                console.log(`NFT Balance: ${results1}`)
-                this.buttonsArray[1].disabled = false;
-                this.buttonsArray[1].innerText = `${results1}`;
-            } else {this.buttonsArray[1].innerText = `no results`;}
+            if (results != ""){
+                console.log(`NFT Balance: ${results}`)
+                this.buttonsArray[3].disabled = false;
+                this.buttonsArray[3].innerText = `${results}`;
+            } else {this.buttonsArray[3].innerText = `no results`;}
         } catch (error) {
             // @Dev this pulls the flagged error and gives to user
+            console.log(error);
+        }
+    }
+
+    // --- Current Lotto Read Functions ---
+
+    // Allowance -- buttons [1] & [2]
+    async CurrentLotto_allowance(){
+        this.startButtonFunction(1,2);
+
+        try {
+            console.log(`allowance call..`);
+            let results = await this.connectedContract2.allowance(this.currentAccount, this.contractAddress1);
+            console.log('Awaiting function results...');
+            await results;
+            console.log("Analzying results...");
+            if (results > 0){
+                console.log(`Allowance found`);
+                this.buttonsArray[1].disabled = true;
+                this.buttonsArray[1].innerText = `...`;
+                this.buttonsArray[2].disabled = false;
+                this.buttonsArray[2].innerText = `BET`;
+                return results;
+            } else {
+                console.log(`Allowance not found`);
+                this.buttonsArray[1].disabled = false;
+                this.buttonsArray[1].innerText = `APPROVE`;
+                this.buttonsArray[2].disabled = true;
+                this.buttonsArray[2].innerText = `...`;
+                return results;
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    // Counter -- button [4]
+    async CurrentLotto_counter(){
+        this.startButtonFunction(4,4);
+
+        try {
+            console.log(`counter call..`);
+            let results = await this.connectedContract1.counter();
+            console.log('Awaiting function results...');
+            await results;
+            console.log("Analzying results...");
+            if (results > 0){
+                console.log(`${results}`);
+                this.buttonsArray[4].disabled = false;
+                this.buttonsArray[4].innerText = `${results}`;
+                return results;
+            } else {
+                console.log(`Results not found`);
+                this.buttonsArray[4].disabled = false;
+                this.buttonsArray[4].innerText = `Error`;
+                return results;
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    // Bet Price -- button [5]
+    async CurrentLotto_betPrice(){
+        this.startButtonFunction(5,5);
+
+        try {
+            console.log(`bet price call..`);
+            let results = await this.connectedContract1.betPrice();
+            console.log('Awaiting function results...');
+            await results;
+            console.log("Analzying results...");
+            if (results > 0){
+                console.log(`${results}`);
+                results = `${results}`;
+                this.txnCost = ethers.utils.formatEther(results);
+                let buttonText = Number(this.txnCost);
+                buttonText = buttonText.toFixed(3);
+                this.buttonsArray[5].innerText = `${buttonText}`;
+                this.buttonsArray[5].disabled = false;
+                return results;
+            } else {
+                console.log(`Results not found`);
+                this.buttonsArray[5].innerText = `Error`;
+                this.buttonsArray[5].disabled = false;
+                return results;
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    // Reward Value -- button [6]
+    async CurrentLotto_rewardValue(){
+        this.startButtonFunction(6,6);
+
+        try {
+            if(this.txnCost <= 0){
+                console.log(`txnCost needed before rewardValue`);
+                return error;
+            }
+
+            console.log(`reward value call..`);
+            let results = await this.connectedContract1.taxRate();
+            console.log('Awaiting function results...');
+            await results;
+            results = results / 1000;
+            console.log(`${results}`);
+            console.log(`${this.txnCost}`);
+
+
+            let taxAmount = ((this.txnCost * 2) * results)
+            let reward = ((this.txnCost * 2) - taxAmount);
+            reward = reward.toFixed(3);
+            
+            console.log("Analzying results...");
+            if (reward != null){
+                console.log(`${reward}`);
+                this.buttonsArray[6].disabled = false;
+                this.buttonsArray[6].innerText = `${reward}`;
+                return reward;
+            } else {
+                console.log(`Results not found`);
+                this.buttonsArray[6].disabled = false;
+                this.buttonsArray[6].innerText = `Error`;
+                return reward;
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    // Player 1 -- button [7]
+    async CurrentLotto_playerOne(){
+        this.startButtonFunction(7,7);
+
+        try {
+            console.log(`Player 1 call..`);
+            let results = await this.connectedContract1.player1W();
+            console.log('Awaiting function results...');
+            await results;
+            console.log("Analzying results...");
+            if (results != `0x0000000000000000000000000000000000000000`){
+                console.log(`${results}`);
+                this.buttonsArray[7].innerText = `${
+                    results.substring(0, 6)}...${
+                    results.substring((results.length-4), results.length)
+                }`;
+                this.buttonsArray[7].disabled = false;
+                return results;
+            } else {
+                console.log(`Results not found`);
+                this.buttonsArray[7].disabled = false;
+                this.buttonsArray[7].innerText = `(Waiting for Player 1)`;
+                return results;
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    // Player 2 -- button [8]
+    async CurrentLotto_playerTwo(){
+        this.startButtonFunction(8,8);
+
+        try {
+            console.log(`Player 2 call..`);
+            let results = await this.connectedContract1.player2W();
+            console.log('Awaiting function results...');
+            await results;
+            console.log("Analzying results...");
+            if (results != `0x0000000000000000000000000000000000000000`){
+                console.log(`${results}`);
+                this.buttonsArray[8].innerText = `${
+                    results.substring(0, 6)}...${
+                    results.substring((results.length-4), results.length)
+                }`;
+                this.buttonsArray[8].disabled = false;
+                return results;
+            } else {
+                console.log(`Results not found`);
+                this.buttonsArray[8].disabled = false;
+                this.buttonsArray[8].innerText = `(Waiting for Player 2)`;
+                return results;
+            }
+        } catch (error) {
             console.log(error);
         }
     }
@@ -388,5 +564,5 @@ class ClaimerDappInterface {
     // --- END --- //
 }
 
-const ClaimerDappInterface_ = new ClaimerDappInterface();
-ClaimerDappInterface_.dappInitializeProcess();
+const DappInterface_ = new DappInterface();
+DappInterface_.dappInitializeProcess();
