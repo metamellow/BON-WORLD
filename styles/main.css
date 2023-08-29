@@ -1762,3 +1762,38 @@ text-align: center;
   width: 100%;
 
 }
+
+/* styles.css */
+.pagination {
+  display: flex;
+  background-color: transparent;
+}
+
+.pagination a {
+
+  padding: 8px 16px;
+  text-decoration: none;
+  color:black;
+  background-color: none;
+
+}
+
+table {
+  width: 100%;
+  
+}
+
+.historicdisplay {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.manual {
+  color: #54ff65;
+  font-weight: 600;
+  font-size: 36px;
+}

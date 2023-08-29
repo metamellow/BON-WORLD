@@ -366,7 +366,8 @@
       
       <!-- SECTION OBJECTS -->
       <div>
-        <div class="lottodisplay">
+        <div class="manual"> manual check</div>
+        <div class="historicdisplay">
           <br/>
 
           <!-- PAST ROUND -->
@@ -434,57 +435,50 @@
 
         <hr/>
 
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>Txt Hash</th>
+        <th>Player 1</th>
+        <th>Player 2</th>
+        <th>winner</th>
+        <th>Amount</th>
+      </tr>
+    </thead>
+    <tbody id="table-body">
+      <!-- Linhas da tabela serão adicionadas aqui dinamicamente -->
+    </tbody>
+  </table>
+  <div class="pagination" id="pagination">
+    <!-- Links de paginação serão adicionados aqui dinamicamente -->
+  </div>
+
+
+</div>
+
+
         <!-- PLAYER 1 VS 2 -->
         <div class="lottowrapper">
           <!-- PLAYER ONE CONTAINER -->
-          <div class="lottocontainer">
-
-            <img src="../images/coingold.png" class="hide-mobile" />
-
-            <!--players 1 -->
-            <div class="lottoitem">
-              <p class="lottotitle2">PLAYER 1</p>
-              <label for="CheckPastLotto_player1W"></label>
-              <button
-                class="lottobuttonplayers"
-                name="CheckPastLotto_player1W"
-                id="HTML_button_11"
-                onclick="DappInterface_.CheckPastLotto();"
-              >
-                -load-
-              </button>
-            </div>
-          </div>
-
-          <!-- VS IMG -->
-          <div>
-            <img class="lottovs" src="../images/vs.png" class="hide-mobile" />
-          </div>
-
-          <!-- PLAYER TWO CONTAINER -->
-          <div class="lottocontainer">
-            <img src="../images/coingreen2.png" class="hide-mobile" />
-
-            <!--player2button-->
-            <div class="lottoitem">
-              <p class="lottotitle2">PLAYER 2</p>
-              <label for="CheckPastLotto_player2W"></label>
-              <button
-                class="lottobuttonplayers"
-                name="CheckPastLotto_player2W"
-                id="HTML_button_12"
-                onclick="DappInterface_.CheckPastLotto();"
-              >
-                -load-
-              </button>
-            </div>
-          </div>
-        </div>
-
+         
       </div>
     </div>
         </div>
 
+    <!--about-->
+     <div class="about">
+          <div class="title">
+            <p>About Bon.Lotto</p>
+          </div>
+          <div class="text">
+            <p>
+              Hold NFTs, <strong>claim rewards</strong>, wait, then claim again and again <strong>to infinity</strong>!
+              Token rewards are based on an <strong>exponential curve</strong>, so the more we grow <strong>the more you get</strong>!
+              BON stake is <strong>noncustodial</strong>, meaning you always maintain <strong>complete control</strong> over your assets!
+            </p>
+          </div>
+        </div>  
 
     <hr>
     <footer>
@@ -502,6 +496,7 @@
       <script src="BonLotto.js" type="application/javascript"></script>
       <script src="../scripts/menu.js"></script>
       <script src="../scripts/collapse.js"></script>
+      <script src="../scripts/historic.js"></script>
     </footer>
   </body>
 </html>
