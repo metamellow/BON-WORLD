@@ -1,13 +1,4 @@
 
-/*
-- (first) Make the erc20 versions edits to the JS
-- (later) change the error messages to something more user friendly
-- (later) add some buttons that are part of the page that actually refresh the BON chains to correct metask info
-*/
-
-
-
-
 class IndexInterface {
     constructor() {
         /* --- CONNECT BUTTON --- */
@@ -60,6 +51,9 @@ class IndexInterface {
             }
             if(this.JSnetworkDDValue == "ETH"){
                 window.location.href = "./EthLotto.html";
+            }
+            if(this.JSnetworkDDValue == "BON"){
+                window.location.href = "./BonLotto.html";
             }
     }
 }

@@ -2,39 +2,45 @@
 // __________ ESTABLISH ALL SMART CONTRACT ABIs __________
 // _______________________________________________________
 
-// Contract 1 = ""
+// Contract 1 = "LottoV3"
 const CONTRACT1_ABI = (
 	{
-        "contractName": "Claimer",
+        "contractName": "LottoV3",
         "abi":
 
-    
-    
+            [{"inputs":[{"internalType":"address","name":"_erc20Token","type":"address"},{"internalType":"address","name":"_treasury","type":"address"},{"internalType":"address","name":"_staking","type":"address"},{"internalType":"address","name":"_dev1","type":"address"},{"internalType":"address","name":"_dev2","type":"address"},{"internalType":"uint256","name":"_betBase","type":"uint256"},{"internalType":"uint256","name":"_restartDuration","type":"uint256"},{"internalType":"uint256","name":"_taxRate","type":"uint256"},{"internalType":"address","name":"_airnodeRrp","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"approved","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"operator","type":"address"},{"indexed":false,"internalType":"bool","name":"approved","type":"bool"}],"name":"ApprovalForAll","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"playersCounter","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"counterReward","type":"uint256"}],"name":"BetDetails","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"claimedCounter","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"claimedRewards","type":"uint256"}],"name":"ClaimDetails","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"counterNumber","type":"uint256"},{"indexed":false,"internalType":"address","name":"winnerWallet","type":"address"}],"name":"WinnerResults","type":"event"},{"stateMutability":"payable","type":"fallback"},{"inputs":[],"name":"airnode","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"airnodeRrp","outputs":[{"internalType":"contract IAirnodeRrpV0","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"approve","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"baseExtension","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"baseUri","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"bet","outputs":[{"internalType":"uint8","name":"betData","type":"uint8"}],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"betBase","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"betPrice","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"burn","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_counter","type":"uint256"}],"name":"claim","outputs":[{"internalType":"uint256","name":"rewards","type":"uint256"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"counter","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"endpointIdUint256","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"erc20Token","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"name":"expectingRequestWithIdToBeFulfilled","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"requestId","type":"bytes32"},{"internalType":"bytes","name":"data","type":"bytes"}],"name":"fulfillUint256","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"getApproved","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"operator","type":"address"}],"name":"isApprovedForAll","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"lottoOpen","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"ownerOf","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"name":"pastLottoAPI3CallCounter","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"pastLottoAPI3CallResult","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"pastLottoPlayer1","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"pastLottoPlayer2","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"","type":"uint256"}],"name":"pastLottoRewards","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"player1W","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"player2W","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_player1W","type":"address"},{"internalType":"address","name":"_player2W","type":"address"},{"internalType":"uint256","name":"_betPrice","type":"uint256"},{"internalType":"uint256","name":"_counter","type":"uint256"}],"name":"resetGame","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bool","name":"_lottoOpen","type":"bool"},{"internalType":"address","name":"_erc20token","type":"address"},{"internalType":"address","name":"_treasury","type":"address"},{"internalType":"address","name":"_staking","type":"address"},{"internalType":"address","name":"_dev1","type":"address"},{"internalType":"address","name":"_dev2","type":"address"},{"internalType":"uint256","name":"_taxRate","type":"uint256"},{"internalType":"bool","name":"_taxSwitch","type":"bool"},{"internalType":"bool","name":"_resetFunds","type":"bool"}],"name":"resetLotto","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"restartDuration","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"restartTimer","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"bytes","name":"data","type":"bytes"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"operator","type":"address"},{"internalType":"bool","name":"approved","type":"bool"}],"name":"setApprovalForAll","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"string","name":"_baseUri","type":"string"}],"name":"setBaseUri","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_airnode","type":"address"},{"internalType":"bytes32","name":"_endpointIdUint256","type":"bytes32"},{"internalType":"address","name":"_sponsorWallet","type":"address"}],"name":"setRequestParameters","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"sponsorWallet","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes4","name":"interfaceId","type":"bytes4"}],"name":"supportsInterface","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"taxRate","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"taxSwitch","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"tokenURI","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"transferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"stateMutability":"payable","type":"receive"}]
+
     ,}
 );
 
-// Contract 2 = ""
+// Contract 2 = "Token"
 const CONTRACT2_ABI = (
 	{
-        "contractName": "BONNFT",
+        "contractName": "Token",
         "abi":
 
-    
-    
+            [{"inputs":[{"internalType":"string","name":"name","type":"string"},{"internalType":"string","name":"symbol","type":"string"},{"internalType":"uint256","name":"_supply","type":"uint256"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"spender","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"spender","type":"address"}],"name":"allowance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"approve","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"decimals","outputs":[{"internalType":"uint8","name":"","type":"uint8"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"subtractedValue","type":"uint256"}],"name":"decreaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"spender","type":"address"},{"internalType":"uint256","name":"addedValue","type":"uint256"}],"name":"increaseAllowance","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transfer","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"transferFrom","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"nonpayable","type":"function"}]
+
+
     ,}
 );
 
+/*
 // Contract 3 = ""
 const CONTRACT3_ABI = (
 	{
         "contractName": "Token",
         "abi":
+        
+        
+        []
 
     
     ,}
 );
+*/
 
-class ClaimerDappInterface {
+class DappInterface {
     
     // _____________________________________________________________
     // _______________ VARIABLES AND OBJECTS SECTION _______________
@@ -43,10 +49,10 @@ class ClaimerDappInterface {
     // --- @DEV Sets up all the vars and objects used
     constructor() {
         // --- Universal web3 Variables ---
-        this.dappChain = '0x89'; //ETHEREUM-MAINNET=='0x1', POLYGON-MAINNET=='0x89', BINANCE-MAINNET=='0x38', MODULUS-TESTNET=='0x6666', POLYGON-MUMABI=='0x13881'
-        this.chainName = 'POLYGON-MAINNET';
-        this.contractAddress1 = 'xx'; // xx
-        this.contractAddress2 = 'xx'; // xx
+        this.dappChain = '0x13881'; //ETHEREUM-MAINNET=='0x1', POLYGON-MAINNET=='0x89', BINANCE-MAINNET=='0x38', MODULUS-TESTNET=='0x6666', POLYGON-MUMABI=='0x13881'
+        this.chainName = 'POLYGON-MUMABI';
+        this.contractAddress1 = '0x2a5816582b998D517363AA83F1EBa61B1c372Ece'; // LottoV3
+        this.contractAddress2 = '0xF647981f9417EEAf70cb92Ae14978fDf489a11B8'; // Token
         this.contractAddress3 = 'xx'; // xx
         this.connectedContract1; // Needed when loading the scripts
         this.connectedContract2; // Needed when loading the scripts
@@ -54,16 +60,26 @@ class ClaimerDappInterface {
         this.currentAccount = ''; // THIS IS DUPLICATED ON OTHER SCRIPTS, beware
         this.waitingForListener = false;
         this.connectionError = false;
+        this.txnCost = ''; // loaded on betPrice();
 
         // --- Button HTML Elements ---
         this.buttonsArray = [
             (this.JSButton0 = "0"), //emptyplaceholder
-            (this.JSButton1 = document.getElementById('HTML_button_1')), // xxx()
-        ]
+            (this.JSButton1 = document.getElementById('HTML_button_1')), // CurrentLotto_approve
+            (this.JSButton2 = document.getElementById('HTML_button_2')), // CurrentLotto_bet
+            (this.JSButton3 = document.getElementById('HTML_button_3')), // CurrentLotto_claim
+            (this.JSButton4 = document.getElementById('HTML_button_4')), // CurrentLotto_counter
+            (this.JSButton5 = document.getElementById('HTML_button_5')), // CurrentLotto_betPrice
+            (this.JSButton6 = document.getElementById('HTML_button_6')), // CurrentLotto_rewardValue
+            (this.JSButton7 = document.getElementById('HTML_button_7')), // CurrentLotto_playerOne
+            (this.JSButton8 = document.getElementById('HTML_button_8')), // CurrentLotto_playerTwo
+            (this.JSButton9 = document.getElementById('HTML_button_9')), // xxx()
+            (this.JSButton10 = document.getElementById('HTML_button_10')) // xxx()
+        ];
 
         // --- Input HTML Elements --- 
         this.selectedInput1 = 1; // 
-        this.JSInput1 = document.getElementById('HTML_input_1'); // inputField
+        this.JSInput1 = document.getElementById('HTML_input_1'); // manual claim
 
         // --- Unique Div Boxes ---
         this.JSUniqueDiv1 = document.getElementById('xx'); // xx
@@ -71,7 +87,7 @@ class ClaimerDappInterface {
     }
 
     // _____________________________________________________________
-    // _____________________ NEEDED FUNCTIONS ______________________
+    // _____________________ PRIMARY FUNCTIONS _____________________
     // _____________________________________________________________
 
     // --- @DEV this boots all the PRIMARY components and SECONDARY components
@@ -80,11 +96,15 @@ class ClaimerDappInterface {
         try{await this.setupButtonsFunc();} catch (error) {console.log(error);}  
         try{await this.pullUsersWallet();} catch (error) {console.log(error);}
         try{await this.connectAllContracts();} catch (error) {console.log(error);}
-        try{await this.setupEventListener();} catch (error) {console.log(error);}
+        //try{await this.setupEventListener();} catch (error) {console.log(error);}
         
         // --- SECONDARY components
-        try{await this.xxx();} catch (error) {console.log(error);}
-
+        try{await this.CurrentLotto_allowance();} catch (error) {console.log(error);}
+        try{await this.CurrentLotto_counter();} catch (error) {console.log(error);}
+        try{await this.CurrentLotto_betPrice();} catch (error) {console.log(error);}
+        try{await this.CurrentLotto_rewardValue();} catch (error) {console.log(error);}
+        try{await this.CurrentLotto_playerOne();} catch (error) {console.log(error);}
+        try{await this.CurrentLotto_playerTwo();} catch (error) {console.log(error);}
     }
 
     // --- @Dev this checks the network setup and adjusts the buttons accordingly
@@ -173,12 +193,14 @@ class ClaimerDappInterface {
                             signer
                         );
 
+                        /*
                         console.log(`Connecting contract3...`);
                         this.connectedContract3 = new ethers.Contract(
                             this.contractAddress3,
                             CONTRACT3_ABI.abi,
                             signer
                         );
+                        */
 
                     }catch(error){
                         this.connectionError = true;
@@ -203,15 +225,15 @@ class ClaimerDappInterface {
         
         try { 
             // Contract 1A
-            this.connectedContract1.on('ClaimDetails', (claimAmount) => {
+            this.connectedContract1.on('ClaimDetails', (claimedCounter, claimedRewards) => {
                 if(this.waitingForListener == true){
                     this.waitingForListener = false;
-                    let amount = ethers.utils.formatEther(String(claimAmount));
+                    let amount = ethers.utils.formatEther(String(claimedRewards));
                     amount = Number(amount);
                     amount = amount.toFixed(3);
                     amount = ethers.utils.commify(amount);
                     console.log(amount);
-                    alert(`Success! Claimed: ${amount} BON`);
+                    alert(`Success! Claimed [${claimedCounter}]: ${amount} BON`);
                     window.location.reload();
                 }
                 }
@@ -245,81 +267,452 @@ class ClaimerDappInterface {
         }
     }
 
-
-    // _____________________________________________________________
-    // _____________________ CUSTOM FUNCTIONS ______________________
-    // _____________________________________________________________
-
-    /* BETTTTTTTTTTTTTTTTTTTTTTTTTT
-    - call the bet
-    - bet txn should be either containing gas in msg.value or it should take ERC from a preapproved allowance
-    - if allowance call fails, it will return a 0 numb value; so then this return should trigger an approval
-    - it will return an error if the lotto is close, already bet, etc
-    - it will also return a 1 or 2 numb value; which should turn on the listener
-    - listener can pick up "emit BetDetails(counter, pastLottoRewards[counter])" after bet has been made
-    - if return 1, then tell people to wait for p2, if return 2 then thell people to wait and check
-    - After both people have made a bet and the API call has returned, it will do the following:
-            _mint(pastLottoPlayer2[requestIdCounter], requestIdCounter);
-            emit WinnerResults(requestIdCounter, pastLottoPlayer2[requestIdCounter]);
-    - 
-    */
-
-    // --- @DEV xxxx [BUTTON 1]
-    async functionXxxx() {
+    // -- @DEV this just cleans up the page before doing any fuction
+    async startButtonFunction(from, to){
         if(this.connectionError == true){return;}
-        let buttonsFrom = 1;
-        let buttonsTo = 1;
-        disableButtons(buttonsFrom, buttonsTo);
+        let buttonsFrom = from; let buttonsTo = to;
+        this.disableButtons(buttonsFrom, buttonsTo);
+    }
+
+
+    // _____________________________________________________________
+    // ____________________ SECONDARY FUNCTIONS ____________________
+    // _____________________________________________________________
+
+    // --- Current Lotto Write Functions ---
+
+    // Approve -- buttons [1] & [2]
+    async CurrentLotto_approve(){
+        this.startButtonFunction(1,2);
+
+        try {
+            console.log(`approve call..`);
+            let results = await this.connectedContract2.approve(this.contractAddress1, 
+                `115792089237316195423570985008687907853269984665640564039457584007913129639935`);
+            console.log('Awaiting function results...');
+            await results;
+            console.log("Analzying results...");
+            if (results == true){
+                console.log(`Approval success`);
+                this.buttonsArray[1].disabled = true;
+                this.buttonsArray[1].innerText = `...`;
+                this.buttonsArray[2].disabled = false;
+                this.buttonsArray[2].innerText = `BET`;
+                alert(`Token allowance success! Have fun betting!`);
+                return results;
+            } else {
+                console.log(`Approval failed`);
+                this.buttonsArray[1].disabled = false;
+                this.buttonsArray[1].innerText = `APPROVE`;
+                this.buttonsArray[2].disabled = true;
+                this.buttonsArray[2].innerText = `...`;
+                alert(`You must approve tokens before betting!`);
+                return results;
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    } // ------------------------------------------------------------------------this is an issue, it shows the alert for ELSE even after MM accept (and no success alert)
+
+    // Bet -- button [2]
+    async CurrentLotto_bet() {
+        this.startButtonFunction(2,2);
 
         try {
             console.log(`results 1 call..`);
-            let results1 = await this.connectedContract1.balanceOf(`${this.currentAccount}`);
+            const options = {value: ethers.utils.parseEther(`0`),};
+            let results1 = await this.connectedContract1.bet(options);
+
+            /* THIS IS FOR NON ERC20 BETS */ /*
+            const options = {value: ethers.utils.parseEther(`${this.txnCost}`),};
+            let results1 = await connectedContract1.bet(options);
+            */
+
             console.log('Awaiting function results...');
             await results1;
             console.log("Analzying results...");
-            if (results1 != ""){
-                console.log(`NFT Balance: ${results1}`)
+            if (results1 == 0){
+                console.log(`0: Approval needed`);
+                alert(`Your token allowance is too low, please allow a higher amount!`);
                 this.buttonsArray[1].disabled = false;
-                this.buttonsArray[1].innerText = `${results1}`;
-            } else {this.buttonsArray[1].innerText = `no results`;}
+                this.buttonsArray[1].innerText = `APPROVE`;
+                this.buttonsArray[2].disabled = true;
+                this.buttonsArray[2].innerText = `...`;
+                this.approveTxn();
+            } else if (results1 == 1){
+                console.log(`1: Player 1 bet complete`);
+                alert(`Congrats! Your bet has been placed. You must wait for a Player 2. If you are the winner, the WINNERS VOUCHER nft will auto mint to your wallet!`);
+                this.buttonsArray[2].innerText = `P1 Bet Success`;
+            } else if (results1 == 2){
+                console.log(`2: Player 2 bet complete`);
+                alert(`Congrats! Your bet has been placed. If you are the winner, the WINNERS VOUCHER nft will auto mint to your wallet!`);
+                this.buttonsArray[2].innerText = `P2 Bet Success`;
+            } else {
+                this.buttonsArray[2].innerText = `ERROR`;
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    } // -------------------------------------------- P2 bet goes through but the button says ERROR (maybe bc of options?)
+
+    // Claim -- button [3]
+    async CurrentLotto_claim() {
+        this.startButtonFunction(3,3);
+
+        try {
+            console.log(`claim call..`);
+            let results = await this.connectedContract1.claim(`1`);
+            console.log('Awaiting function results...');
+            await results;
+            console.log("Analzying results...");
+            if (results != ""){
+                console.log(`NFT Balance: ${results}`)
+                this.buttonsArray[3].disabled = false;
+                this.buttonsArray[3].innerText = `${results}`;
+            } else {this.buttonsArray[3].innerText = `no results`;}
         } catch (error) {
             // @Dev this pulls the flagged error and gives to user
             console.log(error);
         }
     }
 
-    /* CLAIMMMMMMMMMMMMMMMMMMMMMMMMMMMM
-    - the listener event after successful claim is
-            emit ClaimDetails(_counter, rewards);
-    - anyone holding the claimNFT can do it
-    */
+    // --- Current Lotto Read Functions ---
 
-    // --- @DEV xxxx [BUTTON 1]
-    async functionXxxxx() {
-        if(this.connectionError == true){return;}
-        let buttonsFrom = 1;
-        let buttonsTo = 1;
-        disableButtons(buttonsFrom, buttonsTo);
+    // Allowance -- buttons [1] & [2]
+    async CurrentLotto_allowance(){
+        this.startButtonFunction(1,2);
 
         try {
-            console.log(`results 1 call..`);
-            let results1 = await this.connectedContract1.balanceOf(`${this.currentAccount}`);
+            console.log(`allowance call..`);
+            let results = await this.connectedContract2.allowance(this.currentAccount, this.contractAddress1);
             console.log('Awaiting function results...');
-            await results1;
+            await results;
             console.log("Analzying results...");
-            if (results1 != ""){
-                console.log(`NFT Balance: ${results1}`)
+            if (results > 0){
+                console.log(`Allowance found`);
+                this.buttonsArray[1].disabled = true;
+                this.buttonsArray[1].innerText = `...`;
+                this.buttonsArray[2].disabled = false;
+                this.buttonsArray[2].innerText = `BET`;
+                return results;
+            } else {
+                console.log(`Allowance not found`);
                 this.buttonsArray[1].disabled = false;
-                this.buttonsArray[1].innerText = `${results1}`;
-            } else {this.buttonsArray[1].innerText = `no results`;}
+                this.buttonsArray[1].innerText = `APPROVE`;
+                this.buttonsArray[2].disabled = true;
+                this.buttonsArray[2].innerText = `...`;
+                return results;
+            }
         } catch (error) {
-            // @Dev this pulls the flagged error and gives to user
             console.log(error);
         }
     }
+
+    // Counter -- button [4]
+    async CurrentLotto_counter(){
+        this.startButtonFunction(4,4);
+
+        try {
+            console.log(`counter call..`);
+            let results = await this.connectedContract1.counter();
+            console.log('Awaiting function results...');
+            await results;
+            console.log("Analzying results...");
+            if (results > 0){
+                console.log(`${results}`);
+                this.buttonsArray[4].disabled = false;
+                this.buttonsArray[4].innerText = `${results}`;
+                return results;
+            } else {
+                console.log(`Results not found`);
+                this.buttonsArray[4].disabled = false;
+                this.buttonsArray[4].innerText = `Error`;
+                return results;
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    // Bet Price -- button [5]
+    async CurrentLotto_betPrice(){
+        this.startButtonFunction(5,5);
+
+        try {
+            console.log(`bet price call..`);
+            let results = await this.connectedContract1.betPrice();
+            console.log('Awaiting function results...');
+            await results;
+            console.log("Analzying results...");
+            if (results > 0){
+                console.log(`${results}`);
+                results = `${results}`;
+                this.txnCost = ethers.utils.formatEther(results);
+                let buttonText = Number(this.txnCost);
+                buttonText = buttonText.toFixed(3);
+                this.buttonsArray[5].innerText = `${buttonText}`;
+                this.buttonsArray[5].disabled = false;
+                return results;
+            } else {
+                console.log(`Results not found`);
+                this.buttonsArray[5].innerText = `Error`;
+                this.buttonsArray[5].disabled = false;
+                return results;
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    // Reward Value -- button [6]
+    async CurrentLotto_rewardValue(){
+        this.startButtonFunction(6,6);
+
+        try {
+            if(this.txnCost <= 0){
+                console.log(`txnCost needed before rewardValue`);
+                return error;
+            }
+
+            console.log(`reward value call..`);
+            let results = await this.connectedContract1.taxRate();
+            console.log('Awaiting function results...');
+            await results;
+            results = results / 1000;
+            console.log(`${results}`);
+            console.log(`${this.txnCost}`);
+
+
+            let taxAmount = ((this.txnCost * 2) * results)
+            let reward = ((this.txnCost * 2) - taxAmount);
+            reward = reward.toFixed(3);
+            
+            console.log("Analzying results...");
+            if (reward != null){
+                console.log(`${reward}`);
+                this.buttonsArray[6].disabled = false;
+                this.buttonsArray[6].innerText = `${reward}`;
+                return reward;
+            } else {
+                console.log(`Results not found`);
+                this.buttonsArray[6].disabled = false;
+                this.buttonsArray[6].innerText = `Error`;
+                return reward;
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    // Player 1 -- button [7]
+    async CurrentLotto_playerOne(){
+        this.startButtonFunction(7,7);
+
+        try {
+            console.log(`Player 1 call..`);
+            let results = await this.connectedContract1.player1W();
+            console.log('Awaiting function results...');
+            await results;
+            console.log("Analzying results...");
+            if (results != `0x0000000000000000000000000000000000000000`){
+                console.log(`${results}`);
+                this.buttonsArray[7].innerText = `${
+                    results.substring(0, 6)}...${
+                    results.substring((results.length-4), results.length)
+                }`;
+                this.buttonsArray[7].disabled = false;
+                return results;
+            } else {
+                console.log(`Results not found`);
+                this.buttonsArray[7].disabled = false;
+                this.buttonsArray[7].innerText = `(Waiting for Player 1)`;
+                return results;
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    // Player 2 -- button [8]
+    async CurrentLotto_playerTwo(){
+        this.startButtonFunction(8,8);
+
+        try {
+            console.log(`Player 2 call..`);
+            let results = await this.connectedContract1.player2W();
+            console.log('Awaiting function results...');
+            await results;
+            console.log("Analzying results...");
+            if (results != `0x0000000000000000000000000000000000000000`){
+                console.log(`${results}`);
+                this.buttonsArray[8].innerText = `${
+                    results.substring(0, 6)}...${
+                    results.substring((results.length-4), results.length)
+                }`;
+                this.buttonsArray[8].disabled = false;
+                return results;
+            } else {
+                console.log(`Results not found`);
+                this.buttonsArray[8].disabled = false;
+                this.buttonsArray[8].innerText = `(Waiting for Player 2)`;
+                return results;
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+    // --- Rewards Read/Write ---
+
+    // --- @DEV after a successful API call this formats the results
+    async callForNFTAPI() {
+        if (this.connectionError == true) {
+        return;
+        }
+
+        // @Dev this should be the affected button range
+        for (let i = 4; i < 5; i++) {
+        this.buttonsArray[i].disabled = true;
+        this.buttonsArray[i].innerText = `*loading*`;
+        console.log(`button ${i} disabled`);
+        }
+
+        /* --- BLOCKSPAN --- */
+        const options = {
+        method: 'GET',
+        headers: {
+            accept: 'application/json',
+            'X-API-KEY': 'lezEOBRZiEKd9xjFKR43eBXBZA50nELn',
+        },
+        };
+
+        fetch(
+        `https://api.blockspan.com/v1/nfts/owner/${this.currentAccount}?chain=poly-main&contract_addresses=${this.contractAddress2}&include_nft_details=true&page_size=50`,
+        options
+        )
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+            this.displayNewNFTData(data);
+        })
+        .catch((err) => {
+            console.error(err);
+        });
+
+        for (let i = 4; i < 5; i++) {
+        this.buttonsArray[i].disabled = true;
+        this.buttonsArray[i].innerText = `[NFTs Loaded]`;
+        console.log(`button ${i} disabled`);
+        }
+    }
+
+    // --- @DEV after a successful API call this formats the results
+
+    async goToWallet(id) {
+        let buttonEl = document.querySelector(`#claim-nft-${id}`);
+        buttonEl.disabled = true;
+        buttonEl.innerText = '*waiting for metamask*';
+        this.selectedInput1 = id;
+        let seconds = await this.claimRewards();
+        if (seconds == 0) {
+        console.log(`TXN approved; waiting for response`);
+        } else if (seconds > 0) {
+        let days = Math.floor(seconds / (24 * 60 * 60));
+        let hours = Math.floor((seconds % (24 * 60 * 60)) / (60 * 60));
+        buttonEl.disabled = true;
+        buttonEl.innerText = `${days}d, ${hours}h`;
+        } else {
+        buttonEl.disabled = true;
+        buttonEl.innerText = 'Claim Failed';
+        }
+    }
+
+    goToNFTPage() {
+        window.location.pathname = 'nftcollection/BONNFT1.html';
+    }
+
+    createNFTElement(item) {
+        return `
+                <div class="nftContainer">
+                    <div class="nftContainerItem">
+                        <div class="label-id">id: ${item.id}</div>
+                        <img src='${item.nft_details.cached_images.small_250_250}' class="nft-img" />
+                        <button class="claimButton" id="claim-nft-${item.id}" data-id="${item.id}">Claim</button>
+                    </div>
+                </div>
+            `;
+    }
+
+    createDefaultElement() {
+        return `
+                <div class="nftContainer">
+                    <div class="nftContainerItem">
+                        <img src="../images/lens.png" class="default-img" />
+                        <button onclick="window.location.pathname = 'nftcollection/BONNFT1.html'">complete your collection</button>
+                    </div>
+                </div>
+            `;
+    }
+
+    displayNewNFTData(data) {
+        const resultsArray = data.results;
+
+        let nftsUserCollectionElements = resultsArray
+        .map(this.createNFTElement)
+        .concat(
+            Array(5 - resultsArray.length)
+            .fill(0)
+            .map(() => this.createDefaultElement())
+        )
+        .join('');
+
+        document.querySelector('#nft-user-collection').innerHTML =
+        nftsUserCollectionElements;
+
+        document.querySelectorAll('.claimButton').forEach((button) => {
+        button.addEventListener('click', async (event) => {
+            const id = event.currentTarget.getAttribute('data-id');
+            await this.goToWallet(id);
+        });
+        });
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // --- END --- //
 }
 
-const ClaimerDappInterface_ = new ClaimerDappInterface();
-ClaimerDappInterface_.dappInitializeProcess();
+const DappInterface_ = new DappInterface();
+DappInterface_.dappInitializeProcess();

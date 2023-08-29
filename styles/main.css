@@ -873,8 +873,10 @@ a {
   }
 
   .lottodisplay {
+    display: flex;
+    justify-content: left;
     flex-direction: column;
-    gap: 5px;
+    gap: 0px;
   }
 
   .lottodisplay p {
@@ -998,9 +1000,29 @@ a {
 
 .lottodisplay {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
-  gap: 25px;
+}
+
+.lottodisplay .sideA {
+  width: 100%;
+}
+
+.titlemainlotto {
+  display: flex;
+  color: #54ff65;
+  font-weight: 600;
+  font-size: 36px;
+  text-align: center;
+  justify-content: center;
+}
+
+.lottodisplay .sideB {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .lottodisplay form {
@@ -1088,9 +1110,14 @@ a {
 .lottocharts {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  align-items: left;
+  text-align: left;
   width: 100%;
+  height: auto;
+}
+
+.lottocharts p {
+  margin-bottom: 2px;
 }
 
 .lottoplayertitle {
@@ -1111,20 +1138,20 @@ a {
   font-size: 36px;
   color: #54ff65;
   text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .lottotitle2 {
-  width: 280px;
+  display: flex;
+  width: 100%;
   margin: 10px 0 10px 10px;
   text-align: center;
-  justify-content: space-between;
-  border: none;
-  border-radius: 0px;
+  justify-content: center;
   background-color: #54ff65;
   color: black;
-  gap: 0px;
   font-weight: 600;
-  font-size: 24px;
+  font-size: 16px;
   align-items: center;
   height: 42px;
 }
@@ -1214,6 +1241,7 @@ a {
   max-height: 100px;
   overflow: hidden;
   transition: max-height 0.3s ease;
+  margin-bottom: 10px;
   /* make a gradient from light to dark top to bottom (turned 90*) on the clapsible bow to show some differentiation between boxes, moving the color from the contairer to this wrapper*/
 }
 
@@ -1221,9 +1249,9 @@ a {
   cursor: pointer;
   width: 100%;
   height: 100px;
-  background: linear-gradient(270deg, #54ff65 0%, #7ad8c7 100%);
+  background: linear-gradient(90deg, #37bfa7 0%, #4d8 27.08%, #54ff65 100%);
   color: black;
-  font-size: 38px;
+  font-size: 32px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -1508,6 +1536,9 @@ a {
     margin: 0px;
     margin-bottom: 10px;
   }
+  .mainlotto {
+    flex-wrap: wrap;
+  }
 }
 
 /*---------- NFT API Cards ----------*/
@@ -1546,4 +1577,282 @@ a {
     max-width: 800px;
     margin: 0 auto;
   }
+  .lottoprincipal {
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .lottoprincipal .displaybuttons {
+    align-items: center;
+  }
+
+  .lottoprincipal p {
+    font-size: 16px;
+  }
+
+  .mainlotto p {
+    font-size: 16px;
+  }
+}
+
+/*---------- NFT API Cards ----------*/
+.card-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  width: 150px;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+}
+
+.card p {
+  margin-top: 5px;
+  text-align: center;
+}
+
+.card button {
+  margin-top: 5px;
+}
+
+@media (min-width: 768px) {
+  .card-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+}
+
+/*---------- lottobon ----------*/
+
+.lottoprincipal {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: center;
+}
+
+.lottoprincipal .displaybuttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.lottoprincipal .subtittle {
+  margin-bottom: -15px;
+  margin-left: 5px;
+}
+
+.lottoprincipal button {
+  width: 350px;
+  margin: 4px;
+}
+
+.lottoprincipal .sidea {
+  width: 100%;
+  text-align: center;
+}
+
+.lottoprincipal .sidea img {
+  width: 100%;
+  height: auto;
+}
+
+.lottoprincipal .sideb {
+  width: 100%;
+}
+
+.lottoprincipal .sideb .titulo p {
+  color: #54ff65;
+  font-weight: 600;
+  font-size: 60px;
+  margin: 0px;
+  line-height: 60px;
+}
+
+.lottoprincipal .select {
+  width: 350px;
+  border: solid 2px;
+  justify-content: center;
+  margin-left: 5px;
+}
+
+.mainlotto {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 30px;
+  text-align: center;
+  width: auto;
+  height: auto;
+  gap: 10px;
+}
+
+.mainlotto .internal {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: space-around;
+}
+
+.mainlotto .internal img {
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+}
+
+.mainlotto .internal .tittle {
+  width: 100%;
+  font-size: 30px;
+  color: black;
+  text-align: center;
+  margin-left: 8px;
+  font-weight: 600;
+  background-color: #54ff65;
+}
+
+.mainlotto .internal p {
+  padding: 10px;
+}
+
+.mainlotto button {
+  width: 50%;
+  border: solid 1px #54ff65;
+  background-color: transparent;
+  color: #54ff65;
+  font-size: 600;
+}
+
+.mainlotto button:hover {
+  background-color: #54ff65;
+  color: black;
+}
+
+.newlotto {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: auto;
+  align-items: left;
+}
+
+.newlotto button {
+  width: 350px;
+  margin: 4px;
+}
+
+.coin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.coin img {
+  width: 100%;
+}
+
+.lottorewards {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: auto;
+  justify-content: center;
+  gap: 16px;
+}
+
+.rewards {
+  width: 100%;
+}
+
+.historicdisplay {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.manual {
+  color: #54ff65;
+  font-weight: 600;
+  font-size: 36px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%; /* Ocupa 100% da largura da página */
+  max-width: 800px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+thead {
+  color: aliceblue;
+}
+
+th,
+td {
+  justify-content: space-between;
+  color: aliceblue;
+  padding: 8px;
+  background-color: rgba(0, 0, 0, 0.05); /* Fundo transparente */
+}
+
+th {
+  background-color: rgba(0, 0, 0, 0.1); /* Fundo transparente para cabeçalho */
+  color: #54ff65;
+}
+
+tbody tr:nth-child(even) {
+  background-color: transparent; /* Fundo transparente para linhas pares */
+}
+
+.pagination {
+  color: aliceblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%;
+  height: auto;
+}
+
+.pagination a {
+  padding: 8px 16px;
+  text-decoration: none;
+  color: #54ff65;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.1
+  ); /* Fundo transparente para links de paginação */
+  margin: 0 2px;
+}
+
+.pagination a:hover {
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.2
+  ); /* Fundo mais escuro ao passar o mouse */
+}
+
+.pagination a.active {
+  background-color: #54ff65; /* Fundo opaco para link de página ativa */
 }

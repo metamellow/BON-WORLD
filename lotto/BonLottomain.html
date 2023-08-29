@@ -15,11 +15,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap';"
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
-    <link href="font-family: 'Poppins', sans-serif;" rel="stylesheet" />
-
+    <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+      }
+    </style>
+    
     <title>Bank Of Nowhere $BON</title>
     <meta name="title" content="Bank Of Nowhere $BON" />
     <meta
@@ -53,7 +57,6 @@
       content="https://raw.githubusercontent.com/s0crates-eth/gm/main/images/1500x500.jpg"
     />
   </head>
-
   <body>
     <header>
       <div class="logo-container">
@@ -90,64 +93,123 @@
         <img class="imgadjust" src="images/lottoicon.svg" />
         <img/>
         <p class="cftitle"><b style="text-align: center;">BON.Lotto</b></p>
-      
       </div>
-      <div class="wpsubtitle">Quantum Coin Flip</div>
+      <div>  <p class="cftitle"><b style="text-align: center;">choose your game</b></p>
+      </div>
+      
+     
     </div>
 
     <hr />
 
-    <div class="lotto3">
-      <!--top-->
-      <div class="imagem">
-      <img src="../images/coinlotto.png" /></div>
-      
-      <div class="lottomainindex">
-        Welcome to the<br />
-        <strong style="color: #54ff65">Bank of Nowhere</strong>
-        <br />
-        <strong style="color: aliceblue">Quantum Coin Flip! </strong>
-        <div id="selection-dropdown">
-          <select
-            id="HTML_dropdown_input_1"
-            onchange="IndexInterface_.chooseWhichLotto()"
-          >
-            <option value="" selected>Please choose...</option>
-            <option value="MATIC">MATIC</option>
-            <option value="ETH">ETH</option>
-            <option value="BON">BON</option>
-          </select>
-        </div>
-        <p style="font-size: 30%; line-height: normal; font-weight: 300;">
-          Go <strong>head to head</strong> with challengers around the world.
-          Advanced <strong>blockchain technology</strong> secures both parties funds through encrypted custody.
-          Guaranteed security from <strong>quantum randomness*</strong> ensures a fair outcome every time.
-        </p>
-        <p style="font-size: 20%; line-height: normal; font-weight: 300;">
-          * Lotto is still in <strong>testing phases</strong> and currently only available in <strong>MATIC</strong> and <strong>ETH</strong><br>
-          * Tax rates: <strong>0.1%</strong> on $BON, <strong>1%</strong> on partner tokens, and <strong>10%</strong> on all others<br>
-          * Quantum randomness provided by ANU's <strong>Quantum</strong> Random Number Generator<br>
-        </p>
-        <a target="_blank" rel="noopener noreferrer" href="https://api3.org/qrng">
-          <img src="../images/qunatum.webp" style="width: 10%;">
-        </a>
+    <div class="lottoprincipal"> <!--main--> 
+    
+      <div class="sidea">
+      <img src="../images/coinlotto.png">
       </div>
+    
+    <div class="sideb">
+    <div class="titulo"> 
+       <p> Try Your Luck Now!</p> 
+     </div>
+        
+     <div>
+      
+        <p> We present four exciting ways to bet and have fun, with options for every budget. 
+        BON INFINITY offers thrills with increasing bets each round. For those who prefer caution, 
+        there are three categories of Lotto $BON: 100, 1000, and 10000. 
+        <br><br>We have something for every type of player. 
+        <br> <strong>Come join and take advantage of the winning opportunities!</strong>
+        </p>
+      
+      </div>
+
+      <div class="displaybuttons">
+    
+        <div class="subtittle"> <p> Infinity price </p> </div>
+        <button> current price</button>
+       
+
+        <div class="subtittle"> <p> select </p></div>
+      <div id="selection-dropdown">
+        <select
+        class="select"
+          id="HTML_dropdown_input_1"
+          onchange="IndexInterface_.chooseWhichLotto()"
+        >
+          <option value="">Please choose...</option>
+          <option value="MATIC">INFINITY</option>
+          <option value="ETH">BON 100</option>
+          <option value="BON" selected>BON 1000</option>
+          <option value="BON" selected>BON 10000</option>
+        </select>
+     
+      </div>
+     </div>
     </div>
-  
+    </div>
 
-    <hr />
+<!--
+    <div class="mainlotto"> 
+    
+      <div class="internal">
+      <img src="../images/coingreen2.png">
+  <div class="tittle">
+        BON 100
+      </div>
+    <p> teste te te tgetvebtybh  uybnjkenijnkejmn psm ksdn mksijnksd</p> 
+    <button class="buttonplayer"> -bet- </button>
+    
+    </div>
 
+    <div class="internal">
+      <img src="../images/coingold.png">
+  <div class="tittle">
+        BON 1000
+      </div>
+    <p> teste te te tgetvebtybh  uybnjkenijnkejmn psm ksdn mksijnksd</p> 
+    <button class="buttonplayer"> -bet- </button>
+    
+    </div>
+    
+    <div class="internal">
+      <img src="../images/coinblack.png">
+  <div class="tittle">
+        BON 10000
+      </div>
+    <p> teste te te tgetvebtybh  uybnjkenijnkejmn psm ksdn mksijnksd</p> 
+    <button class="buttonplayer"> -bet- </button>
+    
+    </div>    
+    </div> <!--cards-->
+
+
+        
+   
+
+   
+
+
+
+
+
+
+    <hr>
     <footer>
-      <img src="../images/fav.png" />
-      <div class="copyright"><p>Copyright © Bank of Nowhere</p></div>
-      <div><img src="images/moduluslogogreen.svg" /></div>
-
-      <script
-        src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"
-        type="application/javascript"
-      ></script>
+      <div>
+        <img src="../images/fav.png" />
+      </div>
+      <div class="copyright">
+        <p>Copyright © Bank of Nowhere</p>
+      </div>
+      <div>
+        <img src="images/moduluslogogreen.svg" />
+      </div>
+      <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"></script>
       <script src="indexInterface.js" type="application/javascript"></script>
+      <script src="BonLotto.js" type="application/javascript"></script>
       <script src="../scripts/menu.js"></script>
+      <script src="../scripts/collapse.js"></script>
     </footer>
   </body>
 </html>
