@@ -561,6 +561,155 @@ class DappInterface {
         }
     }
 
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+    // --- Rewards Read/Write ---
+
+    // --- @DEV after a successful API call this formats the results
+    async callForNFTAPI() {
+        if (this.connectionError == true) {
+        return;
+        }
+
+        // @Dev this should be the affected button range
+        for (let i = 4; i < 5; i++) {
+        this.buttonsArray[i].disabled = true;
+        this.buttonsArray[i].innerText = `*loading*`;
+        console.log(`button ${i} disabled`);
+        }
+
+        /* --- BLOCKSPAN --- */
+        const options = {
+        method: 'GET',
+        headers: {
+            accept: 'application/json',
+            'X-API-KEY': 'lezEOBRZiEKd9xjFKR43eBXBZA50nELn',
+        },
+        };
+
+        fetch(
+        `https://api.blockspan.com/v1/nfts/owner/${this.currentAccount}?chain=poly-main&contract_addresses=${this.contractAddress2}&include_nft_details=true&page_size=50`,
+        options
+        )
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+            this.displayNewNFTData(data);
+        })
+        .catch((err) => {
+            console.error(err);
+        });
+
+        for (let i = 4; i < 5; i++) {
+        this.buttonsArray[i].disabled = true;
+        this.buttonsArray[i].innerText = `[NFTs Loaded]`;
+        console.log(`button ${i} disabled`);
+        }
+    }
+
+    // --- @DEV after a successful API call this formats the results
+
+    async goToWallet(id) {
+        let buttonEl = document.querySelector(`#claim-nft-${id}`);
+        buttonEl.disabled = true;
+        buttonEl.innerText = '*waiting for metamask*';
+        this.selectedInput1 = id;
+        let seconds = await this.claimRewards();
+        if (seconds == 0) {
+        console.log(`TXN approved; waiting for response`);
+        } else if (seconds > 0) {
+        let days = Math.floor(seconds / (24 * 60 * 60));
+        let hours = Math.floor((seconds % (24 * 60 * 60)) / (60 * 60));
+        buttonEl.disabled = true;
+        buttonEl.innerText = `${days}d, ${hours}h`;
+        } else {
+        buttonEl.disabled = true;
+        buttonEl.innerText = 'Claim Failed';
+        }
+    }
+
+    goToNFTPage() {
+        window.location.pathname = 'nftcollection/BONNFT1.html';
+    }
+
+    createNFTElement(item) {
+        return `
+                <div class="nftContainer">
+                    <div class="nftContainerItem">
+                        <div class="label-id">id: ${item.id}</div>
+                        <img src='${item.nft_details.cached_images.small_250_250}' class="nft-img" />
+                        <button class="claimButton" id="claim-nft-${item.id}" data-id="${item.id}">Claim</button>
+                    </div>
+                </div>
+            `;
+    }
+
+    createDefaultElement() {
+        return `
+                <div class="nftContainer">
+                    <div class="nftContainerItem">
+                        <img src="../images/lens.png" class="default-img" />
+                        <button onclick="window.location.pathname = 'nftcollection/BONNFT1.html'">complete your collection</button>
+                    </div>
+                </div>
+            `;
+    }
+
+    displayNewNFTData(data) {
+        const resultsArray = data.results;
+
+        let nftsUserCollectionElements = resultsArray
+        .map(this.createNFTElement)
+        .concat(
+            Array(5 - resultsArray.length)
+            .fill(0)
+            .map(() => this.createDefaultElement())
+        )
+        .join('');
+
+        document.querySelector('#nft-user-collection').innerHTML =
+        nftsUserCollectionElements;
+
+        document.querySelectorAll('.claimButton').forEach((button) => {
+        button.addEventListener('click', async (event) => {
+            const id = event.currentTarget.getAttribute('data-id');
+            await this.goToWallet(id);
+        });
+        });
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // --- END --- //
 }
 
