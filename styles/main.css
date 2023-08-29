@@ -873,8 +873,10 @@ a {
   }
 
   .lottodisplay {
+    display: flex;
+    justify-content: left;
     flex-direction: column;
-    gap: 5px;
+    gap: 0px;
   }
 
   .lottodisplay p {
@@ -994,6 +996,7 @@ a {
   display: flex;
   flex-direction: row;
   justify-content: center;
+
 }
 
 .lottodisplay {
@@ -1001,6 +1004,20 @@ a {
   align-items: center;
   width: 100%;
   gap: 25px;
+  justify-content: space-between;
+  height: auto;
+}
+
+.lottodisplay .sideA {
+  width: 100%;
+}
+
+
+.lottodisplay .sideB {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
 }
 
 .lottodisplay form {
@@ -1088,9 +1105,15 @@ a {
 .lottocharts {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  align-items: left;
+  text-align: left;
   width: 100%;
+  height: auto;
+}
+
+.lottocharts p {
+  margin-bottom: 2px;
+  
 }
 
 .lottoplayertitle {
@@ -1111,20 +1134,19 @@ a {
   font-size: 36px;
   color: #54ff65;
   text-align: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .lottotitle2 {
-  width: 280px;
+  width: 100%;
   margin: 10px 0 10px 10px;
   text-align: center;
   justify-content: space-between;
-  border: none;
-  border-radius: 0px;
   background-color: #54ff65;
   color: black;
-  gap: 0px;
   font-weight: 600;
-  font-size: 24px;
+  font-size: 16px;
   align-items: center;
   height: 42px;
 }
@@ -1148,7 +1170,7 @@ a {
   border-radius: 0px;
 }
 
-.lottovs {
+.lottovs {  
   justify-content: center;
   align-content: center;
   align-items: center;
@@ -1190,6 +1212,7 @@ a {
   .lottotitle2 {
     width: 100%;
     margin: 0;
+    
   }
 
   .lottobuttonplayers {
@@ -1214,6 +1237,7 @@ a {
   max-height: 100px;
   overflow: hidden;
   transition: max-height 0.3s ease;
+  margin-bottom: 10px;
   /* make a gradient from light to dark top to bottom (turned 90*) on the clapsible bow to show some differentiation between boxes, moving the color from the contairer to this wrapper*/
 }
 
@@ -1512,6 +1536,24 @@ a {
    flex-wrap: wrap;
   }
 
+  .lottoprincipal {
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .lottoprincipal .displaybuttons {
+    align-items: center;
+  }
+
+  .lottoprincipal p {
+    font-size: 16px;
+  }
+
+  .mainlotto p {
+    font-size: 16px;
+  }
+
 
 
 }
@@ -1573,6 +1615,11 @@ a {
   flex-direction: column;
 }
 
+.lottoprincipal .subtittle {
+  margin-bottom: -15px;
+  margin-left: 5px;
+}
+
 .lottoprincipal button {
   width: 350px;
   margin: 4px;
@@ -1597,6 +1644,14 @@ a {
   font-weight: 600;
   font-size: 60px;
   margin: 0px;
+  line-height: 60px;
+}
+
+.lottoprincipal .select {
+  width: 350px;
+  border: solid 2px;
+  justify-content: center;
+  margin-left: 5px;
 }
 
 
@@ -1656,4 +1711,29 @@ text-align: center;
 .mainlotto button:hover {
   background-color: #54ff65;
   color: black;
+}
+
+
+.newlotto {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: auto;
+  align-items: left;
+}
+
+.newlotto button {
+  width: 350px;
+  margin: 4px;
+}
+
+.coin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.coin img {
+  width: 100%;
 }

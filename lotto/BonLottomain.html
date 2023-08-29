@@ -97,17 +97,7 @@
       <div>  <p class="cftitle"><b style="text-align: center;">choose your game</b></p>
       </div>
       
-      <div id="selection-dropdown">
-        <select
-          id="HTML_dropdown_input_1"
-          onchange="IndexInterface_.chooseWhichLotto()"
-        >
-          <option value="">Please choose...</option>
-          <option value="MATIC">MATIC</option>
-          <option value="ETH">ETH</option>
-          <option value="BON" selected>BON</option>
-        </select>
-      </div>
+     
     </div>
 
     <hr />
@@ -120,29 +110,46 @@
     
     <div class="sideb">
     <div class="titulo"> 
-       <p> INFINITY </p> 
+       <p> Try Your Luck Now!</p> 
      </div>
+        
      <div>
-      <p> rem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-        incididunt ut labore et dolore magna aliqua. Ut enim ad
-         minim veniam, quis nostrud exercitation ullamco laboris 
-         nisi ut aliquip ex ea commodo consequat. Duis aute irure
-          dolor in reprehenderit in voluptate velit esse cillum 
-          dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-          cupidatat non proident, sunt in culpa qui officia
-           deserunt mollit anim id est labo
-          </p>
+      
+        <p> We present four exciting ways to bet and have fun, with options for every budget. 
+        BON INFINITY offers thrills with increasing bets each round. For those who prefer caution, 
+        there are three categories of Lotto $BON: 100, 1000, and 10000. 
+        <br><br>We have something for every type of player. 
+        <br> <strong>Come join and take advantage of the winning opportunities!</strong>
+        </p>
+      
       </div>
 
       <div class="displaybuttons">
-     <button> current price</button>
-     <a href="BonLotto.html">
-     <button> -bet- </button></a>
+    
+        <div class="subtittle"> <p> Infinity price </p> </div>
+        <button> current price</button>
+       
+
+        <div class="subtittle"> <p> select </p></div>
+      <div id="selection-dropdown">
+        <select
+        class="select"
+          id="HTML_dropdown_input_1"
+          onchange="IndexInterface_.chooseWhichLotto()"
+        >
+          <option value="">Please choose...</option>
+          <option value="MATIC">INFINITY</option>
+          <option value="ETH">BON 100</option>
+          <option value="BON" selected>BON 1000</option>
+          <option value="BON" selected>BON 10000</option>
+        </select>
+     
+      </div>
      </div>
     </div>
     </div>
 
-
+<!--
     <div class="mainlotto"> 
     
       <div class="internal">

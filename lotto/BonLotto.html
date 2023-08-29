@@ -94,7 +94,6 @@
         <img/>
         <p class="cftitle"><b style="text-align: center;">BON.Lotto</b></p>
         <img/>
-        <img class="imgadjust" src="images/lottoicon.svg" />
       </div>
       <div id="selection-dropdown">
         <select
@@ -131,23 +130,16 @@
 
         </div>
     
-    <br />
 
-    <!-- CURRENT LOTTO ---------------------------------------------------------------------------------------- -->
-    <div class="wrapper_accordion">
-      <!-- CURRENT LOTTO -- ACCORDIAN DETAILS -->
-      <div class="container_accordion collapsibleItem">
-        <img class="arrow2" src="images/arrow2.svg" />
-        <strong>Current Lotto</strong>
-      </div>
-
-      <!-- -- CURRENT LOTTO -- ALL SECTION OBJECTS -->
-      <div>
+  
+        <hr>
+   
+ 
         <div class="lottodisplay">
-          <br/>
-
-          <!-- -- CURRENT LOTTO -- SHOW CURRENT ROUND -->
-          <div class="lottocharts">
+          <div class="sideA">
+          <div class="newlotto">
+          <p> info </p>
+            <div class="lottocharts">
             <p>CURRENT ROUND</p>
             <label for="CurrentLotto_Counter"></label>
             <button
@@ -187,17 +179,41 @@
               -load-
             </button>
           </div>
+       
+          <label for="CurrentLotto_approve"></label>
+          <button
+            class="lottobuttonbet"
+            name="CurrentLotto_approve"
+            id="HTML_button_1"
+            onclick="DappInterface_.CurrentLotto_approve();"
+          >
+            -load-
+          </button>
+       
+          <div>
+            <label for="CurrentLotto_bet"></label>
+            <button
+              class="lottobuttonbet"
+              name="CurrentLotto_bet"
+              id="HTML_button_2"
+              onclick="DappInterface_.CurrentLotto_bet();"
+            >
+              -load-
+            </button>
+          </div>
+
         </div>
+      </div>
 
-        <hr />
+       
 
-        <!-- -- CURRENT LOTTO -- PLAYER 1 VS 2 -->
-        <div class="lottowrapper">
+          <!-- -- CURRENT LOTTO -- PLAYER 1 VS 2 -->
           <!-- -- CURRENT LOTTO -- PLAYER ONE CONTAINER -->
-          <div class="lottocontainer">
-
+          <div class="sideB">
+          <div>
+            <div class="coin">
             <img src="../images/coingold.png" class="hide-mobile" />
-
+          </div>
             <!-- -- CURRENT LOTTO -- players 1 -->
             <div class="lottoitem">
               <p class="lottotitle2">PLAYER 1</p>
@@ -219,8 +235,10 @@
           </div>
 
           <!-- -- CURRENT LOTTO -- PLAYER TWO CONTAINER -->
-          <div class="lottocontainer">
+          <div>
+            <div class="coin">
             <img src="../images/coingreen2.png" class="hide-mobile" />
+          </div>
 
             <!-- -- CURRENT LOTTO -- player2button-->
             <div class="lottoitem">
@@ -236,97 +254,16 @@
               </button>
             </div>
           </div>
-        </div>
-
-        <!--BON AMOUNT-->
-        <div class="lottodisplay"> 
-          <br/>
-
-          <!-- -- CURRENT LOTTO -- SHOW CURRENT ROUND -->
-          <div class="lottocharts">
-         
-            <label for="CurrentLotto_Counter"></label>
-            <button
-              class="lottobutton"
-              name="CurrentLotto_counter"
-              id="HTML_button_4"
-              onclick="DappInterface_.CurrentLotto_counter();"
-            >
-              100 $BON
-            </button>
-          </div>
-
-          <!-- -- CURRENT LOTTO -- SHOW CURRENT BET COST -->
-          <div class="lottocharts">
-        
-            <label for="CurrentLotto_betPrice"></label>
-            <button
-              class="lottobutton"
-              name="CurrentLotto_betPrice"
-              id="HTML_button_5"
-              onclick="DappInterface_.CurrentLotto_betPrice();"
-            >
-              1000 $BON
-            </button>
-          </div>
-
-          <!-- -- CURRENT LOTTO -- SHOW CURRENT REWARD VALUE -->
-          <div class="lottocharts">
-        
-            <label for="CurrentLotto_rewardValue"></label>
-            <button
-              class="lottobutton"
-              name="CurrentLotto_rewardValue"
-              id="HTML_button_6"
-              onclick="DappInterface_.CurrentLotto_rewardValue();"
-            >
-              10000 $BON
-            </button>
-          </div>
-        </div>
-        <!--end bon amount-->
-
-        <!-- -- CURRENT LOTTO -- APPROVE -->
-        <div>
-          <div>
-            <label for="CurrentLotto_approve"></label>
-            <button
-              class="lottobuttonbet"
-              name="CurrentLotto_approve"
-              id="HTML_button_1"
-              onclick="DappInterface_.CurrentLotto_approve();"
-            >
-              -load-
-            </button>
-          </div>
-        </div>
-
-        <!-- -- CURRENT LOTTO -- SUBMIT BET -->
-        <div>
-          <div>
-            <label for="CurrentLotto_bet"></label>
-            <button
-              class="lottobuttonbet"
-              name="CurrentLotto_bet"
-              id="HTML_button_2"
-              onclick="DappInterface_.CurrentLotto_bet();"
-            >
-              -load-
-            </button>
-          </div>
-        </div>
-        
       </div>
     </div>
-
-    <br>
+   
 
     <!-- CLAIM REWARDS ---------------------------------------------------------------------------------------- -->
     <div class="wrapper_accordion">
       <!-- CURRENT LOTTO -- ACCORDIAN DETAILS -->
       <div class="container_accordion collapsibleItem">
         <img class="arrow2" src="images/arrow2.svg" />
-        <strong>Rewards</strong>
+        <strong>rewards</strong>
       </div>
 
       <!-- -- CURRENT LOTTO -- ALL SECTION OBJECTS -->
@@ -412,17 +349,13 @@
       </div>
     </div>
 
-    <br>
-
-
-
 
     <!-- LOTTO HISTORY ---------------------------------------------------------------------------------------- -->
     <div class="wrapper_accordion">
       <!-- ACCORDIAN DETAILS -->
       <div class="container_accordion collapsibleItem">
         <img class="arrow2" src="images/arrow2.svg" />
-        <strong>History</strong>
+        <strong>history</strong>
       </div>
       
       <!-- SECTION OBJECTS -->
@@ -544,6 +477,7 @@
 
       </div>
     </div>
+        </div>
 
 
     <hr>
