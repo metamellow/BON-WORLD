@@ -312,7 +312,7 @@ class DappInterface {
         } catch (error) {
             console.log(error);
         }
-    }
+    } // ------------------------------------------------------------------------this is an issue, it shows the alert for ELSE even after MM accept (and no success alert)
 
     // Bet -- button [2]
     async CurrentLotto_bet() {
@@ -320,7 +320,8 @@ class DappInterface {
 
         try {
             console.log(`results 1 call..`);
-            let results1 = await this.connectedContract1.bet();
+            const options = {value: ethers.utils.parseEther(`0`),};
+            let results1 = await this.connectedContract1.bet(options);
 
             /* THIS IS FOR NON ERC20 BETS */ /*
             const options = {value: ethers.utils.parseEther(`${this.txnCost}`),};
@@ -352,7 +353,7 @@ class DappInterface {
         } catch (error) {
             console.log(error);
         }
-    }
+    } // -------------------------------------------- P2 bet goes through but the button says ERROR (maybe bc of options?)
 
     // Claim -- button [3]
     async CurrentLotto_claim() {
