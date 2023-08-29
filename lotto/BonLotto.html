@@ -91,10 +91,22 @@
     <div class="cftop">
       <div class="cftitleadjust">
         <img class="imgadjust" src="images/lottoicon.svg" />
+        
+        
         <img/>
         <p class="cftitle"><b style="text-align: center;">BON.Lotto</b></p>
         <img/>
+
       </div>
+
+      <div class="cftitleadjust">
+        
+        <img/>
+        <p class="cftitle"><b style="text-align: center;">INFINITE</b></p>
+        <img/>
+
+      </div>
+
       <div id="selection-dropdown">
         <select
           id="HTML_dropdown_input_1"
@@ -134,79 +146,9 @@
   
         <hr>
    
- 
+
         <div class="lottodisplay">
-          <div class="sideA">
-          <div class="newlotto">
-          <p> info </p>
-            <div class="lottocharts">
-            <p>CURRENT ROUND</p>
-            <label for="CurrentLotto_Counter"></label>
-            <button
-              class="lottobutton"
-              name="CurrentLotto_counter"
-              id="HTML_button_4"
-              onclick="DappInterface_.CurrentLotto_counter();"
-            >
-              -load-
-            </button>
-          </div>
-
-          <!-- -- CURRENT LOTTO -- SHOW CURRENT BET COST -->
-          <div class="lottocharts">
-            <p>BET PRICE</p>
-            <label for="CurrentLotto_betPrice"></label>
-            <button
-              class="lottobutton"
-              name="CurrentLotto_betPrice"
-              id="HTML_button_5"
-              onclick="DappInterface_.CurrentLotto_betPrice();"
-            >
-              -load-
-            </button>
-          </div>
-
-          <!-- -- CURRENT LOTTO -- SHOW CURRENT REWARD VALUE -->
-          <div class="lottocharts">
-            <p>REWARD VALUE</p>
-            <label for="CurrentLotto_rewardValue"></label>
-            <button
-              class="lottobutton"
-              name="CurrentLotto_rewardValue"
-              id="HTML_button_6"
-              onclick="DappInterface_.CurrentLotto_rewardValue();"
-            >
-              -load-
-            </button>
-          </div>
        
-          <label for="CurrentLotto_approve"></label>
-          <button
-            class="lottobuttonbet"
-            name="CurrentLotto_approve"
-            id="HTML_button_1"
-            onclick="DappInterface_.CurrentLotto_approve();"
-          >
-            -load-
-          </button>
-       
-          <div>
-            <label for="CurrentLotto_bet"></label>
-            <button
-              class="lottobuttonbet"
-              name="CurrentLotto_bet"
-              id="HTML_button_2"
-              onclick="DappInterface_.CurrentLotto_bet();"
-            >
-              -load-
-            </button>
-          </div>
-
-        </div>
-      </div>
-
-       
-
           <!-- -- CURRENT LOTTO -- PLAYER 1 VS 2 -->
           <!-- -- CURRENT LOTTO -- PLAYER ONE CONTAINER -->
           <div class="sideB">
@@ -255,8 +197,76 @@
             </div>
           </div>
       </div>
+
+      <div class="sideA">
+        <div class="newlotto">
+          <div class="lottocharts">
+          <p>CURRENT ROUND</p>
+          <label for="CurrentLotto_Counter"></label>
+          <button
+            class="lottobutton"
+            name="CurrentLotto_counter"
+            id="HTML_button_4"
+            onclick="DappInterface_.CurrentLotto_counter();"
+          >
+            -load-
+          </button>
+        </div>
+
+        <!-- -- CURRENT LOTTO -- SHOW CURRENT BET COST -->
+        <div class="lottocharts">
+          <p>BET PRICE</p>
+          <label for="CurrentLotto_betPrice"></label>
+          <button
+            class="lottobutton"
+            name="CurrentLotto_betPrice"
+            id="HTML_button_5"
+            onclick="DappInterface_.CurrentLotto_betPrice();"
+          >
+            -load-
+          </button>
+        </div>
+
+        <!-- -- CURRENT LOTTO -- SHOW CURRENT REWARD VALUE -->
+        <div class="lottocharts">
+          <p>REWARD VALUE</p>
+          <label for="CurrentLotto_rewardValue"></label>
+          <button
+            class="lottobutton"
+            name="CurrentLotto_rewardValue"
+            id="HTML_button_6"
+            onclick="DappInterface_.CurrentLotto_rewardValue();"
+          >
+            -load-
+          </button>
+        </div>
+     
+        <label for="CurrentLotto_approve"></label>
+        <button
+          class="lottobuttonbet"
+          name="CurrentLotto_approve"
+          id="HTML_button_1"
+          onclick="DappInterface_.CurrentLotto_approve();"
+        >
+          -load-
+        </button>
+     
+        <div>
+          <label for="CurrentLotto_bet"></label>
+          <button
+            class="lottobuttonbet"
+            name="CurrentLotto_bet"
+            id="HTML_button_2"
+            onclick="DappInterface_.CurrentLotto_bet();"
+          >
+            -load-
+          </button>
+        </div>
+
+      </div>
     </div>
-   
+        </div>
+
 
     <!-- CLAIM REWARDS ---------------------------------------------------------------------------------------- -->
     <div class="wrapper_accordion">
@@ -268,11 +278,8 @@
 
       <!-- -- CURRENT LOTTO -- ALL SECTION OBJECTS -->
       <div>
-        <div class="lottodisplay">
-
-          <div class="display-with-wrap">
-    
-            <div class="labeldisplay">
+       <div>
+        <div class="labeldisplay">
               <label>Your NFTs Balance</label>
               <button
                 class="lottobutton"
@@ -300,8 +307,6 @@
             </div>
           </div>
    </div>
-
-   
 
         <div class="lottodisplay">
    
@@ -336,6 +341,7 @@
                 <div class="nftContainerItem">
                   <img src="../images/lens.png" class="default-img" />
                   <button>...</button>
+                </div>
                 </div>
               </div>
             </div>
