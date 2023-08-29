@@ -1,7 +1,17 @@
 // script.js
 const data = [
-    { hash: "Hash1", wallet1: "Endereço1", wallet2: "Endereço2", winner: "EndereçoGanhador1", amount: "Valor1" },
-    { hash: "Hash2", wallet1: "Endereço3", wallet2: "Endereço4", winner: "EndereçoGanhador2", amount: "Valor2" },
+    { round: "1", hash: "Hash1", wallet1: "Endereço1", wallet2: "Endereço2", winner: "winner1", amount: "2000" },
+    { round: "2", hash: "Hash2", wallet1: "Endereço3", wallet2: "Endereço4", winner: "winner2", amount: "4000" },
+    { round: "1", hash: "Hash1", wallet1: "Endereço1", wallet2: "Endereço2", winner: "winner1", amount: "2000" },
+    { round: "2", hash: "Hash2", wallet1: "Endereço3", wallet2: "Endereço4", winner: "winner2", amount: "4000" },
+    { round: "1", hash: "Hash1", wallet1: "Endereço1", wallet2: "Endereço2", winner: "winner1", amount: "2000" },
+    { round: "2", hash: "Hash2", wallet1: "Endereço3", wallet2: "Endereço4", winner: "winner2", amount: "4000" },
+    { round: "1", hash: "Hash1", wallet1: "Endereço1", wallet2: "Endereço2", winner: "winner1", amount: "2000" },
+    { round: "2", hash: "Hash2", wallet1: "Endereço3", wallet2: "Endereço4", winner: "winner2", amount: "4000" },
+    { round: "1", hash: "Hash1", wallet1: "Endereço1", wallet2: "Endereço2", winner: "winner1", amount: "2000" },
+    { round: "2", hash: "Hash2", wallet1: "Endereço3", wallet2: "Endereço4", winner: "winner2", amount: "4000" },
+    { round: "1", hash: "Hash1", wallet1: "Endereço1", wallet2: "Endereço2", winner: "winner1", amount: "2000" },
+    { round: "2", hash: "Hash2", wallet1: "Endereço3", wallet2: "Endereço4", winner: "winner2", amount: "4000" },
     // Adicione mais dados conforme necessário
   ];
   
@@ -19,6 +29,7 @@ const data = [
     for (let i = startIndex; i < endIndex && i < data.length; i++) {
       const row = document.createElement("tr");
       row.innerHTML = `
+        <td>${data[i].round}</td>
         <td>${data[i].hash}</td>
         <td>${data[i].wallet1}</td>
         <td>${data[i].wallet2}</td>
@@ -44,7 +55,7 @@ const data = [
       });
   
       if (i === currentPage) {
-        link.style.backgroundColor = "#ddd";
+        link.style.backgroundColor = "transparent";
       }
   
       pagination.appendChild(link);

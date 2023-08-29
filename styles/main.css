@@ -1763,25 +1763,6 @@ text-align: center;
 
 }
 
-/* styles.css */
-.pagination {
-  display: flex;
-  background-color: transparent;
-}
-
-.pagination a {
-
-  padding: 8px 16px;
-  text-decoration: none;
-  color:black;
-  background-color: none;
-
-}
-
-table {
-  width: 100%;
-  
-}
 
 .historicdisplay {
   display: flex;
@@ -1796,4 +1777,64 @@ table {
   color: #54ff65;
   font-weight: 600;
   font-size: 36px;
+}
+
+
+
+
+
+table {
+  border-collapse: collapse;
+  width: 100%; /* Ocupa 100% da largura da página */
+  max-width: 800px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+thead {
+  color: aliceblue;
+}
+
+
+
+th, td {
+  justify-content: space-between;
+  color: aliceblue;
+  padding: 8px;
+  background-color: rgba(0, 0, 0, 0.05); /* Fundo transparente */
+}
+
+th {
+  background-color: rgba(0, 0, 0, 0.1); /* Fundo transparente para cabeçalho */
+  color: #54FF65;
+}
+
+tbody tr:nth-child(even) {
+  background-color:transparent); /* Fundo transparente para linhas pares */
+}
+
+.pagination {
+  color: aliceblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%;
+  height: auto;
+}
+
+.pagination a {
+  padding: 8px 16px;
+  text-decoration: none;
+  color: #54FF65;
+  background-color: rgba(0, 0, 0, 0.1); /* Fundo transparente para links de paginação */
+  margin: 0 2px;
+}
+
+.pagination a:hover {
+  background-color: rgba(0, 0, 0, 0.2); /* Fundo mais escuro ao passar o mouse */
+}
+
+.pagination a.active {
+  background-color: #54FF65; /* Fundo opaco para link de página ativa */
 }
