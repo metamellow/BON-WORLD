@@ -1810,7 +1810,7 @@ th {
 }
 
 tbody tr:nth-child(even) {
-  background-color:transparent); /* Fundo transparente para linhas pares */
+  background-color:transparent; /* Fundo transparente para linhas pares */
 }
 
 .pagination {
