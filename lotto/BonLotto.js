@@ -73,8 +73,8 @@ class DappInterface {
             (this.JSButton6 = document.getElementById('HTML_button_6')), // CurrentLotto_rewardValue
             (this.JSButton7 = document.getElementById('HTML_button_7')), // CurrentLotto_playerOne
             (this.JSButton8 = document.getElementById('HTML_button_8')), // CurrentLotto_playerTwo
-            (this.JSButton9 = document.getElementById('HTML_button_9')), // xxx()
-            (this.JSButton10 = document.getElementById('HTML_button_10')) // xxx()
+            (this.JSButton9 = document.getElementById('HTML_button_9')), // Rewards_NFTBalance
+            (this.JSButton10 = document.getElementById('HTML_button_10')) // Rewards_LoadNFTs
         ];
 
         // --- Input HTML Elements --- 
@@ -96,7 +96,7 @@ class DappInterface {
         try{await this.setupButtonsFunc();} catch (error) {console.log(error);}  
         try{await this.pullUsersWallet();} catch (error) {console.log(error);}
         try{await this.connectAllContracts();} catch (error) {console.log(error);}
-        //try{await this.setupEventListener();} catch (error) {console.log(error);}
+        try{await this.setupEventListener();} catch (error) {console.log(error);}
         
         // --- SECONDARY components
         try{await this.CurrentLotto_allowance();} catch (error) {console.log(error);}
@@ -105,6 +105,8 @@ class DappInterface {
         try{await this.CurrentLotto_rewardValue();} catch (error) {console.log(error);}
         try{await this.CurrentLotto_playerOne();} catch (error) {console.log(error);}
         try{await this.CurrentLotto_playerTwo();} catch (error) {console.log(error);}
+
+        try{await this.Rewards_balanceOf();} catch (e) {console.log(e);}
     }
 
     // --- @Dev this checks the network setup and adjusts the buttons accordingly
@@ -225,34 +227,51 @@ class DappInterface {
         
         try { 
             // Contract 1A
-            this.connectedContract1.on('ClaimDetails', (claimedCounter, claimedRewards) => {
+            this.connectedContract1.on('BetDetails', (playersCounter, counterRewards) => {
                 if(this.waitingForListener == true){
                     this.waitingForListener = false;
-                    let amount = ethers.utils.formatEther(String(claimedRewards));
-                    amount = Number(amount);
-                    amount = amount.toFixed(3);
-                    amount = ethers.utils.commify(amount);
-                    console.log(amount);
-                    alert(`Success! Claimed [${claimedCounter}]: ${amount} BON`);
+
+                    console.log(playersCounter, counterRewards);
+                    alert(`Bet successful! [R.${playersCounter}]`);
                     window.location.reload();
                 }
                 }
             );
             console.log('Contract 1A listener success');
-            
-            /*
-            // Contract 2A
-            this.connectedContract2.on('BetDetails', (playersCounter, counterReward) => {
+
+            // Contract 1B
+            this.connectedContract1.on('ClaimDetails', (claimedCounter, claimedRewards) => {
                 if(this.waitingForListener == true){
                     this.waitingForListener = false;
-                    console.log(playersCounter, counterReward);
-                    alert(`Bet successful! Please wait 2 min for the TXNs to log on the blockchain.`);
+
+                    let _claimedRewards = `${claimedRewards}`;
+                    _claimedRewards = ethers.utils.formatEther(_claimedRewards);
+                    let rwd = Number(_claimedRewards);
+                    rwd = rwd.toFixed(3);
+                    let id = Number(claimedCounter);
+                    this._Rewards_heardClaimEmit(id, rwd);
+                }
+                }
+            );
+            console.log('Contract 1B listener success');
+
+            // Contract 2A
+            this.connectedContract2.on('Approval', (owner, spender, value) => {
+                if(this.waitingForListener == true){
+                    this.waitingForListener = false;
+
+                    let _owner = `${
+                        owner.substring(0, 6)}...${
+                            owner.substring((owner.length-4), owner.length)
+                    }`;
+
+                    console.log(owner, spender, value);
+                    alert(`Approved! [${_owner}]`);
                     window.location.reload();
                 }
                 }
             );
             console.log('Contract 2A listener success');
-            */
 
         } catch (error) {
             console.log(error);
@@ -279,7 +298,7 @@ class DappInterface {
     // ____________________ SECONDARY FUNCTIONS ____________________
     // _____________________________________________________________
 
-    // --- Current Lotto Write Functions ---
+    //  --- --- --- --- --- --- Current Lotto Functions --- --- --- --- --- ---
 
     // Approve -- buttons [1] & [2]
     async CurrentLotto_approve(){
@@ -288,31 +307,24 @@ class DappInterface {
         try {
             console.log(`approve call..`);
             let results = await this.connectedContract2.approve(this.contractAddress1, 
-                `115792089237316195423570985008687907853269984665640564039457584007913129639935`);
+                    `115792089237316195423570985008687907853269984665640564039457584007913129639935`);
             console.log('Awaiting function results...');
             await results;
             console.log("Analzying results...");
             if (results == true){
                 console.log(`Approval success`);
+                this.waitingForListener = true;
                 this.buttonsArray[1].disabled = true;
                 this.buttonsArray[1].innerText = `...`;
-                this.buttonsArray[2].disabled = false;
-                this.buttonsArray[2].innerText = `BET`;
-                alert(`Token allowance success! Have fun betting!`);
-                return results;
-            } else {
-                console.log(`Approval failed`);
-                this.buttonsArray[1].disabled = false;
-                this.buttonsArray[1].innerText = `APPROVE`;
                 this.buttonsArray[2].disabled = true;
-                this.buttonsArray[2].innerText = `...`;
-                alert(`You must approve tokens before betting!`);
+                this.buttonsArray[2].innerText = `*waiting for metamask*`;
                 return results;
             }
-        } catch (error) {
-            console.log(error);
+        } catch (e) {
+            console.log(e);
+            window.location.reload();
         }
-    } // ------------------------------------------------------------------------this is an issue, it shows the alert for ELSE even after MM accept (and no success alert)
+    }
 
     // Bet -- button [2]
     async CurrentLotto_bet() {
@@ -330,6 +342,7 @@ class DappInterface {
 
             console.log('Awaiting function results...');
             await results1;
+            this.waitingForListener = true;
             console.log("Analzying results...");
             if (results1 == 0){
                 console.log(`0: Approval needed`);
@@ -339,44 +352,17 @@ class DappInterface {
                 this.buttonsArray[2].disabled = true;
                 this.buttonsArray[2].innerText = `...`;
                 this.approveTxn();
-            } else if (results1 == 1){
-                console.log(`1: Player 1 bet complete`);
-                alert(`Congrats! Your bet has been placed. You must wait for a Player 2. If you are the winner, the WINNERS VOUCHER nft will auto mint to your wallet!`);
-                this.buttonsArray[2].innerText = `P1 Bet Success`;
-            } else if (results1 == 2){
-                console.log(`2: Player 2 bet complete`);
-                alert(`Congrats! Your bet has been placed. If you are the winner, the WINNERS VOUCHER nft will auto mint to your wallet!`);
-                this.buttonsArray[2].innerText = `P2 Bet Success`;
             } else {
-                this.buttonsArray[2].innerText = `ERROR`;
+                this.buttonsArray[1].disabled = true;
+                this.buttonsArray[2].disabled = true;
+                this.buttonsArray[1].innerText = `*waiting for metamask*`;
+                this.buttonsArray[2].innerText = `*waiting for metamask*`;
             }
-        } catch (error) {
-            console.log(error);
-        }
-    } // -------------------------------------------- P2 bet goes through but the button says ERROR (maybe bc of options?)
-
-    // Claim -- button [3]
-    async CurrentLotto_claim() {
-        this.startButtonFunction(3,3);
-
-        try {
-            console.log(`claim call..`);
-            let results = await this.connectedContract1.claim(`1`);
-            console.log('Awaiting function results...');
-            await results;
-            console.log("Analzying results...");
-            if (results != ""){
-                console.log(`NFT Balance: ${results}`)
-                this.buttonsArray[3].disabled = false;
-                this.buttonsArray[3].innerText = `${results}`;
-            } else {this.buttonsArray[3].innerText = `no results`;}
-        } catch (error) {
-            // @Dev this pulls the flagged error and gives to user
-            console.log(error);
+        } catch (e) {
+            console.log(e);
+            window.location.reload();
         }
     }
-
-    // --- Current Lotto Read Functions ---
 
     // Allowance -- buttons [1] & [2]
     async CurrentLotto_allowance(){
@@ -525,7 +511,7 @@ class DappInterface {
             } else {
                 console.log(`Results not found`);
                 this.buttonsArray[7].disabled = false;
-                this.buttonsArray[7].innerText = `(Waiting for Player 1)`;
+                this.buttonsArray[7].innerText = `xxx`;
                 return results;
             }
         } catch (error) {
@@ -554,7 +540,7 @@ class DappInterface {
             } else {
                 console.log(`Results not found`);
                 this.buttonsArray[8].disabled = false;
-                this.buttonsArray[8].innerText = `(Waiting for Player 2)`;
+                this.buttonsArray[8].innerText = `xxx`;
                 return results;
             }
         } catch (error) {
@@ -562,154 +548,152 @@ class DappInterface {
         }
     }
 
+    // --- --- --- --- --- --- Rewards Read/Write --- --- --- --- --- ---
 
+    // NFT Balance -- button [9]
+    async Rewards_balanceOf(){
+        this.startButtonFunction(9,9);
 
-
-
-
-
-    
-
-
-
-
-
-
-
-
-    // --- Rewards Read/Write ---
-
-    // --- @DEV after a successful API call this formats the results
-    async callForNFTAPI() {
-        if (this.connectionError == true) {
-        return;
-        }
-
-        // @Dev this should be the affected button range
-        for (let i = 4; i < 5; i++) {
-        this.buttonsArray[i].disabled = true;
-        this.buttonsArray[i].innerText = `*loading*`;
-        console.log(`button ${i} disabled`);
-        }
-
-        /* --- BLOCKSPAN --- */
-        const options = {
-        method: 'GET',
-        headers: {
-            accept: 'application/json',
-            'X-API-KEY': 'lezEOBRZiEKd9xjFKR43eBXBZA50nELn',
-        },
-        };
-
-        fetch(
-        `https://api.blockspan.com/v1/nfts/owner/${this.currentAccount}?chain=poly-main&contract_addresses=${this.contractAddress2}&include_nft_details=true&page_size=50`,
-        options
-        )
-        .then((response) => response.json())
-        .then((data) => {
-            console.log(data);
-            this.displayNewNFTData(data);
-        })
-        .catch((err) => {
-            console.error(err);
-        });
-
-        for (let i = 4; i < 5; i++) {
-        this.buttonsArray[i].disabled = true;
-        this.buttonsArray[i].innerText = `[NFTs Loaded]`;
-        console.log(`button ${i} disabled`);
+        try {
+            console.log(`nft balOf call..`);
+            let results = await this.connectedContract1.balanceOf(`${this.currentAccount}`);
+            console.log('Awaiting function results...');
+            await results;
+            console.log("Analzying results...");
+            if (results > 0){
+                console.log(`${results}`);
+                this.buttonsArray[9].disabled = false;
+                this.buttonsArray[9].innerText = `${results}`;
+                return results;
+            } else {
+                console.log(`Results not found`);
+                this.buttonsArray[9].disabled = false;
+                this.buttonsArray[9].innerText = `0`;
+                return results;
+            }
+        } catch (error) {
+            console.log(error);
         }
     }
 
-    // --- @DEV after a successful API call this formats the results
+    // Load NFTs -- button [10]
+    async Rewards_LoadNFTs(){
+        if (this.connectionError == true) {return;}
 
-    async goToWallet(id) {
-        let buttonEl = document.querySelector(`#claim-nft-${id}`);
-        buttonEl.disabled = true;
-        buttonEl.innerText = '*waiting for metamask*';
-        this.selectedInput1 = id;
-        let seconds = await this.claimRewards();
-        if (seconds == 0) {
-        console.log(`TXN approved; waiting for response`);
-        } else if (seconds > 0) {
-        let days = Math.floor(seconds / (24 * 60 * 60));
-        let hours = Math.floor((seconds % (24 * 60 * 60)) / (60 * 60));
-        buttonEl.disabled = true;
-        buttonEl.innerText = `${days}d, ${hours}h`;
-        } else {
-        buttonEl.disabled = true;
-        buttonEl.innerText = 'Claim Failed';
+        this.startButtonFunction(10,10);
+        this._Rewards_callForNFTAPI();
+
+
+    }
+    // -v-
+        async _Rewards_callForNFTAPI() {
+
+            /* --- BLOCKSPAN --- */
+            const options = {
+            method: 'GET',
+            headers: {
+                accept: 'application/json',
+                'X-API-KEY': 'lezEOBRZiEKd9xjFKR43eBXBZA50nELn',
+            },
+            };
+
+            fetch(
+            `https://api.blockspan.com/v1/nfts/owner/${this.currentAccount}?chain=poly-main&contract_addresses=${this.contractAddress1}&include_nft_details=true&page_size=50`,
+            options
+            )
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                this._Rewards_displayNewNFTData(data);
+            })
+            .catch((err) => {
+                console.log(err);
+                //window.location.reload();
+                return;
+            });
         }
-    }
 
-    goToNFTPage() {
-        window.location.pathname = 'nftcollection/BONNFT1.html';
-    }
+        async _Rewards_claim(_counter) {
+            if (this.connectionError == true) {return;}
 
-    createNFTElement(item) {
-        return `
-                <div class="nftContainer">
-                    <div class="nftContainerItem">
-                        <div class="label-id">id: ${item.id}</div>
-                        <img src='${item.nft_details.cached_images.small_250_250}' class="nft-img" />
-                        <button class="claimButton" id="claim-nft-${item.id}" data-id="${item.id}">Claim</button>
+
+        }
+
+        async _Rewards_goToWallet(id) {
+            let buttonEl = document.querySelector(`#claim-nft-${id}`);
+            buttonEl.disabled = true;
+            buttonEl.innerText = '*waiting for metamask*';
+            this.selectedInput1 = id;
+            try {
+                console.log(`claim call..`);
+                let results = await this.connectedContract1.claim(`${this.selectedInput1}`);
+                console.log('Awaiting function results...');
+                await results;
+                console.log("Analzying results...");
+                this.waitingForListener = true;
+
+            } catch (error) {
+                console.log(error);
+                window.location.reload();
+            }
+        }
+
+        async _Rewards_heardClaimEmit(id, rwd) {
+            let buttonEl = document.querySelector(`#claim-nft-${id}`);
+            buttonEl.disabled = true;
+            buttonEl.innerText = `[Claimed: ${rwd}]`;
+        }
+
+        _Rewards_goToNFTPage() {
+            window.location.url = `https://opensea.io/assets/mumbai/${this.contractAddress1}/1`;
+        }
+
+        _Rewards_createNFTElement(item) {
+            return `
+                    <div class="nftContainer">
+                        <div class="nftContainerItem">
+                            <div class="label-id">id: ${item.id}</div>
+                            <img src='${item.nft_details.cached_images.small_250_250}' class="nft-img" />
+                            <button class="claimButton" id="claim-nft-${item.id}" data-id="${item.id}">Claim</button>
+                        </div>
                     </div>
-                </div>
-            `;
-    }
+                `;
+        }
 
-    createDefaultElement() {
-        return `
-                <div class="nftContainer">
-                    <div class="nftContainerItem">
-                        <img src="../images/lens.png" class="default-img" />
-                        <button onclick="window.location.pathname = 'nftcollection/BONNFT1.html'">complete your collection</button>
+        _Rewards_createDefaultElement() {
+            return `
+                    <div class="nftContainer">
+                        <div class="nftContainerItem">
+                            <img src="../images/lens.png" class="default-img" />
+                            <button onclick="window.location.pathname = 'nftcollection/BONNFT1.html'">complete your collection</button>
+                        </div>
                     </div>
-                </div>
-            `;
-    }
+                `;
+        }
 
-    displayNewNFTData(data) {
-        const resultsArray = data.results;
+        _Rewards_displayNewNFTData(data) {
+            const resultsArray = data.results;
 
-        let nftsUserCollectionElements = resultsArray
-        .map(this.createNFTElement)
-        .concat(
-            Array(5 - resultsArray.length)
-            .fill(0)
-            .map(() => this.createDefaultElement())
-        )
-        .join('');
+            let nftsUserCollectionElements = resultsArray
+            .map(this.createNFTElement)
+            .concat(
+                Array(5 - resultsArray.length)
+                .fill(0)
+                .map(() => this._Rewards_createDefaultElement())
+            )
+            .join('');
 
-        document.querySelector('#nft-user-collection').innerHTML =
-        nftsUserCollectionElements;
+            document.querySelector('#nft-user-collection').innerHTML =
+            nftsUserCollectionElements;
 
-        document.querySelectorAll('.claimButton').forEach((button) => {
-        button.addEventListener('click', async (event) => {
-            const id = event.currentTarget.getAttribute('data-id');
-            await this.goToWallet(id);
-        });
-        });
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            document.querySelectorAll('.claimButton').forEach((button) => {
+                button.addEventListener('click', async (event) => {
+                    const id = event.currentTarget.getAttribute('data-id');
+                    await this._Rewards_goToWallet(id);
+                });
+            });
+        }
+    // -^-
 
     // --- END --- //
 }
