@@ -200,8 +200,19 @@
       <div class="sideA">
         <div class="newlotto">
           <div class="lottocharts">
-            <p>CURRENT ROUND</p>
-            <label for="CurrentLotto_Counter"></label>
+            <label for="CurrentLotto_Counter">ERC20 BALANCE</label>
+            <button
+              class="lottobutton"
+              name="CurrentLotto_counter"
+              id="HTML_button_11"
+              onclick="DappInterface_.CurrentLotto_balOfERC20();"
+            >
+              -load-
+            </button>
+          </div>
+
+          <div class="lottocharts">
+            <label for="CurrentLotto_Counter">CURRENT ROUND</label>
             <button
               class="lottobutton"
               name="CurrentLotto_counter"
@@ -214,8 +225,7 @@
 
           <!-- -- CURRENT LOTTO -- SHOW CURRENT BET COST -->
           <div class="lottocharts">
-            <p>BET PRICE</p>
-            <label for="CurrentLotto_betPrice"></label>
+            <label for="CurrentLotto_betPrice">BET PRICE</label>
             <button
               class="lottobutton"
               name="CurrentLotto_betPrice"
@@ -228,8 +238,7 @@
 
           <!-- -- CURRENT LOTTO -- SHOW CURRENT REWARD VALUE -->
           <div class="lottocharts">
-            <p>REWARD VALUE</p>
-            <label for="CurrentLotto_rewardValue"></label>
+            <label for="CurrentLotto_rewardValue">REWARD VALUE</label>
             <button
               class="lottobutton"
               name="CurrentLotto_rewardValue"
@@ -240,6 +249,8 @@
             </button>
           </div>
 
+          <div>
+            <br>
           <label for="CurrentLotto_approve"></label>
           <button
             class="lottobuttonbet"
@@ -261,6 +272,7 @@
               -load-
             </button>
           </div>
+        </div>
         </div>
       </div>
     </div>
@@ -477,7 +489,7 @@
       </div>
       <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"></script>
       <script src="indexInterface.js" type="application/javascript"></script>
-      <script src="BonLotto.js" type="application/javascript"></script>
+      <script src="BonInfinity.js" type="application/javascript"></script>
       <script src="../scripts/menu.js"></script>
       <script src="../scripts/collapse.js"></script>
       <script src="../scripts/historic.js"></script>

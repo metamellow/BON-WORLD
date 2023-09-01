@@ -62,7 +62,7 @@ class IndexInterface {
     console.log(this.JSnetworkDDValue);
 
     if (this.JSnetworkDDValue == 'INFINITY') {
-      window.location.href = './BonLotto.html';
+      window.location.href = './BonInfinity.html';
     } else if (this.JSnetworkDDValue == 'BON1') {
       window.location.href = './BonLotto100.html';
     } else if (this.JSnetworkDDValue == 'BON2') {
