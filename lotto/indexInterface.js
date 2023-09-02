@@ -53,22 +53,7 @@ class IndexInterface {
     } else if (this.JSnetworkDDValue == 'ETH') {
       window.location.href = './EthLotto.html';
     } else if (this.JSnetworkDDValue == 'BON') {
-      window.location.href = './BonLottomain.html';
-    }
-  }
-
-  async chooseWhichBonLotto() {
-    this.JSnetworkDDValue = this.JSnetworkDDInput.value;
-    console.log(this.JSnetworkDDValue);
-
-    if (this.JSnetworkDDValue == 'INFINITY') {
-      window.location.href = './BonInfinity.html';
-    } else if (this.JSnetworkDDValue == 'BON1') {
-      window.location.href = './BonLotto100.html';
-    } else if (this.JSnetworkDDValue == 'BON2') {
-      window.location.href = './BonLotto1000.html';
-    } else if (this.JSnetworkDDValue == 'BON3') {
-      window.location.href = './BonLotto10000.html';
+      window.location.href = './BonIndex.html';
     }
   }
 }

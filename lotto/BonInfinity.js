@@ -55,6 +55,7 @@ class DappInterface {
         this.contractAddress1 = '0x0055fad55c4820133334cfc8238613f79fe160b0'; // LottoV3
         this.contractAddress2 = '0x47e53f0ddf71210f2c45dc832732aa188f78aa4f'; // Token
         this.contractAddress3 = 'xx'; // xx
+        this.tokenSymbol = `BON`;
         this.connectedContract1; // Needed when loading the scripts
         this.connectedContract2; // Needed when loading the scripts
         this.connectedContract3; // Needed when loading the scripts
@@ -112,6 +113,9 @@ class DappInterface {
 
 
         try{await this.Rewards_balanceOf();} catch (e) {console.log(e);}
+
+        try{await this.History_PullAPIData();} catch (e) {console.log(e);}
+
     }
 
     // --- @Dev this checks the network setup and adjusts the buttons accordingly
@@ -573,10 +577,10 @@ class DappInterface {
                 results = ethers.utils.formatEther(results);
                 let buttonText = Number(results);
                 buttonText = buttonText.toFixed(3);
-                this.buttonsArray[11].innerText = `${buttonText}`;
+                this.buttonsArray[11].innerText = `${buttonText} ${this.tokenSymbol}`;
                 this.buttonsArray[11].disabled = false;
             } else {
-                this.buttonsArray[11].innerText = `0`;
+                this.buttonsArray[11].innerText = `0 ${this.tokenSymbol}`;
                 this.buttonsArray[11].disabled = false;
             }
         } catch (error) {
@@ -585,7 +589,7 @@ class DappInterface {
 
     }
 
-    // --- --- --- --- --- --- Rewards Read/Write --- --- --- --- --- ---
+    // --- --- --- --- --- --- Rewards Function --- --- --- --- --- ---
 
     // NFT Balance -- button [9]
     async Rewards_balanceOf(){
@@ -621,113 +625,163 @@ class DappInterface {
 
         this.startButtonFunction(10,10);
         this._Rewards_callForNFTAPI();
+    }
+
+    async _Rewards_callForNFTAPI() {
+
+        /* --- BLOCKSPAN --- */
+        const options = {
+        method: 'GET',
+        headers: {
+            accept: 'application/json',
+            'X-API-KEY': 'lezEOBRZiEKd9xjFKR43eBXBZA50nELn',
+        },
+        };
+
+        fetch(
+        `https://api.blockspan.com/v1/nfts/owner/${this.currentAccount}?chain=poly-main&contract_addresses=${this.contractAddress1}&include_nft_details=true&page_size=50`,
+        options
+        )
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data);
+            this._Rewards_displayNewNFTData(data);
+        })
+        .catch((err) => {
+            console.log(err);
+            //window.location.reload();
+            return;
+        });
+    }
+
+    async _Rewards_goToWallet(id) {
+        let buttonEl = document.querySelector(`#claim-nft-${id}`);
+        buttonEl.disabled = true;
+        buttonEl.innerText = '*waiting for metamask*';
+        this.selectedInput1 = id;
+        try {
+            console.log(`claim call..`);
+            let results = await this.connectedContract1.claim(`${this.selectedInput1}`);
+            console.log('Awaiting function results...');
+            await results;
+            console.log("Analzying results...");
+            this.waitingForListener = true;
+
+        } catch (error) {
+            console.log(error);
+            window.location.reload();
+        }
+    }
+
+    async _Rewards_heardClaimEmit(id, cd_wallet, rwd) {
+        console.log(`Rewards heard. #${id}`)
+        let buttonEl = document.querySelector(`#claim-nft-${id}`);
+        buttonEl.disabled = true;
+        buttonEl.innerText = `[Claimed: ${rwd}]`;
+    }
+
+    _Rewards_createNFTElement(item) {
+        return `
+                <div class="nftContainer">
+                    <div class="nftContainerItem">
+                        <div class="label-id">id: ${item.id}</div>
+                        <img src='${item.nft_details.cached_images.small_250_250}' class="nft-img" />
+                        <button class="claimButton" id="claim-nft-${item.id}" data-id="${item.id}">Claim</button>
+                    </div>
+                </div>
+            `;
+    }
+
+    _Rewards_createDefaultElement() {
+        return `
+                <div class="nftContainer">
+                    <div class="nftContainerItem">
+                        <img src="../images/lens.png" class="default-img" />
+                        <button onclick="location.href = 'https://www.opensea.io/assets/matic/${this.contractAddress1}/1'">bet now to win!</button>
+                    </div>
+                </div>
+            `;
+    }
+
+    _Rewards_displayNewNFTData(data) {
+        const resultsArray = data.results;
+
+        let nftsUserCollectionElements = resultsArray
+        .map(this._Rewards_createNFTElement)
+        .concat(
+            Array(5 - resultsArray.length)
+            .fill(0)
+            .map(() => this._Rewards_createDefaultElement())
+        )
+        .join('');
+
+        document.querySelector('#nft-user-collection').innerHTML =
+        nftsUserCollectionElements;
+
+        document.querySelectorAll('.claimButton').forEach((button) => {
+            button.addEventListener('click', async (event) => {
+                const id = event.currentTarget.getAttribute('data-id');
+                await this._Rewards_goToWallet(id);
+            });
+        });
+    }
+
+    // --- --- --- --- --- --- History Function --- --- --- --- --- ---
+
+    async History_PullAPIData(){
+        /* --- POLYGONSCAN --- */
+        const apiKey = 'QCZ2EZM72TBTPBSY7AY9NSTRHVZYR5SMWV';
+        const address = `${this.contractAddress1}`;
+        const eventTopic = '0x7e4415a4a675fe91ff4659cea8ca354347e4c73e474662620b8e0a1544bb5e19'; //"WinnerDetails"
+
+        const url = `https://api.polygonscan.com/api?module=logs&action=getLogs&fromBlock=0&toBlock=latest&address=${address}&topic0=${eventTopic}&apikey=${apiKey}`;
+
+
+        fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            if (data.result.length > 0) {
+                console.log(data);
+
+                let numb = this.selectedInput1 - 1;
+                const transactionHash = data.result[numb].transactionHash;
+                const resultsString = data.result[numb].data;
+
+                this._History_parseData(transactionHash, resultsString);
+            } else {
+                console.log('No items found in the array.');
+            }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
+    }
+
+    _History_parseData(transactionHash, resultsString){
+        console.log(transactionHash);
+
+
+        let data = resultsString;
+        data = data.slice(2)
+
+        // Split the data into equal-sized chunks
+        const chunkSize = 64;
+        const chunks = [];
+        for (let i = 0; i < data.length; i += chunkSize) {
+        chunks.push(data.slice(i, i + chunkSize));
+        }
+
+        // Log the parsed chunks
+        console.log(`First Chunk: ${parseInt(chunks[0], 16)}`);
+        console.log(`Second Chunk: 0x${chunks[1]}`);
+        console.log(`Third Chunk: 0x${chunks[2]}`);
+        console.log(`Fourth Chunk: 0x${chunks[3]}`);
+        console.log(`Fifth Chunk: ${parseInt(chunks[4], 16)}`);
+        console.log(`Sixth Chunk: ${parseInt(chunks[5], 16) % 2 === 0 ? 2 : 1}`);
+
 
 
     }
-    // -v-
-        async _Rewards_callForNFTAPI() {
-
-            /* --- BLOCKSPAN --- */
-            const options = {
-            method: 'GET',
-            headers: {
-                accept: 'application/json',
-                'X-API-KEY': 'lezEOBRZiEKd9xjFKR43eBXBZA50nELn',
-            },
-            };
-
-            fetch(
-            `https://api.blockspan.com/v1/nfts/owner/${this.currentAccount}?chain=poly-main&contract_addresses=${this.contractAddress1}&include_nft_details=true&page_size=50`,
-            options
-            )
-            .then((response) => response.json())
-            .then((data) => {
-                console.log(data);
-                this._Rewards_displayNewNFTData(data);
-            })
-            .catch((err) => {
-                console.log(err);
-                //window.location.reload();
-                return;
-            });
-        }
-
-        async _Rewards_goToWallet(id) {
-            let buttonEl = document.querySelector(`#claim-nft-${id}`);
-            buttonEl.disabled = true;
-            buttonEl.innerText = '*waiting for metamask*';
-            this.selectedInput1 = id;
-            try {
-                console.log(`claim call..`);
-                let results = await this.connectedContract1.claim(`${this.selectedInput1}`);
-                console.log('Awaiting function results...');
-                await results;
-                console.log("Analzying results...");
-                this.waitingForListener = true;
-
-            } catch (error) {
-                console.log(error);
-                window.location.reload();
-            }
-        }
-
-        async _Rewards_heardClaimEmit(id, cd_wallet, rwd) {
-            console.log(`Rewards heard. #${id}`)
-            let buttonEl = document.querySelector(`#claim-nft-${id}`);
-            buttonEl.disabled = true;
-            buttonEl.innerText = `[Claimed: ${rwd}]`;
-        }
-
-        _Rewards_goToNFTPage() {
-            window.location.url = `https://opensea.io/assets/mumbai/${this.contractAddress1}/1`;
-        }
-
-        _Rewards_createNFTElement(item) {
-            return `
-                    <div class="nftContainer">
-                        <div class="nftContainerItem">
-                            <div class="label-id">id: ${item.id}</div>
-                            <img src='${item.nft_details.cached_images.small_250_250}' class="nft-img" />
-                            <button class="claimButton" id="claim-nft-${item.id}" data-id="${item.id}">Claim</button>
-                        </div>
-                    </div>
-                `;
-        }
-
-        _Rewards_createDefaultElement() {
-            return `
-                    <div class="nftContainer">
-                        <div class="nftContainerItem">
-                            <img src="../images/lens.png" class="default-img" />
-                            <button onclick="window.location.pathname = 'nftcollection/BONNFT1.html'">complete your collection</button>
-                        </div>
-                    </div>
-                `;
-        }
-
-        _Rewards_displayNewNFTData(data) {
-            const resultsArray = data.results;
-
-            let nftsUserCollectionElements = resultsArray
-            .map(this._Rewards_createNFTElement)
-            .concat(
-                Array(5 - resultsArray.length)
-                .fill(0)
-                .map(() => this._Rewards_createDefaultElement())
-            )
-            .join('');
-
-            document.querySelector('#nft-user-collection').innerHTML =
-            nftsUserCollectionElements;
-
-            document.querySelectorAll('.claimButton').forEach((button) => {
-                button.addEventListener('click', async (event) => {
-                    const id = event.currentTarget.getAttribute('data-id');
-                    await this._Rewards_goToWallet(id);
-                });
-            });
-        }
-    // -^-
 
     // --- END --- //
 }
