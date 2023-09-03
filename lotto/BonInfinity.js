@@ -747,7 +747,7 @@ class DappInterface {
                 const transactionHash = data.result[numb].transactionHash;
                 const resultsString = data.result[numb].data;
 
-                this._History_parseData(transactionHash, resultsString);
+                this.History_formatDataAndPopulateTable(data);
             } else {
                 console.log('No items found in the array.');
             }
@@ -757,30 +757,99 @@ class DappInterface {
         });
     }
 
-    _History_parseData(transactionHash, resultsString){
-        console.log(transactionHash);
-
-
+    async History_formatDataAndPopulateTable(data) {
+        const tableBody = document.getElementById("table-body");
+      
+        // Clear the table body
+        tableBody.innerHTML = "";
+      
+        if (data.result.length > 0) {
+          for (let i = 0; i < data.result.length; i++) {
+            let txnHash = data.result[i].transactionHash;
+            const resultsString = data.result[i].data;
+      
+            const formattedData = await this.History_parseData(resultsString);
+      
+            const row = document.createElement("tr");
+      
+            const roundCell = document.createElement("td");
+            roundCell.innerHTML = `${formattedData.round}`;
+      
+            // --- Formatting ---
+            const txnHashCell = document.createElement("td");
+            let _txnHash_ = `${
+                txnHash.substring(0, 6)}...${
+                txnHash.substring((txnHash.length-4), txnHash.length)
+            }`;
+            txnHashCell.innerHTML = `<a href="https://polygonscan.com/tx/${txnHash}" target="_blank">${_txnHash_}</a>`;
+      
+            const player1Cell = document.createElement("td");
+            let _player1_ = `${
+                formattedData.player1.substring(0, 6)}...${
+                formattedData.player1.substring((formattedData.player1.length-4), formattedData.player1.length)
+            }`;
+            player1Cell.innerHTML = `<a href="https://polygonscan.com/address/${formattedData.player1}" target="_blank">${_player1_}</a>`;
+      
+            const player2Cell = document.createElement("td");
+            let _player2_ = `${
+                formattedData.player2.substring(0, 6)}...${
+                formattedData.player2.substring((formattedData.player2.length-4), formattedData.player2.length)
+            }`;
+            player2Cell.innerHTML = `<a href="https://polygonscan.com/address/${formattedData.player2}" target="_blank">${_player2_}</a>`;
+      
+            const winnerCell = document.createElement("td");
+            let _winner_ = `${
+                formattedData.winner.substring(0, 6)}...${
+                formattedData.winner.substring((formattedData.winner.length-4), formattedData.winner.length)
+            }`;
+            winnerCell.innerHTML = `<a href="https://polygonscan.com/address/${formattedData.winner}" target="_blank">${_winner_}</a>`;
+      
+            const amountCell = document.createElement("td");
+            amountCell.innerHTML = `${formattedData.reward}`;
+      
+            row.appendChild(roundCell);
+            row.appendChild(txnHashCell);
+            row.appendChild(player1Cell);
+            row.appendChild(player2Cell);
+            row.appendChild(winnerCell);
+            row.appendChild(amountCell);
+      
+            tableBody.appendChild(row);
+          }
+        } else {
+          console.log("No items found in the array.");
+        }
+      }
+      
+    async History_parseData(resultsString) {
         let data = resultsString;
-        data = data.slice(2)
-
-        // Split the data into equal-sized chunks
+        data = data.slice(2);
+      
         const chunkSize = 64;
         const chunks = [];
         for (let i = 0; i < data.length; i += chunkSize) {
-        chunks.push(data.slice(i, i + chunkSize));
+          chunks.push(data.slice(i, i + chunkSize));
         }
-
-        // Log the parsed chunks
-        console.log(`First Chunk: ${parseInt(chunks[0], 16)}`);
-        console.log(`Second Chunk: 0x${chunks[1]}`);
-        console.log(`Third Chunk: 0x${chunks[2]}`);
-        console.log(`Fourth Chunk: 0x${chunks[3]}`);
-        console.log(`Fifth Chunk: ${parseInt(chunks[4], 16)}`);
-        console.log(`Sixth Chunk: ${parseInt(chunks[5], 16) % 2 === 0 ? 2 : 1}`);
-
-
-
+      
+        let round = parseInt(chunks[0], 16);
+        let player1 = chunks[1];
+        player1 = "0x" + player1.slice(24);
+        let player2 = chunks[2];
+        player2 = "0x" + player2.slice(24);
+        let winner = chunks[3];
+        winner = "0x" + winner.slice(24);
+        let reward = parseInt(chunks[4], 16);
+        reward = `${reward}`;
+        reward = ethers.utils.formatEther(reward);
+        reward = Number(reward).toFixed(3);
+      
+        return {
+          round: round,
+          player1: player1,
+          player2: player2,
+          winner: winner,
+          reward: reward,
+        };
     }
 
     // --- END --- //
