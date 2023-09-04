@@ -1858,6 +1858,10 @@ tbody tr:nth-child(even) {
   background-color: transparent; /* Fundo transparente para linhas pares */
 }
 
+button.no-cursor {
+  cursor: none;
+}
+
 .pagination {
   color: aliceblue;
   display: flex;

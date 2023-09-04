@@ -686,18 +686,23 @@ class DappInterface {
                     <div class="nftContainerItem">
                         <div class="label-id">id: ${item.id}</div>
                         <img src='${item.nft_details.cached_images.small_250_250}' class="nft-img" />
-                        <button class="claimButton" id="claim-nft-${item.id}" data-id="${item.id}">you won</button>
+                        <a href="https://opensea.io/collection/bon-lotto-winner" target="_blank">
+                        <button  >you won!</button></a>
                     </div>
                 </div>
             `;
     }
+
+    
 
     _Rewards_createDefaultElement() {
         return `
                 <div class="nftContainer">
                     <div class="nftContainerItem">
                         <img src="../images/lens.png" class="default-img" />
-                        <button onclick="location.href = 'https://www.opensea.io/assets/matic/${this.contractAddress1}/1'">bet now to win!</button>
+                        <a href="https://opensea.io/collection/bon-lotto-winner" target="_blank">
+                        <button  >bet now to win!</button></a>
+                    
                     </div>
                 </div>
             `;

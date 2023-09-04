@@ -38,7 +38,7 @@ class IndexInterface {
                 this.JSconnectButton.innerText = 'Install Metamask';
                 this.JSconnectButton.disabled = true;
         }
-    }
+    }x
     
     /* --- NETWORK DROPDOWN --- */
     async chooseWhichStake(){
