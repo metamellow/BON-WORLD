@@ -686,7 +686,7 @@ class DappInterface {
                     <div class="nftContainerItem">
                         <div class="label-id">id: ${item.id}</div>
                         <img src='${item.nft_details.cached_images.small_250_250}' class="nft-img" />
-                        <button class="claimButton" id="claim-nft-${item.id}" data-id="${item.id}">Claim</button>
+                        <button class="claimButton" id="claim-nft-${item.id}" data-id="${item.id}">you won</button>
                     </div>
                 </div>
             `;
