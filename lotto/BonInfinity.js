@@ -524,7 +524,7 @@ class DappInterface {
             } else {
                 console.log(`Results not found`);
                 this.buttonsArray[7].disabled = false;
-                this.buttonsArray[7].innerText = `xxx`;
+                this.buttonsArray[7].innerText = `...`;
                 return results;
             }
         } catch (error) {
@@ -553,7 +553,7 @@ class DappInterface {
             } else {
                 console.log(`Results not found`);
                 this.buttonsArray[8].disabled = false;
-                this.buttonsArray[8].innerText = `xxx`;
+                this.buttonsArray[8].innerText = `...`;
                 return results;
             }
         } catch (error) {
