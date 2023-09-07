@@ -5,8 +5,10 @@ class IndexInterface {
     this.JSconnectButton = document.getElementById('HTML_connect_button'); // connectWallet()
 
     /* --- NETWORK DROPDOWN --- */
-    this.JSnetworkDDValue = ''; // set via the HTML input; captures the chosen token exchange
-    this.JSnetworkDDInput = document.getElementById('HTML_dropdown_input_1'); // dropdown to choose tokens
+    this.JSnetworkDDValue = ''; // set via the HTML input;
+    this.JSnetworkDDInput = document.getElementById('HTML_dropdown_input_1');
+    this.JSmodeDDValue = ''; // set via the HTML input; 
+    this.JSmodeDDInput = document.getElementById('HTML_dropdown_input_2');
   }
 
   /* --- CONNECT BUTTON --- */
@@ -49,11 +51,26 @@ class IndexInterface {
     console.log(this.JSnetworkDDValue);
 
     if (this.JSnetworkDDValue == 'MATIC') {
-      window.location.href = './MATIC/Infinity.html';
+      window.location.href = '../../lotto/MATIC/Infinity.html';
     } else if (this.JSnetworkDDValue == 'ETH') {
-      window.location.href = './ETH/Infinity.html';
+      window.location.href = '../../lotto/ETH/Infinity.html';
     } else if (this.JSnetworkDDValue == 'BON') {
-      window.location.href = './BON/Options.html';
+      window.location.href = '../../lotto/BON/Options.html';
+    }
+  }
+
+  async chooseWhichMode() {
+    this.JSmodeDDValue = this.JSmodeDDInput.value;
+    console.log(this.JSmodeDDValue);
+
+    if (this.JSmodeDDValue == 'Infinity') {
+      window.location.href = './Infinity.html';
+    } else if (this.JSmodeDDValue == 'Low') {
+      window.location.href = './Low.html';
+    } else if (this.JSmodeDDValue == 'Medium') {
+      window.location.href = './Medium.html';
+    } else if (this.JSmodeDDValue == 'High') {
+      window.location.href = './High.html';
     }
   }
 }

@@ -104,13 +104,15 @@
 
       <div id="selection-dropdown">
         <select
-          id="HTML_dropdown_input_1"
-          onchange="IndexInterface_.chooseWhichLotto()"
+          class="select"
+          id="HTML_dropdown_input_2"
+          onchange="IndexInterface_.chooseWhichMode()"
         >
-          <option value="">Please choose...</option>
-          <option value="MATIC">MATIC</option>
-          <option value="ETH">ETH</option>
-          <option value="BON" selected>BON</option>
+          <option value="" selected disabled>Choose your bet...</option>
+          <option value="Low">100 BON</option>
+          <option value="Medium">1,000 BON</option>
+          <option value="High">10,000 BON</option>
+          <option value="Infinity">INFINITY MODE</option>
         </select>
       </div>
     </div>

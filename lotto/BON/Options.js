@@ -22,10 +22,6 @@ class LottoOptions {
         /* --- BUTTONS --- */
         this.currentAccount = ''; // loaded on connectWallet
         this.JSButton1 = document.getElementById('HTML_button_1'); // inifinty price
-  
-        /* --- DROPDOWNS --- */
-        this.JSDDValue = ''; // set via the HTML input; captures the chosen token exchange
-        this.JSDDInput = document.getElementById('HTML_dropdown_input_2'); // dropdown to choose tokens
     }
   
     async dappInitializeProcess() {
@@ -116,20 +112,6 @@ class LottoOptions {
         }
     }
 
-    async chooseWhichLotto() {
-      this.JSDDValue = this.JSDDInput.value;
-      console.log(this.JSDDValue);
-  
-      if (this.JSDDValue == 'Infinity') {
-        window.location.href = './Infinity.html';
-      } else if (this.JSDDValue == 'Low') {
-        window.location.href = './Low.html';
-      } else if (this.JSDDValue == 'Medium') {
-        window.location.href = './Medium.html';
-      } else if (this.JSDDValue == 'High') {
-        window.location.href = './High.html';
-      }
-    }
   }
   
   const LottoOptions_ = new LottoOptions();

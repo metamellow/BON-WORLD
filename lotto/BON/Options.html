@@ -123,19 +123,31 @@
 
         <div>
           <p>
-            We have something for every type of player.<strong>Come join</strong> and enjoy the 
-            <strong>winning opportunities!</strong>
-            <br/><br/>
-            <strong>STANDARD MODES</strong> are for those who prefer caution. 
-            Choose your bet level and go have fun!
-            <br/><br/>
-            <strong>INFINITY MODE</strong> offers thrills with increasing bets each round. 
-            The sky's the limit for this lotto!
+            We have something for every type of player. Come join and enjoy the winning opportunities!
+            STANDARD MODES are straightforward coin flips. Choose your bet level and go have fun!
+            INFINITY MODE offers thrills with increasing bets each round. The sky's the limit for this lotto!
             <br/> <br/>
-            
           </p>
         </div>
 
+        <div class="lottocharts">
+          <label for="chooseWhichMode">CHOOSE BET:</label>
+          <div id="selection-dropdown">
+            <select
+              class="select"
+              id="HTML_dropdown_input_2"
+              onchange="IndexInterface_.chooseWhichMode()"
+            >
+              <option value="" selected disabled>Choose your bet...</option>
+              <option value="Low">100 BON</option>
+              <option value="Medium">1,000 BON</option>
+              <option value="High">10,000 BON</option>
+              <option value="Infinity">INFINITY MODE</option>
+            </select>
+          </div>
+        </div>
+
+        <br>
         <div class="displaybuttons">
           <div class="lottocharts">
             <label for="pullInifinityPrice">CURRENT INFINITY:</label>
@@ -148,22 +160,7 @@
               -load-
             </button>
           </div>
-          <div class="lottocharts">
-            <label for="chooseWhichLotto">CHOOSE BET:</label>
-            <div id="selection-dropdown">
-              <select
-                class="select"
-                id="HTML_dropdown_input_2"
-                onchange="LottoOptions_.chooseWhichLotto()"
-              >
-                <option value="" selected disabled>Choose your bet...</option>
-                <option value="Low">100 BON</option>
-                <option value="Medium">1,000 BON</option>
-                <option value="High">10,000 BON</option>
-                <option value="Infinity">INFINITY MODE</option>
-              </select>
-            </div>
-          </div>
+
       </div>
       </div>
     </div>

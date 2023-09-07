@@ -449,7 +449,7 @@ class DappInterface {
                 this.txnCost = ethers.utils.formatEther(results);
                 let buttonText = Number(this.txnCost);
                 buttonText = buttonText.toFixed(3);
-                this.buttonsArray[5].innerText = `${buttonText}`;
+                this.buttonsArray[5].innerText = `${buttonText} ${this.tokenSymbol}`;
                 this.buttonsArray[5].disabled = false;
                 return results;
             } else {
@@ -490,7 +490,7 @@ class DappInterface {
             if (reward != null){
                 console.log(`${reward}`);
                 this.buttonsArray[6].disabled = false;
-                this.buttonsArray[6].innerText = `${reward}`;
+                this.buttonsArray[6].innerText = `${reward} ${this.tokenSymbol}`;
                 return reward;
             } else {
                 console.log(`Results not found`);
@@ -810,7 +810,7 @@ class DappInterface {
             winnerCell.innerHTML = `<a href="https://polygonscan.com/address/${formattedData.winner}" target="_blank">${_winner_}</a>`;
       
             const amountCell = document.createElement("td");
-            amountCell.innerHTML = `${formattedData.reward}`;
+            amountCell.innerHTML = `${formattedData.reward} ${this.tokenSymbol}`;
       
             row.appendChild(roundCell);
             row.appendChild(txnHashCell);
