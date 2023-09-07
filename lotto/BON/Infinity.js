@@ -52,7 +52,7 @@ class DappInterface {
         // --- Universal web3 Variables ---
         this.dappChain = '0x89'; //ETHEREUM-MAINNET=='0x1', POLYGON-MAINNET=='0x89', BINANCE-MAINNET=='0x38', MODULUS-TESTNET=='0x6666', POLYGON-MUMABI=='0x13881'
         this.chainName = 'POLYGON-MAINNET';
-        this.contractAddress1 = '0x0055fad55c4820133334cfc8238613f79fe160b0'; // LottoV3
+        this.contractAddress1 = '0x61332ac332c859a0c2360fbe44d888cddda53676'; // LottoV3
         this.contractAddress2 = '0x47e53f0ddf71210f2c45dc832732aa188f78aa4f'; // Token
         this.contractAddress3 = 'xx'; // xx
         this.tokenSymbol = `BON`;
