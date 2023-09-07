@@ -49,11 +49,11 @@ class IndexInterface {
     console.log(this.JSnetworkDDValue);
 
     if (this.JSnetworkDDValue == 'MATIC') {
-      window.location.href = './MaticLotto.html';
+      window.location.href = './MATIC/Infinity.html';
     } else if (this.JSnetworkDDValue == 'ETH') {
-      window.location.href = './EthLotto.html';
+      window.location.href = './ETH/Infinity.html';
     } else if (this.JSnetworkDDValue == 'BON') {
-      window.location.href = './BonIndex.html';
+      window.location.href = './BON/Options.html';
     }
   }
 }

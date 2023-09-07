@@ -9,7 +9,7 @@ const CONTRACT1_ABI = (
     ,}
 );
 
-class BonIndex {
+class LottoOptions {
     constructor() {
         /* --- CONTRACTS --- */
         this.dappChain = '0x89'; //ETHEREUM-MAINNET=='0x1', POLYGON-MAINNET=='0x89', POLYGON-MUMABI=='0x13881'
@@ -116,22 +116,22 @@ class BonIndex {
         }
     }
 
-    async chooseWhichBonLotto() {
+    async chooseWhichLotto() {
       this.JSDDValue = this.JSDDInput.value;
       console.log(this.JSDDValue);
   
-      if (this.JSDDValue == 'INFINITY') {
-        window.location.href = './BonInfinity.html';
-      } else if (this.JSDDValue == 'Bon1K') {
-        window.location.href = './Bon1K.html';
-      } else if (this.JSDDValue == 'Bon10K') {
-        window.location.href = './Bon10K.html';
-      } else if (this.JSDDValue == 'Bon100K') {
-        window.location.href = './Bon100K.html';
+      if (this.JSDDValue == 'Infinity') {
+        window.location.href = './Infinity.html';
+      } else if (this.JSDDValue == 'Low') {
+        window.location.href = './Low.html';
+      } else if (this.JSDDValue == 'Medium') {
+        window.location.href = './Medium.html';
+      } else if (this.JSDDValue == 'High') {
+        window.location.href = './High.html';
       }
     }
   }
   
-  const BonIndex_ = new BonIndex();
-  BonIndex_.dappInitializeProcess();
+  const LottoOptions_ = new LottoOptions();
+  LottoOptions_.dappInitializeProcess();
   

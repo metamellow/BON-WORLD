@@ -4,14 +4,14 @@
     <meta charset="UTF-8" />
     <title>Bank of Nowhere</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="../styles/main.css" />
+    <link rel="stylesheet" type="text/css" href="../../styles/main.css" />
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
       integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc"
       crossorigin="anonymous"
     />
-    <link rel="icon" href="../images/fav.png" />
+    <link rel="icon" href="../../images/fav.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -60,18 +60,18 @@
   <body>
     <header>
       <div class="logo-container">
-        <img src="../images/bonlogo.png" alt="Logo" class="logo-grande" />
-        <img src="../images/fav.png" alt="Logo" class="logo-pequeno" />
+        <img src="../../images/bonlogo.png" alt="Logo" class="logo-grande" />
+        <img src="../../images/fav.png" alt="Logo" class="logo-pequeno" />
       </div>
       <div class="menu-toggle">
         <i class="fas fa-bars"></i>
       </div>
       <nav class="dapp-menu">
         <ul class="nav-links">
-          <li><a href="../index.html">home</a></li>
-          <li><a href="../whitepaper.html">whitepaper</a></li>
-          <li><a href="../lotto/index.html">lotto</a></li>
-          <li><a href="../dapp.html"> crowdfunding</a></li>
+          <li><a href="../../index.html">home</a></li>
+          <li><a href="../../whitepaper.html">whitepaper</a></li>
+          <li><a href="../../lotto/index.html">lotto</a></li>
+          <li><a href="../../dapp.html"> crowdfunding</a></li>
           <li><a href="../../stake/index.html"> stake</a></li>
           <li>
             <button
@@ -90,7 +90,7 @@
 
     <div class="cftop">
       <div class="cftitleadjust">
-        <img class="imgadjust" src="images/lottoicon.svg" />
+        <img class="imgadjust" src="../images/lottoicon.svg" />
         <img />
         <p class="cftitle"><b style="text-align: center">BON.Lotto</b></p>
       </div>
@@ -113,7 +113,7 @@
       <!--main-->
 
       <div class="sidea">
-        <img src="../images/coinlotto.png" />
+        <img src="../../images/coinlotto.png" />
       </div>
 
       <div class="sideb">
@@ -126,8 +126,8 @@
             We have something for every type of player.<strong>Come join</strong> and enjoy the 
             <strong>winning opportunities!</strong>
             <br/><br/>
-            <strong>STANDARD MODE</strong> is for those who prefer caution. 
-            Choose your bet level and go have fun! Current levels are: 1K, 10K, and 100K BON.
+            <strong>STANDARD MODES</strong> are for those who prefer caution. 
+            Choose your bet level and go have fun!
             <br/><br/>
             <strong>INFINITY MODE</strong> offers thrills with increasing bets each round. 
             The sky's the limit for this lotto!
@@ -143,24 +143,24 @@
               class="lottobutton"
               name="pullInifinityPrice"
               id="HTML_button_1"
-              onclick="BonIndex_.pullInifinityPrice();"
+              onclick="LottoOptions_.pullInifinityPrice();"
             >
               -load-
             </button>
           </div>
           <div class="lottocharts">
-            <label for="chooseWhichBonLotto">CHOOSE BET:</label>
+            <label for="chooseWhichLotto">CHOOSE BET:</label>
             <div id="selection-dropdown">
               <select
                 class="select"
                 id="HTML_dropdown_input_2"
-                onchange="BonIndex_.chooseWhichBonLotto()"
+                onchange="LottoOptions_.chooseWhichLotto()"
               >
                 <option value="" selected disabled>Choose your bet...</option>
-                <option value="Bon1K">1,000 BON</option>
-                <option value="Bon10K">10,000 BON</option>
-                <option value="Bon100K">100,000 BON</option>
-                <option value="INFINITY">INFINITY MODE</option>
+                <option value="Low">1,000 BON</option>
+                <option value="Medium">10,000 BON</option>
+                <option value="High">100,000 BON</option>
+                <option value="Infinity">INFINITY MODE</option>
               </select>
             </div>
           </div>
@@ -171,19 +171,19 @@
     <hr />
     <footer>
       <div>
-        <img src="../images/fav.png" />
+        <img src="../../images/fav.png" />
       </div>
       <div class="copyright">
         <p>Copyright © Bank of Nowhere</p>
       </div>
       <div>
-        <img src="images/moduluslogogreen.svg" />
+        <img src="../images/moduluslogogreen.svg" />
       </div>
       <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"></script>
-      <script src="indexInterface.js" type="application/javascript"></script>
-      <script src="BonIndex.js" type="application/javascript"></script>
-      <script src="../scripts/menu.js"></script>
-      <script src="../scripts/collapse.js"></script>
+      <script src="../indexInterface.js" type="application/javascript"></script>
+      <script src="./Options.js" type="application/javascript"></script>
+      <script src="../../scripts/menu.js"></script>
+      <script src="../../scripts/collapse.js"></script>
     </footer>
   </body>
 </html>
