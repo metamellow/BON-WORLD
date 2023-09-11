@@ -1014,21 +1014,25 @@ class ClaimerDappInterface {
       let availableTokens = await this.connectedContract3.balanceOf(
         `${this.contractAddress1}`
       );
+      availableTokens = ethers.utils.formatEther(availableTokens);
       console.log(`Results: ${availableTokens}`);
       console.log(`Attempting button 3 call B..`);
-      let claimRate = await this.connectedContract1.claimRate();
+      let tempnumbholdr = await this.connectedContract1.claimRate();
+      let claimRate = Number(tempnumbholdr);
       console.log(`Results: ${claimRate}`);
 
-      let Button3Results = (availableTokens * claimRate) / 1000;
+      let tempnumbholdr2 = (availableTokens * claimRate) / 1000;
+      let Button3Results = Number(tempnumbholdr2);
+      Button3Results = Button3Results.toFixed(3);
       console.log(`Analzying results... ${Button3Results}`);
       if (Button3Results != '') {
-        let amount = ethers.utils.formatEther(String(Button3Results));
-        amount = Number(amount);
-        amount = amount.toFixed(3);
-        amount = ethers.utils.commify(amount);
-        console.log(`Estimated Rewards: ${amount} BON`);
+        //let amount = ethers.utils.formatEther(String(Button3Results));
+        //amount = Number(amount);
+        //amount = amount.toFixed(3);
+        //amount = ethers.utils.commify(amount);
+        console.log(`Estimated Rewards: ${Button3Results} BON`);
         this.buttonsArray[3].disabled = false;
-        this.buttonsArray[3].innerText = `${amount} BON`;
+        this.buttonsArray[3].innerText = `${Button3Results} BON`;
       } else {
         this.buttonsArray[3].innerText = `no results`;
       }
