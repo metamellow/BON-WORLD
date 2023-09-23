@@ -1134,7 +1134,7 @@ class ClaimerDappInterface {
   }
 
   displayNewNFTData(data) {
-    console.log("testytesttest");
+    console.log("API object recieved, now formatting");
     const resultsArray = data.results;
   
     if(!resultsArray) {

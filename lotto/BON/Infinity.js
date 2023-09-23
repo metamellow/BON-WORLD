@@ -709,19 +709,21 @@ class DappInterface {
     }
 
     _Rewards_displayNewNFTData(data) {
+        console.log("API object recieved, now formatting");
         const resultsArray = data.results;
 
-        let nftsUserCollectionElements = resultsArray
-        .map(this._Rewards_createNFTElement)
-        .concat(
-            Array(5 - resultsArray.length)
-            .fill(0)
-            .map(() => this._Rewards_createDefaultElement())
-        )
-        .join('');
+        if(!resultsArray) {
+            return;
+        }
 
-        document.querySelector('#nft-user-collection').innerHTML =
-        nftsUserCollectionElements;
+        let mapped = resultsArray.map(item => {
+            return this._Rewards_createNFTElement(item);
+        });
+        
+        // Slice to first 5 items
+        mapped = mapped.slice(0, 5);
+    
+        document.querySelector('#nft-user-collection').innerHTML = mapped.join('');
 
         document.querySelectorAll('.claimButton').forEach((button) => {
             button.addEventListener('click', async (event) => {
