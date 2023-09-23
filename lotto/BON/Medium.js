@@ -844,7 +844,7 @@ class DappInterface {
         player2 = "0x" + player2.slice(24);
         let winner = chunks[3];
         winner = "0x" + winner.slice(24);
-        let reward = parseInt(chunks[4], 16);
+        let reward = BigInt("0x" + chunks[4])
         reward = `${reward}`;
         reward = ethers.utils.formatEther(reward);
         reward = Number(reward).toFixed(3);
