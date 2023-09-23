@@ -1134,20 +1134,28 @@ class ClaimerDappInterface {
   }
 
   displayNewNFTData(data) {
+
     const resultsArray = data.results;
 
+    if(!resultsArray) {
+      return;
+    }
+  
     let nftsUserCollectionElements = resultsArray
-      .map(this.createNFTElement)
-      .concat(
-        Array(Math.max(5 - resultsArray.length, 0))
-          .fill(0)
-          .map(() => this.createDefaultElement())
-      )
-      .join('');
-      
-
+      .map(this.createNFTElement);
+  
+    // Calculate how many defaults to add
+    const defaultsNeeded = Math.max(5 - nftsUserCollectionElements.length, 0);
+  
+    // Concat defaults
+    nftsUserCollectionElements = nftsUserCollectionElements.concat(
+      Array(defaultsNeeded)
+        .fill(0)  
+        .map(() => this.createDefaultElement())
+    );
+  
     document.querySelector('#nft-user-collection').innerHTML =
-      nftsUserCollectionElements;
+      nftsUserCollectionElements.join('');
 
     document.querySelectorAll('.claimButton').forEach((button) => {
       button.addEventListener('click', async (event) => {
