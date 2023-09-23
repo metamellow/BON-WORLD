@@ -1139,11 +1139,12 @@ class ClaimerDappInterface {
     let nftsUserCollectionElements = resultsArray
       .map(this.createNFTElement)
       .concat(
-        Array(5 - resultsArray.length)
+        Array(Math.max(5 - resultsArray.length, 0))
           .fill(0)
           .map(() => this.createDefaultElement())
       )
       .join('');
+      
 
     document.querySelector('#nft-user-collection').innerHTML =
       nftsUserCollectionElements;
