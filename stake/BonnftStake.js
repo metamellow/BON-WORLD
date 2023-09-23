@@ -1134,7 +1134,7 @@ class ClaimerDappInterface {
   }
 
   displayNewNFTData(data) {
-
+    console.log("testytesttest");
     const resultsArray = data.results;
   
     if(!resultsArray) {
